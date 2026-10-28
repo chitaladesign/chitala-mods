@@ -1,71 +1,249 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CHITALA MODS</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#050608;color:#fff;font-family:Arial,sans-serif}
-header{text-align:center;padding:35px 15px;background:radial-gradient(ellipse at top,#460000,#100809 65%,#050608);border-bottom:2px solid #ff101b}
-header h1{font-size:clamp(32px,7vw,58px);margin:0;color:#ff1724;font-weight:900;text-shadow:0 0 20px #a00000}
-header p{letter-spacing:5px;color:#ddd;margin-bottom:0}
-.search{display:block;width:90%;max-width:600px;margin:25px auto;padding:15px;background:#101216;color:white;border:1px solid #e50914;border-radius:10px;font-size:16px}
-.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:1100px;padding:16px;margin:auto}
-.card{background:linear-gradient(145deg,#15171c,#08090b);border:1px solid #343740;border-radius:15px;overflow:hidden;padding:12px;box-shadow:0 8px 25px #0008}
-.card img{display:block;width:100%;height:210px;object-fit:cover;border-radius:9px;background:#190809}
-.poster{height:210px;display:flex;align-items:center;justify-content:center;text-align:center;flex-direction:column;border-radius:9px;background:radial-gradient(circle,#720000,#1a0507 65%,#050505)}
-.poster strong{font-size:29px;color:#ff2631;text-shadow:0 0 15px red}
-.poster span{font-size:15px;letter-spacing:3px;margin-top:8px}
-.card h2{font-size:21px;margin:16px 4px 10px}
-.tag{display:inline-block;background:#e50914;color:white;padding:7px 12px;border-radius:20px;font-size:12px;font-weight:bold}
-.desc{color:#b9bdc8;line-height:1.55;min-height:48px}
-.btn{display:block;text-align:center;text-decoration:none;background:linear-gradient(90deg,#ff0011,#c9000b);color:white;font-weight:bold;padding:15px 8px;border-radius:10px;margin-top:16px}
-.btn:hover{filter:brightness(1.2)}
-footer{text-align:center;padding:30px 10px;color:#aaa;letter-spacing:2px}
+
+body{
+  margin:0;
+  background:#050608;
+  color:#fff;
+  font-family:Arial,sans-serif
+}
+
+header{
+  text-align:center;
+  padding:35px 15px;
+  background:radial-gradient(ellipse at top,#460000,#100809 65%,#050608);
+  border-bottom:2px solid #ff101b
+}
+
+header h1{
+  font-size:clamp(32px,7vw,58px);
+  margin:0;
+  color:#ff1724;
+  font-weight:900;
+  text-shadow:0 0 20px #a00000
+}
+
+header p{
+  letter-spacing:5px;
+  color:#ddd;
+  margin-bottom:0
+}
+
+.search{
+  display:block;
+  width:90%;
+  max-width:600px;
+  margin:25px auto;
+  padding:15px;
+  background:#101216;
+  color:white;
+  border:1px solid #e50914;
+  border-radius:10px;
+  font-size:16px
+}
+
+.games{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+  max-width:1100px;
+  padding:16px;
+  margin:auto
+}
+
+.card{
+  background:linear-gradient(145deg,#15171c,#08090b);
+  border:1px solid #343740;
+  border-radius:15px;
+  overflow:hidden;
+  padding:12px;
+  box-shadow:0 8px 25px #0008
+}
+
+.card img{
+  display:block;
+  width:100%;
+  height:210px;
+  object-fit:cover;
+  border-radius:9px;
+  background:#190809
+}
+
+.poster{
+  height:210px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  flex-direction:column;
+  border-radius:9px;
+  background:radial-gradient(circle,#720000,#1a0507 65%,#050505)
+}
+
+.poster strong{
+  font-size:29px;
+  color:#ff2631;
+  text-shadow:0 0 15px red
+}
+
+.poster span{
+  font-size:15px;
+  letter-spacing:3px;
+  margin-top:8px
+}
+
+.card h2{
+  font-size:21px;
+  margin:16px 4px 10px
+}
+
+.tag{
+  display:inline-block;
+  background:#e50914;
+  color:white;
+  padding:7px 12px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold
+}
+
+.desc{
+  color:#b9bdc8;
+  line-height:1.55;
+  min-height:48px
+}
+
+.btn{
+  display:block;
+  text-align:center;
+  text-decoration:none;
+  background:linear-gradient(90deg,#ff0011,#c9000b);
+  color:white;
+  font-weight:bold;
+  padding:15px 8px;
+  border-radius:10px;
+  margin-top:12px;
+  transition:.2s
+}
+
+.btn:hover{
+  filter:brightness(1.2);
+  transform:translateY(-1px)
+}
+
+.tutorial{
+  background:linear-gradient(90deg,#292929,#151515);
+  border:1px solid #ff1724
+}
+
+.no-results{
+  display:none;
+  text-align:center;
+  color:#ff4650;
+  font-size:17px;
+  padding:25px 15px;
+  grid-column:1/-1
+}
+
+footer{
+  text-align:center;
+  padding:30px 10px;
+  color:#aaa;
+  letter-spacing:2px
+}
 </style>
 </head>
+
 <body>
 
 <header>
-<h1>CHITALA MODS</h1>
-<p>YOUR GAMING WORLD</p>
+  <h1>CHITALA MODS</h1>
+  <p>YOUR GAMING WORLD</p>
 </header>
 
-<input class="search" id="search" placeholder="🔍 Search games..." oninput="searchGames()">
+<input
+  class="search"
+  id="search"
+  placeholder="🔍 Search games..."
+  aria-label="Search games"
+  oninput="searchGames()"
+>
 
-<main class="games">
+<main class="games" id="games">
 
-<section class="card" data-name="shadow fight 2 definitive edition">
-<img src="shadow-fight-2.jpg" alt="Shadow Fight 2">
-<h2>Shadow Fight 2: Definitive Edition</h2>
-<span class="tag">MOD APK</span>
-<p class="desc">Action fighting game. Check the file details and compatibility before installing.</p>
-<a class="btn" href="https://drive.usercontent.google.com/download?id=1nypebh2xJD1uXJwu2_VKxIGJ6lpCzupK&amp;export=download&amp;authuser=0" target="_blank" rel="noopener noreferrer">↗ OPEN DOWNLOAD LINK</a>
-</section>
+  <section class="card" data-name="shadow fight 2 definitive edition">
+    <img src="shadow-fight-2.jpg" alt="Shadow Fight 2">
 
-<section class="card" data-name="invincible guarding the globe">
-<div class="poster">
-<strong>INVINCIBLE</strong>
-<span>GUARDING THE GLOBE</span>
-</div>
-<h2>Invincible: Guarding the Globe</h2>
-<span class="tag">MOBILE GAME</span>
-<p class="desc">Build your team and battle your enemies.</p>
-<a class="btn" href="https://play.google.com/store/search?q=Invincible%20Guarding%20the%20Globe&amp;c=apps" target="_blank" rel="noopener noreferrer">↗ VIEW GAME</a>
-</section>
+    <h2>Shadow Fight 2: Definitive Edition</h2>
+    <span class="tag">MOD APK</span>
 
-<section class="card" data-name="mortal kombat">
-<div class="poster">
-<strong>MORTAL KOMBAT</strong>
-<span>FIGHTING GAME</span>
-</div>
-<h2>Mortal Kombat</h2>
-<span class="tag">FIGHTING GAME</span>
-<p class="desc">Enter the arena and fight.</p>
-<a class="btn" href="https://play.google.com/store/search?q=Mortal%20Kombat&amp;c=apps" target="_blank" rel="noopener noreferrer">↗ VIEW GAME</a>
-</section>
+    <p class="desc">
+      Action fighting game. Check the file details and compatibility before installing.
+    </p>
+
+    <a class="btn"
+       href="https://drive.usercontent.google.com/download?id=1nypebh2xJD1uXJwu2_VKxIGJ6lpCzupK&amp;export=download&amp;authuser=0"
+       target="_blank"
+       rel="noopener noreferrer">
+       ⬇ DOWNLOAD GAME
+    </a>
+
+    <a class="btn tutorial"
+       href="https://youtu.be/ecuTZ0yzTfg?si=6gsTHwQ99RolmMzb"
+       target="_blank"
+       rel="noopener noreferrer">
+       ▶ WATCH TUTORIAL
+    </a>
+  </section>
+
+  <section class="card" data-name="invincible guarding the globe">
+    <div class="poster">
+      <strong>INVINCIBLE</strong>
+      <span>GUARDING THE GLOBE</span>
+    </div>
+
+    <h2>Invincible: Guarding the Globe</h2>
+    <span class="tag">MOBILE GAME</span>
+
+    <p class="desc">Build your team and battle your enemies.</p>
+
+    <a class="btn"
+       href="https://play.google.com/store/search?q=Invincible%20Guarding%20the%20Globe&amp;c=apps"
+       target="_blank"
+       rel="noopener noreferrer">
+       ↗ VIEW GAME
+    </a>
+  </section>
+
+  <section class="card" data-name="mortal kombat">
+    <div class="poster">
+      <strong>MORTAL KOMBAT</strong>
+      <span>FIGHTING GAME</span>
+    </div>
+
+    <h2>Mortal Kombat</h2>
+    <span class="tag">FIGHTING GAME</span>
+
+    <p class="desc">Enter the arena and fight.</p>
+
+    <a class="btn"
+       href="https://play.google.com/store/search?q=Mortal%20Kombat&amp;c=apps"
+       target="_blank"
+       rel="noopener noreferrer">
+       ↗ VIEW GAME
+    </a>
+  </section>
+
+  <div class="no-results" id="noResults">
+    No games found. Try a different search.
+  </div>
 
 </main>
 
@@ -73,10 +251,26 @@ footer{text-align:center;padding:30px 10px;color:#aaa;letter-spacing:2px}
 
 <script>
 function searchGames(){
-const query=document.getElementById("search").value.toLowerCase();
-document.querySelectorAll(".card").forEach(card=>{
-card.style.display=card.dataset.name.includes(query)?"":"none";
-});
+  const query = document.getElementById("search").value
+    .trim()
+    .toLowerCase();
+
+  const cards = document.querySelectorAll(".card");
+  let found = 0;
+
+  cards.forEach(card => {
+    const name = card.dataset.name.toLowerCase();
+    const matches = name.includes(query);
+
+    card.style.display = matches ? "" : "none";
+
+    if(matches){
+      found++;
+    }
+  });
+
+  document.getElementById("noResults").style.display =
+    found === 0 ? "block" : "none";
 }
 </script>
 
