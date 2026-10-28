@@ -2,84 +2,77 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CHITALA MODS</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#09090b;color:#fff;font-family:Arial,sans-serif}
-header{text-align:center;padding:30px 15px;background:linear-gradient(135deg,#17171b,#450812);border-bottom:2px solid #ff263f}
-.logo{font-size:36px;font-weight:900;color:#ff3048}
-header p{color:#ccc}
-main{max-width:1000px;margin:auto;padding:20px 15px}
-.search{width:100%;padding:14px;border:1px solid #444;border-radius:10px;background:#17171b;color:white;font-size:16px}
-h2{border-left:5px solid #ff3048;padding-left:10px}
-.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.card{background:#17171b;border:1px solid #303038;border-radius:14px;overflow:hidden}
-.art{height:160px;display:flex;align-items:center;justify-content:center;text-align:center;padding:15px;background:radial-gradient(circle,#68202d,#101014);font-size:25px;font-weight:900;color:#fff}
-.inv{background:radial-gradient(circle,#29415b,#101014)}
-.info{padding:17px}
-h3{margin-top:0}
-.meta{color:#ff6676;font-size:13px}
+body{margin:0;background:#09090b;color:white;font-family:Arial,sans-serif}
+header{text-align:center;padding:28px 12px;background:#25070d;border-bottom:3px solid #f22}
+h1{color:#ff3048;font-size:34px;margin:0}
+header p{color:#ddd}
+main{max-width:900px;margin:auto;padding:18px}
+input{width:100%;padding:14px;border-radius:9px;border:1px solid #555;background:#18181d;color:white;font-size:16px}
+h2{border-left:4px solid #ff3048;padding-left:10px}
+.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:15px}
+.card{background:#18181d;border:1px solid #333;border-radius:12px;overflow:hidden}
+.art{padding:35px 10px;text-align:center;font-size:23px;font-weight:bold;background:linear-gradient(135deg,#641522,#111)}
+.info{padding:15px}
+.meta{color:#ff6575;font-size:12px}
 p{color:#ccc;line-height:1.5}
-.btn{display:inline-block;text-decoration:none;padding:11px 13px;border-radius:8px;background:#f02d43;color:white;font-weight:bold;margin:4px 3px 4px 0;font-size:13px}
-.secondary{background:#25252c;border:1px solid #555}
-.note{font-size:12px;color:#999;margin-top:20px}
-footer{text-align:center;padding:25px;color:#888}
+.btn{display:inline-block;background:#f22;color:white;text-decoration:none;padding:12px;border-radius:7px;font-weight:bold;margin-top:8px}
+.btn2{background:#333}
 .hidden{display:none}
+footer{text-align:center;color:#888;padding:25px}
 </style>
 </head>
 <body>
 <header>
-<h1 class="logo">CHITALA MODS</h1>
-<p>Your Android Gaming Hub</p>
+<h1>CHITALA MODS</h1>
+<p>ANDROID GAMING HUB</p>
 </header>
 <main>
-<input id="search" class="search" type="search" placeholder="Search games...">
-<h2>All Games</h2>
+<input id="search" placeholder="Search games..." type="search">
+<h2>Games</h2>
 <div class="games">
 
-<article class="card" data-search="shadow fight 2 fighting action ninja">
+<div class="card" data-name="shadow fight 2">
 <div class="art">SHADOW FIGHT 2</div>
 <div class="info">
 <h3>Shadow Fight 2</h3>
 <div class="meta">ACTION • FIGHTING</div>
-<p>Fight powerful enemies, unlock equipment and explore the world of shadows.</p>
-<a class="btn" href="https://play.google.com/store/search?q=Shadow%20Fight%202&c=apps" target="_blank">Find Game</a>
-<a class="btn secondary" href="https://nekki.com/" target="_blank">Publisher</a>
+<p>Explore the world of shadows and battle your enemies.</p>
+<a class="btn" href="https://play.google.com/store/search?q=Shadow%20Fight%202&c=apps" target="_blank" rel="noopener">OPEN GAME PAGE</a>
 </div>
-</article>
+</div>
 
-<article class="card" data-search="invincible guarding the globe superhero rpg">
-<div class="art inv">INVINCIBLE<br>GUARDING THE GLOBE</div>
+<div class="card" data-name="invincible guarding the globe">
+<div class="art">INVINCIBLE</div>
 <div class="info">
 <h3>Invincible: Guarding the Globe</h3>
 <div class="meta">SUPERHERO • RPG</div>
-<p>Build your superhero team and battle enemies in the Invincible universe.</p>
-<a class="btn" href="https://play.google.com/store/search?q=Invincible%20Guarding%20the%20Globe&c=apps" target="_blank">Find Game</a>
-<a class="btn secondary" href="https://www.ubisoft.com/" target="_blank">Publisher</a>
+<p>Build your superhero team and battle your enemies.</p>
+<a class="btn" href="https://play.google.com/store/search?q=Invincible%20Guarding%20the%20Globe&c=apps" target="_blank" rel="noopener">OPEN GAME PAGE</a>
 </div>
-</article>
+</div>
 
-<article class="card" data-search="mortal kombat fighting action">
+<div class="card" data-name="mortal kombat">
 <div class="art">MORTAL KOMBAT</div>
 <div class="info">
 <h3>Mortal Kombat</h3>
 <div class="meta">FIGHTING • ACTION</div>
-<p>Discover the mobile fighting game and build your fighter collection.</p>
-<a class="btn" href="https://play.google.com/store/search?q=Mortal%20Kombat&c=apps" target="_blank">Find Game</a>
+<p>Discover the mobile fighting game.</p>
+<a class="btn" href="https://play.google.com/store/search?q=Mortal%20Kombat&c=apps" target="_blank" rel="noopener">OPEN GAME PAGE</a>
 </div>
-</article>
+</div>
 
 </div>
-<p class="note">Always check the source and permissions before installing APK files. Links open game store searches.</p>
 </main>
-<footer>© 2026 CHITALA MODS</footer>
+<footer>CHITALA MODS © 2026</footer>
 <script>
-const search=document.getElementById('search');
-search.addEventListener('input',()=>{
-const q=search.value.trim().toLowerCase();
-document.querySelectorAll('.card').forEach(card=>{
-card.classList.toggle('hidden',!card.dataset.search.includes(q));
+document.getElementById('search').addEventListener('input',function(){
+let q=this.value.toLowerCase().trim();
+document.querySelectorAll('.card').forEach(function(card){
+card.classList.toggle('hidden',!card.dataset.name.includes(q));
 });
 });
 </script>
