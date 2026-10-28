@@ -36,18 +36,39 @@ header p{
   margin-bottom:0
 }
 
-.search{
-  display:block;
+/* SEARCH */
+.search-box{
+  display:flex;
+  align-items:center;
   width:90%;
   max-width:600px;
   margin:25px auto;
-  padding:15px;
+  padding:0 15px;
   background:#101216;
-  color:white;
   border:1px solid #e50914;
-  border-radius:10px;
-  font-size:16px
+  border-radius:10px
 }
+
+.search-icon{
+  flex-shrink:0;
+  margin-right:10px
+}
+
+.search{
+  flex:1;
+  min-width:0;
+  width:100%;
+  margin:0;
+  padding:15px 0;
+  background:transparent;
+  color:white;
+  border:none;
+  outline:none;
+  font-size:16px;
+  text-align:left
+}
+
+.search::placeholder{color:#aaa;opacity:1}
 
 .games{
   display:grid;
@@ -116,7 +137,7 @@ header p{
 
 .desc{
   color:#b9bdc8;
-  line-height:1.55;
+  line-height:1.6;
   min-height:48px
 }
 
@@ -141,6 +162,11 @@ header p{
 .tutorial{
   background:linear-gradient(90deg,#292929,#151515);
   border:1px solid #ff1724
+}
+
+.online-tag{
+  background:#147a3d;
+  margin-left:5px
 }
 
 .no-results{
@@ -168,32 +194,38 @@ footer{
   <p>YOUR GAMING WORLD</p>
 </header>
 
-<input
-  class="search"
-  id="search"
-  placeholder="🔍 Search games..."
-  aria-label="Search games"
-  oninput="searchGames()"
->
+<div class="search-box">
+  <span class="search-icon">🔍</span>
+  <input
+    class="search"
+    id="search"
+    placeholder="Search games..."
+    aria-label="Search games"
+    oninput="searchGames()"
+  >
+</div>
 
 <main class="games" id="games">
 
-  <section class="card" data-name="shadow fight 2 definitive edition">
+  <!-- SHADOW FIGHT 2 -->
+  <section class="card"
+           data-name="shadow fight 2 definitive edition mod apk">
+
     <img src="shadow-fight-2.jpg" alt="Shadow Fight 2">
 
     <h2>Shadow Fight 2: Definitive Edition</h2>
     <span class="tag">MOD APK</span>
 
     <p class="desc">
-  Enter the world of shadows! ⚔️ Fight powerful enemies,
-  unlock epic weapons, and master your ninja skills!
+      Enter the world of shadows! ⚔️ Fight powerful enemies,
+      unlock epic weapons, and master your ninja skills!
 
-  🔥 Epic Fighting Action
-  ⚔️ Powerful Weapons & Armor
-  🥷 Challenging Enemies
+      🔥 Epic Fighting Action
+      ⚔️ Powerful Weapons &amp; Armor
+      🥷 Challenging Enemies
 
-  Download the game below and follow the tutorial to get started!
-</p>
+      Download the game below and follow the tutorial to get started!
+    </p>
 
     <a class="btn"
        href="https://drive.usercontent.google.com/download?id=1nypebh2xJD1uXJwu2_VKxIGJ6lpCzupK&amp;export=download&amp;authuser=0"
@@ -210,26 +242,38 @@ footer{
     </a>
   </section>
 
-  <section class="card" data-name="invincible guarding the globe">
+  <!-- INVINCIBLE -->
+  <section class="card"
+           data-name="invincible guarding the globe mod apk online">
+
     <div class="poster">
       <strong>INVINCIBLE</strong>
       <span>GUARDING THE GLOBE</span>
     </div>
 
-    <h2>Invincible: Guarding the Globe</h2>
-    <span class="tag">MOBILE GAME</span>
+    <h2>Invincible: Guarding the Globe MOD APK</h2>
 
-    <p class="desc">Build your team and battle your enemies.</p>
+    <span class="tag">MOD APK</span>
+    <span class="tag online-tag">ONLINE</span>
+
+    <p class="desc">
+      Build your team of heroes and battle powerful enemies!
+      Explore the world of Invincible and grow your squad.
+      Check the version and online compatibility before installing.
+    </p>
 
     <a class="btn"
        href="https://play.google.com/store/search?q=Invincible%20Guarding%20the%20Globe&amp;c=apps"
        target="_blank"
        rel="noopener noreferrer">
-       ↗ VIEW GAME
+       ↗ FIND GAME VERSION
     </a>
+
   </section>
 
+  <!-- MORTAL KOMBAT -->
   <section class="card" data-name="mortal kombat">
+
     <div class="poster">
       <strong>MORTAL KOMBAT</strong>
       <span>FIGHTING GAME</span>
@@ -238,7 +282,9 @@ footer{
     <h2>Mortal Kombat</h2>
     <span class="tag">FIGHTING GAME</span>
 
-    <p class="desc">Enter the arena and fight.</p>
+    <p class="desc">
+      Enter the arena, choose your fighter, and battle your enemies.
+    </p>
 
     <a class="btn"
        href="https://play.google.com/store/search?q=Mortal%20Kombat&amp;c=apps"
