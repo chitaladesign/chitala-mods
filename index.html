@@ -3,186 +3,278 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CHITALA MODS</title>
+<title>CHITALA MODS | Gaming Hub</title>
 
 <style>
 *{box-sizing:border-box}
 
+:root{
+  --red:#ff1828;
+  --dark:#08090d;
+  --panel:#11131a;
+  --muted:#b7bac6;
+}
+
 body{
   margin:0;
-  background:#050608;
+  background:
+    radial-gradient(ellipse at 50% 0%,#300509 0%,#08090d 48%);
   color:#fff;
-  font-family:Arial,sans-serif
+  font-family:Arial,Helvetica,sans-serif;
+  min-height:100vh;
 }
 
 header{
   text-align:center;
-  padding:35px 15px;
-  background:radial-gradient(ellipse at top,#460000,#100809 65%,#050608);
-  border-bottom:2px solid #ff101b
+  padding:45px 15px 35px;
+  background:linear-gradient(180deg,#250407aa,#08090d00);
+  border-bottom:1px solid #ff182855;
 }
 
-header h1{
-  font-size:clamp(32px,7vw,58px);
+.logo{
+  display:inline-block;
+  font-size:clamp(34px,8vw,62px);
+  font-weight:1000;
+  letter-spacing:2px;
+  color:#ff2435;
+  text-shadow:0 0 12px #ff001155,0 0 35px #ff001133;
   margin:0;
-  color:#ff1724;
-  font-weight:900;
-  text-shadow:0 0 20px #a00000
 }
 
 header p{
-  letter-spacing:5px;
+  margin:10px 0 0;
   color:#ddd;
-  margin-bottom:0
+  font-size:12px;
+  letter-spacing:6px;
+}
+
+.line{
+  width:100px;
+  height:3px;
+  background:var(--red);
+  box-shadow:0 0 15px var(--red);
+  margin:22px auto 0;
+  border-radius:10px;
 }
 
 /* SEARCH */
 .search-box{
   display:flex;
   align-items:center;
+  gap:12px;
   width:90%;
-  max-width:600px;
-  margin:25px auto;
-  padding:0 15px;
-  background:#101216;
-  border:1px solid #e50914;
-  border-radius:10px
+  max-width:650px;
+  margin:28px auto;
+  padding:0 17px;
+  background:#11131a;
+  border:1px solid #ff182866;
+  border-radius:14px;
+  box-shadow:0 0 20px #ff00110b;
+  transition:.25s;
+}
+
+.search-box:focus-within{
+  border-color:var(--red);
+  box-shadow:0 0 18px #ff18282b;
 }
 
 .search-icon{
+  font-size:20px;
   flex-shrink:0;
-  margin-right:10px
 }
 
 .search{
   flex:1;
   min-width:0;
   width:100%;
-  margin:0;
-  padding:15px 0;
+  padding:17px 0;
+  border:0;
+  outline:0;
   background:transparent;
   color:white;
-  border:none;
-  outline:none;
   font-size:16px;
-  text-align:left
+  text-align:left;
 }
 
-.search::placeholder{color:#aaa;opacity:1}
+.search::placeholder{color:#9295a2;opacity:1}
+
+.section-heading{
+  max-width:1100px;
+  margin:35px auto 0;
+  padding:0 18px;
+}
+
+.section-heading h2{
+  font-size:20px;
+  margin:0;
+}
+
+.section-heading span{
+  color:var(--red);
+}
+
+.section-heading p{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:8px;
+}
 
 .games{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));
+  gap:22px;
   max-width:1100px;
-  padding:16px;
-  margin:auto
+  padding:18px;
+  margin:auto;
 }
 
 .card{
-  background:linear-gradient(145deg,#15171c,#08090b);
-  border:1px solid #343740;
-  border-radius:15px;
+  position:relative;
+  min-width:0;
+  padding:13px;
+  border-radius:17px;
+  border:1px solid #ffffff15;
+  background:linear-gradient(145deg,#171922,#0b0c11 75%);
+  box-shadow:0 12px 30px #0006;
   overflow:hidden;
-  padding:12px;
-  box-shadow:0 8px 25px #0008
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  border-color:#ff182877;
+  box-shadow:0 12px 35px #ff001112;
+}
+
+.card img,.poster{
+  width:100%;
+  height:205px;
+  border-radius:11px;
 }
 
 .card img{
   display:block;
-  width:100%;
-  height:210px;
   object-fit:cover;
-  border-radius:9px;
-  background:#190809
+  background:#1b080a;
 }
 
 .poster{
-  height:210px;
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
   flex-direction:column;
-  border-radius:9px;
-  background:radial-gradient(circle,#720000,#1a0507 65%,#050505)
+  text-align:center;
+  background:
+    radial-gradient(circle at center,#790d18,#27070c 50%,#0b0c11 100%);
+  border:1px solid #ff18282b;
 }
 
 .poster strong{
-  font-size:29px;
-  color:#ff2631;
-  text-shadow:0 0 15px red
+  color:#ff2638;
+  font-size:clamp(23px,5vw,30px);
+  text-shadow:0 0 18px #ff001166;
 }
 
 .poster span{
-  font-size:15px;
+  margin-top:10px;
+  font-size:11px;
   letter-spacing:3px;
-  margin-top:8px
+  color:#ddd;
 }
 
 .card h2{
-  font-size:21px;
-  margin:16px 4px 10px
+  font-size:20px;
+  line-height:1.35;
+  margin:17px 2px 12px;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
 }
 
 .tag{
   display:inline-block;
-  background:#e50914;
-  color:white;
-  padding:7px 12px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:bold
+  background:#ff18281a;
+  color:#ff5260;
+  border:1px solid #ff18284d;
+  padding:7px 10px;
+  border-radius:7px;
+  font-size:11px;
+  font-weight:bold;
+  letter-spacing:.5px;
+}
+
+.tag.online{
+  background:#0b71371c;
+  border-color:#1fa85a66;
+  color:#5ee995;
 }
 
 .desc{
-  color:#b9bdc8;
-  line-height:1.6;
-  min-height:48px
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+  min-height:85px;
 }
 
 .btn{
   display:block;
   text-align:center;
   text-decoration:none;
-  background:linear-gradient(90deg,#ff0011,#c9000b);
-  color:white;
+  color:#fff;
+  font-size:13px;
   font-weight:bold;
-  padding:15px 8px;
+  letter-spacing:.4px;
+  padding:15px 10px;
   border-radius:10px;
-  margin-top:12px;
-  transition:.2s
+  margin-top:11px;
+  background:linear-gradient(100deg,#ff1728,#b90012);
+  border:1px solid #ff5260;
+  box-shadow:0 5px 18px #ff001119;
+  transition:.2s;
 }
 
 .btn:hover{
-  filter:brightness(1.2);
-  transform:translateY(-1px)
+  filter:brightness(1.18);
+  box-shadow:0 0 22px #ff001133;
 }
 
-.tutorial{
-  background:linear-gradient(90deg,#292929,#151515);
-  border:1px solid #ff1724
-}
-
-.online-tag{
-  background:#147a3d;
-  margin-left:5px
+.btn.tutorial{
+  background:#15161d;
+  border-color:#ffffff26;
+  box-shadow:none;
 }
 
 .no-results{
   display:none;
+  grid-column:1/-1;
+  padding:35px 15px;
   text-align:center;
-  color:#ff4650;
-  font-size:17px;
-  padding:25px 15px;
-  grid-column:1/-1
+  color:#ff5360;
+  background:#11131a;
+  border:1px solid #ff182833;
+  border-radius:14px;
 }
 
 footer{
   text-align:center;
-  padding:30px 10px;
-  color:#aaa;
-  letter-spacing:2px
+  padding:35px 15px;
+  margin-top:25px;
+  border-top:1px solid #ffffff12;
+  color:#777c89;
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+footer span{color:var(--red)}
+
+@media(max-width:480px){
+  header{padding-top:35px}
+  header p{letter-spacing:4px}
+  .games{gap:16px;padding:14px}
+  .card img,.poster{height:190px}
 }
 </style>
 </head>
@@ -190,8 +282,9 @@ footer{
 <body>
 
 <header>
-  <h1>CHITALA MODS</h1>
+  <h1 class="logo">CHITALA MODS</h1>
   <p>YOUR GAMING WORLD</p>
+  <div class="line"></div>
 </header>
 
 <div class="search-box">
@@ -199,76 +292,82 @@ footer{
   <input
     class="search"
     id="search"
+    type="search"
     placeholder="Search games..."
     aria-label="Search games"
     oninput="searchGames()"
   >
 </div>
 
-<main class="games" id="games">
+<div class="section-heading">
+  <h2><span>🔥</span> FEATURED GAMES</h2>
+  <p>Discover your next gaming adventure.</p>
+</div>
+
+<main class="games">
 
   <!-- SHADOW FIGHT 2 -->
   <section class="card"
-           data-name="shadow fight 2 definitive edition mod apk">
+    data-name="shadow fight 2 definitive edition mod apk">
 
     <img src="shadow-fight-2.jpg" alt="Shadow Fight 2">
 
     <h2>Shadow Fight 2: Definitive Edition</h2>
-    <span class="tag">MOD APK</span>
+
+    <div class="tags">
+      <span class="tag">MOD APK</span>
+      <span class="tag">FIGHTING</span>
+    </div>
 
     <p class="desc">
-      Enter the world of shadows! ⚔️ Fight powerful enemies,
-      unlock epic weapons, and master your ninja skills!
-
-      🔥 Epic Fighting Action
-      ⚔️ Powerful Weapons &amp; Armor
-      🥷 Challenging Enemies
-
-      Download the game below and follow the tutorial to get started!
+      Enter the world of shadows! Fight powerful enemies,
+      unlock epic weapons, and master your ninja skills.
+      Follow the tutorial to get started!
     </p>
 
     <a class="btn"
-       href="https://drive.usercontent.google.com/download?id=1nypebh2xJD1uXJwu2_VKxIGJ6lpCzupK&amp;export=download&amp;authuser=0"
-       target="_blank"
-       rel="noopener noreferrer">
-       ⬇ DOWNLOAD GAME
+      href="https://drive.usercontent.google.com/download?id=1nypebh2xJD1uXJwu2_VKxIGJ6lpCzupK&amp;export=download&amp;authuser=0"
+      target="_blank"
+      rel="noopener noreferrer">
+      ⬇ DOWNLOAD GAME
     </a>
 
     <a class="btn tutorial"
-       href="https://youtu.be/ecuTZ0yzTfg?si=6gsTHwQ99RolmMzb"
-       target="_blank"
-       rel="noopener noreferrer">
-       ▶ WATCH TUTORIAL
+      href="https://youtu.be/ecuTZ0yzTfg?si=6gsTHwQ99RolmMzb"
+      target="_blank"
+      rel="noopener noreferrer">
+      ▶ WATCH TUTORIAL
     </a>
   </section>
 
   <!-- INVINCIBLE -->
   <section class="card"
-           data-name="invincible guarding the globe mod apk online">
+    data-name="invincible guarding the globe mod apk online">
 
     <div class="poster">
       <strong>INVINCIBLE</strong>
       <span>GUARDING THE GLOBE</span>
     </div>
 
-    <h2>Invincible: Guarding the Globe MOD APK</h2>
+    <h2>Invincible: Guarding the Globe</h2>
 
-    <span class="tag">MOD APK</span>
-    <span class="tag online-tag">ONLINE</span>
+    <div class="tags">
+      <span class="tag">MOD APK</span>
+      <span class="tag online">ONLINE</span>
+    </div>
 
     <p class="desc">
-      Build your team of heroes and battle powerful enemies!
-      Explore the world of Invincible and grow your squad.
-      Check the version and online compatibility before installing.
+      Build your team of heroes and battle powerful enemies
+      in the Invincible universe. Check game version and
+      online compatibility before installing.
     </p>
 
     <a class="btn"
-       href="https://play.google.com/store/search?q=Invincible%20Guarding%20the%20Globe&amp;c=apps"
-       target="_blank"
-       rel="noopener noreferrer">
-       ↗ FIND GAME VERSION
+      href="https://play.google.com/store/search?q=Invincible%20Guarding%20the%20Globe&amp;c=apps"
+      target="_blank"
+      rel="noopener noreferrer">
+      ↗ FIND GAME VERSION
     </a>
-
   </section>
 
   <!-- MORTAL KOMBAT -->
@@ -280,17 +379,21 @@ footer{
     </div>
 
     <h2>Mortal Kombat</h2>
-    <span class="tag">FIGHTING GAME</span>
+
+    <div class="tags">
+      <span class="tag">FIGHTING GAME</span>
+    </div>
 
     <p class="desc">
-      Enter the arena, choose your fighter, and battle your enemies.
+      Enter the arena, choose your fighter, and take on
+      challenging opponents in intense battles.
     </p>
 
     <a class="btn"
-       href="https://play.google.com/store/search?q=Mortal%20Kombat&amp;c=apps"
-       target="_blank"
-       rel="noopener noreferrer">
-       ↗ VIEW GAME
+      href="https://play.google.com/store/search?q=Mortal%20Kombat&amp;c=apps"
+      target="_blank"
+      rel="noopener noreferrer">
+      ↗ VIEW GAME
     </a>
   </section>
 
@@ -300,7 +403,9 @@ footer{
 
 </main>
 
-<footer>CHITALA MODS © 2026</footer>
+<footer>
+  CHITALA MODS <span>©</span> 2026
+</footer>
 
 <script>
 function searchGames(){
@@ -317,9 +422,7 @@ function searchGames(){
 
     card.style.display = matches ? "" : "none";
 
-    if(matches){
-      found++;
-    }
+    if(matches) found++;
   });
 
   document.getElementById("noResults").style.display =
