@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#09090c">
 <title>CHITALA PROD — ონლაინ თამაშები</title>
+
 <style>
 :root{--bg:#09090c;--panel:#141419;--border:#2a2a33;--red:#ed2337;--text:#f5f5f7;--muted:#9999a7}
 *{box-sizing:border-box}
@@ -19,8 +20,8 @@ header{height:72px;position:sticky;top:0;z-index:10;background:rgba(9,9,12,.94);
 .brand{display:flex;align-items:center;gap:9px}
 .logo{width:40px;height:40px;flex-shrink:0}
 .brand-name{font-size:18px;font-weight:900;letter-spacing:1px;white-space:nowrap}
-.brand-name span{color:#35ff83;text-shadow:0 0 8px #35ff83,0 0 18px #16c95d,0 0 30px #16c95d}
-.accent{color:var(--red)}
+.brand-name span,.accent{color:var(--red)}
+.dot{width:7px;height:7px;border-radius:50%;background:#35ff83;box-shadow:0 0 9px #35ff83,0 0 17px #16c95d;flex-shrink:0}
 .nav-links{display:flex;gap:24px;color:#c4c4cc;font-size:13px}
 .nav-links a:hover{color:white}
 .actions{display:flex;gap:8px}
@@ -30,7 +31,6 @@ header{height:72px;position:sticky;top:0;z-index:10;background:rgba(9,9,12,.94);
 .secondary{background:#19191f;border-color:#35353e;color:white}
 .hero{text-align:center;padding:76px 0 52px}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid #49212a;background:#95162920;border-radius:30px;padding:8px 12px;font-size:11px;letter-spacing:1.5px;font-weight:900;color:#f0b6bf;margin-bottom:20px}
-.dot{width:7px;height:7px;border-radius:50%;background:#f13b4d;box-shadow:0 0 9px #f13b4d}
 h1{font-size:clamp(32px,5.5vw,58px);line-height:1.15;letter-spacing:-1px;margin:0 auto;max-width:800px;font-weight:900}
 h1 span{display:block;color:var(--red);margin-top:5px}
 .hero p{color:var(--muted);font-size:14px;line-height:1.7;margin:18px 0 24px}
@@ -48,11 +48,10 @@ h2{font-size:27px;margin:0}
 .game-card{background:linear-gradient(145deg,#17171e,#111115);border:1px solid var(--border);border-radius:13px;overflow:hidden;transition:transform .2s,border-color .2s}
 .game-card:hover{transform:translateY(-3px);border-color:#70303b}
 .art{height:132px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 110%,#9f1c302b,transparent 65%),linear-gradient(140deg,#24141a,#15151b)}
-.art.gold{background:radial-gradient(ellipse at 50% 110%,#b68c3726,transparent 65%),linear-gradient(140deg,#252017,#15151b)}
 .art.purple{background:radial-gradient(ellipse at 50% 110%,#853cb32b,transparent 65%),linear-gradient(140deg,#24162d,#15151b)}
 .art-label{position:absolute;left:10px;top:10px;background:#08080bbd;border:1px solid #ffffff1a;border-radius:5px;padding:5px 7px;font-size:9px;color:#dedee5;font-weight:800}
 .symbol{font-family:Georgia,serif;font-size:58px;font-weight:bold;color:#f5e9d7;text-shadow:0 8px 25px #0008}
-.symbol.red{color:#ed4052}.symbol.goldtxt{color:#e8bd72}
+.symbol.red{color:#ed4052}
 .card-pair{display:flex;align-items:center;justify-content:center}
 .mini-card{width:54px;height:76px;background:#f7f3ec;border-radius:6px;border:1px solid white;color:#1a1a20;display:flex;align-items:center;justify-content:center;font:bold 31px Georgia;box-shadow:0 7px 15px #0005}
 .mini-card:first-child{transform:rotate(-12deg) translateX(8px)}
@@ -60,6 +59,7 @@ h2{font-size:27px;margin:0}
 .game-info{padding:14px}
 .game-title-row{display:flex;align-items:center;justify-content:space-between;gap:7px}
 .game-title{font-size:17px;font-weight:900;margin:0}
+.game-title.pair-title{white-space:nowrap;font-size:16px}
 .tag{font-size:9px;font-weight:800;color:#ffadb7;background:#ed233714;border:1px solid #ed23372a;border-radius:5px;padding:5px 6px;white-space:nowrap}
 .game-info p{color:var(--muted);font-size:11px;line-height:1.65;min-height:36px;margin:9px 0 13px}
 .game-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px}
@@ -69,10 +69,14 @@ h2{font-size:27px;margin:0}
 .banner{margin-top:25px;padding:22px;border:1px solid #38242a;border-radius:13px;background:linear-gradient(110deg,#9516291d,#141419);display:flex;align-items:center;justify-content:space-between;gap:15px}
 .banner h3{margin:0 0 7px;font-size:17px}
 .banner p{margin:0;color:var(--muted);font-size:12px;line-height:1.7}
+.social-links{display:flex;align-items:center;gap:10px}
+.social-link{width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:#202027;border:1px solid #393943;border-radius:10px;transition:.2s}
+.social-link:hover{transform:translateY(-2px);border-color:var(--red)}
+.social-link svg{width:21px;height:21px}
 footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
 .footer-inner{display:flex;justify-content:space-between;gap:15px;align-items:center}
 .footer-brand{font-weight:900;letter-spacing:1px;color:white}
-.footer-brand span{color:#35ff83;text-shadow:0 0 8px #35ff83,0 0 18px #16c95d}
+.footer-brand span{color:var(--red)}
 .hidden{display:none!important}
 
 /* ავტორიზაცია */
@@ -103,11 +107,11 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
 .message{display:none;color:#ffc0c7;background:#ed233714;border:1px solid #ed23372e}
 .message.show{display:block}
 @media(max-width:760px){.nav-links{display:none}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:62px 0 42px}}
-@media(max-width:520px){.container{width:calc(100% - 24px)}header{height:65px}.logo{width:34px;height:34px}.brand-name{font-size:14px}.actions{gap:5px}.actions .btn{padding:9px 10px;font-size:11px}.hero{padding:52px 0 38px}h1{letter-spacing:-.5px}.hero p{font-size:12px}.section-head{align-items:stretch;flex-direction:column}.search{width:100%}.game-grid{gap:10px}.art{height:105px}.symbol{font-size:47px}.mini-card{width:43px;height:62px;font-size:25px}.game-info{padding:11px}.game-title{font-size:15px}.tag{font-size:8px;padding:4px}.game-info p{font-size:10px;min-height:48px}.game-type{font-size:9px}.play{padding:8px 9px;font-size:10px}.banner{align-items:flex-start;flex-direction:column}.banner .btn{width:100%}.footer-inner{align-items:flex-start;flex-direction:column}.modal{padding:24px 17px}}
+@media(max-width:520px){.container{width:calc(100% - 24px)}header{height:65px}.logo{width:34px;height:34px}.brand-name{font-size:14px}.actions{gap:5px}.actions .btn{padding:9px 10px;font-size:11px}.hero{padding:52px 0 38px}h1{letter-spacing:-.5px}.hero p{font-size:12px}.section-head{align-items:stretch;flex-direction:column}.search{width:100%}.game-grid{gap:10px}.art{height:105px}.symbol{font-size:47px}.mini-card{width:43px;height:62px;font-size:25px}.game-info{padding:11px}.game-title{font-size:15px}.game-title.pair-title{font-size:14px}.tag{font-size:8px;padding:4px}.game-info p{font-size:10px;min-height:48px}.game-type{font-size:9px}.play{padding:8px 9px;font-size:10px}.banner{align-items:flex-start;flex-direction:column}.social-links{width:100%}.footer-inner{align-items:flex-start;flex-direction:column}.modal{padding:24px 17px}}
 </style>
 </head>
-<body>
 
+<body>
 <header>
   <div class="container nav">
     <a class="brand" href="#">
@@ -120,7 +124,7 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
     </a>
     <nav class="nav-links">
       <a href="#games">თამაშები</a>
-      <a href="#team">ჩვენ შესახებ</a>
+      <a href="#team">კონტაქტი</a>
     </nav>
     <div class="actions">
       <button class="btn secondary" id="loginTop">შესვლა</button>
@@ -134,7 +138,7 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
     <div class="container">
       <div class="eyebrow"><span class="dot"></span> CHITALA PROD</div>
       <h1>მაგიდის თამაშების <span>უძერსკესი საიტი</span></h1>
-      <p>აირჩიე თამაში და დაცხე.</p>
+      <p>ვითამაშოთ ერთად</p>
       <div class="hero-buttons">
         <button class="btn primary" id="heroJoin">შემოგვიერთდი</button>
         <a class="btn secondary" href="#games">თამაშების ნახვა</a>
@@ -148,13 +152,12 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
         <div>
           <div class="kicker">CHITALA GAMES</div>
           <h2>თამაშების ჩამონათვალი</h2>
-          <p class="section-desc">აირჩიე თამაში და დაცხე.</p>
+          <p class="section-desc">აირჩიე თამაში და მოემზადე გამოწვევისთვის.</p>
         </div>
         <input class="search" id="gameSearch" type="search" placeholder="მოძებნე თამაში..." aria-label="თამაშის ძებნა">
       </div>
 
       <div class="game-grid" id="gameGrid">
-
         <article class="game-card" data-search="ბურა bura ერთი ერთზე ჩვეულებრივი">
           <div class="art">
             <span class="art-label">ბანქო</span>
@@ -183,8 +186,7 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
           </div>
           <div class="game-info">
             <div class="game-title-row">
-              <h3 class="game-title">ბურა პარებში</h3>
-              <span class="tag">პარებში</span>
+              <h3 class="game-title pair-title">ბურა პარებში</h3>
             </div>
             <p>შენ და შენი პარტნიორი მეორე წყვილის წინააღმდეგ.</p>
             <div class="game-bottom">
@@ -211,17 +213,30 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
             </div>
           </div>
         </article>
-
       </div>
 
       <div class="empty" id="emptySearch">ასეთი თამაში ვერ მოიძებნა.</div>
 
       <section class="banner" id="team">
         <div>
-          <h3>CHITALA PROD — ვითამაშოთ ერთად</h3>
-          <p>შეუერთდი მოთამაშეებს და მოემზადე ახალი თამაშებისთვის.</p>
+          <h3>შემქმნელთან კონტაქტი</h3>
+          <p>დაგვიკავშირდი სოციალურ ქსელებში.</p>
         </div>
-        <button class="btn primary" id="teamJoin">შემოგვიერთდი</button>
+        <div class="social-links">
+          <!-- ბმულები მოგვიანებით ჩაანაცვლე შენი პროფილების მისამართებით -->
+          <a class="social-link" href="#" aria-label="Facebook" title="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#1877F2" d="M24 12a12 12 0 1 0-13.875 11.85v-8.38H7.08V12h3.045V9.35c0-3.005 1.79-4.665 4.53-4.665 1.31 0 2.68.234 2.68.234v2.95h-1.51c-1.49 0-1.95.925-1.95 1.875V12h3.32l-.53 3.47h-2.79v8.38A12 12 0 0 0 24 12z"/>
+            </svg>
+          </a>
+          <a class="social-link" href="#" aria-label="Instagram" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" stroke="#E6688A" stroke-width="2"/>
+              <circle cx="12" cy="12" r="4" stroke="#E6688A" stroke-width="2"/>
+              <circle cx="17.5" cy="6.8" r="1.2" fill="#E6688A"/>
+            </svg>
+          </a>
+        </div>
       </section>
     </div>
   </section>
@@ -271,7 +286,7 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
     <form id="authForm">
       <div class="field hidden" id="usernameField">
         <label for="username">მომხმარებლის სახელი</label>
-        <input id="username" name="username" placeholder="მომხმარებლის სახელი" autocomplete="username">
+        <input id="username" name="username" placeholder="მაგ. Temo777" autocomplete="username">
       </div>
       <div class="field">
         <label for="email">ელფოსტა</label>
@@ -340,7 +355,6 @@ function closeModal(){
 document.getElementById("loginTop").onclick=()=>openModal("login");
 document.getElementById("registerTop").onclick=()=>openModal("register");
 document.getElementById("heroJoin").onclick=()=>openModal("register");
-document.getElementById("teamJoin").onclick=()=>openModal("register");
 document.getElementById("closeModal").onclick=closeModal;
 document.getElementById("loginTab").onclick=()=>setMode("login");
 document.getElementById("registerTab").onclick=()=>setMode("register");
