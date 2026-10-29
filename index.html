@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ka">
 <head>
@@ -24,7 +23,7 @@ header{height:72px;position:sticky;top:0;z-index:10;background:rgba(9,9,12,.94);
 .dot{width:7px;height:7px;border-radius:50%;background:#35ff83;box-shadow:0 0 9px #35ff83,0 0 17px #16c95d;flex-shrink:0}
 .nav-links{display:flex;gap:24px;color:#c4c4cc;font-size:13px}
 .nav-links a:hover{color:white}
-.actions{display:flex;gap:8px}
+.actions{display:flex;gap:8px;align-items:center}
 .btn{border:1px solid transparent;border-radius:9px;padding:11px 15px;font-size:13px;font-weight:800;transition:.2s}
 .btn:hover{transform:translateY(-1px)}
 .primary{background:linear-gradient(135deg,#f12d43,#b91127);color:white}
@@ -44,23 +43,16 @@ h2{font-size:27px;margin:0}
 .search{width:min(270px,100%);background:#141419;border:1px solid #30303a;border-radius:9px;padding:12px 13px;color:white;outline:none;font-size:13px}
 .search:focus{border-color:#a92839}
 .search::placeholder{color:#858591}
-.game-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.game-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
 .game-card{background:linear-gradient(145deg,#17171e,#111115);border:1px solid var(--border);border-radius:13px;overflow:hidden;transition:transform .2s,border-color .2s}
 .game-card:hover{transform:translateY(-3px);border-color:#70303b}
-.art{height:155px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 110%,#9f1c302b,transparent 65%),linear-gradient(140deg,#24141a,#15151b)}
+.art{height:175px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 110%,#9f1c302b,transparent 65%),linear-gradient(140deg,#24141a,#15151b)}
 .art.purple{background:radial-gradient(ellipse at 50% 110%,#853cb32b,transparent 65%),linear-gradient(140deg,#24162d,#15151b)}
 .game-image{display:block;width:100%;height:100%;object-fit:cover}
 .art-label{position:absolute;left:10px;top:10px;background:#08080bbd;border:1px solid #ffffff1a;border-radius:5px;padding:5px 7px;font-size:9px;color:#dedee5;font-weight:800}
-.symbol{font-family:Georgia,serif;font-size:58px;font-weight:bold;color:#f5e9d7;text-shadow:0 8px 25px #0008}
-.symbol.red{color:#ed4052}
-.card-pair{display:flex;align-items:center;justify-content:center}
-.mini-card{width:54px;height:76px;background:#f7f3ec;border-radius:6px;border:1px solid white;color:#1a1a20;display:flex;align-items:center;justify-content:center;font:bold 31px Georgia;box-shadow:0 7px 15px #0005}
-.mini-card:first-child{transform:rotate(-12deg) translateX(8px)}
-.mini-card:last-child{transform:rotate(12deg) translateX(-4px);color:#d51d35}
 .game-info{padding:14px}
 .game-title-row{display:flex;align-items:center;justify-content:space-between;gap:7px}
 .game-title{font-size:17px;font-weight:900;margin:0}
-.game-title.pair-title{white-space:nowrap;font-size:16px}
 .tag{font-size:9px;font-weight:800;color:#ffadb7;background:#ed233714;border:1px solid #ed23372a;border-radius:5px;padding:5px 6px;white-space:nowrap}
 .game-info p{color:var(--muted);font-size:11px;line-height:1.65;min-height:36px;margin:9px 0 13px}
 .game-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px}
@@ -91,10 +83,6 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
 .tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;background:#0d0d11;border:1px solid #303039;border-radius:9px;margin-bottom:16px}
 .tab{border:0;background:transparent;color:#aaaab4;border-radius:7px;padding:10px;font-weight:800;font-size:12px}
 .tab.active{background:#332027;color:white}
-.socials{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.social{display:flex;justify-content:center;align-items:center;gap:7px;background:#202027;border:1px solid #393943;border-radius:8px;color:white;padding:10px 5px;font-size:11px;font-weight:800}
-.social:hover{background:#2b2b34}
-.social svg{width:16px;height:16px}
 .divider{display:flex;align-items:center;gap:10px;color:#777783;font-size:10px;margin:16px 0}
 .divider:before,.divider:after{content:"";height:1px;background:#303039;flex:1}
 .field{margin-bottom:13px}
@@ -107,8 +95,33 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
 .note{color:#aaaab5;background:#191920;border:1px solid #2c2c35}
 .message{display:none;color:#ffc0c7;background:#ed233714;border:1px solid #ed23372e}
 .message.show{display:block}
-@media(max-width:760px){.nav-links{display:none}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:62px 0 42px}}
-@media(max-width:520px){.container{width:calc(100% - 24px)}header{height:65px}.logo{width:34px;height:34px}.brand-name{font-size:14px}.actions{gap:5px}.actions .btn{padding:9px 10px;font-size:11px}.hero{padding:52px 0 38px}h1{letter-spacing:-.5px}.hero p{font-size:12px}.section-head{align-items:stretch;flex-direction:column}.search{width:100%}.game-grid{gap:10px}.art{height:120px}.symbol{font-size:47px}.mini-card{width:43px;height:62px;font-size:25px}.game-info{padding:11px}.game-title{font-size:15px}.game-title.pair-title{font-size:14px}.tag{font-size:8px;padding:4px}.game-info p{font-size:10px;min-height:48px}.game-type{font-size:9px}.play{padding:8px 9px;font-size:10px}.banner{align-items:flex-start;flex-direction:column}.social-links{width:100%}.footer-inner{align-items:flex-start;flex-direction:column}.modal{padding:24px 17px}}
+.account-name{font-size:11px;color:#ddd;max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(max-width:760px){.nav-links{display:none}.hero{padding:62px 0 42px}}
+@media(max-width:520px){
+.container{width:calc(100% - 24px)}
+header{height:65px}
+.logo{width:34px;height:34px}
+.brand-name{font-size:14px}
+.actions{gap:5px}
+.actions .btn{padding:9px 10px;font-size:11px}
+.hero{padding:52px 0 38px}
+h1{letter-spacing:-.5px}
+.hero p{font-size:12px}
+.section-head{align-items:stretch;flex-direction:column}
+.search{width:100%}
+.game-grid{gap:10px}
+.art{height:120px}
+.game-info{padding:11px}
+.game-title{font-size:15px}
+.tag{font-size:8px;padding:4px}
+.game-info p{font-size:10px;min-height:48px}
+.game-type{font-size:9px}
+.play{padding:8px 9px;font-size:10px}
+.banner{align-items:flex-start;flex-direction:column}
+.social-links{width:100%}
+.footer-inner{align-items:flex-start;flex-direction:column}
+.modal{padding:24px 17px}
+}
 </style>
 </head>
 
@@ -127,9 +140,9 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
       <a href="#games">თამაშები</a>
       <a href="#team">კონტაქტი</a>
     </nav>
-    <div class="actions">
-      <button class="btn secondary" id="loginTop">შესვლა</button>
-      <button class="btn primary" id="registerTop">რეგისტრაცია</button>
+    <div class="actions" id="headerActions">
+      <button class="btn secondary" id="loginTop" type="button">შესვლა</button>
+      <button class="btn primary" id="registerTop" type="button">რეგისტრაცია</button>
     </div>
   </div>
 </header>
@@ -141,7 +154,7 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
       <h1>მაგიდის თამაშების <span>უძერსკესი საიტი</span></h1>
       <p>ვითამაშოთ ერთად</p>
       <div class="hero-buttons">
-        <button class="btn primary" id="heroJoin">შემოგვიერთდი</button>
+        <button class="btn primary" id="heroJoin" type="button">შემოგვიერთდი</button>
         <a class="btn secondary" href="#games">თამაშების ნახვა</a>
       </div>
     </div>
@@ -172,12 +185,9 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
             <p>ჩვეულებრივი ბურა კლასიკური წესებით.</p>
             <div class="game-bottom">
               <span class="game-type">ერთი ერთზე</span>
-              <button class="btn primary play" data-game="ბურა">თამაში</button>
+              <button class="btn primary play" data-game="ბურა" type="button">თამაში</button>
             </div>
           </div>
-        </article>
-
-
         </article>
 
         <article class="game-card" data-search="ჯოკერი joker ბანქო">
@@ -193,7 +203,7 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
             <p>გამოიცანი, გათვალე და სწორად დაგეგმე სვლა.</p>
             <div class="game-bottom">
               <span class="game-type">ბანქოს თამაში</span>
-              <button class="btn primary play" data-game="ჯოკერი">თამაში</button>
+              <button class="btn primary play" data-game="ჯოკერი" type="button">თამაში</button>
             </div>
           </div>
         </article>
@@ -207,7 +217,6 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
           <p>დაგვიკავშირდი სოციალურ ქსელებში.</p>
         </div>
         <div class="social-links">
-          <!-- ბმულები მოგვიანებით ჩაანაცვლე შენი პროფილების მისამართებით -->
           <a class="social-link" href="#" aria-label="Facebook" title="Facebook">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path fill="#1877F2" d="M24 12a12 12 0 1 0-13.875 11.85v-8.38H7.08V12h3.045V9.35c0-3.005 1.79-4.665 4.53-4.665 1.31 0 2.68.234 2.68.234v2.95h-1.51c-1.49 0-1.95.925-1.95 1.875V12h3.32l-.53 3.47h-2.79v8.38A12 12 0 0 0 24 12z"/>
@@ -235,7 +244,7 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
 
 <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="authTitle">
   <div class="modal">
-    <button class="close" id="closeModal" aria-label="დახურვა">×</button>
+    <button class="close" id="closeModal" type="button" aria-label="დახურვა">×</button>
     <div class="modal-logo">
       <a class="brand" href="#">
         <svg class="logo" viewBox="0 0 100 100" fill="none" aria-hidden="true">
@@ -246,6 +255,7 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
         <div class="brand-name">CHITALA <span>PROD</span></div>
       </a>
     </div>
+
     <h2 id="authTitle">კეთილი იყოს შენი დაბრუნება</h2>
     <p class="intro" id="authIntro">შედი შენს ანგარიშში და მოემზადე თამაშისთვის.</p>
 
@@ -254,23 +264,12 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
       <button class="tab" id="registerTab" type="button">რეგისტრაცია</button>
     </div>
 
-    <div class="socials">
-      <button class="social" type="button" data-provider="Google">
-        <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 24.5c0-1.4-.1-2.8-.4-4.1H24v7.8h11a9.4 9.4 0 0 1-4.1 6.2v5.1h6.7c3.9-3.6 6-8.9 6-15z"/><path fill="#34A853" d="M24 44c5.5 0 10.1-1.8 13.5-4.9l-6.7-5.1c-1.8 1.2-4 2-6.8 2-5.3 0-9.8-3.6-11.4-8.4H5.7v5.3A20 20 0 0 0 24 44z"/><path fill="#4285F4" d="M12.6 27.6a12 12 0 0 1 0-7.2v-5.3H5.7a20 20 0 0 0 0 17.8z"/><path fill="#EA4335" d="M24 12c3 0 5.7 1 7.8 3.1l5.8-5.8C34.1 5.9 29.5 4 24 4A20 20 0 0 0 5.7 15.1l6.9 5.3C14.2 15.6 18.7 12 24 12z"/></svg>
-        Google
-      </button>
-      <button class="social" type="button" data-provider="Facebook">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#1877F2" d="M24 12a12 12 0 1 0-13.875 11.85v-8.38H7.08V12h3.045V9.35c0-3.005 1.79-4.665 4.53-4.665 1.31 0 2.68.234 2.68.234v2.95h-1.51c-1.49 0-1.95.925-1.95 1.875V12h3.32l-.53 3.47h-2.79v8.38A12 12 0 0 0 24 12z"/></svg>
-        Facebook
-      </button>
-    </div>
-
-    <div class="divider">ან ელფოსტით</div>
+    <div class="divider">ელფოსტით</div>
 
     <form id="authForm">
       <div class="field hidden" id="usernameField">
         <label for="username">მომხმარებლის სახელი</label>
-        <input id="username" name="username" placeholder="მაგ. Temo777" autocomplete="username">
+        <input id="username" name="username" placeholder="მაგ. Temo777" autocomplete="username" maxlength="24">
       </div>
       <div class="field">
         <label for="email">ელფოსტა</label>
@@ -278,104 +277,258 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
       </div>
       <div class="field">
         <label for="password">პაროლი</label>
-        <input id="password" name="password" type="password" placeholder="შეიყვანე პაროლი" minlength="6" autocomplete="current-password" required>
+        <input id="password" name="password" type="password" placeholder="მინიმუმ 6 სიმბოლო" minlength="6" autocomplete="current-password" required>
       </div>
       <button class="btn primary submit" id="submitAuth" type="submit">შესვლა</button>
     </form>
 
     <div class="message" id="message" role="status"></div>
-    <div class="note">ანგარიშის შენახვა, სოციალური ავტორიზაცია და ონლაინ თამაშები სერვერის დაკავშირების შემდეგ ჩაირთვება.</div>
+    <div class="note">ანგარიში უსაფრთხოდ იმართება Firebase Authentication-ით. პაროლი საიტის კოდში არ ინახება.</div>
   </div>
 </div>
 
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
 <script>
-const overlay=document.getElementById("overlay");
-const message=document.getElementById("message");
-const usernameField=document.getElementById("usernameField");
-const username=document.getElementById("username");
-const password=document.getElementById("password");
-let mode="login";
+const firebaseConfig = {
+  apiKey: "AIzaSyChOYCwVd2AaZzLGx_tQsT2PqNlbNXqkis",
+  authDomain: "chitala-mods.firebaseapp.com",
+  projectId: "chitala-mods",
+  storageBucket: "chitala-mods.firebasestorage.app",
+  messagingSenderId: "415729264734",
+  appId: "1:415729264734:web:edba39f96e5cbdfd6beccf"
+};
 
-document.getElementById("year").textContent=new Date().getFullYear();
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
 
-function showMessage(text){
-  message.textContent=text;
+const overlay = document.getElementById("overlay");
+const message = document.getElementById("message");
+const usernameField = document.getElementById("usernameField");
+const username = document.getElementById("username");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const authForm = document.getElementById("authForm");
+const headerActions = document.getElementById("headerActions");
+
+let mode = "login";
+let currentUser = null;
+let pendingGame = "";
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+function showMessage(text) {
+  message.textContent = text;
   message.classList.add("show");
 }
-function clearMessage(){
-  message.textContent="";
+function clearMessage() {
+  message.textContent = "";
   message.classList.remove("show");
 }
-function setMode(next){
-  mode=next;
-  const registering=mode==="register";
-  document.getElementById("loginTab").classList.toggle("active",!registering);
-  document.getElementById("registerTab").classList.toggle("active",registering);
-  usernameField.classList.toggle("hidden",!registering);
-  username.required=registering;
-  password.autocomplete=registering?"new-password":"current-password";
-  document.getElementById("authTitle").textContent=registering?"შექმენი ანგარიში":"კეთილი იყოს შენი დაბრუნება";
-  document.getElementById("authIntro").textContent=registering?"შემოუერთდი CHITALA PROD-ის მოთამაშეებს.":"შედი შენს ანგარიშში და მოემზადე თამაშისთვის.";
-  document.getElementById("submitAuth").textContent=registering?"ანგარიშის შექმნა":"შესვლა";
+
+function setMode(next) {
+  mode = next;
+  const registering = mode === "register";
+
+  document.getElementById("loginTab").classList.toggle("active", !registering);
+  document.getElementById("registerTab").classList.toggle("active", registering);
+  usernameField.classList.toggle("hidden", !registering);
+  username.required = registering;
+  password.autocomplete = registering ? "new-password" : "current-password";
+
+  document.getElementById("authTitle").textContent =
+    registering ? "შექმენი ანგარიში" : "კეთილი იყოს შენი დაბრუნება";
+  document.getElementById("authIntro").textContent =
+    registering
+      ? "შემოუერთდი CHITALA PROD-ის მოთამაშეებს."
+      : "შედი შენს ანგარიშში და მოემზადე თამაშისთვის.";
+  document.getElementById("submitAuth").textContent =
+    registering ? "ანგარიშის შექმნა" : "შესვლა";
+
   clearMessage();
 }
-function openModal(next="login",game=""){
+
+function openModal(next = "login", game = "") {
+  if (currentUser) {
+    if (game) showMessage(game + "-ის ონლაინ თამაში ჯერ არ არის დაკავშირებული.");
+    return;
+  }
+
+  pendingGame = game;
   overlay.classList.add("open");
-  document.body.style.overflow="hidden";
+  document.body.style.overflow = "hidden";
   setMode(next);
-  if(game){
-    if(game==="ბურა პარებში"){
-      showMessage("ბურა პარებში რეჟიმი მზადების პროცესშია. ონლაინ თამაშისთვის სერვერის დაკავშირებაა საჭირო.");
-    }else{
-      showMessage(game+"-ის ონლაინ რეჟიმი ჯერ მზადდება.");
-    }
+
+  if (game) {
+    showMessage("თამაშის დაწყებამდე შედი ან შექმენი ანგარიში. ონლაინ თამაშის ფუნქცია ცალკე დასამატებელია.");
   }
 }
-function closeModal(){
+
+function closeModal() {
   overlay.classList.remove("open");
-  document.body.style.overflow="";
+  document.body.style.overflow = "";
   clearMessage();
+  pendingGame = "";
 }
-document.getElementById("loginTop").onclick=()=>openModal("login");
-document.getElementById("registerTop").onclick=()=>openModal("register");
-document.getElementById("heroJoin").onclick=()=>openModal("register");
-document.getElementById("closeModal").onclick=closeModal;
-document.getElementById("loginTab").onclick=()=>setMode("login");
-document.getElementById("registerTab").onclick=()=>setMode("register");
 
-overlay.addEventListener("click",e=>{if(e.target===overlay)closeModal()});
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+function readableError(error) {
+  const code = error && error.code ? error.code : "";
 
-document.querySelectorAll(".social").forEach(button=>{
-  button.addEventListener("click",()=>{
-    showMessage(button.dataset.provider+"-ით შესვლა ჯერ არ არის ჩართული. ამისთვის ავტორიზაციის სერვისის დაკავშირებაა საჭირო.");
+  const errors = {
+    "auth/email-already-in-use": "ეს ელფოსტა უკვე რეგისტრირებულია. სცადე შესვლა.",
+    "auth/invalid-email": "ელფოსტის მისამართი არასწორია.",
+    "auth/weak-password": "პაროლი ძალიან მარტივია. გამოიყენე მინიმუმ 6 სიმბოლო.",
+    "auth/invalid-credential": "ელფოსტა ან პაროლი არასწორია.",
+    "auth/user-not-found": "ასეთი ანგარიში ვერ მოიძებნა. ჯერ დარეგისტრირდი.",
+    "auth/wrong-password": "პაროლი არასწორია.",
+    "auth/too-many-requests": "ძალიან ბევრი მცდელობაა. ცოტა ხანში სცადე.",
+    "auth/network-request-failed": "ინტერნეტთან დაკავშირება ვერ მოხერხდა.",
+    "auth/operation-not-allowed": "Firebase-ში Email/Password ავტორიზაცია ჩართული არ არის.",
+    "auth/unauthorized-domain": "ეს დომენი Firebase Authentication-ის დაშვებულ დომენებში არ არის."
+  };
+
+  return errors[code] || "შეცდომა მოხდა. გადაამოწმე მონაცემები და თავიდან სცადე. (" + code + ")";
+}
+
+authForm.addEventListener("submit", async event => {
+  event.preventDefault();
+
+  if (!authForm.reportValidity()) return;
+
+  const emailValue = email.value.trim();
+  const passwordValue = password.value;
+  const usernameValue = username.value.trim();
+  const submitButton = document.getElementById("submitAuth");
+
+  if (mode === "register" && !usernameValue) {
+    showMessage("შეიყვანე მომხმარებლის სახელი.");
+    return;
+  }
+
+  submitButton.disabled = true;
+  submitButton.textContent = "მოიცადე...";
+  clearMessage();
+
+  try {
+    if (mode === "register") {
+      const credential = await auth.createUserWithEmailAndPassword(
+        emailValue,
+        passwordValue
+      );
+
+      await credential.user.updateProfile({
+        displayName: usernameValue
+      });
+
+      showMessage("ანგარიში წარმატებით შეიქმნა! კეთილი იყოს შენი მობრძანება, " + usernameValue + ".");
+      renderHeader(credential.user);
+
+      setTimeout(() => {
+        closeModal();
+      }, 1400);
+    } else {
+      const credential = await auth.signInWithEmailAndPassword(
+        emailValue,
+        passwordValue
+      );
+
+      showMessage("წარმატებით შეხვედით ანგარიშში!");
+      renderHeader(credential.user);
+
+      setTimeout(() => {
+        closeModal();
+      }, 900);
+    }
+  } catch (error) {
+    showMessage(readableError(error));
+  } finally {
+    submitButton.disabled = false;
+    document.getElementById("submitAuth").textContent =
+      mode === "register" ? "ანგარიშის შექმნა" : "შესვლა";
+  }
+});
+
+function renderHeader(user) {
+  if (!user) {
+    headerActions.innerHTML = `
+      <button class="btn secondary" id="loginTop" type="button">შესვლა</button>
+      <button class="btn primary" id="registerTop" type="button">რეგისტრაცია</button>
+    `;
+
+    document.getElementById("loginTop").onclick = () => openModal("login");
+    document.getElementById("registerTop").onclick = () => openModal("register");
+    return;
+  }
+
+  const displayName = user.displayName || user.email || "მოთამაშე";
+
+  headerActions.innerHTML = `
+    <span class="account-name" title=""></span>
+    <button class="btn secondary" id="logoutButton" type="button">გამოსვლა</button>
+  `;
+
+  const accountName = headerActions.querySelector(".account-name");
+  accountName.textContent = displayName;
+  accountName.title = displayName;
+
+  document.getElementById("logoutButton").onclick = async () => {
+    try {
+      await auth.signOut();
+      closeModal();
+    } catch (error) {
+      alert("ანგარიშიდან გამოსვლა ვერ მოხერხდა. სცადე თავიდან.");
+    }
+  };
+}
+
+document.getElementById("loginTop").onclick = () => openModal("login");
+document.getElementById("registerTop").onclick = () => openModal("register");
+document.getElementById("heroJoin").onclick = () => openModal("register");
+document.getElementById("closeModal").onclick = closeModal;
+document.getElementById("loginTab").onclick = () => setMode("login");
+document.getElementById("registerTab").onclick = () => setMode("register");
+
+overlay.addEventListener("click", event => {
+  if (event.target === overlay) closeModal();
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeModal();
+});
+
+document.querySelectorAll(".play").forEach(button => {
+  button.addEventListener("click", () => {
+    if (!currentUser) {
+      openModal("login", button.dataset.game);
+    } else {
+      showMessage(button.dataset.game + "-ის ონლაინ რეჟიმი ჯერ არ არის დამატებული.");
+      openModal("login", button.dataset.game);
+    }
   });
 });
 
-document.getElementById("authForm").addEventListener("submit",e=>{
-  e.preventDefault();
-  if(!e.currentTarget.reportValidity())return;
-  showMessage(mode==="register"
-    ?"რეგისტრაცია ჯერ დემო რეჟიმშია. ანგარიშის შესანახად სერვერის დაკავშირებაა საჭირო."
-    :"შესვლა ჯერ დემო რეჟიმშია. რეალური ანგარიშებისთვის ავტორიზაციის სისტემაა საჭირო.");
+auth.onAuthStateChanged(user => {
+  currentUser = user;
+  renderHeader(user);
 });
 
-document.querySelectorAll(".play").forEach(button=>{
-  button.addEventListener("click",()=>openModal("login",button.dataset.game));
-});
+const search = document.getElementById("gameSearch");
+const cards = [...document.querySelectorAll(".game-card")];
 
-const search=document.getElementById("gameSearch");
-const cards=[...document.querySelectorAll(".game-card")];
-search.addEventListener("input",()=>{
-  const query=search.value.trim().toLocaleLowerCase("ka");
-  let count=0;
-  cards.forEach(card=>{
-    const text=(card.dataset.search+" "+card.innerText).toLocaleLowerCase("ka");
-    const match=text.includes(query);
-    card.classList.toggle("hidden",!match);
-    if(match)count++;
+search.addEventListener("input", () => {
+  const query = search.value.trim().toLocaleLowerCase("ka");
+  let count = 0;
+
+  cards.forEach(card => {
+    const text = (card.dataset.search + " " + card.innerText).toLocaleLowerCase("ka");
+    const match = text.includes(query);
+    card.classList.toggle("hidden", !match);
+    if (match) count++;
   });
-  document.getElementById("emptySearch").style.display=count?"none":"block";
+
+  document.getElementById("emptySearch").style.display = count ? "none" : "block";
 });
 </script>
 </body>
