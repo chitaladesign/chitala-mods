@@ -19,7 +19,8 @@ header{height:72px;position:sticky;top:0;z-index:10;background:rgba(9,9,12,.94);
 .brand{display:flex;align-items:center;gap:9px}
 .logo{width:40px;height:40px;flex-shrink:0}
 .brand-name{font-size:18px;font-weight:900;letter-spacing:1px;white-space:nowrap}
-.brand-name span,.accent{color:var(--red)}
+.brand-name span{color:#35ff83;text-shadow:0 0 8px #35ff83,0 0 18px #16c95d,0 0 30px #16c95d}
+.accent{color:var(--red)}
 .nav-links{display:flex;gap:24px;color:#c4c4cc;font-size:13px}
 .nav-links a:hover{color:white}
 .actions{display:flex;gap:8px}
@@ -48,14 +49,12 @@ h2{font-size:27px;margin:0}
 .game-card:hover{transform:translateY(-3px);border-color:#70303b}
 .art{height:132px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 110%,#9f1c302b,transparent 65%),linear-gradient(140deg,#24141a,#15151b)}
 .art.gold{background:radial-gradient(ellipse at 50% 110%,#b68c3726,transparent 65%),linear-gradient(140deg,#252017,#15151b)}
-.art.blue{background:radial-gradient(ellipse at 50% 110%,#2762aa2a,transparent 65%),linear-gradient(140deg,#141f30,#15151b)}
 .art.purple{background:radial-gradient(ellipse at 50% 110%,#853cb32b,transparent 65%),linear-gradient(140deg,#24162d,#15151b)}
-.art.green{background:radial-gradient(ellipse at 50% 110%,#249b6326,transparent 65%),linear-gradient(140deg,#14251e,#15151b)}
 .art-label{position:absolute;left:10px;top:10px;background:#08080bbd;border:1px solid #ffffff1a;border-radius:5px;padding:5px 7px;font-size:9px;color:#dedee5;font-weight:800}
 .symbol{font-family:Georgia,serif;font-size:58px;font-weight:bold;color:#f5e9d7;text-shadow:0 8px 25px #0008}
-.symbol.red{color:#ed4052}.symbol.goldtxt{color:#e8bd72}.symbol.blue-txt{color:#8ab9ff}
+.symbol.red{color:#ed4052}.symbol.goldtxt{color:#e8bd72}
 .card-pair{display:flex;align-items:center;justify-content:center}
-.mini-card{width:54px;height:76px;background:#f7f3ec;border-radius:6px;border:1px solid white;color:#1a1a20;display:flex;align-items:center;justify-content:center;font: bold 31px Georgia;box-shadow:0 7px 15px #0005}
+.mini-card{width:54px;height:76px;background:#f7f3ec;border-radius:6px;border:1px solid white;color:#1a1a20;display:flex;align-items:center;justify-content:center;font:bold 31px Georgia;box-shadow:0 7px 15px #0005}
 .mini-card:first-child{transform:rotate(-12deg) translateX(8px)}
 .mini-card:last-child{transform:rotate(12deg) translateX(-4px);color:#d51d35}
 .game-info{padding:14px}
@@ -73,7 +72,7 @@ h2{font-size:27px;margin:0}
 footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
 .footer-inner{display:flex;justify-content:space-between;gap:15px;align-items:center}
 .footer-brand{font-weight:900;letter-spacing:1px;color:white}
-.footer-brand span{color:var(--red)}
+.footer-brand span{color:#35ff83;text-shadow:0 0 8px #35ff83,0 0 18px #16c95d}
 .hidden{display:none!important}
 
 /* ავტორიზაცია */
@@ -135,7 +134,7 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
     <div class="container">
       <div class="eyebrow"><span class="dot"></span> CHITALA PROD</div>
       <h1>მაგიდის თამაშების <span>უძერსკესი საიტი</span></h1>
-      <p>აირჩიე თამაში და გამოსცადე შენი შესაძლებლობები.</p>
+      <p>აირჩიე თამაში და დაცხე.</p>
       <div class="hero-buttons">
         <button class="btn primary" id="heroJoin">შემოგვიერთდი</button>
         <a class="btn secondary" href="#games">თამაშების ნახვა</a>
@@ -149,46 +148,49 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
         <div>
           <div class="kicker">CHITALA GAMES</div>
           <h2>თამაშების ჩამონათვალი</h2>
-          <p class="section-desc">აირჩიე შენი თამაში და მოემზადე გამოწვევისთვის.</p>
+          <p class="section-desc">აირჩიე თამაში და დაცხე.</p>
         </div>
         <input class="search" id="gameSearch" type="search" placeholder="მოძებნე თამაში..." aria-label="თამაშის ძებნა">
       </div>
 
       <div class="game-grid" id="gameGrid">
 
-        <article class="game-card" data-search="ბურა bura ჩვეულებრივი">
+        <article class="game-card" data-search="ბურა bura ერთი ერთზე ჩვეულებრივი">
           <div class="art">
             <span class="art-label">ბანქო</span>
-            <div class="card-pair"><div class="mini-card">A♠</div><div class="mini-card">K♥</div></div>
+            <div class="card-pair">
+              <div class="mini-card">A♠</div>
+              <div class="mini-card">K♥</div>
+            </div>
           </div>
           <div class="game-info">
-            <div class="game-title-row"><h3 class="game-title">ბურა</h3><span class="tag">კლასიკური</span></div>
+            <div class="game-title-row">
+              <h3 class="game-title">ბურა</h3>
+              <span class="tag">კლასიკური</span>
+            </div>
             <p>ჩვეულებრივი ბურა კლასიკური წესებით.</p>
-            <div class="game-bottom"><span class="game-type">ჩვეულებრივი რეჟიმი</span><button class="btn primary play" data-game="ბურა">თამაში</button></div>
+            <div class="game-bottom">
+              <span class="game-type">ერთი ერთზე</span>
+              <button class="btn primary play" data-game="ბურა">თამაში</button>
+            </div>
           </div>
         </article>
 
-        <article class="game-card" data-search="ბურა 2v2 წყვილები გუნდი">
+        <article class="game-card" data-search="ბურა პარებში 2v2 წყვილები">
           <div class="art">
-            <span class="art-label">გუნდური რეჟიმი</span>
+            <span class="art-label">ბანქო</span>
             <div class="symbol red">2 <span style="font-size:26px;color:white">v</span> 2</div>
           </div>
           <div class="game-info">
-            <div class="game-title-row"><h3 class="game-title">ბურა 2v2</h3><span class="tag">გუნდური</span></div>
+            <div class="game-title-row">
+              <h3 class="game-title">ბურა პარებში</h3>
+              <span class="tag">პარებში</span>
+            </div>
             <p>შენ და შენი პარტნიორი მეორე წყვილის წინააღმდეგ.</p>
-            <div class="game-bottom"><span class="game-type">2 მოთამაშე vs 2</span><button class="btn primary play" data-game="ბურა 2v2">თამაში</button></div>
-          </div>
-        </article>
-
-        <article class="game-card" data-search="ნარდი nardi backgammon">
-          <div class="art gold">
-            <span class="art-label">სამაგიდო</span>
-            <div class="symbol goldtxt">♟</div>
-          </div>
-          <div class="game-info">
-            <div class="game-title-row"><h3 class="game-title">ნარდი</h3><span class="tag">სტრატეგია</span></div>
-            <p>დაგეგმე სვლები და შეეჯიბრე მოწინააღმდეგეს.</p>
-            <div class="game-bottom"><span class="game-type">სამაგიდო თამაში</span><button class="btn primary play" data-game="ნარდი">თამაში</button></div>
+            <div class="game-bottom">
+              <span class="game-type">პარები</span>
+              <button class="btn primary play" data-game="ბურა პარებში">თამაში</button>
+            </div>
           </div>
         </article>
 
@@ -198,21 +200,15 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
             <div class="symbol">J<span class="accent">★</span></div>
           </div>
           <div class="game-info">
-            <div class="game-title-row"><h3 class="game-title">ჯოკერი</h3><span class="tag">ბანქო</span></div>
+            <div class="game-title-row">
+              <h3 class="game-title">ჯოკერი</h3>
+              <span class="tag">ბანქო</span>
+            </div>
             <p>გამოიცანი, გათვალე და სწორად დაგეგმე სვლა.</p>
-            <div class="game-bottom"><span class="game-type">ბანქოს თამაში</span><button class="btn primary play" data-game="ჯოკერი">თამაში</button></div>
-          </div>
-        </article>
-
-        <article class="game-card" data-search="ქვიზი quiz აპების ქვიზი აპლიკაციების გამოცნობა">
-          <div class="art blue">
-            <span class="art-label">გამოცანა</span>
-            <div class="symbol blue-txt">?</div>
-          </div>
-          <div class="game-info">
-            <div class="game-title-row"><h3 class="game-title">ქვიზი</h3><span class="tag">გამოცნობა</span></div>
-            <p>აპების ქვიზი — გამოიცანი აპლიკაცია და შეამოწმე ცოდნა.</p>
-            <div class="game-bottom"><span class="game-type">აპების გამოცნობა</span><button class="btn primary play" data-game="ქვიზი">თამაში</button></div>
+            <div class="game-bottom">
+              <span class="game-type">ბანქოს თამაში</span>
+              <button class="btn primary play" data-game="ჯოკერი">თამაში</button>
+            </div>
           </div>
         </article>
 
@@ -275,7 +271,7 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
     <form id="authForm">
       <div class="field hidden" id="usernameField">
         <label for="username">მომხმარებლის სახელი</label>
-        <input id="username" name="username" placeholder="Temo777" autocomplete="username">
+        <input id="username" name="username" placeholder="მომხმარებლის სახელი" autocomplete="username">
       </div>
       <div class="field">
         <label for="email">ელფოსტა</label>
@@ -329,10 +325,8 @@ function openModal(next="login",game=""){
   document.body.style.overflow="hidden";
   setMode(next);
   if(game){
-    if(game==="ბურა 2v2"){
-      showMessage("ბურა 2v2 რეჟიმი მზადების პროცესშია. ონლაინ თამაშისთვის სერვერის დაკავშირებაა საჭირო.");
-    }else if(game==="ქვიზი"){
-      showMessage("აპების ქვიზი და გამოცნობის თამაში შემდეგ ეტაპზე დაემატება.");
+    if(game==="ბურა პარებში"){
+      showMessage("ბურა პარებში რეჟიმი მზადების პროცესშია. ონლაინ თამაშისთვის სერვერის დაკავშირებაა საჭირო.");
     }else{
       showMessage(game+"-ის ონლაინ რეჟიმი ჯერ მზადდება.");
     }
