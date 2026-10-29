@@ -2,38 +2,35 @@
 <html lang="ka">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#09090c">
 <title>CHITALA PROD — ონლაინ ბურა</title>
-
 <style>
 :root{--bg:#09090c;--panel:#17171e;--border:#303039;--red:#ed2337;--text:#f5f5f7;--muted:#a0a0ad}
 *{box-sizing:border-box}
 body{margin:0;background:radial-gradient(ellipse at 50% -20%,#351017,transparent 55%),var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
-button,input{font:inherit}button,a{cursor:pointer}a{color:inherit;text-decoration:none}
+button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}
+a{color:inherit;text-decoration:none}
 .container{width:min(1050px,calc(100% - 26px));margin:auto}
 header{border-bottom:1px solid #29232a;background:#09090cf2}
-.nav{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.nav{min-height:65px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .brand{font-size:17px;font-weight:900;letter-spacing:1px}.brand span{color:var(--red)}
 .btn{padding:10px 13px;border:1px solid #454550;border-radius:8px;background:#202027;color:white;font-size:12px;font-weight:800}
 .primary{background:linear-gradient(135deg,#f12d43,#b91127);border-color:#ed2337}
-.btn:disabled{opacity:.45;cursor:not-allowed}
-.hero{padding:30px 0 20px}
+.hero{padding:27px 0 18px}
 h1{font-size:clamp(25px,5vw,38px);margin:0 0 8px}
+h2{font-size:17px;margin:0 0 9px}
 .muted{color:var(--muted);font-size:13px;line-height:1.7}
 .panel{padding:18px;background:linear-gradient(145deg,#19191f,#111115);border:1px solid var(--border);border-radius:12px;margin:14px 0}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.panel h2{font-size:17px;margin:0 0 9px}
 .input{width:100%;padding:12px;background:#0d0d12;border:1px solid #393943;border-radius:8px;color:white;margin:8px 0}
 .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
 .notice{display:none;padding:11px;background:#ed233714;border:1px solid #ed23372e;color:#ffc0c7;border-radius:8px;font-size:12px;line-height:1.6;margin-top:12px}
 .notice.show{display:block}
 .room-code{font-size:30px;font-weight:900;letter-spacing:5px;color:#ff6575;margin:8px 0}
 .hand{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
-.card{width:48px;min-height:70px;border:2px solid #bbb;border-radius:7px;background:#f5f3ec;color:#18181c;font-weight:900;font-size:17px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.card.red{color:#d82036}
-.card.selected{outline:3px solid var(--red);transform:translateY(-4px)}
-.card:disabled{opacity:.8}
+.card{width:48px;min-height:70px;border:2px solid #bbb;border-radius:7px;background:#f5f3ec;color:#18181c;font-weight:900;font-size:17px;display:flex;align-items:center;justify-content:center}
+.card.red{color:#d82036}.card.selected{outline:3px solid var(--red);transform:translateY(-4px)}
 .card.back{background:repeating-linear-gradient(45deg,#651522,#651522 5px,#28131a 5px,#28131a 10px);color:white}
 .trick{display:flex;flex-wrap:wrap;gap:15px;min-height:75px;align-items:center}
 .trick-item{text-align:center;font-size:11px;color:var(--muted)}
@@ -41,858 +38,625 @@ h1{font-size:clamp(25px,5vw,38px);margin:0 0 8px}
 .log{white-space:pre-wrap;font-size:11px;color:var(--muted);line-height:1.7;max-height:120px;overflow:auto}
 .hidden{display:none!important}
 footer{border-top:1px solid #29232a;margin-top:25px;padding:20px 0;color:var(--muted);font-size:11px}
-@media(max-width:600px){.grid{grid-template-columns:1fr}.panel{padding:14px}.nav{min-height:60px}.brand{font-size:14px}.hero{padding-top:23px}}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.panel{padding:14px}.nav{min-height:60px}.brand{font-size:14px}}
 </style>
 </head>
-
 <body>
-<header>
-  <div class="container nav">
-    <a class="brand" href="index.html">CHITALA <span>PROD</span></a>
-    <a class="btn" href="index.html">← მთავარ გვერდზე</a>
-  </div>
-</header>
+<header><div class="container nav">
+<a class="brand" href="index.html">CHITALA <span>PROD</span></a>
+<a class="btn" href="index.html">← მთავარ გვერდზე</a>
+</div></header>
 
 <main class="container">
-  <section class="hero">
-    <h1>ონლაინ ბურა</h1>
-    <p class="muted">შექმენი მაგიდა, ითამაშე მეგობართან ან იპოვე შემთხვევითი მოწინააღმდეგე.</p>
-    <div id="authNotice" class="notice"></div>
-  </section>
+<section class="hero">
+<h1>ონლაინ ბურა</h1>
+<p class="muted">შექმენი მაგიდა, ითამაშე მეგობართან ან მოძებნე შემთხვევითი მოთამაშე.</p>
+<div id="authNotice" class="notice"></div>
+</section>
 
-  <div id="lobby" class="grid">
-    <section class="panel">
-      <h2>🎲 შემთხვევითი თამაში</h2>
-      <p class="muted">იპოვე მოთამაშე ონლაინ რეჟიმში.</p>
-      <button class="btn primary" id="randomMatch">🔍 Random Match</button>
-      <button class="btn" id="cancelMatch" disabled>ძებნის შეწყვეტა</button>
-      <div id="matchStatus" class="muted"></div>
-    </section>
+<div id="lobby" class="grid">
+<section class="panel">
+<h2>🎲 შემთხვევითი თამაში</h2>
+<p class="muted">იპოვე ონლაინ მოწინააღმდეგე.</p>
+<button class="btn primary" id="randomMatch">🔍 Random Match</button>
+<button class="btn" id="cancelMatch" disabled>ძებნის შეწყვეტა</button>
+<div id="matchStatus" class="muted"></div>
+</section>
+<section class="panel">
+<h2>ოთახის შექმნა</h2>
+<p class="muted">შექმენი პირადი მაგიდა.</p>
+<button class="btn primary" id="createRoom">ოთახის შექმნა</button>
+</section>
+<section class="panel">
+<h2>მეგობრის ოთახში შესვლა</h2>
+<input class="input" id="joinCode" maxlength="6" placeholder="6-ნიშნა კოდი" autocomplete="off">
+<button class="btn primary" id="joinRoom">ოთახში შესვლა</button>
+</section>
+</div>
 
-    <section class="panel">
-      <h2>ოთახის შექმნა</h2>
-      <p class="muted">შექმენი პირადი მაგიდა და გაუზიარე მეგობარს კოდი.</p>
-      <button class="btn primary" id="createRoom">ოთახის შექმნა</button>
-    </section>
+<div id="lobbyMessage" class="notice"></div>
 
-    <section class="panel">
-      <h2>მეგობრის ოთახში შესვლა</h2>
-      <input class="input" id="joinCode" maxlength="6"
-        placeholder="შეიყვანე 6-ნიშნა კოდი" autocomplete="off">
-      <button class="btn primary" id="joinRoom">ოთახში შესვლა</button>
-    </section>
-  </div>
+<section id="gamePanel" class="panel hidden">
+<div class="muted">ოთახის კოდი</div>
+<div class="room-code" id="roomCode">------</div>
+<div class="row">
+<button class="btn" id="copyCode">კოდის კოპირება</button>
+<button class="btn" id="leaveRoom">ოთახიდან გასვლა</button>
+</div>
+<div class="status" id="status">მოწინააღმდეგეს ველოდებით...</div>
+<div class="muted" id="opponentName">მოწინააღმდეგე შემოდის...</div>
+<h2>მოწინააღმდეგის კარტები</h2>
+<div class="hand" id="opponentHand"></div>
+<h2>მაგიდაზე დადებული კარტები</h2>
+<div class="trick" id="trick"></div>
+<h2>შენი კარტები</h2>
+<div class="hand" id="myHand"></div>
+<div class="row">
+<button class="btn primary" id="playCard" disabled>კარტის დადება</button>
+<button class="btn" id="declareHand">ბურა / მალიუტკა</button>
+</div>
+<div class="status" id="scores">ქულები გამოჩნდება აქ.</div>
+<h2>თამაშის ისტორია</h2>
+<div class="log" id="log"></div>
+</section>
 
-  <div id="lobbyMessage" class="notice"></div>
-
-  <section id="gamePanel" class="panel hidden">
-    <div class="muted">ოთახის კოდი</div>
-    <div class="room-code" id="roomCode">------</div>
-
-    <div class="row">
-      <button class="btn" id="copyCode">კოდის კოპირება</button>
-      <button class="btn" id="leaveRoom">ოთახიდან გასვლა</button>
-    </div>
-
-    <div class="status" id="status">მოწინააღმდეგეს ველოდებით...</div>
-    <div class="muted" id="opponentName">მოწინააღმდეგე შემოდის...</div>
-
-    <h2>მოწინააღმდეგის კარტები</h2>
-    <div class="hand" id="opponentHand"></div>
-
-    <h2>მაგიდაზე დადებული კარტები</h2>
-    <div class="trick" id="trick"></div>
-
-    <h2>შენი კარტები</h2>
-    <div class="hand" id="myHand"></div>
-
-    <div class="row">
-      <button class="btn primary" id="playCard" disabled>კარტის დადება</button>
-      <button class="btn" id="declareHand">ბურა / მალიუტკა</button>
-    </div>
-
-    <div class="status" id="scores">ქულები გამოჩნდება აქ.</div>
-    <h2>თამაშის ისტორია</h2>
-    <div class="log" id="log"></div>
-  </section>
-
-  <section class="panel">
-    <h2>როგორ მუშაობს?</h2>
-    <p class="muted">
-      თითო მოთამაშე მიიღებს 5 კარტს. შემთხვევითი ძებნა იყენებს Firebase-ის
-      რიგს. თამაშის ორივე მხარე მონაცემებს რეალურ დროში იღებს.
-      ეს საწყისი ვერსიაა; თამაშის ოფიციალური წესები და უსაფრთხოება
-      საბოლოოდ დამატებით შემოწმებას საჭიროებს.
-    </p>
-  </section>
+<section class="panel">
+<h2>შენიშვნა</h2>
+<p class="muted">ორივე მოთამაშე უნდა იყოს შესული ანგარიშში. ეს საწყისი ვერსიაა; თამაშის წესები და სერვერული უსაფრთხოება სრულყოფილად ჯერ არ არის გამართული.</p>
+</section>
 </main>
-
 <footer><div class="container">CHITALA PROD · ონლაინ ბურა</div></footer>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-
 <script>
 "use strict";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyChOYCwVd2AaZzLGx_tQsT2PqNlbNXqkis",
-  authDomain: "chitala-mods.firebaseapp.com",
-  databaseURL: "https://chitala-mods-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "chitala-mods",
-  storageBucket: "chitala-mods.firebasestorage.app",
-  messagingSenderId: "415729264734",
-  appId: "1:415729264734:web:edba39f96e5cbdfd6beccf"
+const firebaseConfig={
+ apiKey:"AIzaSyChOYCwVd2AaZzLGx_tQsT2PqNlbNXqkis",
+ authDomain:"chitala-mods.firebaseapp.com",
+ databaseURL:"https://chitala-mods-default-rtdb.europe-west1.firebasedatabase.app",
+ projectId:"chitala-mods",
+ storageBucket:"chitala-mods.firebasestorage.app",
+ messagingSenderId:"415729264734",
+ appId:"1:415729264734:web:edba39f96e5cbdfd6beccf"
 };
 
-if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+if(!firebase.apps.length)firebase.initializeApp(firebaseConfig);
 
-const auth = firebase.auth();
-const db = firebase.database();
-const $ = id => document.getElementById(id);
+const auth=firebase.auth();
+const db=firebase.database();
+const $=id=>document.getElementById(id);
 
-let user = null;
-let roomRef = null;
-let roomListener = null;
-let roomCode = null;
-let roomData = null;
-let selected = null;
-let busy = false;
-let starting = false;
-let searching = false;
-let queueRef = null;
-let searchToken = 0;
-let searchTimer = null;
+let user=null,roomRef=null,roomListener=null,roomCode=null,roomData=null;
+let selected=null,busy=false,starting=false,searching=false;
+let queueRef=null,searchTimer=null,searchToken=0,myQueueTime=null;
 
-const SUITS = ["♠", "♥", "♦", "♣"];
-const RANKS = ["7", "8", "9", "J", "Q", "K", "10", "A"];
-const POINTS = {"7":0,"8":0,"9":0,"J":2,"Q":3,"K":4,"10":10,"A":11};
-const POWER = {"7":1,"8":2,"9":3,"J":4,"Q":5,"K":6,"10":7,"A":8};
+const SUITS=["♠","♥","♦","♣"];
+const RANKS=["7","8","9","J","Q","K","10","A"];
+const POINTS={"7":0,"8":0,"9":0,"J":2,"Q":3,"K":4,"10":10,"A":11};
+const POWER={"7":1,"8":2,"9":3,"J":4,"Q":5,"K":6,"10":7,"A":8};
 
-function notice(text, id = "lobbyMessage") {
-  $(id).textContent = text;
-  $(id).classList.add("show");
+function notice(text,id="lobbyMessage"){
+ $(id).textContent=text;
+ $(id).classList.add("show");
 }
-
-function clearNotice(id = "lobbyMessage") {
-  $(id).textContent = "";
-  $(id).classList.remove("show");
+function clearNotice(id="lobbyMessage"){
+ $(id).textContent="";
+ $(id).classList.remove("show");
 }
-
-function nameOf(u) {
-  return u.displayName || (u.email || "მოთამაშე").split("@")[0];
+function nameOf(u){
+ return u.displayName||(u.email||"მოთამაშე").split("@")[0];
 }
-
-function randomCode() {
-  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-  let s = "";
-  for (let i = 0; i < 6; i++) {
-    s += chars[Math.floor(Math.random() * chars.length)];
+function randomCode(){
+ const chars="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+ let s="";
+ for(let i=0;i<6;i++)s+=chars[Math.floor(Math.random()*chars.length)];
+ return s;
+}
+function deckOf(){
+ const d=[];
+ for(const suit of SUITS)for(const rank of RANKS)
+  d.push({suit,rank,points:POINTS[rank],id:suit+rank});
+ for(let i=d.length-1;i>0;i--){
+  const j=Math.floor(Math.random()*(i+1));
+  [d[i],d[j]]=[d[j],d[i]];
+ }
+ return d;
+}
+function opponentId(){
+ if(!roomData||!user)return null;
+ return Object.keys(roomData.players||{}).find(id=>id!==user.uid)||null;
+}
+function stopListening(){
+ if(roomRef&&roomListener)roomRef.off("value",roomListener);
+ roomListener=null;
+}
+function showLobby(){
+ $("lobby").classList.remove("hidden");
+ $("gamePanel").classList.add("hidden");
+}
+function showGame(){
+ $("lobby").classList.add("hidden");
+ $("gamePanel").classList.remove("hidden");
+ $("roomCode").textContent=roomCode||"------";
+}
+function cardElement(c){
+ const b=document.createElement("button");
+ b.type="button";
+ b.className="card"+(["♥","♦"].includes(c.suit)?" red":"");
+ b.textContent=c.rank+c.suit;
+ return b;
+}
+function clearSearchTimer(){
+ if(searchTimer)clearInterval(searchTimer);
+ searchTimer=null;
+}
+function listenRoom(){
+ stopListening();
+ roomListener=s=>{
+  roomData=s.val();
+  if(!roomData){
+   notice("ოთახი აღარ არსებობს.");
+   return;
   }
-  return s;
-}
+  renderRoom();
+  maybeStart();
 
-function deckOf() {
-  const d = [];
-  for (const suit of SUITS) {
-    for (const rank of RANKS) {
-      d.push({suit, rank, points:POINTS[rank], id:suit + rank});
-    }
+  // ოთახის შევსების შემდეგ ძებნიდან გამოდით.
+  if(roomData.status!=="waiting"&&searching){
+   searching=false;
+   clearSearchTimer();
+   $("randomMatch").disabled=false;
+   $("cancelMatch").disabled=true;
+   if(queueRef){
+    queueRef.remove().catch(()=>{});
+    queueRef=null;
+   }
+   $("matchStatus").textContent="მოწინააღმდეგე ნაპოვნია!";
   }
-  for (let i = d.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [d[i], d[j]] = [d[j], d[i]];
-  }
-  return d;
+ };
+ roomRef.on("value",roomListener,error=>{
+  notice("Firebase შეცდომა: "+error.message);
+ });
+ showGame();
+}
+function cleanupRoomView(){
+ stopListening();
+ roomRef=null;
+ roomData=null;
+ roomCode=null;
+ selected=null;
+ showLobby();
 }
 
-function stopListening() {
-  if (roomRef && roomListener) roomRef.off("value", roomListener);
-  roomListener = null;
-}
-
-function opponentId() {
-  if (!roomData || !user) return null;
-  return Object.keys(roomData.players || {}).find(id => id !== user.uid) || null;
-}
-
-function showLobby() {
-  $("lobby").classList.remove("hidden");
-  $("gamePanel").classList.add("hidden");
-}
-
-function showGame() {
+auth.onAuthStateChanged(u=>{
+ user=u;
+ if(!u){
+  $("authNotice").textContent="ბურას სათამაშოდ ჯერ index.html-ზე შედი ან დარეგისტრირდი.";
+  $("authNotice").classList.add("show");
   $("lobby").classList.add("hidden");
-  $("gamePanel").classList.remove("hidden");
-  $("roomCode").textContent = roomCode || "------";
-}
-
-function cardElement(c) {
-  const b = document.createElement("button");
-  b.type = "button";
-  b.className = "card" + (["♥", "♦"].includes(c.suit) ? " red" : "");
-  b.textContent = c.rank + c.suit;
-  return b;
-}
-
-function cleanupRoomView() {
-  stopListening();
-  roomRef = null;
-  roomData = null;
-  roomCode = null;
-  selected = null;
-  showLobby();
-}
-
-function listenRoom() {
-  stopListening();
-
-  roomListener = snapshot => {
-    roomData = snapshot.val();
-
-    if (!roomData) {
-      notice("ოთახი აღარ არსებობს.");
-      cleanupRoomView();
-      return;
-    }
-
-    renderRoom();
-    maybeStart();
-
-    // როცა მოთამაშე ოთახში დაწყვილდება, მისი რიგის ჩანაწერი წაიშალოს.
-    if (roomData.status !== "waiting" && queueRef) {
-      queueRef.remove().catch(() => {});
-      queueRef = null;
-    }
-  };
-
-  roomRef.on("value", roomListener, error => {
-    notice("Firebase შეცდომა: " + error.message);
-  });
-
-  showGame();
-}
-
-auth.onAuthStateChanged(u => {
-  user = u;
-
-  if (!u) {
-    $("authNotice").textContent =
-      "ბურას სათამაშოდ ჯერ მთავარ გვერდზე შედი ან დარეგისტრირდი.";
-    $("authNotice").classList.add("show");
-    $("lobby").classList.add("hidden");
-    $("gamePanel").classList.add("hidden");
-    return;
-  }
-
+  $("gamePanel").classList.add("hidden");
+ }else{
   $("authNotice").classList.remove("show");
   $("lobby").classList.remove("hidden");
+ }
 });
 
-async function createRoom() {
-  if (!user) {
-    location.href = "index.html";
+async function createRoom(){
+ if(!user){location.href="index.html";return;}
+ if(roomRef)return;
+ $("createRoom").disabled=true;
+ clearNotice();
+ notice("ოთახი იქმნება...");
+ try{
+  for(let i=0;i<10;i++){
+   const code=randomCode(),ref=db.ref("rooms/"+code);
+   const result=await ref.transaction(v=>v===null?{
+    createdAt:firebase.database.ServerValue.TIMESTAMP,
+    status:"waiting",host:user.uid,
+    players:{[user.uid]:{name:nameOf(user),joinedAt:Date.now()}}
+   }:undefined);
+   if(result.committed){
+    roomCode=code;
+    roomRef=ref;
+    listenRoom();
+    clearNotice();
     return;
+   }
   }
-
-  $("createRoom").disabled = true;
-  clearNotice();
-  notice("ოთახი იქმნება...");
-
-  try {
-    for (let i = 0; i < 10; i++) {
-      const code = randomCode();
-      const ref = db.ref("rooms/" + code);
-
-      const result = await ref.transaction(v => v === null ? {
-        createdAt: firebase.database.ServerValue.TIMESTAMP,
-        status: "waiting",
-        host: user.uid,
-        players: {
-          [user.uid]: {
-            name: nameOf(user),
-            joinedAt: Date.now()
-          }
-        }
-      } : undefined);
-
-      if (result.committed) {
-        roomCode = code;
-        roomRef = ref;
-        listenRoom();
-        return;
-      }
-    }
-
-    throw new Error("ოთახის უნიკალური კოდი ვერ შეიქმნა.");
-  } catch (e) {
-    notice("ოთახი ვერ შეიქმნა. შეამოწმე Firebase-ის Rules და კავშირი.");
-  } finally {
-    $("createRoom").disabled = false;
-  }
+  throw new Error("ოთახის კოდი ვერ შეიქმნა.");
+ }catch(e){
+  notice("ოთახი ვერ შეიქმნა. შეამოწმე Firebase-ის Rules.");
+ }finally{
+  $("createRoom").disabled=false;
+ }
 }
 
-async function joinRoom() {
-  if (!user) {
-    location.href = "index.html";
+async function joinRoom(){
+ if(!user){location.href="index.html";return;}
+ const code=$("joinCode").value.trim().toUpperCase();
+ if(!/^[A-HJ-NP-Z2-9]{6}$/.test(code)){
+  notice("შეიყვანე სწორი 6-ნიშნა კოდი.");return;
+ }
+ $("joinRoom").disabled=true;
+ clearNotice();
+ try{
+  const ref=db.ref("rooms/"+code);
+  const result=await ref.transaction(r=>{
+   if(!r||r.status!=="waiting"||!r.players||
+      Object.keys(r.players).length>=2||r.players[user.uid])return;
+   r.players[user.uid]={name:nameOf(user),joinedAt:Date.now()};
+   r.status="ready";
+   return r;
+  });
+  if(!result.committed)throw new Error("ოთახი არ არსებობს, სავსეა ან დაწყებულია.");
+  roomCode=code;
+  roomRef=ref;
+  listenRoom();
+ }catch(e){
+  notice(e.message||"ოთახში შესვლა ვერ მოხერხდა.");
+ }finally{
+  $("joinRoom").disabled=false;
+ }
+}
+
+/* Random Match: რიგში უფრო გვიან შესული უერთდება უფრო ადრე შესულს. */
+async function randomMatch(){
+ if(!user||searching||roomRef)return;
+ searching=true;
+ const token=++searchToken;
+ $("randomMatch").disabled=true;
+ $("cancelMatch").disabled=false;
+ $("matchStatus").textContent="მოთამაშეს ვეძებ...";
+ clearNotice();
+
+ try{
+  // ერთი მომხმარებლისთვის მხოლოდ ერთი რიგის ჩანაწერი.
+  await db.ref("queue/"+user.uid).remove();
+  if(!searching||token!==searchToken)return;
+
+  const initial=await db.ref("queue").once("value");
+  const entries=initial.val()||{};
+  const candidates=Object.entries(entries)
+   .filter(([uid,item])=>uid!==user.uid&&item&&item.roomCode&&typeof item.createdAt==="number")
+   .sort((a,b)=>a[1].createdAt-b[1].createdAt||a[0].localeCompare(b[0]));
+
+  for(const [,entry] of candidates){
+   if(!searching||token!==searchToken)return;
+   const targetRef=db.ref("rooms/"+entry.roomCode);
+   const result=await targetRef.transaction(r=>{
+    if(!r||r.status!=="waiting"||!r.players||
+       Object.keys(r.players).length!==1||r.players[user.uid])return;
+    r.players[user.uid]={name:nameOf(user),joinedAt:Date.now()};
+    r.status="ready";
+    return r;
+   });
+   if(result.committed){
+    searching=false;
+    clearSearchTimer();
+    roomCode=entry.roomCode;
+    roomRef=targetRef;
+    if(queueRef){await queueRef.remove().catch(()=>{});queueRef=null;}
+    await db.ref("queue/"+user.uid).remove().catch(()=>{});
+    listenRoom();
+    $("matchStatus").textContent="მოწინააღმდეგე ნაპოვნია!";
+    $("randomMatch").disabled=false;
+    $("cancelMatch").disabled=true;
     return;
+   }
   }
 
-  const code = $("joinCode").value.trim().toUpperCase();
+  if(!searching||token!==searchToken)return;
 
-  if (!/^[A-HJ-NP-Z2-9]{6}$/.test(code)) {
-    notice("შეიყვანე სწორი 6-ნიშნა კოდი.");
-    return;
+  // რიგში არავინ არის: ვქმნით ჩვენს ოთახს.
+  let created=false;
+  for(let i=0;i<10;i++){
+   if(!searching||token!==searchToken)return;
+   const code=randomCode(),ref=db.ref("rooms/"+code);
+   const result=await ref.transaction(r=>r===null?{
+    createdAt:firebase.database.ServerValue.TIMESTAMP,
+    status:"waiting",host:user.uid,
+    players:{[user.uid]:{name:nameOf(user),joinedAt:Date.now()}}
+   }:undefined);
+   if(result.committed){
+    roomCode=code;
+    roomRef=ref;
+    created=true;
+    break;
+   }
   }
+  if(!created)throw new Error("ოთახის შექმნა ვერ მოხერხდა.");
 
-  $("joinRoom").disabled = true;
-  clearNotice();
-  notice("ოთახს ვამოწმებ...");
+  queueRef=db.ref("queue/"+user.uid);
+  await queueRef.set({
+   uid:user.uid,
+   name:nameOf(user),
+   roomCode,
+   createdAt:firebase.database.ServerValue.TIMESTAMP
+  });
 
-  try {
-    const ref = db.ref("rooms/" + code);
+  const mine=await queueRef.once("value");
+  myQueueTime=mine.val()?.createdAt;
+  if(typeof myQueueTime!=="number")throw new Error("რიგის ჩანაწერი ვერ შეიქმნა.");
 
-    const result = await ref.transaction(r => {
-      if (
-        !r ||
-        r.status !== "waiting" ||
-        !r.players ||
-        Object.keys(r.players).length >= 2 ||
-        r.players[user.uid]
-      ) return;
+  listenRoom();
+  $("matchStatus").textContent="მოწინააღმდეგეს ველოდები...";
 
-      r.players[user.uid] = {
-        name: nameOf(user),
-        joinedAt: Date.now()
-      };
+  searchTimer=setInterval(async()=>{
+   if(!searching||token!==searchToken||!user||!roomRef)return;
+   try{
+    const snap=await db.ref("queue").once("value");
+    const queue=snap.val()||{};
+    const others=Object.entries(queue)
+     .filter(([uid,item])=>uid!==user.uid&&item&&item.roomCode&&
+       typeof item.createdAt==="number"&&
+       (item.createdAt<myQueueTime||
+        (item.createdAt===myQueueTime&&uid<user.uid)))
+     .sort((a,b)=>a[1].createdAt-b[1].createdAt||a[0].localeCompare(b[0]));
 
-      r.status = "ready";
+    for(const [,item] of others){
+     if(!searching||token!==searchToken||!roomRef)return;
+     const targetRef=db.ref("rooms/"+item.roomCode);
+     const result=await targetRef.transaction(r=>{
+      if(!r||r.status!=="waiting"||!r.players||
+         Object.keys(r.players).length!==1||r.players[user.uid])return;
+      r.players[user.uid]={name:nameOf(user),joinedAt:Date.now()};
+      r.status="ready";
       return r;
-    });
+     });
 
-    if (!result.committed) {
-      throw new Error("ოთახი არ არსებობს, სავსეა ან უკვე დაწყებულია.");
-    }
-
-    roomCode = code;
-    roomRef = ref;
-    listenRoom();
-  } catch (e) {
-    notice(e.message || "ოთახში შესვლა ვერ მოხერხდა.");
-  } finally {
-    $("joinRoom").disabled = false;
-  }
-}
-
-/* შემთხვევითი მოთამაშის ძებნა */
-async function randomMatch() {
-  if (!user) {
-    location.href = "index.html";
-    return;
-  }
-
-  if (searching) return;
-
-  searching = true;
-  const myToken = ++searchToken;
-
-  $("randomMatch").disabled = true;
-  $("cancelMatch").disabled = false;
-  $("matchStatus").textContent = "მოთამაშეს ვეძებ...";
-  clearNotice();
-
-  try {
-    // ძველი რიგის ჩანაწერი, თუ არსებობს, ჯერ წავშალოთ.
-    await db.ref("queue/" + user.uid).remove();
-
-    if (!searching || myToken !== searchToken) return;
-
-    const queueSnapshot = await db.ref("queue").once("value");
-    const entries = queueSnapshot.val() || {};
-
-    // ვეძებთ სხვა მოთამაშის ოთახს.
-    const candidates = Object.entries(entries)
-      .filter(([uid, item]) =>
-        uid !== user.uid &&
-        item &&
-        item.roomCode &&
-        item.createdAt
-      )
-      .sort((a, b) => a[1].createdAt - b[1].createdAt);
-
-    for (const [otherUid, entry] of candidates) {
-      if (!searching || myToken !== searchToken) return;
-
-      const ref = db.ref("rooms/" + entry.roomCode);
-
-      const result = await ref.transaction(r => {
-        if (
-          !r ||
-          r.status !== "waiting" ||
-          !r.players ||
-          Object.keys(r.players).length !== 1 ||
-          r.players[user.uid]
-        ) return;
-
-        r.players[user.uid] = {
-          name: nameOf(user),
-          joinedAt: Date.now()
-        };
-
-        r.status = "ready";
-        return r;
-      });
-
-      if (result.committed) {
-        await db.ref("queue/" + user.uid).remove().catch(() => {});
-        queueRef = null;
-        searching = false;
-        clearInterval(searchTimer);
-        $("matchStatus").textContent = "მოთამაშე ნაპოვნია!";
-        roomCode = entry.roomCode;
-        roomRef = ref;
-        listenRoom();
-        return;
-      }
-    }
-
-    if (!searching || myToken !== searchToken) return;
-
-    // თუ თავისუფალი მოთამაშე ვერ ვიპოვეთ, ვქმნით ოთახს.
-    let madeRoom = false;
-
-    for (let i = 0; i < 10; i++) {
-      if (!searching || myToken !== searchToken) return;
-
-      const code = randomCode();
-      const ref = db.ref("rooms/" + code);
-
-      const result = await ref.transaction(v => v === null ? {
-        createdAt: firebase.database.ServerValue.TIMESTAMP,
-        status: "waiting",
-        host: user.uid,
-        players: {
-          [user.uid]: {
-            name: nameOf(user),
-            joinedAt: Date.now()
-          }
-        }
-      } : undefined);
-
-      if (result.committed) {
-        roomCode = code;
-        roomRef = ref;
-        madeRoom = true;
-        break;
-      }
-    }
-
-    if (!madeRoom) throw new Error("ოთახი ვერ შეიქმნა.");
-
-    queueRef = db.ref("queue/" + user.uid);
-
-    await queueRef.set({
-      uid: user.uid,
-      name: nameOf(user),
-      roomCode,
-      createdAt: firebase.database.ServerValue.TIMESTAMP
-    });
-
-    if (!searching || myToken !== searchToken) {
-      await queueRef.remove().catch(() => {});
-      queueRef = null;
+     if(result.committed){
+      const oldRef=roomRef;
+      searching=false;
+      clearSearchTimer();
+      if(queueRef){await queueRef.remove().catch(()=>{});queueRef=null;}
+      await db.ref("queue/"+user.uid).remove().catch(()=>{});
+      stopListening();
+      roomCode=item.roomCode;
+      roomRef=targetRef;
+      listenRoom();
+      // გამოუყენებელი საკუთარი ოთახის წაშლა.
+      if(oldRef&&oldRef.key!==targetRef.key)oldRef.remove().catch(()=>{});
+      $("matchStatus").textContent="მოწინააღმდეგე ნაპოვნია!";
+      $("randomMatch").disabled=false;
+      $("cancelMatch").disabled=true;
       return;
+     }
     }
+   }catch(e){console.error("Matchmaking:",e);}
+  },2000);
 
-    listenRoom();
-    $("matchStatus").textContent = "ელოდები შემთხვევით მოთამაშეს...";
-
-    // რიგის ჩანაწერების ხელახლა შემოწმება პერიოდულად.
-    searchTimer = setInterval(async () => {
-      if (!searching || !user || !roomRef) return;
-
-      try {
-        const snap = await db.ref("queue").once("value");
-        const current = snap.val() || {};
-
-        const others = Object.entries(current)
-          .filter(([uid, item]) =>
-            uid !== user.uid &&
-            item &&
-            item.roomCode
-          )
-          .sort((a, b) => a[1].createdAt - b[1].createdAt);
-
-        for (const [, item] of others) {
-          if (!searching || !roomRef) return;
-
-          // თუ ამ ოთახში უკვე მოთამაშე შემოვიდა, listener თვითონ განაახლებს.
-          if (roomData && roomData.status !== "waiting") return;
-
-          const otherRoom = db.ref("rooms/" + item.roomCode);
-
-          const result = await otherRoom.transaction(r => {
-            if (
-              !r ||
-              r.status !== "waiting" ||
-              !r.players ||
-              Object.keys(r.players).length !== 1 ||
-              r.players[user.uid]
-            ) return;
-
-            r.players[user.uid] = {
-              name: nameOf(user),
-              joinedAt: Date.now()
-            };
-
-            r.status = "ready";
-            return r;
-          });
-
-          if (result.committed) {
-            await db.ref("queue/" + user.uid).remove().catch(() => {});
-            queueRef = null;
-            clearInterval(searchTimer);
-            searching = false;
-            stopListening();
-            roomCode = item.roomCode;
-            roomRef = otherRoom;
-            listenRoom();
-            $("matchStatus").textContent = "მოთამაშე ნაპოვნია!";
-            $("randomMatch").disabled = false;
-            $("cancelMatch").disabled = true;
-            return;
-          }
-        }
-      } catch (e) {
-        console.error("Matchmaking:", e);
-      }
-    }, 2500);
-
-  } catch (e) {
-    notice(
-      "შემთხვევითი მოთამაშის ძებნა ვერ მოხერხდა. შეამოწმე Database-ის Rules და კავშირი."
-    );
-    searching = false;
-    $("matchStatus").textContent = "";
-    $("randomMatch").disabled = false;
-    $("cancelMatch").disabled = true;
-  }
+ }catch(e){
+  console.error(e);
+  searching=false;
+  clearSearchTimer();
+  if(queueRef){await queueRef.remove().catch(()=>{});queueRef=null;}
+  notice("ძებნა ვერ მოხერხდა. შეამოწმე Firebase-ის Rules.");
+  $("matchStatus").textContent="";
+  $("randomMatch").disabled=false;
+  $("cancelMatch").disabled=true;
+ }
 }
 
-async function cancelMatch() {
-  searchToken++;
-  searching = false;
-  clearInterval(searchTimer);
-  searchTimer = null;
+async function cancelMatch(){
+ searchToken++;
+ searching=false;
+ clearSearchTimer();
+ if(queueRef){await queueRef.remove().catch(()=>{});queueRef=null;}
+ if(user)await db.ref("queue/"+user.uid).remove().catch(()=>{});
+ $("randomMatch").disabled=false;
+ $("cancelMatch").disabled=true;
+ $("matchStatus").textContent="ძებნა შეწყდა.";
 
-  if (queueRef) {
-    await queueRef.remove().catch(() => {});
-    queueRef = null;
-  } else if (user) {
-    await db.ref("queue/" + user.uid).remove().catch(() => {});
-  }
-
-  $("randomMatch").disabled = false;
-  $("cancelMatch").disabled = true;
-  $("matchStatus").textContent = "ძებნა შეწყდა.";
-
-  // თუ ოთახში ჯერ მხოლოდ შენ ხარ, დატოვე იგი.
-  if (roomData && roomData.status === "waiting" && roomData.host === user?.uid) {
-    const oldRef = roomRef;
-    cleanupRoomView();
-
-    if (oldRef) {
-      await oldRef.remove().catch(() => {});
-    }
-  }
-}
-
-function renderRoom() {
-  if (!roomData || !user) return;
-
-  const players = roomData.players || {};
-  const opp = opponentId();
-
-  $("opponentName").textContent = opp
-    ? "მოწინააღმდეგე: " + (players[opp].name || "მოთამაშე")
-    : "მოწინააღმდეგე შემოდის...";
-
-  const g = roomData.game;
-
-  if (!g) {
-    $("status").textContent =
-      roomData.status === "waiting"
-        ? "გაუზიარე კოდი მეგობარს ან დაელოდე შემთხვევით მოთამაშეს."
-        : "მეორე მოთამაშე შემოვიდა. თამაში იწყება...";
-    return;
-  }
-
-  const mine = (g.hands && g.hands[user.uid]) || [];
-  const trick = g.trick || [];
-  const myTurn = g.turn === user.uid && g.status === "playing";
-
-  $("status").textContent =
-    g.status === "finished"
-      ? (g.result === user.uid
-          ? "შენ მოიგე!"
-          : g.result === "tie"
-            ? "ფრე!"
-            : "თამაში დასრულდა.")
-      : myTurn
-        ? "შენი სვლაა. აირჩიე კარტი."
-        : "მოწინააღმდეგის სვლაა.";
-
-  $("myHand").replaceChildren();
-
-  mine.forEach(c => {
-    const el = cardElement(c);
-    el.classList.toggle("selected", selected === c.id);
-    el.disabled = !myTurn;
-    el.onclick = () => {
-      selected = c.id;
-      renderRoom();
-    };
-    $("myHand").appendChild(el);
-  });
-
-  $("opponentHand").replaceChildren();
-
-  ((g.hands && g.hands[opp]) || []).forEach(() => {
-    const el = document.createElement("div");
-    el.className = "card back";
-    el.textContent = "✦";
-    $("opponentHand").appendChild(el);
-  });
-
-  $("trick").replaceChildren();
-
-  trick.forEach(t => {
-    const item = document.createElement("div");
-    item.className = "trick-item";
-    const el = cardElement(t.card);
-    el.disabled = true;
-
-    const label = document.createElement("div");
-    label.textContent = players[t.uid]?.name || "მოთამაშე";
-
-    item.append(el, label);
-    $("trick").appendChild(item);
-  });
-
-  $("playCard").disabled =
-    !(myTurn && selected && mine.some(c => c.id === selected));
-
-  $("scores").textContent =
-    "შენი ქულა: " + ((g.points && g.points[user.uid]) || 0) +
-    " • მოწინააღმდეგე: " + ((g.points && g.points[opp]) || 0) +
-    " • კოზირი: " + (g.trump || "—");
-
-  $("log").textContent = (g.log || []).slice(-12).reverse().join("\n");
-}
-
-async function maybeStart() {
-  if (
-    starting ||
-    !roomRef ||
-    !roomData ||
-    !user ||
-    roomData.host !== user.uid ||
-    roomData.status !== "ready" ||
-    roomData.game ||
-    Object.keys(roomData.players || {}).length !== 2
-  ) return;
-
-  starting = true;
-
-  try {
-    const d = deckOf();
-    const ids = Object.keys(roomData.players);
-    const hands = {};
-
-    hands[ids[0]] = d.splice(0, 5);
-    hands[ids[1]] = d.splice(0, 5);
-
-    // კოზირის კარტი რჩება დასარიგებელი დასტის ბოლოში.
-    const trumpCard = d[d.length - 1];
-
-    await roomRef.child("game").set({
-      status: "playing",
-      hands,
-      deck: d,
-      trump: trumpCard.suit,
-      trumpCard,
-      turn: ids[Math.floor(Math.random() * 2)],
-      trick: [],
-      points: {[ids[0]]:0, [ids[1]]:0},
-      log: ["თამაში დაიწყო. კოზირი: " + trumpCard.suit],
-      result: ""
-    });
-
-    await roomRef.update({status:"playing"});
-  } catch (e) {
-    notice("თამაში ვერ დაიწყო. გადაამოწმე Database-ის Rules.");
-  } finally {
-    starting = false;
-  }
-}
-
-function strength(rank) {
-  return POWER[rank] || 0;
-}
-
-$("createRoom").onclick = createRoom;
-$("joinRoom").onclick = joinRoom;
-$("randomMatch").onclick = randomMatch;
-$("cancelMatch").onclick = cancelMatch;
-
-$("joinCode").addEventListener("input", e => {
-  e.target.value = e.target.value
-    .toUpperCase()
-    .replace(/[^A-HJ-NP-Z2-9]/g, "")
-    .slice(0, 6);
-});
-
-$("copyCode").onclick = async () => {
-  try {
-    await navigator.clipboard.writeText(roomCode);
-    $("status").textContent = "კოდი დაკოპირდა: " + roomCode;
-  } catch (e) {
-    $("status").textContent = "გაუგზავნე მეგობარს კოდი: " + roomCode;
-  }
-};
-
-$("leaveRoom").onclick = async () => {
-  await cancelMatch();
+ if(roomData&&roomData.status==="waiting"&&roomData.host===user?.uid){
+  const oldRef=roomRef;
   cleanupRoomView();
-  clearNotice();
-};
+  if(oldRef)await oldRef.remove().catch(()=>{});
+ }
+}
 
-$("playCard").onclick = async () => {
-  if (busy || !roomRef || !user || !selected) return;
+function renderRoom(){
+ if(!roomData||!user)return;
+ const players=roomData.players||{};
+ const opp=opponentId();
+ $("opponentName").textContent=opp?
+  "მოწინააღმდეგე: "+(players[opp].name||"მოთამაშე"):
+  "მოწინააღმდეგე შემოდის...";
+ const g=roomData.game;
 
-  busy = true;
-  const id = selected;
+ if(!g){
+  $("status").textContent=roomData.status==="waiting"?
+   "გაუზიარე კოდი მეგობარს ან დაელოდე შემთხვევით მოთამაშეს.":
+   "მეორე მოთამაშე შემოვიდა. თამაში იწყება...";
+  return;
+ }
 
-  try {
-    const result = await roomRef.child("game").transaction(g => {
-      if (!g || g.status !== "playing" || g.turn !== user.uid) return;
+ const mine=(g.hands&&g.hands[user.uid])||[];
+ const trick=g.trick||[];
+ const myTurn=g.turn===user.uid&&g.status==="playing";
 
-      const hand = g.hands[user.uid] || [];
-      const idx = hand.findIndex(c => c.id === id);
-      if (idx < 0) return;
+ $("status").textContent=g.status==="finished"?
+  (g.result===user.uid?"შენ მოიგე!":g.result==="tie"?"ფრე!":"თამაში დასრულდა."):
+  myTurn?"შენი სვლაა. აირჩიე კარტი.":"მოწინააღმდეგის სვლაა.";
 
-      const card = hand.splice(idx, 1)[0];
+ $("myHand").replaceChildren();
+ mine.forEach(c=>{
+  const el=cardElement(c);
+  el.classList.toggle("selected",selected===c.id);
+  el.disabled=!myTurn;
+  el.onclick=()=>{selected=c.id;renderRoom();};
+  $("myHand").appendChild(el);
+ });
 
-      g.trick = g.trick || [];
-      g.trick.push({uid:user.uid, card});
-      g.log = g.log || [];
-      g.log.push(nameOf(user) + " დადო " + card.rank + card.suit);
+ $("opponentHand").replaceChildren();
+ ((g.hands&&g.hands[opp])||[]).forEach(()=>{
+  const el=document.createElement("div");
+  el.className="card back";
+  el.textContent="✦";
+  $("opponentHand").appendChild(el);
+ });
 
-      if (g.trick.length === 2) {
-        const [a, b] = g.trick;
-        let winner;
+ $("trick").replaceChildren();
+ trick.forEach(t=>{
+  const item=document.createElement("div");
+  item.className="trick-item";
+  const el=cardElement(t.card);
+  el.disabled=true;
+  const label=document.createElement("div");
+  label.textContent=players[t.uid]?.name||"მოთამაშე";
+  item.append(el,label);
+  $("trick").appendChild(item);
+ });
 
-        if (a.card.suit === b.card.suit) {
-          winner = strength(b.card.rank) > strength(a.card.rank) ? b.uid : a.uid;
-        } else if (a.card.suit === g.trump) {
-          winner = a.uid;
-        } else if (b.card.suit === g.trump) {
-          winner = b.uid;
-        } else {
-          winner = a.uid;
-        }
+ $("playCard").disabled=!(myTurn&&selected&&mine.some(c=>c.id===selected));
+ $("scores").textContent=
+  "შენი ქულა: "+((g.points&&g.points[user.uid])||0)+
+  " • მოწინააღმდეგე: "+((g.points&&g.points[opp])||0)+
+  " • კოზირი: "+(g.trump||"—");
+ $("log").textContent=(g.log||[]).slice(-12).reverse().join("\n");
+}
 
-        g.points[winner] =
-          (g.points[winner] || 0) + a.card.points + b.card.points;
+async function maybeStart(){
+ if(starting||!roomRef||!roomData||!user||
+    roomData.host!==user.uid||roomData.status!=="ready"||
+    roomData.game||Object.keys(roomData.players||{}).length!==2)return;
 
-        g.log.push("ხელის გამარჯვებული: " + (winner === user.uid ? "შენ" : "მოწინააღმდეგე"));
-        g.trick = [];
+ starting=true;
+ try{
+  const d=deckOf();
+  const ids=Object.keys(roomData.players);
+  const hands={};
+  hands[ids[0]]=d.splice(0,5);
+  hands[ids[1]]=d.splice(0,5);
+  const trumpCard=d[d.length-1];
 
-        if (g.deck.length) {
-          const ids = Object.keys(g.hands);
+  await roomRef.child("game").set({
+   status:"playing",hands,deck:d,
+   trump:trumpCard.suit,trumpCard,
+   turn:ids[Math.floor(Math.random()*2)],
+   trick:[],points:{[ids[0]]:0,[ids[1]]:0},
+   log:["თამაში დაიწყო. კოზირი: "+trumpCard.suit],
+   result:""
+  });
+  await roomRef.update({status:"playing"});
+ }catch(e){
+  notice("თამაში ვერ დაიწყო. გადაამოწმე Database-ის Rules.");
+ }finally{starting=false;}
+}
 
-          for (const pid of [winner, ...ids.filter(x => x !== winner)]) {
-            if (g.hands[pid].length < 5 && g.deck.length) {
-              g.hands[pid].push(g.deck.pop());
-            }
-          }
-        }
+function strength(rank){return POWER[rank]||0;}
 
-        const ids = Object.keys(g.hands);
+$("createRoom").onclick=createRoom;
+$("joinRoom").onclick=joinRoom;
+$("randomMatch").onclick=randomMatch;
+$("cancelMatch").onclick=cancelMatch;
 
-        if (!g.deck.length && ids.every(pid => !g.hands[pid].length)) {
-          g.status = "finished";
-          g.result =
-            g.points[ids[0]] > g.points[ids[1]] ? ids[0] :
-            g.points[ids[1]] > g.points[ids[0]] ? ids[1] : "tie";
-          g.log.push("თამაში დასრულდა.");
-        }
-
-        g.turn = winner;
-      } else {
-        g.turn = Object.keys(g.hands).find(pid => pid !== user.uid);
-      }
-
-      return g;
-    });
-
-    if (!result.committed) throw new Error("სვლა ვერ შესრულდა. სცადე თავიდან.");
-    selected = null;
-  } catch (e) {
-    notice(e.message || "სვლის შეცდომა.");
-  } finally {
-    busy = false;
-  }
-};
-
-$("declareHand").onclick = async () => {
-  if (busy || !roomRef || !user) return;
-
-  busy = true;
-
-  try {
-    const result = await roomRef.child("game").transaction(g => {
-      if (!g || g.status !== "playing") return;
-
-      const hand = g.hands[user.uid] || {};
-      const counts = {};
-
-      hand.forEach(c => counts[c.suit] = (counts[c.suit] || 0) + 1);
-
-      const bura = hand.length === 5 && hand.every(c => c.suit === g.trump);
-      const maliutka =
-        hand.length === 5 &&
-        Object.entries(counts).some(([s, n]) => s !== g.trump && n === 5);
-
-      if (!bura && !maliutka) return;
-
-      g.status = "finished";
-      g.result = user.uid;
-      g.trick = [];
-      g.log = g.log || [];
-      g.log.push((bura ? "ბურა!" : "მალიუტკა!") + " — " + nameOf(user) + " იმარჯვებს.");
-
-      return g;
-    });
-
-    if (!result.committed) {
-      notice("გამოცხადებისთვის შესაბამისი 5 კარტი გჭირდება.");
-    }
-
-    selected = null;
-  } catch (e) {
-    notice("გამოცხადება ვერ მოხერხდა.");
-  } finally {
-    busy = false;
-  }
-};
-
-window.addEventListener("beforeunload", () => {
-  stopListening();
+$("joinCode").addEventListener("input",e=>{
+ e.target.value=e.target.value.toUpperCase().replace(/[^A-HJ-NP-Z2-9]/g,"").slice(0,6);
 });
 
+$("copyCode").onclick=async()=>{
+ try{
+  await navigator.clipboard.writeText(roomCode);
+  $("status").textContent="კოდი დაკოპირდა: "+roomCode;
+ }catch(e){
+  $("status").textContent="გაუგზავნე მეგობარს კოდი: "+roomCode;
+ }
+};
+
+$("leaveRoom").onclick=async()=>{
+ await cancelMatch();
+ cleanupRoomView();
+ clearNotice();
+};
+
+$("playCard").onclick=async()=>{
+ if(busy||!roomRef||!user||!selected)return;
+ busy=true;
+ const id=selected;
+ try{
+  const result=await roomRef.child("game").transaction(g=>{
+   if(!g||g.status!=="playing"||g.turn!==user.uid)return;
+   const hand=g.hands[user.uid]||[];
+   const idx=hand.findIndex(c=>c.id===id);
+   if(idx<0)return;
+   const card=hand.splice(idx,1)[0];
+   g.trick=g.trick||[];
+   g.trick.push({uid:user.uid,card});
+   g.log=g.log||[];
+   g.log.push(nameOf(user)+" დადო "+card.rank+card.suit);
+
+   if(g.trick.length===2){
+    const [a,b]=g.trick;
+    let winner;
+    if(a.card.suit===b.card.suit)
+     winner=strength(b.card.rank)>strength(a.card.rank)?b.uid:a.uid;
+    else if(a.card.suit===g.trump)winner=a.uid;
+    else if(b.card.suit===g.trump)winner=b.uid;
+    else winner=a.uid;
+
+    g.points[winner]=(g.points[winner]||0)+a.card.points+b.card.points;
+    g.log.push("ხელის გამარჯვებული: "+(winner===user.uid?"შენ":"მოწინააღმდეგე"));
+    g.trick=[];
+
+    if(g.deck.length){
+     const ids=Object.keys(g.hands);
+     for(const pid of [winner,...ids.filter(x=>x!==winner)]){
+      if(g.hands[pid].length<5&&g.deck.length)g.hands[pid].push(g.deck.pop());
+     }
+    }
+
+    const ids=Object.keys(g.hands);
+    if(!g.deck.length&&ids.every(pid=>!g.hands[pid].length)){
+     g.status="finished";
+     g.result=g.points[ids[0]]>g.points[ids[1]]?ids[0]:
+      g.points[ids[1]]>g.points[ids[0]]?ids[1]:"tie";
+     g.log.push("თამაში დასრულდა.");
+    }
+    g.turn=winner;
+   }else{
+    g.turn=Object.keys(g.hands).find(pid=>pid!==user.uid);
+   }
+   return g;
+  });
+
+  if(!result.committed)throw new Error("სვლა ვერ შესრულდა. სცადე თავიდან.");
+  selected=null;
+ }catch(e){notice(e.message||"სვლის შეცდომა.");}
+ finally{busy=false;}
+};
+
+$("declareHand").onclick=async()=>{
+ if(busy||!roomRef||!user)return;
+ busy=true;
+ try{
+  const result=await roomRef.child("game").transaction(g=>{
+   if(!g||g.status!=="playing")return;
+   const hand=g.hands[user.uid]||[];
+   const counts={};
+   hand.forEach(c=>counts[c.suit]=(counts[c.suit]||0)+1);
+   const bura=hand.length===5&&hand.every(c=>c.suit===g.trump);
+   const maliutka=hand.length===5&&Object.entries(counts).some(([s,n])=>s!==g.trump&&n===5);
+   if(!bura&&!maliutka)return;
+   g.status="finished";
+   g.result=user.uid;
+   g.trick=[];
+   g.log=g.log||[];
+   g.log.push((bura?"ბურა!":"მალიუტკა!")+" — "+nameOf(user)+" იმარჯვებს.");
+   return g;
+  });
+  if(!result.committed)notice("გამოცხადებისთვის შესაბამისი 5 კარტი გჭირდება.");
+  selected=null;
+ }catch(e){notice("გამოცხადება ვერ მოხერხდა.");}
+ finally{busy=false;}
+};
+
+window.addEventListener("beforeunload",()=>{
+ stopListening();
+ clearSearchTimer();
+});
 </script>
 </body>
 </html>
