@@ -1,975 +1,1059 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#09090d">
-<meta name="description" content="CHITALA MODS — mobile games, game versions and tutorials.">
-<title>CHITALA MODS | Mobile Gaming World</title>
-
-<style>
-*{box-sizing:border-box}
-
-:root{
-  --red:#ff2638;
-  --red2:#c90019;
-  --bg:#08090d;
-  --panel:#11131a;
-  --muted:#a8abba;
-}
-
-html{scroll-behavior:smooth}
-
-body{
-  margin:0;
-  background:
-    radial-gradient(ellipse at 50% -10%,#3b080e 0%,transparent 48%),
-    radial-gradient(ellipse at 0% 55%,#18070b 0%,transparent 35%),
-    var(--bg);
-  color:#fff;
-  font-family:Arial,Helvetica,sans-serif;
-  min-height:100vh;
-}
-
-a{color:inherit}
-button,input{font:inherit}
-
-.top-line{
-  height:3px;
-  background:linear-gradient(90deg,transparent,var(--red),#ff6874,var(--red),transparent);
-  box-shadow:0 0 15px #ff263855;
-}
-
-header{
-  position:relative;
-  text-align:center;
-  padding:42px 16px 28px;
-  overflow:hidden;
-  border-bottom:1px solid #ff26381c;
-}
-
-.header-glow{
-  position:absolute;
-  width:280px;
-  height:180px;
-  left:50%;
-  top:-115px;
-  transform:translateX(-50%);
-  background:#ff1828;
-  filter:blur(100px);
-  opacity:.18;
-  pointer-events:none;
-}
-
-.logo{
-  position:relative;
-  margin:0;
-  font-size:clamp(34px,8vw,62px);
-  font-weight:1000;
-  letter-spacing:2px;
-  line-height:1.1;
-  color:#fff;
-  text-shadow:0 0 24px #ff182833;
-}
-
-.logo span{color:var(--red)}
-
-.tagline{
-  margin:12px 0 0;
-  color:#c0c1cb;
-  font-size:11px;
-  font-weight:bold;
-  letter-spacing:4px;
-}
-
-.header-line{
-  width:70px;
-  height:3px;
-  margin:19px auto 0;
-  border-radius:10px;
-  background:var(--red);
-  box-shadow:0 0 18px #ff2638a6;
-}
-
-/* HERO */
-.hero{
-  width:min(1050px,92%);
-  margin:25px auto 0;
-  padding:27px;
-  position:relative;
-  overflow:hidden;
-  border:1px solid #ff26382b;
-  border-radius:20px;
-  background:
-    radial-gradient(ellipse at 100% 0%,#70101b66,transparent 48%),
-    linear-gradient(120deg,#191016,#101117 65%,#190b10);
-  box-shadow:0 18px 45px #0005,inset 0 1px #ffffff08;
-}
-
-.hero:after{
-  content:"";
-  position:absolute;
-  right:-55px;
-  bottom:-100px;
-  width:220px;
-  height:220px;
-  border:1px solid #ff263825;
-  border-radius:50%;
-  box-shadow:0 0 0 25px #ff263808,0 0 0 50px #ff263805;
-  pointer-events:none;
-}
-
-.hero-label{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  padding:7px 10px;
-  border:1px solid #ff26384d;
-  border-radius:6px;
-  background:#ff263812;
-  color:#ff6572;
-  font-size:10px;
-  font-weight:bold;
-  letter-spacing:1.5px;
-}
-
-.hero h2{
-  position:relative;
-  z-index:1;
-  max-width:650px;
-  margin:17px 0 11px;
-  font-size:clamp(27px,5vw,42px);
-  line-height:1.12;
-}
-
-.hero h2 span{color:var(--red)}
-
-.hero p{
-  position:relative;
-  z-index:1;
-  max-width:550px;
-  margin:0;
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.8;
-}
-
-.hero-bottom{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:21px;
-  position:relative;
-  z-index:2;
-}
-
-.hero-link{
-  display:inline-flex;
-  justify-content:center;
-  align-items:center;
-  gap:7px;
-  padding:11px 15px;
-  border-radius:8px;
-  text-decoration:none;
-  font-size:11px;
-  font-weight:bold;
-  letter-spacing:.5px;
-  border:1px solid #ff263866;
-  background:linear-gradient(110deg,var(--red),var(--red2));
-  transition:.2s;
-}
-
-.hero-link.secondary{
-  background:#ffffff08;
-  border-color:#ffffff20;
-}
-
-.hero-link:hover{
-  transform:translateY(-2px);
-  filter:brightness(1.15);
-}
-
-/* SEARCH */
-.search-area{
-  width:min(760px,92%);
-  margin:27px auto 0;
-}
-
-.search-box{
-  display:flex;
-  align-items:center;
-  gap:11px;
-  min-height:55px;
-  padding:0 15px;
-  border:1px solid #ffffff1c;
-  border-radius:12px;
-  background:linear-gradient(120deg,#15161e,#101117);
-  box-shadow:0 8px 25px #0003;
-  transition:border-color .2s,box-shadow .2s;
-}
-
-.search-box:focus-within{
-  border-color:var(--red);
-  box-shadow:0 0 0 3px #ff263812,0 0 20px #ff26380b;
-}
-
-.search-icon{
-  font-size:18px;
-  flex-shrink:0;
-}
-
-.search{
-  flex:1;
-  width:100%;
-  min-width:0;
-  padding:15px 0;
-  border:0;
-  outline:0;
-  color:#fff;
-  background:transparent;
-  font-size:14px;
-
-  /* Hide browser-specific search decorations */
-  -webkit-appearance:none;
-  appearance:none;
-}
-
-.search::-webkit-search-cancel-button,
-.search::-webkit-search-decoration,
-.search::-webkit-search-results-button,
-.search::-webkit-search-results-decoration{
-  -webkit-appearance:none;
-  appearance:none;
-  display:none;
-}
-
-.search::placeholder{
-  color:#858896;
-  opacity:1;
-}
-
-.search-clear{
-  display:none;
-  width:29px;
-  height:29px;
-  flex-shrink:0;
-  align-items:center;
-  justify-content:center;
-  border:1px solid #ff26383b;
-  border-radius:50%;
-  background:#ff263812;
-  color:#ff5262;
-  font-size:19px;
-  line-height:1;
-  cursor:pointer;
-  padding:0;
-  -webkit-tap-highlight-color:transparent;
-}
-
-.search-clear.visible{display:flex}
-
-.search-clear:hover{
-  background:#ff26382b;
-  border-color:var(--red);
-}
-
-.search-hint{
-  margin:9px 3px 0;
-  color:#777b89;
-  font-size:11px;
-}
-
-/* SECTION */
-.section-heading{
-  width:min(1100px,100%);
-  margin:39px auto 0;
-  padding:0 18px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-}
-
-.section-heading h2{
-  margin:0;
-  font-size:21px;
-  letter-spacing:.3px;
-}
-
-.section-heading h2 span{color:var(--red)}
-
-.section-heading p{
-  margin:7px 0 0;
-  color:var(--muted);
-  font-size:12px;
-}
-
-.game-count{
-  flex-shrink:0;
-  color:#ff6572;
-  border:1px solid #ff26382b;
-  background:#ff26380c;
-  padding:7px 10px;
-  border-radius:7px;
-  font-size:10px;
-  font-weight:bold;
-}
-
-/* CATEGORY FILTERS */
-.filters{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  width:min(1100px,100%);
-  margin:20px auto 0;
-  padding:0 18px;
-}
-
-.filter-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:6px;
-  padding:10px 13px;
-  color:#b5b7c3;
-  border:1px solid #ffffff16;
-  background:linear-gradient(145deg,#171820,#101117);
-  border-radius:8px;
-  font-size:10px;
-  font-weight:bold;
-  letter-spacing:.4px;
-  cursor:pointer;
-  transition:background .2s,border-color .2s,color .2s,transform .2s;
-  -webkit-tap-highlight-color:transparent;
-}
-
-.filter-btn:hover{
-  color:#fff;
-  border-color:#ff263855;
-}
-
-.filter-btn.active{
-  color:#fff;
-  background:linear-gradient(110deg,#ff26382a,#8b00152a);
-  border-color:#ff263878;
-  box-shadow:inset 0 -2px var(--red),0 4px 14px #ff26380b;
-}
-
-.filter-btn:active{transform:scale(.97)}
-
-/* GAME GRID */
-.games{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(min(100%,285px),1fr));
-  align-items:stretch;
-  gap:20px;
-  width:min(1100px,100%);
-  margin:0 auto;
-  padding:21px 18px 30px;
-}
-
-.card{
-  min-width:0;
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  padding:12px;
-  border:1px solid #ffffff13;
-  border-radius:16px;
-  overflow:hidden;
-  background:linear-gradient(145deg,#191a23,#0e0f15 76%);
-  box-shadow:0 12px 32px #0004;
-  transition:transform .25s,border-color .25s,box-shadow .25s;
-  animation:card-in .4s ease both;
-}
-
-.card:nth-child(2){animation-delay:.05s}
-.card:nth-child(3){animation-delay:.1s}
-
-@keyframes card-in{
-  from{opacity:0;transform:translateY(10px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-.card:before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:12%;
-  right:12%;
-  height:1px;
-  background:linear-gradient(90deg,transparent,#ff263866,transparent);
-}
-
-.card:hover{
-  transform:translateY(-4px);
-  border-color:#ff263855;
-  box-shadow:0 18px 38px #0007,0 0 25px #ff26380b;
-}
-
-.media{
-  position:relative;
-  overflow:hidden;
-  border-radius:11px;
-  border:1px solid #ffffff0c;
-  background:#17090c;
-}
-
-.card img,.poster{
-  display:flex;
-  width:100%;
-  height:205px;
-  border-radius:10px;
-}
-
-.card img{
-  object-fit:cover;
-  transition:transform .4s,filter .4s;
-}
-
-.card:hover img{
-  transform:scale(1.035);
-  filter:saturate(1.1);
-}
-
-.poster{
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-  background:radial-gradient(circle at 50% 45%,#821321,#32090f 52%,#100b10);
-}
-
-.poster:before,.poster:after{
-  content:"";
-  position:absolute;
-  width:180px;
-  height:180px;
-  border:1px solid #ff465322;
-  transform:rotate(45deg);
-}
-
-.poster:after{width:135px;height:135px}
-
-.poster strong{
-  position:relative;
-  z-index:1;
-  max-width:95%;
-  color:#ff3448;
-  font-size:clamp(23px,5vw,30px);
-  font-weight:1000;
-  text-shadow:0 0 25px #ff001144;
-}
-
-.poster span{
-  position:relative;
-  z-index:1;
-  margin-top:11px;
-  color:#eee;
-  font-size:10px;
-  letter-spacing:3px;
-}
-
-.poster.invincible{
-  background:radial-gradient(circle at 50% 45%,#292b39,#101117 57%,#090a0e);
-}
-
-.poster.invincible strong{color:#f2f2f2}
-
-.poster.mk{
-  background:radial-gradient(circle at 50% 45%,#62200e,#210d0a 55%,#0d0c10);
-}
-
-.poster.mk strong{color:#ffad55}
-
-.card-topline{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:8px;
-  margin:13px 2px 0;
-}
-
-.game-type{
-  color:#ff6875;
-  font-size:10px;
-  font-weight:bold;
-  letter-spacing:1px;
-}
-
-.game-number{
-  color:#626574;
-  font-size:10px;
-  letter-spacing:1px;
-}
-
-.card h3{
-  margin:12px 2px;
-  font-size:19px;
-  line-height:1.4;
-}
-
-.tags{
-  display:flex;
-  flex-wrap:wrap;
-  gap:7px;
-  margin:0 2px;
-}
-
-.tag{
-  display:inline-block;
-  padding:7px 9px;
-  color:#ff6875;
-  background:#ff263812;
-  border:1px solid #ff263837;
-  border-radius:6px;
-  font-size:10px;
-  font-weight:bold;
-  letter-spacing:.4px;
-}
-
-.tag.online{
-  color:#68e9a0;
-  background:#0b713714;
-  border-color:#1fa85a55;
-}
-
-.tag.action{
-  color:#ffbd69;
-  background:#9a581414;
-  border-color:#b66c2b44;
-}
-
-.desc{
-  flex:1;
-  min-height:85px;
-  margin:13px 2px 17px;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.8;
-}
-
-.card-actions{
-  display:grid;
-  gap:9px;
-  margin-top:auto;
-}
-
-.btn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  width:100%;
-  min-height:44px;
-  padding:12px 10px;
-  border:1px solid #ff4a59;
-  border-radius:9px;
-  color:#fff;
-  background:linear-gradient(105deg,#ff2638,#bd0016);
-  box-shadow:0 5px 18px #ff001115;
-  text-align:center;
-  text-decoration:none;
-  font-size:11px;
-  font-weight:bold;
-  letter-spacing:.5px;
-  transition:transform .2s,filter .2s,box-shadow .2s;
-}
-
-.btn:hover{
-  transform:translateY(-1px);
-  filter:brightness(1.12);
-  box-shadow:0 0 22px #ff001129;
-}
-
-.btn.secondary{
-  background:#ffffff07;
-  border-color:#ffffff20;
-  box-shadow:none;
-}
-
-.btn.secondary:hover{
-  border-color:#ff263866;
-  background:#ff26380d;
-}
-
-/* NO RESULTS */
-.no-results{
-  display:none;
-  grid-column:1/-1;
-  padding:35px 15px;
-  text-align:center;
-  color:#ff6875;
-  background:#11131a;
-  border:1px solid #ff26382e;
-  border-radius:14px;
-}
-
-.no-results strong{
-  display:block;
-  margin-bottom:8px;
-  font-size:18px;
-}
-
-.no-results p{
-  margin:0;
-  color:var(--muted);
-  font-size:13px;
-}
-
-/* FOOTER */
-footer{
-  margin-top:20px;
-  padding:29px 15px 33px;
-  text-align:center;
-  border-top:1px solid #ffffff12;
-  background:linear-gradient(180deg,transparent,#10080b);
-}
-
-.footer-logo{
-  font-size:18px;
-  font-weight:1000;
-  letter-spacing:2px;
-}
-
-.footer-logo span{color:var(--red)}
-
-footer p{
-  margin:10px 0 0;
-  color:#777b89;
-  font-size:11px;
-  line-height:1.8;
-}
-
-.footer-line{
-  width:45px;
-  height:2px;
-  margin:16px auto 0;
-  background:var(--red);
-  opacity:.7;
-}
-
-@media(hover:none){
-  .card:hover{transform:none}
-  .card:hover img{transform:none}
-}
-
-@media(max-width:600px){
-  header{padding:34px 14px 25px}
-  .tagline{letter-spacing:3px;font-size:10px}
-  .hero{padding:22px 17px;margin-top:20px}
-  .hero h2{font-size:29px}
-  .hero p{font-size:13px}
-  .hero-link{padding:11px 12px;font-size:10px}
-  .section-heading{margin-top:33px}
-  .section-heading h2{font-size:18px}
-  .section-heading p{font-size:11px}
-  .filters{gap:7px;margin-top:17px}
-  .filter-btn{padding:10px 11px;font-size:10px}
-  .games{gap:15px;padding:18px 14px 25px}
-  .card img,.poster{height:195px}
-  .desc{min-height:auto}
-  .search-hint{font-size:10px}
-}
-
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{
-    animation:none!important;
-    transition:none!important;
-    scroll-behavior:auto!important;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b14">
+  <title>CHITALA MODS | Mobile Gaming</title>
+
+  <style>
+    :root {
+      --bg: #080b14;
+      --panel: #101625;
+      --panel-light: #141d30;
+      --line: #26334b;
+      --text: #f0f4ff;
+      --muted: #98a7c2;
+      --blue: #50bfff;
+      --purple: #9b7bff;
+      --cyan: #54f0e0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(ellipse at 12% 0%, #182448 0%, transparent 34%),
+        radial-gradient(ellipse at 95% 28%, #20163d 0%, transparent 30%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+
+    header {
+      border-bottom: 1px solid rgba(126, 157, 210, .14);
+      background: rgba(8, 11, 20, .82);
+      backdrop-filter: blur(18px);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .header-inner {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: white;
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      background: linear-gradient(135deg, #4c9fff, #8768ff);
+      box-shadow: 0 0 25px #5e8fff30;
+    }
+
+    .brand-name {
+      font-size: 17px;
+      line-height: 1.3;
+      letter-spacing: 1.4px;
+      font-weight: 850;
+    }
+
+    .brand-subtitle {
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 2.1px;
+      margin-top: 3px;
+    }
+
+    .header-status {
+      color: #b4c6e5;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .header-status::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: var(--cyan);
+      border-radius: 50%;
+      margin: 0 9px 1px 0;
+      box-shadow: 0 0 10px var(--cyan);
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 82px 0 58px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border: 1px solid #6a8cff12;
+      border-radius: 50%;
+      right: -180px;
+      top: 10px;
+      box-shadow: 0 0 0 45px #6a8cff08, 0 0 0 90px #6a8cff05;
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: var(--cyan);
+    }
+
+    .hero h1 {
+      max-width: 750px;
+      font-size: clamp(38px, 7vw, 70px);
+      line-height: 1.04;
+      letter-spacing: -2.7px;
+      font-weight: 900;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(100deg, var(--blue), var(--purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 550px;
+      font-size: 15px;
+      margin-top: 22px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      min-height: 46px;
+      padding: 0 21px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: #121a2b;
+      color: var(--text);
+      font-weight: 750;
+      font-size: 12px;
+      letter-spacing: .5px;
+      cursor: pointer;
+      transition: transform .2s, border-color .2s, background .2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: var(--blue);
+    }
+
+    .button-primary {
+      border-color: transparent;
+      background: linear-gradient(110deg, #368fe8, #7863ed);
+      box-shadow: 0 8px 28px #5578ff20;
+    }
+
+    .button-primary:hover {
+      background: linear-gradient(110deg, #53adff, #957fff);
+    }
+
+    /* GAME SECTION */
+
+    .games-section {
+      padding: 20px 0 90px;
+      scroll-margin-top: 95px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    .section-kicker {
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 10px;
+      font-weight: 800;
+      margin-bottom: 7px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(24px, 4vw, 33px);
+      line-height: 1.2;
+      letter-spacing: -.8px;
+    }
+
+    .game-count {
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+      padding-bottom: 3px;
+    }
+
+    /* SEARCH */
+
+    .search-wrap {
+      position: relative;
+      margin-bottom: 22px;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #8ca7d3;
+      pointer-events: none;
+      font-size: 18px;
+    }
+
+    #gameSearch {
+      width: 100%;
+      height: 54px;
+      padding: 0 52px 0 47px;
+      color: var(--text);
+      background: rgba(16, 22, 37, .88);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    #gameSearch::-webkit-search-cancel-button,
+    #gameSearch::-webkit-search-decoration,
+    #gameSearch::-webkit-search-results-button,
+    #gameSearch::-webkit-search-results-decoration {
+      display: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    #gameSearch:focus {
+      border-color: #6f8fff;
+      box-shadow: 0 0 0 3px #6f8fff16;
+    }
+
+    #gameSearch::placeholder {
+      color: #71819f;
+    }
+
+    .search-clear {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+      border: 1px solid #34425d;
+      border-radius: 8px;
+      background: #192237;
+      color: #c4d3ed;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .search-clear.visible {
+      display: flex;
+    }
+
+    .search-clear:hover {
+      color: white;
+      border-color: var(--blue);
+    }
+
+    /* CORNER-LINE CATEGORY MENU */
+
+    .category-panel {
+      position: relative;
+      padding: 23px 18px 17px;
+      margin: 0 0 28px;
+      border: 1px solid #27344c;
+      border-radius: 12px;
+      background: linear-gradient(115deg, #111a2aee, #101423ee);
+    }
+
+    .category-panel::before,
+    .category-panel::after {
+      content: "";
+      position: absolute;
+      width: 38px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+      top: -1px;
+    }
+
+    .category-panel::before {
+      left: 18px;
+    }
+
+    .category-panel::after {
+      right: 18px;
+    }
+
+    .category-label {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0 12px;
+      background: var(--bg);
+      color: #a8bad9;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    .category-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 9px;
+    }
+
+    .category-btn {
+      position: relative;
+      min-height: 36px;
+      padding: 0 15px;
+      color: #9cabc5;
+      background: #0e1523;
+      border: 1px solid #293650;
+      border-radius: 7px;
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .8px;
+      transition: color .2s, border-color .2s, background .2s;
+    }
+
+    .category-btn:hover {
+      color: white;
+      border-color: #6b83c9;
+    }
+
+    .category-btn.active {
+      color: #fff;
+      border-color: #6f8fff;
+      background: linear-gradient(110deg, #263c67, #302752);
+      box-shadow: inset 0 0 18px #6f8fff0d;
+    }
+
+    .category-btn.active::after {
+      content: "";
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: -1px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+    }
+
+    /* CARDS */
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .game-card {
+      min-width: 0;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid #253149;
+      border-radius: 15px;
+      background: linear-gradient(160deg, #141c2c, #0e1320 78%);
+      transition: transform .24s, border-color .24s, box-shadow .24s;
+    }
+
+    .game-card:hover {
+      transform: translateY(-5px);
+      border-color: #5e7fc0;
+      box-shadow: 0 18px 45px #00000030, 0 0 24px #588bff0a;
+    }
+
+    .game-card[hidden] {
+      display: none;
+    }
+
+    .game-art {
+      height: 184px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 20px;
+      border-bottom: 1px solid #283650;
+    }
+
+    .game-art::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .85;
+      pointer-events: none;
+    }
+
+    .game-art::after {
+      content: "";
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      border: 1px solid #ffffff12;
+      border-radius: 50%;
+      box-shadow: 0 0 0 22px #ffffff05, 0 0 0 45px #ffffff04;
+      pointer-events: none;
+    }
+
+    .shadow-art {
+      background: linear-gradient(135deg, #101c30, #17112a 65%, #10121e);
+    }
+
+    .shadow-art::before {
+      background: radial-gradient(ellipse at 50% 45%, #647eff3d, transparent 60%);
+    }
+
+    .invincible-art {
+      background: linear-gradient(135deg, #102e43, #15354a 48%, #101626);
+    }
+
+    .invincible-art::before {
+      background: radial-gradient(ellipse at 50% 40%, #54d9ff30, transparent 65%);
+    }
+
+    .mortal-art {
+      background: linear-gradient(135deg, #30151e, #1b1423 60%, #11131f);
+    }
+
+    .mortal-art::before {
+      background: radial-gradient(ellipse at 50% 40%, #ff5e6c2c, transparent 65%);
+    }
+
+    .art-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .art-overline {
+      color: #a8c6f9;
+      font-size: 9px;
+      letter-spacing: 3px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .invincible-art .art-overline {
+      color: #75e7ff;
+    }
+
+    .mortal-art .art-overline {
+      color: #ff8b9c;
+    }
+
+    .art-title {
+      font-size: clamp(23px, 2.5vw, 31px);
+      line-height: 1.05;
+      letter-spacing: -1.1px;
+      font-weight: 950;
+      text-shadow: 0 3px 25px #0005;
+    }
+
+    .art-subtitle {
+      font-size: 9px;
+      letter-spacing: 2.3px;
+      color: #bdc8e2;
+      margin-top: 10px;
+      font-weight: 700;
+    }
+
+    .card-body {
+      padding: 19px;
+    }
+
+    .card-topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .game-type {
+      color: var(--cyan);
+      font-size: 9px;
+      font-weight: 850;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .card-number {
+      color: #61708c;
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    .card-body h3 {
+      font-size: 17px;
+      line-height: 1.35;
+      letter-spacing: -.3px;
+      margin-bottom: 9px;
+    }
+
+    .card-description {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+      min-height: 61px;
+      margin-bottom: 15px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 18px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 8px;
+      border: 1px solid #2d3b55;
+      border-radius: 5px;
+      color: #b8c8e4;
+      background: #172033;
+      font-size: 9px;
+      font-weight: 750;
+      letter-spacing: .5px;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 9px;
+    }
+
+    .card-actions .button {
+      flex: 1;
+      padding: 0 10px;
+      min-height: 41px;
+      font-size: 10px;
+    }
+
+    .button-secondary {
+      background: #151e30;
+      border-color: #30405c;
+    }
+
+    .button-secondary:hover {
+      background: #1c2940;
+    }
+
+    .empty-state {
+      display: none;
+      padding: 45px 20px;
+      text-align: center;
+      color: var(--muted);
+      border: 1px dashed #34415a;
+      border-radius: 12px;
+    }
+
+    .empty-state.visible {
+      display: block;
+    }
+
+    .empty-state h3 {
+      color: var(--text);
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid #202b40;
+      padding: 27px 0;
+      background: #090d17b8;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .footer-brand {
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 1.5px;
+    }
+
+    .footer-copy {
+      color: #73829e;
+      font-size: 11px;
+      text-align: right;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .games-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero {
+        padding-top: 66px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 26px, 440px);
+      }
+
+      .header-inner {
+        min-height: 69px;
+      }
+
+      .brand-mark {
+        width: 39px;
+        height: 39px;
+      }
+
+      .brand-name {
+        font-size: 15px;
+      }
+
+      .brand-subtitle {
+        font-size: 9px;
+        letter-spacing: 1.5px;
+      }
+
+      .header-status {
+        font-size: 9px;
+        letter-spacing: 1px;
+      }
+
+      .hero {
+        padding: 59px 0 43px;
+      }
+
+      .hero h1 {
+        letter-spacing: -1.6px;
+      }
+
+      .hero p {
+        font-size: 13px;
+      }
+
+      .section-heading {
+        align-items: center;
+      }
+
+      .games-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .game-art {
+        height: 190px;
+      }
+
+      .art-title {
+        font-size: 31px;
+      }
+
+      .card-description {
+        min-height: 0;
+      }
+
+      .category-panel {
+        padding: 23px 10px 14px;
+      }
+
+      .category-list {
+        gap: 7px;
+      }
+
+      .category-btn {
+        padding: 0 11px;
+        font-size: 9px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer-copy {
+        text-align: left;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
-
-<div class="top-line"></div>
-
-<header>
-  <div class="header-glow"></div>
-  <h1 class="logo">CHITALA <span>MODS</span></h1>
-  <p class="tagline">MOBILE GAMING WORLD</p>
-  <div class="header-line"></div>
-</header>
-
-<section class="hero">
-  <div class="hero-label">🔥 WELCOME TO CHITALA MODS</div>
-
-  <h2>YOUR NEXT <span>GAME</span><br>STARTS HERE.</h2>
-
-  <p>
-    Discover mobile games, explore game versions, and find
-    tutorials in one place. Your gaming adventure starts here.
-  </p>
-
-  <div class="hero-bottom">
-    <a class="hero-link" href="#games">🎮 EXPLORE</a>
-    <a class="hero-link secondary" href="#search">🔍 SEARCH</a>
-  </div>
-</section>
-
-<div class="search-area" id="search">
-  <label class="search-box">
-    <span class="search-icon" aria-hidden="true">🔍</span>
-
-    <input
-      class="search"
-      id="gameSearch"
-      type="search"
-      placeholder="Search games..."
-      aria-label="Search games"
-      autocomplete="off"
-    >
-
-    <button
-      class="search-clear"
-      id="clearSearch"
-      type="button"
-      aria-label="Clear search"
-      title="Clear search"
-    >×</button>
-  </label>
-
-  <p class="search-hint">
-    Search by game name or select a category below.
-  </p>
-</div>
-
-<div class="section-heading" id="games">
-  <div>
-    <h2><span>🔥</span> FEATURED GAMES</h2>
-    <p>Find your next mobile gaming adventure.</p>
-  </div>
-
-  <div class="game-count" id="gameCount">3 GAMES</div>
-</div>
-
-<nav class="filters" aria-label="Filter games">
-  <button class="filter-btn active" type="button" data-filter="all">🎮 ALL GAMES</button>
-  <button class="filter-btn" type="button" data-filter="mod">🛠 MOD APK</button>
-  <button class="filter-btn" type="button" data-filter="fighting">🥊 FIGHTING</button>
-  <button class="filter-btn" type="button" data-filter="online">🌐 ONLINE</button>
-  <button class="filter-btn" type="button" data-filter="action">⚡ ACTION</button>
-  <button class="filter-btn" type="button" data-filter="strategy">♟ STRATEGY</button>
-</nav>
-
-<main class="games">
-
-  <!-- SHADOW FIGHT 2 -->
-  <article class="card"
-    data-name="shadow fight 2 definitive edition mod apk fighting action ninja weapons"
-    data-category="mod fighting action">
-
-    <div class="media">
-      <img src="shadow-fight-2.jpg" alt="Shadow Fight 2">
-    </div>
-
-    <div class="card-topline">
-      <span class="game-type">FIGHTING • ACTION</span>
-      <span class="game-number">GAME 01</span>
-    </div>
-
-    <h3>Shadow Fight 2: Definitive Edition</h3>
-
-    <div class="tags">
-      <span class="tag">MOD APK</span>
-      <span class="tag action">FIGHTING</span>
-      <span class="tag">NINJA</span>
-    </div>
-
-    <p class="desc">
-      Enter the world of shadows! Fight powerful enemies,
-      unlock epic weapons, and master your ninja skills.
-      Follow the tutorial to get started!
-    </p>
-
-    <div class="card-actions">
-      <a class="btn"
-        href="https://drive.usercontent.google.com/download?id=1nypebh2xJD1uXJwu2_VKxIGJ6lpCzupK&amp;export=download&amp;authuser=0"
-        target="_blank"
-        rel="noopener noreferrer">
-        ⬇ DOWNLOAD GAME
+  <header>
+    <div class="container header-inner">
+      <a class="brand" href="#" aria-label="Chitala Mods home">
+        <div class="brand-mark">CM</div>
+        <div>
+          <div class="brand-name">CHITALA MODS</div>
+          <div class="brand-subtitle">MOBILE GAMING WORLD</div>
+        </div>
       </a>
-
-      <a class="btn secondary"
-        href="https://youtu.be/ecuTZ0yzTfg?si=6gsTHwQ99RolmMzb"
-        target="_blank"
-        rel="noopener noreferrer">
-        ▶ WATCH TUTORIAL
-      </a>
+      <div class="header-status">GAME LIBRARY</div>
     </div>
-  </article>
+  </header>
 
-  <!-- INVINCIBLE -->
-  <article class="card"
-    data-name="invincible guarding the globe mod apk online heroes strategy"
-    data-category="mod online action strategy">
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">Your next game starts here</div>
+        <h1>ENTER THE<br><span>GAME WORLD.</span></h1>
+        <p>
+          Discover mobile games, explore new adventures, and find your next
+          favorite game in one place.
+        </p>
 
-    <div class="media">
-      <div class="poster invincible">
-        <strong>INVINCIBLE</strong>
-        <span>GUARDING THE GLOBE</span>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#games">EXPLORE GAMES</a>
+          <button class="button" id="focusSearch" type="button">SEARCH GAMES</button>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="card-topline">
-      <span class="game-type">HEROES • STRATEGY</span>
-      <span class="game-number">GAME 02</span>
-    </div>
-
-    <h3>Invincible: Guarding the Globe</h3>
-
-    <div class="tags">
-      <span class="tag">MOD APK</span>
-      <span class="tag online">ONLINE</span>
-      <span class="tag action">ACTION</span>
-      <span class="tag">STRATEGY</span>
-    </div>
-
-    <p class="desc">
-      Build your team of heroes and battle powerful enemies
-      in the Invincible universe. Check game version and
-      online compatibility before installing.
-    </p>
-
-    <div class="card-actions">
-      <a class="btn"
-        href="https://play.google.com/store/search?q=Invincible%20Guarding%20the%20Globe&amp;c=apps"
-        target="_blank"
-        rel="noopener noreferrer">
-        ↗ FIND GAME VERSION
-      </a>
-    </div>
-  </article>
-
-  <!-- MORTAL KOMBAT -->
-  <article class="card"
-    data-name="mortal kombat fighting game combat battles"
-    data-category="fighting action">
-
-    <div class="media">
-      <div class="poster mk">
-        <strong>MORTAL KOMBAT</strong>
-        <span>FIGHTING GAME</span>
+    <section class="games-section container" id="games">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">The collection</div>
+          <h2>Explore Games</h2>
+        </div>
+        <div class="game-count" id="gameCount">3 games</div>
       </div>
+
+      <div class="search-wrap">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input
+          id="gameSearch"
+          type="search"
+          placeholder="Search games..."
+          aria-label="Search games"
+          autocomplete="off"
+        >
+        <button class="search-clear" id="clearSearch" type="button"
+          aria-label="Clear search">×</button>
+      </div>
+
+      <div class="category-panel">
+        <div class="category-label">BROWSE BY CATEGORY</div>
+        <div class="category-list" id="categoryList">
+          <button class="category-btn active" type="button" data-filter="all"
+            aria-pressed="true">ALL GAMES</button>
+          <button class="category-btn" type="button" data-filter="mod"
+            aria-pressed="false">MOD APK</button>
+          <button class="category-btn" type="button" data-filter="fighting"
+            aria-pressed="false">FIGHTING</button>
+          <button class="category-btn" type="button" data-filter="online"
+            aria-pressed="false">ONLINE</button>
+          <button class="category-btn" type="button" data-filter="action"
+            aria-pressed="false">ACTION</button>
+        </div>
+      </div>
+
+      <div class="games-grid" id="gamesGrid">
+
+        <!-- SHADOW FIGHT 2 -->
+        <article class="game-card"
+          data-name="shadow fight 2 definitive edition special edition"
+          data-category="mod fighting action">
+          <div class="game-art shadow-art">
+            <div class="art-content">
+              <div class="art-overline">DEFINITIVE EDITION</div>
+              <div class="art-title">SHADOW<br>FIGHT 2</div>
+              <div class="art-subtitle">BECOME THE SHADOW</div>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="card-topline">
+              <span class="game-type">Fighting game</span>
+              <span class="card-number">01 / 03</span>
+            </div>
+            <h3>Shadow Fight 2: Definitive Edition</h3>
+            <p class="card-description">
+              Enter the shadows and battle powerful enemies in an action-packed
+              fighting adventure.
+            </p>
+            <div class="tags">
+              <span class="tag">MOD APK</span>
+              <span class="tag">FIGHTING</span>
+              <span class="tag">ACTION</span>
+            </div>
+            <div class="card-actions">
+              <a class="button button-primary"
+                href="https://drive.usercontent.google.com/download?id=1nypebh2xJD1uXJwu2_VKxIGJ6lpCzupK&amp;export=download&amp;authuser=0"
+                target="_blank" rel="noopener noreferrer">DOWNLOAD</a>
+              <a class="button button-secondary"
+                href="https://youtu.be/ecuTZ0yzTfg?si=6gsTHwQ99RolmMzb"
+                target="_blank" rel="noopener noreferrer">TUTORIAL</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- INVINCIBLE -->
+        <article class="game-card"
+          data-name="invincible guarding the globe"
+          data-category="mod online action">
+          <div class="game-art invincible-art">
+            <div class="art-content">
+              <div class="art-overline">GUARDING THE GLOBE</div>
+              <div class="art-title">INVINCIBLE</div>
+              <div class="art-subtitle">BUILD YOUR TEAM</div>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="card-topline">
+              <span class="game-type">Hero adventure</span>
+              <span class="card-number">02 / 03</span>
+            </div>
+            <h3>Invincible: Guarding the Globe</h3>
+            <p class="card-description">
+              Recruit heroes, build your squad, and defend the globe.
+            </p>
+            <div class="tags">
+              <span class="tag">MOD APK</span>
+              <span class="tag">ONLINE</span>
+              <span class="tag">RPG</span>
+            </div>
+            <div class="card-actions">
+              <a class="button button-primary"
+                href="https://play.google.com/store/search?q=Invincible%20Guarding%20the%20Globe&amp;c=apps"
+                target="_blank" rel="noopener noreferrer">VIEW GAME</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- MORTAL KOMBAT -->
+        <article class="game-card"
+          data-name="mortal kombat mk fighting"
+          data-category="fighting action">
+          <div class="game-art mortal-art">
+            <div class="art-content">
+              <div class="art-overline">FIGHT FOR GLORY</div>
+              <div class="art-title">MORTAL<br>KOMBAT</div>
+              <div class="art-subtitle">ENTER THE ARENA</div>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="card-topline">
+              <span class="game-type">Combat game</span>
+              <span class="card-number">03 / 03</span>
+            </div>
+            <h3>Mortal Kombat</h3>
+            <p class="card-description">
+              Assemble your fighters and enter intense battles in the Mortal
+              Kombat universe.
+            </p>
+            <div class="tags">
+              <span class="tag">FIGHTING</span>
+              <span class="tag">ACTION</span>
+            </div>
+            <div class="card-actions">
+              <a class="button button-primary"
+                href="https://play.google.com/store/search?q=Mortal%20Kombat&amp;c=apps"
+                target="_blank" rel="noopener noreferrer">VIEW GAME</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="empty-state" id="emptyState">
+        <h3>No games found</h3>
+        <p>Try another name or choose a different category.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-brand">CHITALA MODS</div>
+      <div class="footer-copy">MOBILE GAMING WORLD © 2026 CHITALA MODS</div>
     </div>
+  </footer>
 
-    <div class="card-topline">
-      <span class="game-type">COMBAT • FIGHTING</span>
-      <span class="game-number">GAME 03</span>
-    </div>
+  <script>
+    const searchInput = document.getElementById("gameSearch");
+    const clearButton = document.getElementById("clearSearch");
+    const categoryButtons = [...document.querySelectorAll(".category-btn")];
+    const gameCards = [...document.querySelectorAll(".game-card")];
+    const gameCount = document.getElementById("gameCount");
+    const emptyState = document.getElementById("emptyState");
+    const focusSearch = document.getElementById("focusSearch");
 
-    <h3>Mortal Kombat</h3>
+    let activeCategory = "all";
 
-    <div class="tags">
-      <span class="tag action">FIGHTING GAME</span>
-      <span class="tag">COMBAT</span>
-    </div>
+    function filterGames() {
+      const query = searchInput.value.trim().toLowerCase();
+      let visibleCount = 0;
 
-    <p class="desc">
-      Enter the arena, choose your fighter, and take on
-      challenging opponents in intense battles.
-    </p>
+      gameCards.forEach((card) => {
+        const name = (card.dataset.name || "").toLowerCase();
+        const text = card.innerText.toLowerCase();
+        const categories = (card.dataset.category || "").split(/\s+/);
 
-    <div class="card-actions">
-      <a class="btn"
-        href="https://play.google.com/store/search?q=Mortal%20Kombat&amp;c=apps"
-        target="_blank"
-        rel="noopener noreferrer">
-        ↗ VIEW GAME
-      </a>
-    </div>
-  </article>
+        const matchesSearch = !query ||
+          name.includes(query) ||
+          text.includes(query);
 
-  <div class="no-results" id="noResults">
-    <strong>😕 No games found</strong>
-    <p>Try another game name or choose a different category.</p>
-  </div>
+        const matchesCategory = activeCategory === "all" ||
+          categories.includes(activeCategory);
 
-</main>
+        const visible = matchesSearch && matchesCategory;
+        card.hidden = !visible;
 
-<footer>
-  <div class="footer-logo">CHITALA <span>MODS</span></div>
-  <p>MOBILE GAMING WORLD<br>© 2026 CHITALA MODS</p>
-  <div class="footer-line"></div>
-</footer>
+        if (visible) visibleCount++;
+      });
 
-<script>
-const searchInput = document.getElementById("gameSearch");
-const clearButton = document.getElementById("clearSearch");
-const cards = [...document.querySelectorAll(".card")];
-const filterButtons = [...document.querySelectorAll(".filter-btn")];
-const noResults = document.getElementById("noResults");
-const gameCount = document.getElementById("gameCount");
+      gameCount.textContent =
+        `${visibleCount} ${visibleCount === 1 ? "game" : "games"}`;
 
-let activeFilter = "all";
+      emptyState.classList.toggle("visible", visibleCount === 0);
+      clearButton.classList.toggle("visible", searchInput.value.length > 0);
+    }
 
-function updateGames(){
-  const query = searchInput.value.trim().toLowerCase();
-  let visibleCount = 0;
+    searchInput.addEventListener("input", filterGames);
 
-  cards.forEach(card => {
-    const name = (card.dataset.name || "").toLowerCase();
-    const category = (card.dataset.category || "").toLowerCase();
-    const text = card.innerText.toLowerCase();
-
-    const matchesSearch =
-      name.includes(query) || text.includes(query);
-
-    const matchesFilter =
-      activeFilter === "all" ||
-      category.split(/\s+/).includes(activeFilter);
-
-    const visible = matchesSearch && matchesFilter;
-
-    card.style.display = visible ? "" : "none";
-
-    if(visible) visibleCount++;
-  });
-
-  noResults.style.display = visibleCount === 0 ? "block" : "none";
-
-  gameCount.textContent =
-    visibleCount + (visibleCount === 1 ? " GAME" : " GAMES");
-
-  clearButton.classList.toggle(
-    "visible",
-    searchInput.value.length > 0
-  );
-}
-
-searchInput.addEventListener("input", updateGames);
-
-clearButton.addEventListener("click", () => {
-  searchInput.value = "";
-  updateGames();
-  searchInput.focus();
-});
-
-filterButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    activeFilter = button.dataset.filter;
-
-    filterButtons.forEach(item => {
-      const selected = item === button;
-      item.classList.toggle("active", selected);
-      item.setAttribute("aria-pressed", String(selected));
+    clearButton.addEventListener("click", () => {
+      searchInput.value = "";
+      filterGames();
+      searchInput.focus();
     });
 
-    updateGames();
-  });
+    categoryButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        activeCategory = button.dataset.filter;
 
-  button.setAttribute(
-    "aria-pressed",
-    String(button.classList.contains("active"))
-  );
-});
+        categoryButtons.forEach((item) => {
+          const selected = item === button;
+          item.classList.toggle("active", selected);
+          item.setAttribute("aria-pressed", String(selected));
+        });
 
-updateGames();
-</script>
+        filterGames();
+      });
+    });
 
+    focusSearch.addEventListener("click", () => {
+      document.getElementById("games").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+      window.setTimeout(() => searchInput.focus(), 350);
+    });
+
+    filterGames();
+  </script>
 </body>
 </html>
