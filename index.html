@@ -47,7 +47,7 @@ h2{font-size:27px;margin:0}
 .game-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
 .game-card{background:linear-gradient(145deg,#17171e,#111115);border:1px solid var(--border);border-radius:13px;overflow:hidden;transition:transform .2s,border-color .2s}
 .game-card:hover{transform:translateY(-3px);border-color:#70303b}
-.art{height:132px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 110%,#9f1c302b,transparent 65%),linear-gradient(140deg,#24141a,#15151b)}
+.art{height:155px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 110%,#9f1c302b,transparent 65%),linear-gradient(140deg,#24141a,#15151b)}
 .art.purple{background:radial-gradient(ellipse at 50% 110%,#853cb32b,transparent 65%),linear-gradient(140deg,#24162d,#15151b)}
 .game-image{display:block;width:100%;height:100%;object-fit:cover}
 .art-label{position:absolute;left:10px;top:10px;background:#08080bbd;border:1px solid #ffffff1a;border-radius:5px;padding:5px 7px;font-size:9px;color:#dedee5;font-weight:800}
@@ -108,7 +108,7 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
 .message{display:none;color:#ffc0c7;background:#ed233714;border:1px solid #ed23372e}
 .message.show{display:block}
 @media(max-width:760px){.nav-links{display:none}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:62px 0 42px}}
-@media(max-width:520px){.container{width:calc(100% - 24px)}header{height:65px}.logo{width:34px;height:34px}.brand-name{font-size:14px}.actions{gap:5px}.actions .btn{padding:9px 10px;font-size:11px}.hero{padding:52px 0 38px}h1{letter-spacing:-.5px}.hero p{font-size:12px}.section-head{align-items:stretch;flex-direction:column}.search{width:100%}.game-grid{gap:10px}.art{height:105px}.symbol{font-size:47px}.mini-card{width:43px;height:62px;font-size:25px}.game-info{padding:11px}.game-title{font-size:15px}.game-title.pair-title{font-size:14px}.tag{font-size:8px;padding:4px}.game-info p{font-size:10px;min-height:48px}.game-type{font-size:9px}.play{padding:8px 9px;font-size:10px}.banner{align-items:flex-start;flex-direction:column}.social-links{width:100%}.footer-inner{align-items:flex-start;flex-direction:column}.modal{padding:24px 17px}}
+@media(max-width:520px){.container{width:calc(100% - 24px)}header{height:65px}.logo{width:34px;height:34px}.brand-name{font-size:14px}.actions{gap:5px}.actions .btn{padding:9px 10px;font-size:11px}.hero{padding:52px 0 38px}h1{letter-spacing:-.5px}.hero p{font-size:12px}.section-head{align-items:stretch;flex-direction:column}.search{width:100%}.game-grid{gap:10px}.art{height:120px}.symbol{font-size:47px}.mini-card{width:43px;height:62px;font-size:25px}.game-info{padding:11px}.game-title{font-size:15px}.game-title.pair-title{font-size:14px}.tag{font-size:8px;padding:4px}.game-info p{font-size:10px;min-height:48px}.game-type{font-size:9px}.play{padding:8px 9px;font-size:10px}.banner{align-items:flex-start;flex-direction:column}.social-links{width:100%}.footer-inner{align-items:flex-start;flex-direction:column}.modal{padding:24px 17px}}
 </style>
 </head>
 
@@ -177,21 +177,7 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
           </div>
         </article>
 
-        <article class="game-card" data-search="ბურა პარებში 2v2 წყვილები">
-          <div class="art">
-            <span class="art-label">ბანქო</span>
-            <img class="game-image" src="bura2.jpg" alt="ბურა პარებში">
-          </div>
-          <div class="game-info">
-            <div class="game-title-row">
-              <h3 class="game-title pair-title">ბურა პარებში</h3>
-            </div>
-            <p>შენ და შენი პარტნიორი მეორე წყვილის წინააღმდეგ.</p>
-            <div class="game-bottom">
-              <span class="game-type">პარები</span>
-              <button class="btn primary play" data-game="ბურა პარებში">თამაში</button>
-            </div>
-          </div>
+
         </article>
 
         <article class="game-card" data-search="ჯოკერი joker ბანქო">
