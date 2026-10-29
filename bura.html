@@ -3,658 +3,1082 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101b16">
+<meta name="theme-color" content="#07110e">
 <title>CHITALA PROD — ბურა</title>
 
 <style>
-:root{
-  --bg:#0a100d;
-  --panel:#131d17;
-  --panel2:#1b2920;
-  --felt:#175c3b;
-  --felt2:#10442d;
-  --gold:#e4c17b;
-  --text:#f5f3eb;
-  --muted:#a8b6aa;
-  --red:#e94b52;
+:root {
+  --bg: #07100d;
+  --green: #0b3022;
+  --panel: #0c1c16;
+  --gold: #f3c56b;
+  --gold-light: #ffe5a1;
+  --text: #f7f3e9;
+  --muted: #b7c2b9;
+  --border: #9c793a;
+  --red: #9e2935;
 }
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
-button,input{font:inherit}
-button{cursor:pointer}
-button:disabled{opacity:.4;cursor:not-allowed}
-.hidden{display:none!important}
-header{height:64px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 18px;background:#0d1510;border-bottom:1px solid #283a2d}
-.brand{font-weight:900;letter-spacing:1px;font-size:17px}
-.brand span{color:var(--gold)}
-.btn{border:1px solid #3a5040;border-radius:9px;padding:11px 14px;background:#1b2920;color:white;font-size:12px;font-weight:800}
-.btn.primary{background:var(--gold);color:#172017;border-color:var(--gold)}
-.btn.danger{border-color:#713b3e;background:#3b2021}
-.btn:hover:not(:disabled){filter:brightness(1.12)}
-#notice{margin:12px auto;width:min(1100px,calc(100% - 24px));padding:11px 13px;background:#18241b;border:1px solid #334737;border-radius:9px;color:#d9e4d7;font-size:13px}
-#notice.error{border-color:#8d3d43;color:#ffc1c1}
-main{width:min(1100px,calc(100% - 24px));margin:20px auto 45px}
-.panel{background:var(--panel);border:1px solid #2b3c30;border-radius:15px;padding:20px;margin-bottom:16px}
-h1,h2,h3,p{margin-top:0}
-h1{font-size:clamp(24px,5vw,36px);margin-bottom:8px}
-h2{font-size:20px;margin-bottom:8px}
-p{line-height:1.65}
-.muted{color:var(--muted);font-size:13px}
-.lobby-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.slots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:20px}
-.slot{min-height:210px;border:1px solid #3b4e40;background:linear-gradient(150deg,#1b2920,#111a14);border-radius:14px;padding:17px;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:10px}
-.avatar{width:66px;height:66px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#314b39;border:2px solid var(--gold);font-size:26px;font-weight:900;color:#fff}
-.slot-name{font-weight:800;overflow-wrap:anywhere}
-.slot-label{color:var(--muted);font-size:11px;letter-spacing:1px}
-.slot-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
-.status-pill{border:1px solid #4c684f;border-radius:20px;padding:7px 10px;font-size:11px;color:#c8e5cb}
-.rules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.rule{background:#0f1712;border:1px solid #293b2d;border-radius:10px;padding:12px}
-.rule strong{display:block;color:var(--gold);margin-bottom:5px}
-.rule span{color:var(--muted);font-size:12px;line-height:1.5}
-.actions{display:flex;gap:8px;flex-wrap:wrap}
-input{width:100%;padding:12px;background:#0c130e;border:1px solid #3a4d3e;border-radius:8px;color:white}
-.auth-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.auth-row .wide{grid-column:1/-1}
 
-/* Full-screen game view */
-#gameView{position:fixed;inset:0;z-index:20;background:#08100b;overflow:auto;padding:0 12px 18px}
-.game-header{position:sticky;top:0;z-index:5;margin:0 -12px 12px;padding:12px 15px;background:#0b140e;border-bottom:1px solid #304333;display:flex;justify-content:space-between;align-items:center;gap:10px}
-.game-header h2{margin:0;font-size:16px}
-.scoreboard{display:flex;gap:9px;flex-wrap:wrap}
-.score-chip{background:#19251c;border:1px solid #344a38;border-radius:8px;padding:8px 10px;font-size:12px}
-.score-chip strong{color:var(--gold)}
-.table{position:relative;width:min(100%,1100px);margin:0 auto;background:radial-gradient(ellipse at center,var(--felt),var(--felt2) 72%);border:9px solid #6e482b;border-radius:30px;box-shadow:inset 0 0 0 3px #bd9257,0 18px 60px #0008;padding:16px;min-height:calc(100vh - 120px);display:flex;flex-direction:column;gap:12px}
-.player-row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;background:#07190e70;border:1px solid #ffffff22;border-radius:12px;padding:10px 12px}
-.player-meta{display:flex;align-items:center;gap:9px;min-width:0}
-.player-meta .avatar{width:42px;height:42px;font-size:16px;flex-shrink:0}
-.player-name{font-size:13px;font-weight:900;overflow-wrap:anywhere}
-.player-points{font-size:12px;color:#f7e1aa;margin-top:3px}
-.table-center{flex:1;display:grid;grid-template-columns:minmax(100px,1fr) minmax(180px,2fr) minmax(100px,1fr);align-items:center;gap:10px;min-height:160px}
-.deck-area{text-align:center;font-size:12px;color:#f2e8cb}
-.deck-stack{width:55px;height:78px;margin:8px auto;border:2px solid #e4d7b8;border-radius:7px;background:repeating-linear-gradient(45deg,#274e3b,#274e3b 5px,#173624 5px,#173624 10px);box-shadow:4px 4px 0 #0c2618}
-.trump-card{background:#f7f0df;color:#1b211c;width:55px;height:78px;margin:8px auto;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-direction:column;font-weight:900;box-shadow:2px 4px 0 #a9a18f}
-.trick-area{min-height:125px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;border:1px dashed #ffffff3b;border-radius:13px;padding:10px}
-.played{display:flex;gap:5px;flex-wrap:wrap;justify-content:center}
-.played-card{width:47px;height:66px;border-radius:6px;background:#f7f0df;color:#151915;display:flex;align-items:center;justify-content:center;flex-direction:column;font-weight:900;box-shadow:0 3px 6px #0005}
-.played-card.red{color:#c52e3d}
-.trick-caption{width:100%;text-align:center;color:#dce9db;font-size:11px}
-.hand-title{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12px;color:#dce9db}
-.hand{display:flex;justify-content:center;align-items:flex-end;gap:clamp(2px,1vw,9px);min-height:126px;padding:8px 0;flex-wrap:wrap}
-.card{position:relative;width:clamp(48px,8vw,76px);height:clamp(74px,12vw,110px);background:#fff9ec;color:#151915;border:2px solid #e4dcc9;border-radius:8px;box-shadow:0 4px 7px #0005;display:flex;align-items:center;justify-content:center;flex-direction:column;font-size:clamp(17px,3vw,24px);font-weight:900;transition:transform .12s,border-color .12s}
-.card.red{color:#c52e3d}
-.card.selected{transform:translateY(-13px);border-color:#ffd568;box-shadow:0 0 0 3px #ffd56833,0 6px 12px #0005}
-.card small{font-size:10px;margin-top:3px}
-.controls{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:4px 0}
-.controls .btn{padding:11px 14px}
-.announcement-row{display:flex;justify-content:center;gap:7px;flex-wrap:wrap}
-.announce{background:#15251a;border:1px solid #8b7444;color:#f3dca6;border-radius:9px;padding:9px 12px;font-size:11px;font-weight:900}
-.log{font-size:11px;color:#c8d8c8;line-height:1.7;max-height:90px;overflow:auto;background:#07160d70;border-radius:9px;padding:8px 10px}
-#resultBanner{display:none;text-align:center;padding:12px;background:#16281b;border:1px solid var(--gold);border-radius:10px;color:#ffe2a0;font-weight:900}
-@media(max-width:600px){
- header{padding:0 10px;height:58px}.brand{font-size:14px}.btn{padding:9px 10px;font-size:11px}
- main{margin-top:12px}.panel{padding:14px}.slots{gap:8px}.slot{padding:11px;min-height:180px}
- .avatar{width:54px;height:54px}.rules{grid-template-columns:1fr}
- .table{border-width:5px;border-radius:20px;padding:9px;min-height:calc(100vh - 100px)}
- .table-center{grid-template-columns:62px minmax(100px,1fr) 62px;gap:4px;min-height:135px}
- .deck-stack,.trump-card{width:43px;height:62px}.played-card{width:38px;height:55px}
- .player-row{padding:8px}.score-chip{padding:7px;font-size:10px}
- .game-header h2{font-size:13px}.controls .btn{padding:10px 9px;font-size:10px}
- .hand{min-height:100px}.card{width:clamp(39px,12vw,58px);height:clamp(63px,19vw,85px)}
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at 50% 0%, #19422d 0%, transparent 48%),
+    var(--bg);
+  font-family: Arial, "Noto Sans Georgian", sans-serif;
+}
+
+button, input { font: inherit; }
+button { cursor: pointer; }
+button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 3px;
+}
+
+.container {
+  width: min(1120px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+/* HEADER */
+
+header {
+  padding: 13px 0;
+  border: 1px solid #a87e34;
+  border-radius: 0 0 18px 18px;
+  background: linear-gradient(110deg, #06100c, #12241a, #06100c);
+  box-shadow: 0 5px 28px #0007;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.crown {
+  color: var(--gold);
+  font-size: 37px;
+  line-height: 1;
+}
+
+.brand-name {
+  font-weight: 900;
+  font-size: 19px;
+  line-height: 1.1;
+}
+
+.brand-name span { color: var(--gold); }
+
+.brand-divider {
+  height: 36px;
+  width: 1px;
+  background: #8e713b;
+  margin-inline: 4px;
+}
+
+.brand-game {
+  color: var(--gold);
+  font-size: 23px;
+  font-weight: 900;
+}
+
+.header-actions {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+
+.btn {
+  border: 1px solid #80612e;
+  border-radius: 10px;
+  padding: 11px 15px;
+  color: var(--text);
+  background: #10241a;
+  font-weight: 800;
+  transition: .2s;
+}
+
+.btn:hover {
+  border-color: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+.btn-gold {
+  color: #17150e;
+  background: linear-gradient(135deg, #ffe6a0, #d7a443);
+  border-color: #ffdf8d;
+  box-shadow: 0 4px 18px #dba94425;
+}
+
+.btn-red {
+  background: linear-gradient(135deg, #a8323e, #641a25);
+  border-color: #b04b52;
+}
+
+/* HERO */
+
+.hero {
+  padding: 42px 0 24px;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 13px;
+  border: 1px solid #8d6b32;
+  border-radius: 30px;
+  color: var(--gold-light);
+  background: #d8a9440c;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1.3px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #5cf09a;
+  box-shadow: 0 0 10px #5cf09a;
+}
+
+h1 {
+  margin: 17px 0 10px;
+  font-size: clamp(31px, 5vw, 49px);
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+h1 span { color: var(--gold); }
+
+.hero p {
+  max-width: 570px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* GAME MODE CAROUSEL */
+
+.mode-section { padding: 18px 0 28px; }
+
+.section-title {
+  margin: 0 0 7px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.section-subtitle {
+  margin: 0 0 22px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.carousel {
+  position: relative;
+  max-width: 900px;
+  margin: auto;
+}
+
+.mode-track {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 19px;
+}
+
+.mode-card {
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+  padding: 24px 21px 22px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 30%, #16472f88, transparent 60%),
+    linear-gradient(145deg, #10291d, #07140f 80%);
+  box-shadow: inset 0 0 0 4px #d9ac4c08, 0 12px 30px #0005;
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+}
+
+.mode-card::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px solid #b58b3a35;
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.mode-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold-light);
+  box-shadow: 0 12px 35px #0007, 0 0 20px #e7b9550b;
+}
+
+.mode-card.active {
+  border-color: var(--gold-light);
+  box-shadow: inset 0 0 0 2px #e9bb5a30, 0 0 25px #e9bb5a15;
+}
+
+.mode-art {
+  position: relative;
+  min-height: 158px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.suit-watermark {
+  position: absolute;
+  font-size: 110px;
+  color: #e5bb5b13;
+  user-select: none;
+}
+
+.cards-art {
+  position: relative;
+  width: 210px;
+  height: 135px;
+}
+
+.playing-card {
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  width: 77px;
+  height: 112px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d8caa9;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #fffdf5, #e8dfc9);
+  box-shadow: 0 9px 15px #0007;
+  color: #171713;
+}
+
+.playing-card .rank {
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.playing-card .suit { font-size: 35px; }
+
+.playing-card.red { color: #c62b37; }
+
+.playing-card.one { transform: translateX(-67px) rotate(-15deg); }
+.playing-card.two { transform: translateX(-24px) rotate(-5deg); top: 1px; }
+.playing-card.three { transform: translateX(21px) rotate(9deg); top: 8px; }
+
+.team-icons {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.team-icon {
+  width: 47px;
+  height: 47px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold-light);
+  background: #07150f;
+  font-size: 23px;
+}
+
+.team-vs {
+  color: var(--gold);
+  font-weight: 900;
+}
+
+.mode-label {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 5px 9px;
+  border: 1px solid #d6ae5940;
+  border-radius: 5px;
+  color: var(--gold-light);
+  background: #e6b7530d;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1.3px;
+}
+
+.mode-card h3 {
+  margin: 0;
+  color: var(--gold-light);
+  font-size: clamp(27px, 4vw, 37px);
+  font-weight: 900;
+  text-shadow: 0 0 18px #f4c86c22;
+}
+
+.mode-description {
+  min-height: 42px;
+  margin: 8px 0 17px;
+  color: #d0d9d0;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.mode-btn {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 14px 10px;
+  border-radius: 30px;
+  font-size: 14px;
+}
+
+.carousel-arrow {
+  position: absolute;
+  z-index: 3;
+  top: 38%;
+  width: 43px;
+  height: 49px;
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  color: var(--gold-light);
+  background: #07140ff2;
+  font-size: 25px;
+  box-shadow: 0 5px 15px #0006;
+}
+
+.carousel-arrow:hover { background: #173a28; }
+.carousel-arrow.left { left: -55px; }
+.carousel-arrow.right { right: -55px; }
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 20px;
+}
+
+.carousel-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 1px solid #a0a99f;
+  border-radius: 50%;
+  background: #51675b;
+}
+
+.carousel-dot.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 12px #e8bd60a0;
+}
+
+/* RULES AND ACCOUNT */
+
+.bottom-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 16px;
+  margin: 6px 0 44px;
+}
+
+.panel {
+  padding: 19px;
+  border: 1px solid #8e6a32;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #0c2017, #08130e);
+}
+
+.panel h2 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 15px;
+  font-size: 19px;
+}
+
+.panel h2 span { color: var(--gold); }
+
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.rule {
+  padding: 12px 10px;
+  border: 1px solid #ffffff12;
+  border-radius: 10px;
+  background: #07130d7a;
+}
+
+.rule-icon {
+  margin-bottom: 7px;
+  color: var(--gold);
+  font-size: 23px;
+}
+
+.rule strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--gold-light);
+  font-size: 12px;
+}
+
+.rule p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.account-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.account-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 17px;
+}
+
+.account-avatar {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: #10281c;
+  color: var(--gold-light);
+  font-size: 22px;
+}
+
+.account-heading strong { font-size: 14px; }
+.account-heading p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.account-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+
+.account-buttons .btn { min-width: 0; }
+
+/* AUTH MODAL */
+
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: #000c;
+  backdrop-filter: blur(7px);
+}
+
+.overlay.open { display: flex; }
+
+.modal {
+  position: relative;
+  width: min(410px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 25px;
+  border: 1px solid var(--gold);
+  border-radius: 17px;
+  background: linear-gradient(145deg, #13291e, #07110c);
+  box-shadow: 0 20px 70px #0009;
+}
+
+.modal h2 {
+  margin: 0 0 8px;
+  color: var(--gold-light);
+  font-size: 23px;
+}
+
+.modal-intro {
+  margin: 0 0 19px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.close {
+  position: absolute;
+  top: 11px;
+  right: 11px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #7d6538;
+  border-radius: 9px;
+  color: white;
+  background: #102319;
+  font-size: 21px;
+}
+
+.field { margin-bottom: 13px; }
+
+.field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.field input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #405447;
+  border-radius: 8px;
+  color: white;
+  background: #07120d;
+  font-size: 13px;
+}
+
+.field input::placeholder { color: #839186; }
+
+.auth-submit { width: 100%; margin-top: 4px; }
+
+.auth-message {
+  display: none;
+  margin-top: 13px;
+  padding: 10px;
+  border: 1px solid #a96e40;
+  border-radius: 8px;
+  color: #ffe0ac;
+  background: #402d18;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.auth-message.show { display: block; }
+
+.modal-switch {
+  margin-top: 15px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.modal-switch button {
+  border: 0;
+  color: var(--gold-light);
+  background: transparent;
+  font-weight: 900;
+}
+
+/* MODE NOTICE */
+
+.notice {
+  display: none;
+  margin: 15px auto 0;
+  max-width: 650px;
+  padding: 13px 16px;
+  border: 1px solid #8c6a35;
+  border-radius: 10px;
+  color: var(--gold-light);
+  background: #10251a;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.notice.show { display: block; }
+
+footer {
+  padding: 22px 0;
+  border-top: 1px solid #3c382a;
+  color: #8e9a90;
+  font-size: 11px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  color: var(--gold-light);
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+/* MOBILE */
+
+@media (max-width: 1000px) {
+  .carousel-arrow.left { left: 5px; }
+  .carousel-arrow.right { right: 5px; }
+  .carousel-arrow { top: 35%; }
+  .mode-track { padding-inline: 48px; }
+}
+
+@media (max-width: 700px) {
+  .header-inner { flex-wrap: wrap; }
+  .brand-name { font-size: 16px; }
+  .brand-game { font-size: 19px; }
+  .header-actions .btn { padding: 9px 10px; font-size: 11px; }
+  .hero { padding-top: 33px; }
+  .bottom-grid { grid-template-columns: 1fr; }
+  .rules-grid { grid-template-columns: 1fr; }
+  .rule { display: grid; grid-template-columns: 35px 1fr; column-gap: 8px; }
+  .rule-icon { grid-row: span 2; }
+  .rule strong { margin: 0 0 4px; }
+  .rule p { grid-column: 2; }
+}
+
+@media (max-width: 520px) {
+  .container { width: calc(100% - 22px); }
+  header { border-radius: 0 0 13px 13px; }
+  .crown { font-size: 29px; }
+  .brand-name { font-size: 13px; }
+  .brand-divider { height: 29px; }
+  .brand-game { font-size: 17px; }
+  .header-actions { gap: 5px; }
+  .header-actions .btn { padding: 8px; font-size: 10px; }
+  h1 { font-size: 31px; }
+  .hero p { font-size: 12px; }
+  .section-title { font-size: 21px; }
+  .mode-track {
+    display: flex;
+    padding: 0 37px;
+    overflow: hidden;
+    touch-action: pan-y;
+  }
+  .mode-card {
+    display: none;
+    width: 100%;
+    flex: 0 0 100%;
+    padding: 19px 15px;
+  }
+  .mode-card.active { display: block; }
+  .mode-art { min-height: 145px; }
+  .cards-art { transform: scale(.9); }
+  .mode-card h3 { font-size: 30px; }
+  .mode-description { min-height: 0; }
+  .carousel-arrow {
+    top: 36%;
+    width: 34px;
+    height: 42px;
+    font-size: 21px;
+  }
+  .carousel-arrow.left { left: 0; }
+  .carousel-arrow.right { right: 0; }
+  .panel { padding: 15px; }
+  .account-buttons { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+  html { scroll-behavior: auto; }
 }
 </style>
 </head>
+
 <body>
+
 <header>
-  <div class="brand">CHITALA <span>PROD</span> · ბურა</div>
-  <div class="actions">
-    <button class="btn" id="homeBtn">მთავარზე დაბრუნება</button>
-    <button class="btn primary" id="accountBtn">შესვლა / რეგისტრაცია</button>
+  <div class="container header-inner">
+    <div class="brand">
+      <div class="crown" aria-hidden="true">♛</div>
+      <div class="brand-name">CHITALA<br><span>PROD</span></div>
+      <div class="brand-divider"></div>
+      <div class="brand-game">ბურა</div>
+    </div>
+
+    <div class="header-actions">
+      <button class="btn" id="headerAccount" type="button">♙ ანგარიში</button>
+      <button class="btn" id="headerSettings" type="button">⚙ პარამეტრები</button>
+    </div>
   </div>
 </header>
 
-<div id="notice">Firebase-ს ვუკავშირდებით…</div>
+<main class="container">
 
-<main id="lobbyView">
-  <section class="panel">
-    <div class="lobby-top">
-      <div>
-        <h1>ბურას მაგიდა</h1>
-        <p class="muted">დაჯექი თავისუფალ ადგილზე და დაელოდე მეორე მოთამაშეს.</p>
+  <section class="hero">
+    <div class="eyebrow"><span class="status-dot"></span> CHITALA PROD • ბანქოს თამაშები</div>
+    <h1>აირჩიე შენი <span>თამაშის რეჟიმი</span></h1>
+    <p>შეიკრიბე მეგობრებთან, გამოსცადე შენი სტრატეგია და იბრძოლე გამარჯვებისთვის.</p>
+  </section>
+
+  <section class="mode-section" aria-label="თამაშის რეჟიმები">
+    <h2 class="section-title">თამაშის რეჟიმები</h2>
+    <p class="section-subtitle">გადადი სასურველ რეჟიმზე და დაიწყე თამაში</p>
+
+    <div class="carousel" id="carousel">
+      <button class="carousel-arrow left" id="prevMode" type="button" aria-label="წინა რეჟიმი">‹</button>
+      <button class="carousel-arrow right" id="nextMode" type="button" aria-label="შემდეგი რეჟიმი">›</button>
+
+      <div class="mode-track" id="modeTrack">
+
+        <article class="mode-card active" data-mode="classic">
+          <div class="mode-art">
+            <div class="suit-watermark">♠</div>
+            <div class="cards-art" aria-hidden="true">
+              <div class="playing-card one">
+                <span class="rank">A</span><span class="suit">♠</span>
+              </div>
+              <div class="playing-card red two">
+                <span class="rank">10</span><span class="suit">♥</span>
+              </div>
+              <div class="playing-card three">
+                <span class="rank">K</span><span class="suit">♣</span>
+              </div>
+            </div>
+          </div>
+
+          <span class="mode-label">კლასიკური რეჟიმი</span>
+          <h3>ბურა</h3>
+          <p class="mode-description">
+            კლასიკური ბურა ორ მოთამაშეს შორის. გამოიყენე კოზირი,
+            დაგეგმე სვლები და დააგროვე 11 ქულა.
+          </p>
+          <button class="btn btn-gold mode-btn" data-start="classic" type="button">
+            ➜ &nbsp; თამაშის დაწყება
+          </button>
+        </article>
+
+        <article class="mode-card" data-mode="team">
+          <div class="mode-art">
+            <div class="suit-watermark">♣</div>
+            <div class="cards-art" aria-hidden="true">
+              <div class="playing-card one">
+                <span class="rank">A</span><span class="suit">♠</span>
+              </div>
+              <div class="playing-card red two">
+                <span class="rank">10</span><span class="suit">♥</span>
+              </div>
+              <div class="playing-card three">
+                <span class="rank">K</span><span class="suit">♣</span>
+              </div>
+            </div>
+            <div class="team-icons" aria-hidden="true">
+              <span class="team-icon">♟</span>
+              <span class="team-vs">VS</span>
+              <span class="team-icon">♟</span>
+            </div>
+          </div>
+
+          <span class="mode-label">გუნდური რეჟიმი</span>
+          <h3>ბურა 2v2</h3>
+          <p class="mode-description">
+            ითამაშე პარტნიორთან ერთად, შეათანხმე სტრატეგია
+            და დაუპირისპირდი მეორე გუნდს.
+          </p>
+          <button class="btn btn-gold mode-btn" data-start="team" type="button">
+            ➜ &nbsp; რეჟიმის არჩევა
+          </button>
+        </article>
+
       </div>
-      <span class="status-pill" id="lobbyStatus">მოსაცდელი მაგიდა</span>
-    </div>
 
-    <div class="slots">
-      <article class="slot" id="slot1">
-        <div class="avatar">1</div>
-        <div class="slot-label">მოთამაშე 1</div>
-        <div class="slot-name">თავისუფალი ადგილია</div>
-        <div class="slot-actions"><button class="btn primary sit-btn" data-seat="1">დაჯდომა</button></div>
-      </article>
-      <article class="slot" id="slot2">
-        <div class="avatar">2</div>
-        <div class="slot-label">მოთამაშე 2</div>
-        <div class="slot-name">თავისუფალი ადგილია</div>
-        <div class="slot-actions"><button class="btn primary sit-btn" data-seat="2">დაჯდომა</button></div>
-      </article>
+      <div class="carousel-dots" aria-label="რეჟიმის არჩევა">
+        <button class="carousel-dot active" data-dot="0" type="button" aria-label="ბურა"></button>
+        <button class="carousel-dot" data-dot="1" type="button" aria-label="ბურა 2v2"></button>
+      </div>
+
+      <div class="notice" id="modeNotice" role="status"></div>
     </div>
   </section>
 
-  <section class="panel">
-    <h2>თამაშის წესები</h2>
-    <div class="rules">
-      <div class="rule"><strong>11 ქულამდე</strong><span>მატჩი სრულდება, როცა მოთამაშე 11 ქულას მიაღწევს.</span></div>
-      <div class="rule"><strong>ხელის კოეფიციენტი</strong><span>დავი ×2, სე ×3, ჩარი ×4, ფანჯი ×5, შაში ×6.</span></div>
-      <div class="rule"><strong>ბურა / მალიუტკა</strong><span>ხუთი კოზირი — ბურა; ხუთი ერთი მასტი, კოზირის გარეშე — მალიუტკა.</span></div>
-    </div>
-  </section>
+  <section class="bottom-grid">
 
-  <section class="panel">
-    <h2>ანგარიშში შესვლა</h2>
-    <p class="muted">თამაშისთვის საჭიროა Firebase ანგარიშით შესვლა.</p>
-    <div class="auth-row">
-      <input id="emailInput" type="email" placeholder="ელფოსტა" autocomplete="email">
-      <input id="passwordInput" type="password" placeholder="პაროლი" autocomplete="current-password">
-      <input id="nameInput" class="wide" placeholder="მოთამაშის სახელი (რეგისტრაციისას)">
-      <div class="actions wide">
-        <button class="btn primary" id="loginBtn">შესვლა</button>
-        <button class="btn" id="registerBtn">რეგისტრაცია</button>
-        <button class="btn danger hidden" id="logoutBtn">გამოსვლა</button>
+    <div class="panel">
+      <h2><span>★</span> თამაშის წესები</h2>
+
+      <div class="rules-grid">
+        <div class="rule">
+          <div class="rule-icon">🏆</div>
+          <strong>11 ქულამდე</strong>
+          <p>მატჩს იგებს მოთამაშე, რომელიც პირველი დააგროვებს 11 ქულას.</p>
+        </div>
+
+        <div class="rule">
+          <div class="rule-icon">♠</div>
+          <strong>ხელის კოეფიციენტი</strong>
+          <p>დავი ×2, სე ×3, ჩარი ×4, ფანჯი ×5, შაში ×6.</p>
+        </div>
+
+        <div class="rule">
+          <div class="rule-icon">🃏</div>
+          <strong>ბურა / მალიუტკა</strong>
+          <p>სპეციალური კომბინაციები თამაშის წესების მიხედვით გამოიყენება.</p>
+        </div>
       </div>
     </div>
+
+    <div class="panel account-panel">
+      <div class="account-heading">
+        <div class="account-avatar">♙</div>
+        <div>
+          <strong id="accountTitle">შედი ან დარეგისტრირდი</strong>
+          <p id="accountSubtitle">ანგარიშის შესაქმნელად გამოიყენე ელფოსტა.</p>
+        </div>
+      </div>
+
+      <div class="account-buttons">
+        <button class="btn" id="loginButton" type="button">♙ &nbsp; შესვლა</button>
+        <button class="btn btn-gold" id="registerButton" type="button">♟ &nbsp; რეგისტრაცია</button>
+        <button class="btn btn-red" id="logoutButton" type="button" hidden>ანგარიშიდან გამოსვლა</button>
+      </div>
+    </div>
+
   </section>
 </main>
 
-<section id="gameView" class="hidden">
-  <div class="game-header">
-    <h2>CHITALA PROD · ბურა</h2>
-    <div class="scoreboard">
-      <div class="score-chip">ხელის ქულა: <strong id="handMultiplier">×1</strong></div>
-      <div class="score-chip">რაუნდი: <strong id="roundNum">1</strong></div>
-    </div>
-    <button class="btn" id="backLobbyBtn">მოსაცდელ მაგიდაზე</button>
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand">♛ CHITALA PROD • ბურა</div>
+    <div>© <span id="year"></span> CHITALA PROD · ყველა უფლება დაცულია</div>
   </div>
+</footer>
 
-  <div class="table">
-    <div class="player-row" id="opponentPanel">
-      <div class="player-meta"><div class="avatar">?</div><div><div class="player-name">მეორე მოთამაშე</div><div class="player-points">0 ქულა</div></div></div>
-      <div class="muted" id="opponentCards">კარტები: 5</div>
-    </div>
+<div class="overlay" id="authOverlay" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <div class="modal">
+    <button class="close" id="closeAuth" type="button" aria-label="დახურვა">×</button>
+    <h2 id="authTitle">შესვლა</h2>
+    <p class="modal-intro" id="authIntro">შედი ანგარიშში და გააგრძელე თამაში.</p>
 
-    <div class="table-center">
-      <div class="deck-area">
-        <div>ასაღები დასტა</div>
-        <div class="deck-stack"></div>
-        <strong id="deckCount">22</strong> კარტი
+    <form id="authForm">
+      <div class="field" id="nameField" hidden>
+        <label for="displayName">მომხმარებლის სახელი</label>
+        <input id="displayName" type="text" maxlength="24" autocomplete="nickname" placeholder="შენი სახელი">
       </div>
-      <div class="trick-area" id="trickArea">
-        <div class="trick-caption">სვლა დაიწყება, როცა ორივე მოთამაშე მზად იქნება.</div>
+
+      <div class="field">
+        <label for="email">ელფოსტა</label>
+        <input id="email" type="email" required autocomplete="email" placeholder="name@example.com">
       </div>
-      <div class="deck-area">
-        <div>კოზირი</div>
-        <div class="trump-card" id="trumpCard">?</div>
-        <div id="trumpName">—</div>
+
+      <div class="field">
+        <label for="password">პაროლი</label>
+        <input id="password" type="password" minlength="6" required autocomplete="current-password" placeholder="მინიმუმ 6 სიმბოლო">
       </div>
+
+      <button class="btn btn-gold auth-submit" id="submitAuth" type="submit">შესვლა</button>
+    </form>
+
+    <div class="auth-message" id="authMessage" role="status"></div>
+
+    <div class="modal-switch">
+      <span id="switchText">არ გაქვს ანგარიში?</span>
+      <button id="switchMode" type="button">რეგისტრაცია</button>
     </div>
-
-    <div id="resultBanner"></div>
-
-    <div class="player-row" id="myPanel">
-      <div class="player-meta"><div class="avatar">მ</div><div><div class="player-name">შენ</div><div class="player-points">0 ქულა</div></div></div>
-      <div class="muted" id="myTurnText">ელოდები…</div>
-    </div>
-
-    <div class="hand-title"><strong>შენი კარტები</strong><span id="selectedCount">არჩეულია: 0</span></div>
-    <div class="hand" id="myHand"></div>
-
-    <div class="controls">
-      <button class="btn primary" id="playBtn">არჩეული კარტების ჩასვლა</button>
-      <button class="btn" id="malyutkaBtn">მალიუტკა</button>
-      <button class="btn" id="buraBtn">ბურა</button>
-      <button class="btn" id="newHandBtn">ახალი ხელი</button>
-    </div>
-
-    <div class="announcement-row">
-      <button class="announce" data-mult="2">დავი ×2</button>
-      <button class="announce" data-mult="3">სე ×3</button>
-      <button class="announce" data-mult="4">ჩარი ×4</button>
-      <button class="announce" data-mult="5">ფანჯი ×5</button>
-      <button class="announce" data-mult="6">შაში ×6</button>
-    </div>
-
-    <div class="log" id="gameLog">თამაში მზადაა.</div>
   </div>
-</section>
-
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+</div>
 
 <script>
-const firebaseConfig = {
-  apiKey: "AIzaSyChOYCwVd2AaZzLGx_tQsT2PqNlbNXqkis",
-  authDomain: "chitala-mods.firebaseapp.com",
-  databaseURL: "https://chitala-mods-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "chitala-mods",
-  storageBucket: "chitala-mods.firebasestorage.app",
-  messagingSenderId: "415729264734",
-  appId: "1:415729264734:web:edba39f96e5cbdfd6beccf"
-};
+/* რეჟიმების კარუსელი */
+const modeCards = [...document.querySelectorAll(".mode-card")];
+const dots = [...document.querySelectorAll(".carousel-dot")];
+const notice = document.getElementById("modeNotice");
+let currentMode = 0;
 
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-const db = firebase.database();
+function selectMode(index) {
+  currentMode = (index + modeCards.length) % modeCards.length;
 
-const lobbyRef = db.ref("lobby/bura");
-const roomsRef = db.ref("rooms");
+  modeCards.forEach((card, i) => {
+    card.classList.toggle("active", i === currentMode);
+  });
 
-let user = null;
-let lobby = null;
-let room = null;
-let roomId = null;
-let selected = new Set();
-let busy = false;
-let openedRoom = null;
+  dots.forEach((dot, i) => {
+    dot.classList.toggle("active", i === currentMode);
+  });
 
-const $ = id => document.getElementById(id);
-const suits = ["♠","♥","♦","♣"];
-const ranks = ["7","8","9","J","Q","K","10","A"];
-const rankValue = {"7":0,"8":1,"9":2,"J":3,"Q":4,"K":5,"10":6,"A":7};
-const suitName = {"♠":"ყვავი","♥":"გული","♦":"აგური","♣":"ჯვარი"};
-const multName = {1:"ჩვეულებრივი",2:"დავი",3:"სე",4:"ჩარი",5:"ფანჯი",6:"შაში"};
-
-function notice(text,error=false){
-  $("notice").textContent=text;
-  $("notice").classList.toggle("error",error);
+  notice.classList.remove("show");
 }
-function escapeText(s){
-  return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-}
-function playerName(p){return p?.name || "მოთამაშე"}
-function newDeck(){
-  const d=[];
-  suits.forEach(s=>ranks.forEach(r=>d.push({suit:s,rank:r,id:s+r})));
-  for(let i=d.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));
-    [d[i],d[j]]=[d[j],d[i]];
+
+document.getElementById("prevMode").addEventListener("click", () => {
+  selectMode(currentMode - 1);
+});
+
+document.getElementById("nextMode").addEventListener("click", () => {
+  selectMode(currentMode + 1);
+});
+
+dots.forEach(dot => {
+  dot.addEventListener("click", () => selectMode(Number(dot.dataset.dot)));
+});
+
+/* მობილურზე თითით გადასრიალება */
+const carousel = document.getElementById("carousel");
+let touchStartX = 0;
+let touchStartY = 0;
+
+carousel.addEventListener("touchstart", event => {
+  touchStartX = event.changedTouches[0].clientX;
+  touchStartY = event.changedTouches[0].clientY;
+}, { passive: true });
+
+carousel.addEventListener("touchend", event => {
+  const dx = event.changedTouches[0].clientX - touchStartX;
+  const dy = event.changedTouches[0].clientY - touchStartY;
+
+  if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.25) {
+    selectMode(currentMode + (dx < 0 ? 1 : -1));
   }
-  return d;
-}
-function blankRoom(players){
-  const deck=newDeck();
-  const hands={"1":deck.splice(0,5),"2":deck.splice(0,5)};
-  const trumpCard=deck.pop();
-  return {
-    players,
-    game:{
-      status:"playing",round:1,deck,hands,trump:trumpCard.suit,trumpCard,
-      trick:[],turn:1,match:{"1":0,"2":0},points:{"1":0,"2":0},
-      taken:{"1":[],"2":[]},multiplier:1,announcement:"",
-      winner:null,lastResult:"",log:["ხელი დაიწყო."],selectedIds:{}
+}, { passive: true });
+
+/* რეჟიმის ღილაკები */
+document.querySelectorAll("[data-start]").forEach(button => {
+  button.addEventListener("click", () => {
+    const mode = button.dataset.start;
+
+    if (mode === "classic") {
+      showNotice("არჩეულია კლასიკური ბურა. შემდეგ ეტაპზე აქ დავუკავშირებთ შენს ონლაინ ლობისა და თამაშის ეკრანს.");
+    } else {
+      showNotice("ბურა 2v2 რეჟიმის მენიუ მზადაა. გუნდური ონლაინ თამაშისთვის ცალკე ოთახების ლოგიკა უნდა დაემატოს.");
     }
-  };
-}
-function mySeat(s=room){
-  if(!s?.players||!user)return null;
-  if(s.players["1"]?.uid===user.uid)return "1";
-  if(s.players["2"]?.uid===user.uid)return "2";
-  return null;
-}
-function myLobbySeat(s=lobby){
-  if(!s?.slots||!user)return null;
-  if(s.slots["1"]?.uid===user.uid)return "1";
-  if(s.slots["2"]?.uid===user.uid)return "2";
-  return null;
-}
-function addLog(g,text){
-  g.log=[...(g.log||[]),text].slice(-12);
-}
-function safeName(){
-  return user?.displayName || user?.email?.split("@")[0] || "მოთამაშე";
-}
-function lobbyBlank(){return {slots:{"1":null,"2":null},roomId:null,updatedAt:Date.now()};}
-
-async function runTransaction(ref,fn){
-  if(busy||!user)return null;
-  busy=true;
-  try{
-    const result=await ref.transaction(current=>{
-      if(!current)return;
-      return fn(JSON.parse(JSON.stringify(current)));
-    },undefined,false);
-    if(!result.committed)throw new Error("მონაცემი შეიცვალა ან ტრანზაქცია ვერ შესრულდა.");
-    return result.snapshot.val();
-  }finally{busy=false;}
-}
-
-function renderSlot(n){
-  const slot=$("slot"+n);
-  const p=lobby?.slots?.[String(n)];
-  if(!p){
-    slot.innerHTML=`<div class="avatar">${n}</div>
-      <div class="slot-label">მოთამაშე ${n}</div>
-      <div class="slot-name">თავისუფალი ადგილია</div>
-      <div class="slot-actions"><button class="btn primary sit-btn" data-seat="${n}" ${!user||busy?"disabled":""}>დაჯდომა</button></div>`;
-  }else{
-    const mine=p.uid===user?.uid;
-    slot.innerHTML=`<div class="avatar">${escapeText(playerName(p).slice(0,1).toLocaleUpperCase("ka"))}</div>
-      <div class="slot-label">მოთამაშე ${n}</div>
-      <div class="slot-name">${escapeText(playerName(p))}${mine?" · შენ":""}</div>
-      <div class="slot-actions">${mine?'<button class="btn danger stand-btn">ადგომა</button>':'<span class="status-pill">დაკავებულია</span>'}</div>`;
-  }
-  slot.querySelector(".sit-btn")?.addEventListener("click",()=>sit(n));
-  slot.querySelector(".stand-btn")?.addEventListener("click",stand);
-}
-function renderLobby(){
-  renderSlot(1);renderSlot(2);
-  $("lobbyStatus").textContent=lobby?.roomId?"თამაში იწყება…":lobby?.slots?.["1"]&&lobby?.slots?.["2"]?"ორივე მოთამაშე მზადაა":"მოსაცდელი მაგიდა";
-}
-function updateAuthUi(){
-  $("accountBtn").textContent=user?("ანგარიში: "+safeName()):"შესვლა / რეგისტრაცია";
-  $("loginBtn").classList.toggle("hidden",!!user);
-  $("registerBtn").classList.toggle("hidden",!!user);
-  $("logoutBtn").classList.toggle("hidden",!user);
-  ["emailInput","passwordInput","nameInput"].forEach(id=>$(id).disabled=!!user);
-  renderLobby();
-}
-async function sit(seat){
-  if(!user){notice("ჯერ შედი ან დარეგისტრირდი ანგარიშში.",true);return}
-  if(busy)return;
-  try{
-    const candidateRoomId="bura_"+Date.now().toString(36)+"_"+user.uid.slice(0,7);
-    const updated=await runTransaction(lobbyRef,s=>{
-      s.slots=s.slots||{"1":null,"2":null};
-      if(s.roomId)return;
-      if(s.slots[seat]&&s.slots[seat].uid!==user.uid)return;
-      if(s.slots["1"]?.uid===user.uid||s.slots["2"]?.uid===user.uid)return s;
-      if(s.slots[seat])return;
-      s.slots[seat]={uid:user.uid,name:safeName(),joinedAt:Date.now()};
-      if(s.slots["1"]&&s.slots["2"]){
-        s.roomId=candidateRoomId;
-        s.roomPlayers={"1":s.slots["1"],"2":s.slots["2"]};
-      }
-      return s;
-    });
-    if(updated?.roomId)await prepareRoom(updated);
-    else notice("მაგიდასთან დაჯექი. დაელოდე მეორე მოთამაშეს.");
-  }catch(e){notice("დაჯდომა ვერ მოხერხდა: "+e.message,true)}
-}
-async function stand(){
-  if(!user||busy)return;
-  try{
-    await runTransaction(lobbyRef,s=>{
-      if(s.roomId)return;
-      for(const n of ["1","2"])if(s.slots?.[n]?.uid===user.uid)s.slots[n]=null;
-      return s;
-    });
-    notice("ადგომა შესრულდა.");
-  }catch(e){notice("ადგომა ვერ მოხერხდა: "+e.message,true)}
-}
-async function prepareRoom(l){
-  const id=l.roomId;
-  if(!id||!l.roomPlayers)return;
-  const ref=roomsRef.child(id);
-  try{
-    await ref.transaction(current=>current||blankRoom(l.roomPlayers),undefined,false);
-    // Clear the shared lobby after the room exists, allowing new players to sit.
-    await lobbyRef.transaction(s=>{
-      if(!s||s.roomId!==id)return;
-      return {slots:{"1":null,"2":null},roomId:null,updatedAt:Date.now()};
-    },undefined,false);
-    enterRoom(id);
-  }catch(e){notice("ოთახის შექმნა ვერ მოხერხდა: "+e.message,true)}
-}
-function enterRoom(id){
-  roomId=id;
-  openedRoom=id;
-  selected.clear();
-  $("lobbyView").classList.add("hidden");
-  $("gameView").classList.remove("hidden");
-  if(window.roomListener)roomsRef.child(window.roomListener).off();
-  window.roomListener=id;
-  roomsRef.child(id).on("value",snap=>{
-    room=snap.val();
-    if(!room){notice("თამაშის ოთახი ვერ მოიძებნა.",true);return}
-    renderGame();
-  },err=>notice("Firebase შეცდომა: "+err.message,true));
-}
-function leaveRoom(){
-  if(roomId&&window.roomListener)roomsRef.child(window.roomListener).off();
-  roomId=null;room=null;openedRoom=null;selected.clear();
-  $("gameView").classList.add("hidden");
-  $("lobbyView").classList.remove("hidden");
-  notice("მოსაცდელ მაგიდაზე დაბრუნდი.");
-  renderLobby();
-}
-function cardText(c){return c.rank+c.suit}
-function cardHtml(c,idx,selectable){
-  const red=c.suit==="♥"||c.suit==="♦";
-  return `<button class="card ${red?"red":""} ${selected.has(c.id)?"selected":""}" data-card="${escapeText(c.id)}" ${!selectable?"disabled":""}>
-    ${escapeText(c.rank)}<span>${escapeText(c.suit)}</span><small>${escapeText(c.rank)} ${escapeText(c.suit)}</small></button>`;
-}
-function compareCards(a,b,trump){
-  const aTrump=a.suit===trump,bTrump=b.suit===trump;
-  if(aTrump&&!bTrump)return 1;
-  if(bTrump&&!aTrump)return -1;
-  if(a.suit===b.suit)return Math.sign(rankValue[a.rank]-rankValue[b.rank]);
-  return 0;
-}
-function renderPlayerPanel(el,p,points,count,turn){
-  const name=p?.name||"მოთამაშე";
-  el.innerHTML=`<div class="player-meta"><div class="avatar">${escapeText(name.slice(0,1).toLocaleUpperCase("ka"))}</div>
-    <div><div class="player-name">${escapeText(name)}${turn?" · სვლაა":""}</div>
-    <div class="player-points">${points||0} ქულა</div></div></div>
-    <div class="muted">კარტები: ${count}</div>`;
-}
-function renderGame(){
-  const seat=mySeat();
-  if(!seat){notice("ეს ოთახი შენთვის არ არის განკუთვნილი.",true);return}
-  const other=seat==="1"?"2":"1";
-  const g=room.game;
-  const mine=g.hands?.[seat]||[];
-  const theirs=g.hands?.[other]||[];
-  const isTurn=g.turn===Number(seat)&&g.status==="playing";
-  renderPlayerPanel($("opponentPanel"),room.players?.[other],g.match?.[other],theirs.length,g.turn===Number(other));
-  renderPlayerPanel($("myPanel"),room.players?.[seat],g.match?.[seat],mine.length,isTurn);
-  $("myTurnText").textContent=g.status==="finished"?"ხელი დასრულდა":isTurn?"შენი სვლაა":"ოპონენტის სვლაა";
-  $("opponentCards").textContent="კარტები: "+theirs.length;
-  $("deckCount").textContent=g.deck?.length||0;
-  $("trumpCard").textContent=g.trumpCard?cardText(g.trumpCard):"—";
-  $("trumpName").textContent=suitName[g.trump]||"—";
-  $("handMultiplier").textContent="×"+(g.multiplier||1);
-  $("roundNum").textContent=g.round||1;
-  $("myHand").innerHTML=mine.map((c,i)=>cardHtml(c,i,isTurn)).join("");
-  $("selectedCount").textContent="არჩეულია: "+selected.size;
-  $("trickArea").innerHTML="";
-  if(g.trick?.length){
-    g.trick.forEach(t=>{
-      const who=room.players?.[t.seat]?.name||"მოთამაშე";
-      const cardsHtml=(t.cards||[]).map(c=>`<div class="played-card ${(c.suit==="♥"||c.suit==="♦")?"red":""}">${escapeText(c.rank)}<span>${escapeText(c.suit)}</span></div>`).join("");
-      $("trickArea").insertAdjacentHTML("beforeend",`<div class="played">${cardsHtml}</div><div class="trick-caption">${escapeText(who)}</div>`);
-    });
-  }else $("trickArea").innerHTML='<div class="trick-caption">ჩასვი კარტი, როცა შენი სვლაა.</div>';
-  $("resultBanner").style.display=g.status==="finished"?"block":"none";
-  $("resultBanner").textContent=g.lastResult||"ხელი დასრულდა";
-  $("playBtn").disabled=!isTurn||!selected.size||busy;
-  $("malyutkaBtn").disabled=!isTurn||!canMalyutka(mine,g.trump)||busy;
-  $("buraBtn").disabled=!isTurn||!canBura(mine,g.trump)||busy;
-  $("newHandBtn").disabled=g.status!=="finished"||busy;
-  document.querySelectorAll("[data-mult]").forEach(b=>b.disabled=!isTurn||busy||(g.multiplier||1)>=Number(b.dataset.mult));
-  $("gameLog").innerHTML=(g.log||[]).slice().reverse().map(x=>"• "+escapeText(x)).join("<br>");
-  $("myHand").querySelectorAll("[data-card]").forEach(b=>b.addEventListener("click",()=>{
-    const id=b.dataset.card;
-    selected.has(id)?selected.delete(id):selected.add(id);
-    renderGame();
-  }));
-}
-function canMalyutka(hand,trump){
-  if(hand.length<5)return false;
-  const five=hand.slice(0,5);
-  return five.length===5&&five.every(c=>c.suit===five[0].suit)&&five[0].suit!==trump;
-}
-function canBura(hand,trump){return hand.length>=5&&hand.filter(c=>c.suit===trump).length>=5}
-function transactRoom(fn){
-  if(!roomId||busy||!user)return;
-  const ref=roomsRef.child(roomId);
-  busy=true;
-  ref.transaction(current=>{
-    if(!current)return;
-    const s=JSON.parse(JSON.stringify(current));
-    const seat=mySeat(s);
-    if(!seat)return;
-    const result=fn(s,seat);
-    return result===false?undefined:s;
-  },(error,committed,snap)=>{
-    busy=false;
-    if(error)notice("Firebase შეცდომა: "+error.message,true);
-    else if(!committed)notice("სვლა ვერ შესრულდა. გადაამოწმე სვლის რიგი.",true);
-    else{room=snap.val();renderGame()}
-  },false);
-}
-function finishHand(g,winner,reason){
-  const score=(g.multiplier||1);
-  g.match[winner]=(g.match[winner]||0)+score;
-  g.status="finished";
-  g.winner=winner;
-  g.lastResult=(winner==="1"?"მოთამაშე 1":"მოთამაშე 2")+" იგებს ხელს · "+reason+" · +"+score+" ქულა";
-  addLog(g,g.lastResult);
-  if(g.match[winner]>=11){
-    g.status="matchFinished";
-    g.lastResult+=" · მატჩი დასრულდა!";
-  }
-}
-function playCards(){
-  const ids=[...selected];
-  if(!ids.length)return;
-  transactRoom((s,seat)=>{
-    const g=s.game;
-    if(g.status!=="playing"||g.turn!==Number(seat))return false;
-    const hand=g.hands[seat];
-    const cards=hand.filter(c=>ids.includes(c.id));
-    if(cards.length!==ids.length)return false;
-    if(cards.length>1&&!cards.every(c=>c.suit===cards[0].suit)){
-      notice("ერთდროულად მხოლოდ ერთი მასტის კარტების ჩასვლა შეგიძლია.",true);return false;
-    }
-    g.hands[seat]=hand.filter(c=>!ids.includes(c.id));
-    g.trick=g.trick||[];
-    g.trick.push({seat,cards});
-    addLog(g,playerName(s.players[seat])+" ჩამოვიდა "+cards.map(cardText).join(", "));
-    selected.clear();
-    if(g.trick.length===1){
-      g.turn=seat==="1"?2:1;
-    }else{
-      const first=g.trick[0],second=g.trick[1];
-      const a=first.cards[0],b=second.cards[0];
-      const cmp=compareCards(a,b,g.trump);
-      const winner=cmp>0?first.seat:cmp<0?second.seat:first.seat;
-      const allCards=[...first.cards,...second.cards];
-      g.taken[winner]=[...(g.taken[winner]||[]),...allCards];
-      const points=allCards.reduce((sum,c)=>sum+({"A":11,"10":10,"K":4,"Q":3,"J":2}[c.rank]||0),0);
-      g.points[winner]=(g.points[winner]||0)+points;
-      addLog(g,playerName(s.players[winner])+" იღებს "+points+" ქულას.");
-      g.trick=[];
-      g.turn=Number(winner);
-      if((g.points[winner]||0)>=61){finishHand(g,winner,"61+ ქულა");return s}
-      // Refill hands after trick, winner draws first.
-      for(const who of [String(winner),winner==="1"?"2":"1"]){
-        while(g.hands[who].length<5&&g.deck.length)g.hands[who].push(g.deck.pop());
-      }
-      if(!g.deck.length&&g.hands["1"].length===0&&g.hands["2"].length===0){
-        finishHand(g,(g.points["1"]||0)>=(g.points["2"]||0)?"1":"2","ქულებით");return s;
-      }
-      g.round=(g.round||1)+1;
-    }
-    return s;
-  });
-}
-function specialWin(kind){
-  transactRoom((s,seat)=>{
-    const g=s.game,hand=g.hands[seat];
-    if(g.status!=="playing"||g.turn!==Number(seat))return false;
-    if(kind==="bura"&&!canBura(hand,g.trump))return false;
-    if(kind==="malyutka"&&!canMalyutka(hand,g.trump))return false;
-    g.hands[seat]=[];
-    finishHand(g,seat,kind==="bura"?"ბურა":"მალიუტკა");
-    return s;
-  });
-}
-$("playBtn").addEventListener("click",playCards);
-$("buraBtn").addEventListener("click",()=>specialWin("bura"));
-$("malyutkaBtn").addEventListener("click",()=>specialWin("malyutka"));
-$("newHandBtn").addEventListener("click",()=>{
-  transactRoom((s,seat)=>{
-    if(s.game.status!=="finished"&&s.game.status!=="matchFinished")return false;
-    if(s.game.status==="matchFinished")s.game.match={"1":0,"2":0};
-    const players=s.players;
-    const fresh=blankRoom(players);
-    fresh.game.match=s.game.match;
-    fresh.game.round=(s.game.round||1)+1;
-    fresh.game.log=[...(s.game.log||[]),"ახალი ხელი დაიწყო."].slice(-12);
-    return Object.assign(s,fresh);
-  });
-});
-document.querySelectorAll("[data-mult]").forEach(button=>{
-  button.addEventListener("click",()=>{
-    const mult=Number(button.dataset.mult);
-    transactRoom((s,seat)=>{
-      const g=s.game;
-      if(g.status!=="playing"||g.turn!==Number(seat)||(g.multiplier||1)>=mult)return false;
-      g.multiplier=mult;
-      g.announcement=multName[mult];
-      addLog(g,playerName(s.players[seat])+" აცხადებს "+multName[mult]+" ×"+mult);
-      return s;
-    });
   });
 });
 
-$("backLobbyBtn").addEventListener("click",leaveRoom);
-$("homeBtn").addEventListener("click",()=>location.href="index.html");
-$("accountBtn").addEventListener("click",()=>{
-  if(user)notice("შესული ხარ ანგარიშით: "+safeName());
-  else{$("emailInput").focus();notice("ქვემოთ შეიყვანე ელფოსტა და პაროლი.")}
-});
-$("loginBtn").addEventListener("click",async()=>{
-  try{
-    await auth.signInWithEmailAndPassword($("emailInput").value.trim(),$("passwordInput").value);
-    notice("წარმატებით შეხვედი ანგარიშში.");
-  }catch(e){notice("შესვლა ვერ მოხერხდა: "+e.message,true)}
-});
-$("registerBtn").addEventListener("click",async()=>{
-  const name=$("nameInput").value.trim();
-  if(!name){notice("რეგისტრაციისთვის მოთამაშის სახელი შეიყვანე.",true);return}
-  try{
-    const cred=await auth.createUserWithEmailAndPassword($("emailInput").value.trim(),$("passwordInput").value);
-    await cred.user.updateProfile({displayName:name});
-    notice("ანგარიში შეიქმნა.");
-  }catch(e){notice("რეგისტრაცია ვერ მოხერხდა: "+e.message,true)}
-});
-$("logoutBtn").addEventListener("click",()=>auth.signOut());
-$("backLobbyBtn").addEventListener("click",leaveRoom);
+function showNotice(text) {
+  notice.textContent = text;
+  notice.classList.add("show");
+  notice.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
 
-auth.onAuthStateChanged(u=>{
-  user=u;
-  updateAuthUi();
-  if(u)notice("შესული ხარ: "+safeName()+". შეგიძლია მაგიდასთან დაჯდე.");
-  else notice("შედი ან დარეგისტრირდი, რომ მაგიდასთან დაჯდე.");
-});
+/* Firebase ავტორიზაცია */
+document.getElementById("year").textContent = new Date().getFullYear();
 
-lobbyRef.on("value",snap=>{
-  lobby=snap.val();
-  if(!lobby){
-    lobbyRef.transaction(current=>current||lobbyBlank(),undefined,false);
-    return;
+const authOverlay = document.getElementById("authOverlay");
+const authForm = document.getElementById("authForm");
+const authMessage = document.getElementById("authMessage");
+const nameField = document.getElementById("nameField");
+const displayNameInput = document.getElementById("displayName");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+
+let authMode = "login";
+let currentUser = null;
+
+function openAuth(mode) {
+  authMode = mode;
+  updateAuthMode();
+  authMessage.classList.remove("show");
+  authOverlay.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeAuth() {
+  authOverlay.classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+function updateAuthMode() {
+  const registering = authMode === "register";
+
+  document.getElementById("authTitle").textContent =
+    registering ? "ანგარიშის შექმნა" : "შესვლა";
+
+  document.getElementById("authIntro").textContent =
+    registering
+      ? "შექმენი ანგარიში CHITALA PROD-ზე."
+      : "შედი ანგარიშში და გააგრძელე თამაში.";
+
+  document.getElementById("submitAuth").textContent =
+    registering ? "რეგისტრაცია" : "შესვლა";
+
+  document.getElementById("switchText").textContent =
+    registering ? "უკვე გაქვს ანგარიში?" : "არ გაქვს ანგარიში?";
+
+  document.getElementById("switchMode").textContent =
+    registering ? "შესვლა" : "რეგისტრაცია";
+
+  nameField.hidden = !registering;
+  displayNameInput.required = registering;
+  passwordInput.autocomplete = registering ? "new-password" : "current-password";
+}
+
+function showAuthMessage(text) {
+  authMessage.textContent = text;
+  authMessage.classList.add("show");
+}
+
+document.getElementById("loginButton").addEventListener("click", () => openAuth("login"));
+document.getElementById("registerButton").addEventListener("click", () => openAuth("register"));
+document.getElementById("headerAccount").addEventListener("click", () => {
+  if (currentUser) {
+    showNotice("შესული ხარ ანგარიშით: " + (currentUser.displayName || currentUser.email));
+  } else {
+    openAuth("login");
   }
-  renderLobby();
-  if(lobby.roomId&&lobby.roomPlayers&&user&&
-    (lobby.roomPlayers["1"]?.uid===user.uid||lobby.roomPlayers["2"]?.uid===user.uid)){
-    prepareRoom(lobby);
-  }
-},error=>notice("Firebase შეცდომა: "+error.message,true));
+});
 
-window.addEventListener("beforeunload",()=>{
-  if(roomId&&window.roomListener)roomsRef.child(window.roomListener).off();
+document.getElementById("switchMode").addEventListener("click", () => {
+  openAuth(authMode === "login" ? "register" : "login");
+});
+
+document.getElementById("closeAuth").addEventListener("click", closeAuth);
+
+authOverlay.addEventListener("click", event => {
+  if (event.target === authOverlay) closeAuth();
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeAuth();
+});
+
+/* ეს არის UI-ის პარამეტრების ღილაკი */
+document.getElementById("headerSettings").addEventListener("click", () => {
+  showNotice("პარამეტრები: შემდეგ ეტაპზე აქ დავამატებთ ხმას, ბარათების დიზაინსა და ეკრანის პარამეტრებს.");
+});
+
+/*
+  Firebase-ის ავტორიზაცია გააქტიურდება მხოლოდ მაშინ,
+  როცა შენს არსებულ firebaseConfig-ს დაამატებ.
+  ეს მენიუ თავისით არ ქმნის Firebase სესიას ან ონლაინ ოთახს.
+*/
+document.getElementById("authForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  showAuthMessage(
+    "ავტორიზაცია ჯერ არ არის დაკავშირებული Firebase-თან. " +
+    "შემდეგ ეტაპზე დავაკავშირებთ შენს chitala-mods პროექტს."
+  );
+});
+
+document.getElementById("logoutButton").addEventListener("click", () => {
+  showNotice("ანგარიშიდან გამოსვლის ფუნქცია Firebase Auth-ის დაკავშირების შემდეგ ჩაირთვება.");
 });
 </script>
+
 </body>
 </html>
