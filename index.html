@@ -45,10 +45,12 @@ h2{font-size:27px;margin:0}
 .search{width:min(270px,100%);background:#141419;border:1px solid #30303a;border-radius:9px;padding:12px 13px;color:white;outline:none;font-size:13px}
 .search:focus{border-color:#a92839}
 .search::placeholder{color:#858591}
-.game-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+
+/* თამაშების ბარათები ოდნავ გადიდებულია */
+.game-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:18px}
 .game-card{background:linear-gradient(145deg,#17171e,#111115);border:1px solid var(--border);border-radius:13px;overflow:hidden;transition:transform .2s,border-color .2s}
 .game-card:hover{transform:translateY(-3px);border-color:#70303b}
-.art{height:175px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 110%,#9f1c302b,transparent 65%),linear-gradient(140deg,#24141a,#15151b)}
+.art{height:205px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 110%,#9f1c302b,transparent 65%),linear-gradient(140deg,#24141a,#15151b)}
 .art.purple{background:radial-gradient(ellipse at 50% 110%,#853cb32b,transparent 65%),linear-gradient(140deg,#24162d,#15151b)}
 .game-image{display:block;width:100%;height:100%;object-fit:cover}
 .art-label{position:absolute;left:10px;top:10px;background:#08080bbd;border:1px solid #ffffff1a;border-radius:5px;padding:5px 7px;font-size:9px;color:#dedee5;font-weight:800}
@@ -104,7 +106,7 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
 .profile-heading{text-align:center}
 .profile-photo-wrap{position:relative;width:104px;margin:4px auto 12px}
 .profile-avatar{width:104px;height:104px;margin:0 auto;border:2px solid var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#241219;color:#fff;font-size:36px;font-weight:900;box-shadow:0 0 24px #ed233725}
-.profile-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.profile-avatar img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%}
 .photo-edit{position:absolute;right:0;bottom:1px;width:35px;height:35px;display:flex;align-items:center;justify-content:center;border:2px solid #15151b;border-radius:50%;background:var(--red);color:#fff;box-shadow:0 3px 12px #0008;cursor:pointer}
 .photo-edit svg{width:17px;height:17px}
 .profile-display-name{font-size:16px;font-weight:900;text-align:center;overflow-wrap:anywhere;margin:0 0 5px}
@@ -138,8 +140,8 @@ h1{letter-spacing:-.5px}
 .hero p{font-size:12px}
 .section-head{align-items:stretch;flex-direction:column}
 .search{width:100%}
-.game-grid{gap:10px}
-.art{height:120px}
+.game-grid{gap:12px}
+.art{height:155px}
 .game-info{padding:11px}
 .game-title{font-size:15px}
 .tag{font-size:8px;padding:4px}
@@ -582,7 +584,7 @@ authForm.addEventListener("submit", async event => {
   }
 });
 
-/* პაროლის აღდგენა რჩება შესვლის ფანჯარაში */
+/* პაროლის აღდგენა */
 document.getElementById("forgotPassword").addEventListener("click", async () => {
   const emailValue = email.value.trim();
 
@@ -643,7 +645,7 @@ function renderHeader(user) {
   document.getElementById("heroJoin").onclick = openProfile;
 }
 
-/* ფოტოსთვის მომხმარებლის უნიკალური გასაღები */
+/* მომხმარებლის ფოტოს გასაღები */
 function photoStorageKey(user) {
   return "chitala_profile_photo_" + user.uid;
 }
@@ -683,7 +685,7 @@ function updateProfilePhoto(user, displayName) {
   }
 }
 
-/* ელფოსტის ჩვენება და დამალვა */
+/* ელფოსტის ჩვენება/დამალვა */
 function updateEmailVisibility() {
   const emailElement = document.getElementById("profileEmail");
   const toggleButton = document.getElementById("toggleEmailButton");
@@ -703,7 +705,7 @@ document.getElementById("toggleEmailButton").addEventListener("click", () => {
   updateEmailVisibility();
 });
 
-/* პროფილის მონაცემების ჩვენება */
+/* პროფილის მონაცემები */
 function updateProfileDisplay(user) {
   const displayName =
     user.displayName || user.email?.split("@")[0] || "მოთამაშე";
@@ -717,7 +719,7 @@ function updateProfileDisplay(user) {
   updateEmailVisibility();
 }
 
-/* სახელის რედაქტირების გახსნა */
+/* სახელის რედაქტირება */
 document.getElementById("editNameButton").addEventListener("click", () => {
   if (!currentUser) return;
 
@@ -729,14 +731,13 @@ document.getElementById("editNameButton").addEventListener("click", () => {
   document.getElementById("profileNameInput").focus();
 });
 
-/* სახელის რედაქტირების გაუქმება */
 document.getElementById("cancelNameEdit").addEventListener("click", () => {
   document.getElementById("profileForm").classList.add("hidden");
   document.getElementById("editNameButton").classList.remove("hidden");
   clearProfileMessage();
 });
 
-/* მომხმარებლის სახელის შენახვა */
+/* სახელის შენახვა */
 document.getElementById("profileForm").addEventListener("submit", async event => {
   event.preventDefault();
 
@@ -782,7 +783,7 @@ document.getElementById("profileForm").addEventListener("submit", async event =>
   }
 });
 
-/* გალერეიდან ფოტოს არჩევა */
+/* ფოტოს არჩევა */
 document.getElementById("changePhotoButton").addEventListener("click", () => {
   if (!currentUser) {
     showProfileMessage("ჯერ შედი შენს ანგარიშში.");
@@ -792,42 +793,59 @@ document.getElementById("changePhotoButton").addEventListener("click", () => {
   document.getElementById("profilePhotoInput").click();
 });
 
-/* ფოტოს შუიდან კვადრატულად მოჭრა და 400x400 ზომაზე დაყვანა */
+/* ფოტოს შუიდან კვადრატულად მოჭრა და შეკუმშვა */
 function compressImage(file) {
   return new Promise((resolve, reject) => {
-    const image = new Image();
     const reader = new FileReader();
+    const image = new Image();
 
     reader.onload = () => {
       image.onload = () => {
-        const side = Math.min(image.width, image.height);
-        const sourceX = (image.width - side) / 2;
-        const sourceY = (image.height - side) / 2;
+        try {
+          const side = Math.min(image.width, image.height);
+          const sourceX = (image.width - side) / 2;
+          const sourceY = (image.height - side) / 2;
 
-        const canvas = document.createElement("canvas");
-        canvas.width = 400;
-        canvas.height = 400;
+          const canvas = document.createElement("canvas");
+          canvas.width = 256;
+          canvas.height = 256;
 
-        const context = canvas.getContext("2d");
+          const context = canvas.getContext("2d");
 
-        if (!context) {
-          reject(new Error("canvas-unavailable"));
-          return;
+          if (!context) {
+            reject(new Error("canvas-unavailable"));
+            return;
+          }
+
+          context.drawImage(
+            image,
+            sourceX,
+            sourceY,
+            side,
+            side,
+            0,
+            0,
+            256,
+            256
+          );
+
+          canvas.toBlob(blob => {
+            if (!blob) {
+              reject(new Error("image-compression-failed"));
+              return;
+            }
+
+            const compressedReader = new FileReader();
+
+            compressedReader.onload = () => resolve(compressedReader.result);
+            compressedReader.onerror = () =>
+              reject(new Error("file-read-failed"));
+
+            compressedReader.readAsDataURL(blob);
+          }, "image/jpeg", 0.60);
+        } catch (error) {
+          reject(error);
         }
-
-        context.drawImage(
-          image,
-          sourceX,
-          sourceY,
-          side,
-          side,
-          0,
-          0,
-          400,
-          400
-        );
-
-        resolve(canvas.toDataURL("image/jpeg", 0.82));
       };
 
       image.onerror = () => reject(new Error("image-load-failed"));
@@ -875,17 +893,21 @@ document.getElementById("profilePhotoInput").addEventListener("change", async ev
 
     showProfileMessage("პროფილის ფოტო წარმატებით შეიცვალა.");
   } catch (error) {
+    console.error("Profile photo upload error:", error);
+
     if (error.message === "storage-full" || error.name === "QuotaExceededError") {
-      showProfileMessage("ფოტოს შენახვა ვერ მოხერხდა. სცადე უფრო პატარა სურათი.");
+      showProfileMessage("ფოტოს შენახვა ვერ მოხერხდა. ბრაუზერის მეხსიერება შეიძლება სავსე იყოს.");
+    } else if (error.message === "image-load-failed") {
+      showProfileMessage("ეს სურათის ფორმატი ვერ გაიხსნა. სცადე JPG ან PNG ფოტო.");
     } else {
-      showProfileMessage("ფოტოს ჩატვირთვა ვერ მოხერხდა. სცადე სხვა სურათი.");
+      showProfileMessage("ფოტოს ჩატვირთვა ვერ მოხერხდა. სცადე სხვა JPG ან PNG სურათი.");
     }
   } finally {
     button.disabled = false;
   }
 });
 
-/* გამოსვლა */
+/* ანგარიშიდან გამოსვლა */
 async function logoutUser() {
   try {
     await auth.signOut();
@@ -934,7 +956,7 @@ document.querySelectorAll(".play").forEach(button => {
   });
 });
 
-/* მომხმარებლის ავტორიზაციის მდგომარეობა */
+/* ავტორიზაციის მდგომარეობა */
 auth.onAuthStateChanged(user => {
   currentUser = user;
   renderHeader(user);
