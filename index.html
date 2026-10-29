@@ -1,1 +1,254 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="CHITALA MODS — Android games, gameplay, tutorials and game updates.">
+<title>CHITALA MODS</title>
+<style>
+:root{--bg:#0c1017;--panel:#151c27;--border:#29364a;--blue:#3984ff;--text:#f4f7ff;--muted:#9ba9bd}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
+button,input{font:inherit}button,a{cursor:pointer}a{color:inherit;text-decoration:none}
+header{position:sticky;top:0;z-index:10;background:#0c1017f5;border-bottom:1px solid var(--border)}
+.nav{max-width:1150px;margin:auto;padding:13px 20px;display:flex;align-items:center;gap:15px}
+.brand{display:flex;align-items:center;gap:9px;background:none;border:0;color:white;font-weight:900;font-size:17px;white-space:nowrap}
+.brand img{width:42px;height:42px;object-fit:contain;border-radius:9px}
+.brand span{color:var(--blue)}
+.search{position:relative;flex:1;margin-left:auto;max-width:510px}
+.search input{width:100%;padding:13px 40px;border:1px solid var(--border);border-radius:12px;background:#111722;color:white;outline:none}
+.search input:focus{border-color:var(--blue)}
+.search-icon{position:absolute;left:13px;top:12px;color:var(--muted)}
+#clearSearch{position:absolute;right:8px;top:7px;background:none;border:0;color:white;font-size:20px;display:none}
+.menu{position:relative}
+.menu-toggle{background:var(--panel);border:1px solid var(--border);color:white;border-radius:12px;width:45px;height:45px;font-size:23px}
+.dropdown{display:none;position:absolute;right:0;top:53px;width:175px;padding:7px;background:var(--panel);border:1px solid var(--border);border-radius:12px;box-shadow:0 10px 30px #0009}
+.dropdown.open{display:block}
+.dropdown button{display:block;width:100%;text-align:left;padding:13px;border:0;border-radius:8px;background:none;color:white}
+.dropdown button:hover{background:#26344a}
+main{max-width:1150px;margin:auto;padding:30px 20px 55px}
+.page{display:none}.page.active{display:block}
+.heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:5px 0 22px}
+.heading h1{font-size:30px;margin:0}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:7px;padding:11px 14px;border-radius:9px;border:1px solid #35445b;background:#202b3b;color:white;font-weight:bold;font-size:13px}
+.btn.primary{background:var(--blue);border-color:var(--blue)}
+.btn:hover{filter:brightness(1.15)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:15px;overflow:hidden;transition:.2s}
+.card:hover{transform:translateY(-3px);border-color:#4e75ad}
+.cover{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#202b3b}
+.content{padding:16px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tag{font-size:10px;font-weight:bold;letter-spacing:.5px;padding:6px 8px;border-radius:6px;background:#26354b;color:#8ebaff}
+.tag.red{background:#40252e;color:#ff9aab}
+.tag.green{background:#173b32;color:#7de4ba}
+.card h3{font-size:17px;line-height:1.4;margin:0 0 9px}
+.card p{color:var(--muted);font-size:13px;line-height:1.6;min-height:42px}
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+.actions .btn{flex:1}
+.empty{display:none;text-align:center;color:var(--muted);padding:30px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}
+.filter{padding:9px 13px;background:var(--panel);color:#cbd5e5;border:1px solid var(--border);border-radius:9px}
+.filter.active{background:#1c3b68;border-color:var(--blue);color:white}
+#recentSection{display:none;margin-top:45px}
+.subheading{font-size:22px;margin:0 0 18px}
+.detail{max-width:900px;margin:auto}
+.back{margin-bottom:18px}
+.detailbox{background:var(--panel);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.detailbox>img{width:100%;max-height:390px;object-fit:cover}
+.detailtext{padding:24px}
+.detailtext h1{font-size:30px}
+.detailtext p,.detailtext li{color:var(--muted);line-height:1.8}
+.info{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:20px 0}
+.info div{padding:14px;background:#101722;border:1px solid var(--border);border-radius:10px}
+.info small{display:block;color:var(--muted);margin-bottom:7px}
+.contact{padding:30px;background:var(--panel);border:1px solid var(--border);border-radius:16px}
+.contact p{color:var(--muted);line-height:1.8}
+.socials{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:25px}
+.social{display:flex;align-items:center;gap:12px;padding:17px;background:#101722;border:1px solid var(--border);border-radius:12px}
+.social:hover{border-color:var(--blue)}
+.social-icon{font-size:26px}
+.social small{display:block;color:var(--muted);margin-top:5px}
+footer{text-align:center;padding:24px;border-top:1px solid var(--border);color:var(--muted);font-size:12px}
+@media(max-width:760px){.nav{padding:10px;gap:8px}.brand{font-size:12px;gap:5px}.brand img{width:33px;height:33px}.search input{padding:12px 28px 12px 33px;font-size:12px}.search-icon{left:10px}.menu-toggle{width:39px;height:40px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.content{padding:12px}.card h3{font-size:15px}.actions .btn{padding:10px 8px;font-size:11px}main{padding:22px 12px 40px}.socials{grid-template-columns:1fr}}
+@media(max-width:440px){.brand{font-size:10px}.brand img{width:29px;height:29px}.nav{gap:6px}.grid{grid-template-columns:1fr}.heading h1{font-size:24px}.card p{min-height:0}.actions{flex-direction:row}.detailtext{padding:17px}.info{grid-template-columns:1fr}.contact{padding:20px 15px}}
+</style>
+</head>
+<body>
+<header>
+<div class="nav">
+<button class="brand" id="brand" aria-label="Open navigation">
+<img src="logo.png" alt="CHITALA MODS logo">
+CHITALA <span>MODS</span>
+</button>
+<div class="search">
+<span class="search-icon">⌕</span>
+<input id="globalSearch" type="search" placeholder="Search games..." aria-label="Search games">
+<button id="clearSearch" aria-label="Clear search">×</button>
+</div>
+<div class="menu">
+<button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+<div class="dropdown" id="dropdown">
+<button data-page="home">⌂ &nbsp; Home</button>
+<button data-page="games">🎮 &nbsp; Games</button>
+<button data-page="contact">✉ &nbsp; Contact</button>
+</div>
+</div>
+</div>
+</header>
+
+<main>
+<section class="page active" id="home">
+<div class="heading">
+<h1>Latest Games</h1>
+<button class="btn primary" onclick="showPage('games')">View All Games →</button>
+</div>
+<div class="grid" id="homeResults"></div>
+<div class="empty" id="homeEmpty">No games found. Try another search.</div>
+<div id="recentSection">
+<h2 class="subheading">Recently Opened</h2>
+<div class="grid" id="recentResults"></div>
+</div>
+</section>
+
+<section class="page" id="games">
+<div class="heading"><h1>All Games</h1></div>
+<div class="filters" id="filters">
+<button class="filter active" data-filter="all">All Games</button>
+<button class="filter" data-filter="mod">MOD APK</button>
+<button class="filter" data-filter="fighting">Fighting</button>
+<button class="filter" data-filter="online">Online</button>
+<button class="filter" data-filter="rpg">RPG</button>
+</div>
+<div class="grid" id="gamesResults"></div>
+<div class="empty" id="gamesEmpty">No games found.</div>
+</section>
+
+<section class="page" id="shadowDetails">
+<div class="detail">
+<button class="btn back" onclick="showPage('home')">← Back to Home</button>
+<div class="detailbox">
+<img src="shadow-fight-2.jpg" alt="Shadow Fight 2">
+<div class="detailtext">
+<div class="tags"><span class="tag">MOD APK</span><span class="tag red">UNDERWORLD</span><span class="tag red">FIGHTING</span></div>
+<h1>Shadow Fight 2 MOD APK</h1>
+<p>Enter the world of Shadow Fight 2! Fight powerful enemies, upgrade your equipment and explore an action-packed adventure. Check out the gameplay and installation tutorial.</p>
+<div class="info">
+<div><small>Game</small><strong>Shadow Fight 2</strong></div>
+<div><small>Edition</small><strong>MOD APK</strong></div>
+<div><small>Genre</small><strong>Action / Fighting</strong></div>
+<div><small>Platform</small><strong>Android</strong></div>
+</div>
+<h2>MOD Information</h2>
+<ul>
+<li>Modified APK gameplay showcase</li>
+<li>Underworld feature information</li>
+<li>Installation tutorial available</li>
+</ul>
+<div class="actions">
+<a class="btn primary" href="https://drive.usercontent.google.com/download?id=1nypebh2xJD1uXJwu2_VKxIGJ6lpCzupK&amp;export=download&amp;authuser=0" target="_blank" rel="noopener">⬇ Download MOD APK</a>
+<a class="btn" href="https://youtu.be/ecuTZ0yzTfg?si=6gsTHwQ99RolmMzb" target="_blank" rel="noopener">▶ Watch Tutorial</a>
+</div>
+<p><small>Modified APK files may pose security risks. Only install files from sources you trust.</small></p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="page" id="contact">
+<div class="contact">
+<h1>Connect with us</h1>
+<p>Welcome to CHITALA MODS — a gaming space for discovering games, mods and gameplay content. Follow our channels for updates and new releases.</p>
+<div class="socials">
+<a class="social" href="https://t.me/chitalamod" target="_blank" rel="noopener"><span class="social-icon">✈️</span><span><strong>Telegram</strong><small>Join our channel</small></span></a>
+<a class="social" href="https://youtube.com/@chitalaa?si=9U6_I0cpkyXbr5to" target="_blank" rel="noopener"><span class="social-icon">▶️</span><span><strong>YouTube</strong><small>Watch our videos</small></span></a>
+<a class="social" href="https://facebook.com/" target="_blank" rel="noopener"><span class="social-icon">f</span><span><strong>Facebook</strong><small>Visit our page</small></span></a>
+</div>
+</div>
+</section>
+</main>
+
+<footer>© <span id="year"></span> <strong>CHITALA MODS</strong> · Made for gamers</footer>
+
+<script>
+const games=[
+{id:"shadow",title:"Shadow Fight 2: Definitive Edition",image:"shadow-fight-2.jpg",description:"Action-packed fighting with Shadow Fight 2 MOD APK gameplay.",tags:["mod","fighting"],labels:["MOD APK","UNDERWORLD","FIGHTING"],download:"https://drive.usercontent.google.com/download?id=1nypebh2xJD1uXJwu2_VKxIGJ6lpCzupK&export=download&authuser=0",tutorial:"https://youtu.be/ecuTZ0yzTfg?si=6gsTHwQ99RolmMzb"},
+{id:"invincible",title:"Invincible: Guarding the Globe v3.7.11 MOD APK",image:"invincible.jpg",description:"Build your squad in this superhero idle RPG adventure.",tags:["mod","online","rpg"],labels:["MOD APK","IDLE RPG","SUPERHERO"],download:"https://play.google.com/store/search?q=Invincible%20Guarding%20the%20Globe&c=apps"},
+{id:"mortal",title:"Mortal Kombat v7.4.0 MOD APK",image:"mortal-kombat.jpg",description:"Enter the arena and explore Mortal Kombat gameplay.",tags:["mod","fighting","online"],labels:["MOD APK","FIGHTING","ONLINE"],download:"https://play.google.com/store/search?q=Mortal%20Kombat&c=apps"}
+];
+let recent=[];
+let activeFilter="all";
+let currentPage="home";
+const $=id=>document.getElementById(id);
+
+function card(game){
+const labels=game.labels.map(label=>`<span class="tag ${label==="FIGHTING"?"red":label==="ONLINE"?"green":""}">${label}</span>`).join("");
+return `<article class="card">
+<img class="cover" src="${game.image}" alt="${game.title}" loading="lazy">
+<div class="content"><div class="tags">${labels}</div>
+<h3>${game.title}</h3><p>${game.description}</p>
+<div class="actions">
+${game.id==="shadow"?'<button class="btn" onclick="openGame(\\'shadow\\')">Details</button>':""}
+<a class="btn primary" href="${game.download}" target="_blank" rel="noopener">Download</a>
+${game.tutorial?`<a class="btn" href="${game.tutorial}" target="_blank" rel="noopener">Tutorial</a>`:""}
+</div></div></article>`;
+}
+function matches(game,query){
+const text=(game.title+" "+game.description+" "+game.labels.join(" ")+" "+game.tags.join(" ")).toLowerCase();
+return text.includes(query.toLowerCase().trim())&&(activeFilter==="all"||game.tags.includes(activeFilter));
+}
+function render(){
+const query=$("globalSearch").value;
+const found=games.filter(g=>matches(g,query));
+$("homeResults").innerHTML=found.map(card).join("");
+$("homeEmpty").style.display=found.length?"none":"block";
+$("gamesResults").innerHTML=found.map(card).join("");
+$("gamesEmpty").style.display=found.length?"none":"block";
+const recentGames=recent.map(id=>games.find(g=>g.id===id)).filter(Boolean);
+$("recentSection").style.display=recentGames.length?"block":"none";
+$("recentResults").innerHTML=recentGames.map(card).join("");
+}
+function showPage(page){
+currentPage=page;
+document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===page));
+document.querySelectorAll("[data-page]").forEach(b=>b.style.color=b.dataset.page===page?"#70a8ff":"white");
+closeMenu();
+window.scrollTo({top:0,behavior:"smooth"});
+render();
+}
+function openGame(id){
+if(!recent.includes(id))recent.unshift(id);
+else recent=[id,...recent.filter(x=>x!==id)];
+recent=recent.slice(0,3);
+showPage("shadowDetails");
+}
+function closeMenu(){
+$("dropdown").classList.remove("open");
+$("menuToggle").setAttribute("aria-expanded","false");
+}
+function toggleMenu(){$("dropdown").classList.toggle("open");$("menuToggle").setAttribute("aria-expanded",String($("dropdown").classList.contains("open")));}
+$("brand").addEventListener("click",toggleMenu);
+$("menuToggle").addEventListener("click",toggleMenu);
+document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+document.addEventListener("click",e=>{if(!e.target.closest(".menu")&&!e.target.closest("#brand"))closeMenu();});
+$("globalSearch").addEventListener("input",()=>{
+$("clearSearch").style.display=$("globalSearch").value?"block":"none";
+if($("globalSearch").value.trim()&&currentPage!=="games")showPage("games");
+render();
+});
+$("clearSearch").addEventListener("click",()=>{
+$("globalSearch").value="";
+$("clearSearch").style.display="none";
+render();
+});
+document.querySelectorAll("[data-filter]").forEach(b=>b.addEventListener("click",()=>{
+activeFilter=b.dataset.filter;
+document.querySelectorAll("[data-filter]").forEach(x=>x.classList.toggle("active",x===b));
+render();
+}));
+$("year").textContent=new Date().getFullYear();
+render();
+</script>
+</body>
+</html>
