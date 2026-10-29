@@ -1014,15 +1014,25 @@ document.addEventListener("keydown", event => {
 /* თამაშის ღილაკები */
 document.querySelectorAll(".play").forEach(button => {
   button.addEventListener("click", () => {
-    if (!currentUser) {
-      openModal("login");
+    if (button.dataset.game === "ბურა") {
+      if (!currentUser) {
+        openModal("login");
+      } else {
+        window.location.href = "bura.html";
+      }
     } else {
-      openProfile();
-      showProfileMessage(
-        button.dataset.game + "-ის ონლაინ რეჟიმი ჯერ არ არის დამატებული."
-      );
+      if (!currentUser) {
+        openModal("login");
+      } else {
+        openProfile();
+        showProfileMessage(
+          button.dataset.game +
+          "-ის ონლაინ რეჟიმი ჯერ არ არის დამატებული."
+        );
+      }
     }
   });
+});
 });
 
 /* Firebase ავტორიზაციის მდგომარეობა */
