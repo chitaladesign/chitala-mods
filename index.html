@@ -4,33 +4,484 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#09090c">
-<title>CHITALA PROD — ონლაინ თამაშები</title>
-
+<title>CHITALA PROD — ონლაინ ბურა</title>
 <style>
-:root{--bg:#09090c;--panel:#141419;--border:#2a2a33;--red:#ed2337;--text:#f5f5f7;--muted:#9999a7}
+:root{--bg:#09090c;--panel:#15151c;--border:#30303a;--red:#ed2337;--text:#f5f5f7;--muted:#a1a1ad}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:radial-gradient(ellipse at 50% -20%,#351017,transparent 55%),var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
-button,input{font:inherit}
-button{cursor:pointer}
-a{color:inherit;text-decoration:none}
-button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--red);outline-offset:3px}
-.container{width:min(1120px,calc(100% - 32px));margin:auto}
-header{height:72px;position:sticky;top:0;z-index:10;background:rgba(9,9,12,.94);backdrop-filter:blur(14px);border-bottom:1px solid #25252c}
-.nav{height:100%;display:flex;align-items:center;justify-content:space-between;gap:15px}
-.brand{display:flex;align-items:center;gap:9px}
-.logo{width:40px;height:40px;flex-shrink:0}
-.brand-name{font-size:18px;font-weight:900;letter-spacing:1px;white-space:nowrap}
-.brand-name span,.accent{color:var(--red)}
-.dot{width:7px;height:7px;border-radius:50%;background:#35ff83;box-shadow:0 0 9px #35ff83,0 0 17px #16c95d;flex-shrink:0}
-.nav-links{display:flex;gap:24px;color:#c4c4cc;font-size:13px}
-.nav-links a:hover{color:white}
-.actions{display:flex;gap:8px;align-items:center}
-.btn{border:1px solid transparent;border-radius:9px;padding:11px 15px;font-size:13px;font-weight:800;transition:.2s}
-.btn:hover{transform:translateY(-1px)}
-.btn:disabled{opacity:.6;cursor:wait;transform:none}
-.primary{background:linear-gradient(135deg,#f12d43,#b91127);color:white}
-.secondary{background:#19191f;border-color:#35353e;color:white}
-.hero{text-align:center;padding:76px 0 52px}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid #49212a;background:#95162920;border-radius:30px;padding:8px 12px;font-size:11px;letter-spacing:1.5px;font-weight:900;color:#f0b6bf;margin-bottom:20px}
-h1{font-size:clamp(32px,5.5vw,58px);line-height:1.15;letter-spacing:-1px;margin:0 auto;max-width:800px;font-weight:900}
+body{margin:0;background:radial-gradient(ellipse at top,#321018,transparent 50%),var(--bg);color:var(--text);font-family:Arial,sans-serif}
+button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}
+header{padding:16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#09090cf0;position:sticky;top:0;z-index:5}
+.brand{font-weight:900;font-size:20px;letter-spacing:1px}.brand span{color:var(--red)}
+main{width:min(950px,calc(100% - 24px));margin:25px auto 60px}
+.panel{background:linear-gradient(145deg,#191920,#111115);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:16px}
+h1{font-size:26px;margin:0 0 10px}h2{font-size:20px;margin:0 0 14px}p{color:var(--muted);line-height:1.6;font-size:13px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+input{min-width:0;flex:1;background:#0c0c11;color:white;border:1px solid #393943;border-radius:8px;padding:12px;outline:none}
+input:focus{border-color:var(--red)}
+.btn{border:1px solid transparent;border-radius:8px;padding:11px 15px;font-size:12px;font-weight:800}
+.primary{background:var(--red);color:white}.secondary{background:#202027;border-color:#393943;color:white}
+.hidden{display:none!important}.status{font-size:12px;color:#ffadb7;margin-top:12px;overflow-wrap:anywhere}
+.small{font-size:11px;color:var(--muted)}
+#table{background:radial-gradient(ellipse,#18553c,#0b3025 65%,#101016);border:5px solid #4a282b;border-radius:20px;padding:18px;min-height:250px}
+.table-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.pill{background:#080d0bbd;padding:8px 10px;border:1px solid #ffffff24;border-radius:8px;font-size:12px}
+.cards{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;margin:18px 0}
+.card{width:60px;height:88px;border-radius:8px;background:#fff;color:#17171b;border:2px solid #ddd;display:flex;flex-direction:column;justify-content:space-between;padding:6px;font-size:15px;font-weight:900;box-shadow:0 3px 8px #0006}
+.card.red{color:#d71930}.card.back{background:repeating-linear-gradient(45deg,#701322,#701322 5px,#eee 5px,#eee 7px);color:#fff}
+.card.selected{outline:3px solid #ffda68;transform:translateY(-6px)}
+.card button{border:0;background:transparent;color:inherit;padding:0;font-weight:900}
+.hand .card{cursor:pointer}
+.actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+#feed{max-height:120px;overflow:auto;font-size:12px;color:#ddd;line-height:1.7}
+footer{text-align:center;color:#777;padding:20px;font-size:11px}
+@media(max-width:480px){.panel{padding:14px}h1{font-size:22px}.card{width:51px;height:76px;padding:5px}.row>*{max-width:100%}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">CHITALA <span>PROD</span></div>
+  <div class="row">
+    <span id="userLabel" class="small">სტუმარი</span>
+    <button class="btn secondary" id="signOut" hidden>გამოსვლა</button>
+  </div>
+</header>
+
+<main>
+  <section class="panel" id="authPanel">
+    <h1>ონლაინ ბურა</h1>
+    <p>შედი ანგარიშში ან შექმენი ახალი ანგარიში ონლაინ სათამაშოდ.</p>
+    <div class="row">
+      <input id="email" type="email" placeholder="ელფოსტა" autocomplete="email">
+      <input id="password" type="password" placeholder="პაროლი (მინ. 6)" autocomplete="current-password">
+    </div>
+    <div class="row" style="margin-top:10px">
+      <input id="nickname" placeholder="მოთამაშის სახელი (რეგისტრაციისას)">
+      <button class="btn primary" id="login">შესვლა</button>
+      <button class="btn secondary" id="register">რეგისტრაცია</button>
+    </div>
+    <div class="status" id="authMessage"></div>
+  </section>
+
+  <section class="panel hidden" id="lobby">
+    <h2>ონლაინ ოთახი</h2>
+    <p>შექმენი ოთახი ან შეიყვანე მეგობრის ოთახის კოდი.</p>
+    <div class="row">
+      <button class="btn primary" id="createRoom">ოთახის შექმნა</button>
+      <input id="roomCode" maxlength="6" placeholder="ოთახის კოდი" autocomplete="off">
+      <button class="btn secondary" id="joinRoom">შეერთება</button>
+    </div>
+    <div class="status" id="lobbyMessage"></div>
+  </section>
+
+  <section class="panel hidden" id="gamePanel">
+    <div class="row" style="justify-content:space-between;margin-bottom:12px">
+      <h2>ბურა — ონლაინ თამაში</h2>
+      <button class="btn secondary" id="leaveRoom">ოთახიდან გამოსვლა</button>
+    </div>
+    <div id="table">
+      <div class="table-head">
+        <span class="pill" id="roomLabel">ოთახი: —</span>
+        <span class="pill" id="trumpLabel">კოზირი: —</span>
+        <span class="pill" id="turnLabel">სვლა: —</span>
+      </div>
+      <div style="text-align:center;margin-top:18px">
+        <div id="opponentLabel">მოწინააღმდეგე: ელოდება მოთამაშეს…</div>
+        <div class="cards" id="opponentCards"></div>
+        <div id="trickLabel" class="pill">სვლა ჯერ არ დაწყებულა</div>
+        <div class="cards" id="playedCards"></div>
+      </div>
+    </div>
+    <h2 style="margin-top:20px">შენი კარტი</h2>
+    <div class="cards hand" id="hand"></div>
+    <div class="actions">
+      <button class="btn primary" id="playCard" disabled>კარტის დადება</button>
+      <button class="btn secondary" id="declareBura" disabled>ბურა — 5 კოზირი</button>
+      <button class="btn secondary" id="declareMaliutka" disabled>მალიუტკა — 5 ერთნაირი მასტი</button>
+    </div>
+    <p id="gameMessage" class="status"></p>
+    <h2>ქულები</h2>
+    <div class="row">
+      <span class="pill" id="myScore">შენი ქულა: 0</span>
+      <span class="pill" id="theirScore">მოწინააღმდეგე: 0</span>
+      <span class="pill" id="deckCount">დარჩენილი კარტი: 0</span>
+    </div>
+    <h2 style="margin-top:20px">თამაშის ისტორია</h2>
+    <div id="feed"></div>
+    <div class="row" style="margin-top:15px">
+      <button class="btn primary hidden" id="startGame">თამაშის დაწყება</button>
+      <button class="btn secondary hidden" id="nextGame">ახალი თამაში</button>
+    </div>
+  </section>
+</main>
+<footer>CHITALA PROD © 2026</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyChOYCwVd2AaZzLGx_tQsT2PqNlbNXqkis",
+  authDomain: "chitala-mods.firebaseapp.com",
+  databaseURL: "https://chitala-mods-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "chitala-mods",
+  storageBucket: "chitala-mods.firebasestorage.app",
+  messagingSenderId: "415729264734",
+  appId: "1:415729264734:web:edba39f96e5cbdfd6beccf"
+};
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.database();
+
+const $ = id => document.getElementById(id);
+let me = null, roomId = null, roomRef = null, roomListener = null;
+let roomData = null, selectedCard = null, busy = false;
+
+const suits = ["♠","♥","♦","♣"];
+const ranks = ["6","7","8","9","J","Q","K","10","A"];
+const points = {"6":0,"7":0,"8":0,"9":0,"J":2,"Q":3,"K":4,"10":10,"A":11};
+const rankValue = {"6":1,"7":2,"8":3,"9":4,"J":5,"Q":6,"K":7,"10":8,"A":9};
+
+function say(id, text){ $(id).textContent = text; }
+function show(id, yes=true){ $(id).classList.toggle("hidden", !yes); }
+function username(user){
+  return (user && user.displayName) || (user && user.email ? user.email.split("@")[0] : "მოთამაშე");
+}
+function errorText(e){
+  const map = {
+    "auth/invalid-email":"ელფოსტა არასწორია.",
+    "auth/invalid-credential":"ელფოსტა ან პაროლი არასწორია.",
+    "auth/email-already-in-use":"ეს ელფოსტა უკვე რეგისტრირებულია.",
+    "auth/weak-password":"პაროლი მინიმუმ 6 სიმბოლო უნდა იყოს.",
+    "auth/operation-not-allowed":"Firebase-ში Email/Password ავტორიზაცია ჩართე.",
+    "auth/unauthorized-domain":"ეს დომენი Firebase Authentication-ში დაამატე.",
+    "auth/network-request-failed":"ინტერნეტის შეცდომა."
+  };
+  return map[e.code] || ("შეცდომა: " + (e.message || e.code || "უცნობი"));
+}
+
+$("login").onclick = async () => {
+  try {
+    await auth.signInWithEmailAndPassword($("email").value.trim(), $("password").value);
+    say("authMessage","შესვლა წარმატებულია.");
+  } catch(e){ say("authMessage",errorText(e)); }
+};
+
+$("register").onclick = async () => {
+  const name = $("nickname").value.trim();
+  if(!name){ say("authMessage","ჯერ შეიყვანე მოთამაშის სახელი."); return; }
+  try {
+    const result = await auth.createUserWithEmailAndPassword($("email").value.trim(), $("password").value);
+    await result.user.updateProfile({displayName:name});
+    say("authMessage","ანგარიში შეიქმნა.");
+  } catch(e){ say("authMessage",errorText(e)); }
+};
+
+$("signOut").onclick = async () => {
+  await leaveCurrentRoom();
+  await auth.signOut();
+};
+
+auth.onAuthStateChanged(user => {
+  me = user;
+  say("userLabel",user ? username(user) : "სტუმარი");
+  show("signOut",!!user);
+  show("authPanel",!user);
+  show("lobby",!!user);
+  if(!user) leaveCurrentRoom();
+});
+
+function makeDeck(){
+  const deck = [];
+  for(const suit of suits) for(const rank of ranks)
+    deck.push({id:suit+rank,suit,rank,points:points[rank]});
+  for(let i=deck.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [deck[i],deck[j]]=[deck[j],deck[i]];
+  }
+  return deck;
+}
+
+function shuffledCode(){
+  return Math.random().toString(36).slice(2,8).toUpperCase();
+}
+
+$("createRoom").onclick = async () => {
+  if(!me) return;
+  say("lobbyMessage","ოთახი იქმნება…");
+  try {
+    let code, ref, snap;
+    for(let i=0;i<5;i++){
+      code = shuffledCode();
+      ref = db.ref("rooms/"+code);
+      snap = await ref.get();
+      if(!snap.exists()) break;
+      ref = null;
+    }
+    if(!ref) throw new Error("ვერ შეიქმნა კოდი. სცადე თავიდან.");
+    await ref.set({
+      code,
+      host:me.uid,
+      players:{[me.uid]:{name:username(me),joinedAt:Date.now()}},
+      status:"waiting",
+      createdAt:Date.now()
+    });
+    openRoom(code);
+    say("lobbyMessage","ოთახი შეიქმნა. გაუზიარე მეგობარს კოდი: "+code);
+  } catch(e){ say("lobbyMessage",errorText(e)); }
+};
+
+$("joinRoom").onclick = async () => {
+  if(!me) return;
+  const code = $("roomCode").value.trim().toUpperCase();
+  if(!/^[A-Z0-9]{6}$/.test(code)){ say("lobbyMessage","შეიყვანე 6-ნიშნა ოთახის კოდი."); return; }
+  try {
+    const ref = db.ref("rooms/"+code);
+    const snap = await ref.get();
+    if(!snap.exists()){ say("lobbyMessage","ასეთი ოთახი არ არსებობს."); return; }
+    const data = snap.val();
+    const players = data.players || {};
+    if(players[me.uid]) { openRoom(code); return; }
+    if(Object.keys(players).length >= 2){ say("lobbyMessage","ოთახი უკვე სავსეა."); return; }
+    if(data.status !== "waiting"){ say("lobbyMessage","თამაში უკვე დაწყებულია."); return; }
+    await ref.child("players/"+me.uid).set({name:username(me),joinedAt:Date.now()});
+    openRoom(code);
+  } catch(e){ say("lobbyMessage",errorText(e)); }
+};
+
+function openRoom(code){
+  if(roomListener && roomRef) roomRef.off("value",roomListener);
+  roomId = code;
+  roomRef = db.ref("rooms/"+code);
+  roomListener = snap => {
+    roomData = snap.val();
+    if(!roomData){
+      say("gameMessage","ოთახი წაშლილია.");
+      leaveCurrentRoom();
+      return;
+    }
+    show("gamePanel",true);
+    renderRoom();
+  };
+  roomRef.on("value",roomListener,err=>say("gameMessage",errorText(err)));
+  show("gamePanel",true);
+  say("lobbyMessage","ოთახი: "+code);
+}
+
+async function leaveCurrentRoom(){
+  if(roomListener && roomRef) roomRef.off("value",roomListener);
+  roomListener=null; roomRef=null; roomData=null; roomId=null; selectedCard=null;
+  show("gamePanel",false);
+}
+
+$("leaveRoom").onclick = leaveCurrentRoom;
+
+function playerIds(data){
+  return Object.keys(data.players || {}).sort((a,b)=>{
+    if(a===data.host) return -1;
+    if(b===data.host) return 1;
+    return a.localeCompare(b);
+  });
+}
+function opponentId(data){
+  return playerIds(data).find(uid=>uid!==me.uid);
+}
+function isMyTurn(data){ return !!data.game && data.game.turn===me.uid; }
+
+function renderRoom(){
+  const data=roomData, ids=playerIds(data), opp=opponentId(data);
+  say("roomLabel","ოთახის კოდი: "+data.code);
+  say("opponentLabel",opp ? "მოწინააღმდეგე: "+(data.players[opp].name||"მოთამაშე") : "მოწინააღმდეგე: ელოდება მოთამაშეს…");
+  show("startGame",ids.length===2 && (data.host===me.uid) && data.status!=="playing");
+  show("nextGame",data.status==="finished" && data.host===me.uid);
+  if(data.status!=="playing" || !data.game){
+    say("trumpLabel","კოზირი: —");
+    say("turnLabel",data.status==="finished"?"თამაში დასრულდა":"ელოდება მოთამაშეს");
+    $("opponentCards").replaceChildren();
+    $("playedCards").replaceChildren();
+    $("hand").replaceChildren();
+    $("playCard").disabled=true;
+    $("declareBura").disabled=true;
+    $("declareMaliutka").disabled=true;
+    say("gameMessage",ids.length<2?"გაუზიარე მეგობარს ოთახის კოდი.":"მზად ხართ — ოთახის მფლობელმა დაიწყოს თამაში.");
+    if(data.game && data.game.feed) say("feed",data.game.feed.join("\n"));
+    return;
+  }
+  const g=data.game, myHand=(g.hands && g.hands[me.uid])||[];
+  const oppHand=opp ? ((g.hands && g.hands[opp])||[]) : [];
+  say("trumpLabel","კოზირი: "+g.trump);
+  say("turnLabel",g.turn===me.uid?"შენი სვლაა":"მოწინააღმდეგის სვლაა");
+  say("myScore","შენი ქულა: "+((g.scores&&g.scores[me.uid])||0));
+  say("theirScore","მოწინააღმდეგე: "+((g.scores&&g.scores[opp])||0));
+  say("deckCount","დარჩენილი კარტი: "+(g.deck||[]).length);
+  $("opponentCards").replaceChildren();
+  for(let i=0;i<oppHand.length;i++){
+    const el=document.createElement("div"); el.className="card back"; el.textContent="★";
+    $("opponentCards").appendChild(el);
+  }
+  $("hand").replaceChildren();
+  myHand.forEach(card=>{
+    const el=document.createElement("button");
+    el.type="button";
+    el.className="card "+("♥♦".includes(card.suit)?"red ":"")+(selectedCard===card.id?"selected":"");
+    el.innerHTML="<span>"+card.rank+card.suit+"</span><span>"+card.suit+"</span>";
+    el.onclick=()=>{selectedCard=selectedCard===card.id?null:card.id;renderRoom();};
+    $("hand").appendChild(el);
+  });
+  $("playedCards").replaceChildren();
+  (g.trick||[]).forEach(play=>{
+    const el=document.createElement("div");
+    el.className="card "+("♥♦".includes(play.card.suit)?"red":"");
+    el.innerHTML="<span>"+play.card.rank+play.card.suit+"</span><span>"+(data.players[play.uid]?.name||"მოთამაშე")+"</span>";
+    $("playedCards").appendChild(el);
+  });
+  say("trickLabel",(g.trick||[]).length ? "მიმდინარე სვლა" : "კარტი ჯერ არ დადებულა");
+  say("feed",(g.feed||[]).slice(-8).join("\n"));
+  const myTurn=isMyTurn(data);
+  $("playCard").disabled=!myTurn || !selectedCard || busy;
+  const bura=myHand.length>=5 && myHand.every(c=>c.suit===g.trump);
+  const suitsInHand=[...new Set(myHand.map(c=>c.suit).filter(s=>s!==g.trump))];
+  const maliutka=suitsInHand.some(s=>myHand.filter(c=>c.suit===s).length>=5);
+  $("declareBura").disabled=!bura || busy || g.turn!==me.uid;
+  $("declareMaliutka").disabled=!maliutka || busy;
+  say("gameMessage",g.message||"");
+}
+
+function logFeed(g,text){
+  g.feed=g.feed||[];
+  g.feed.push(text);
+  if(g.feed.length>20) g.feed=g.feed.slice(-20);
+}
+function newGameState(ids){
+  const deck=makeDeck();
+  const hands={};
+  ids.forEach(uid=>hands[uid]=deck.splice(0,5));
+  const trumpCard=deck.pop();
+  return {
+    deck,hands,trump:trumpCard.suit,trumpCard,
+    turn:ids[0],trick:[],scores:Object.fromEntries(ids.map(id=>[id,0])),
+    captured:Object.fromEntries(ids.map(id=>[id,[]])),
+    feed:["თამაში დაიწყო. კოზირია "+trumpCard.suit],
+    status:"playing",message:"თამაში დაიწყო."
+  };
+}
+
+$("startGame").onclick=async()=>{
+  if(!roomRef||!roomData||busy)return;
+  const ids=playerIds(roomData);
+  if(ids.length!==2)return;
+  busy=true;
+  try{
+    const g=newGameState(ids);
+    await roomRef.update({status:"playing",game:g});
+    selectedCard=null;
+  }catch(e){say("gameMessage",errorText(e));}
+  finally{busy=false;}
+};
+
+$("nextGame").onclick=async()=>{
+  if(!roomRef||!roomData||busy)return;
+  busy=true;
+  try{
+    const ids=playerIds(roomData);
+    await roomRef.update({status:"playing",game:newGameState(ids)});
+  }catch(e){say("gameMessage",errorText(e));}
+  finally{busy=false;}
+};
+
+function winsTrick(a,b,trump){
+  if(a.suit===b.suit) return rankValue[a.rank]>rankValue[b.rank] ? 0 : 1;
+  if(b.suit===trump) return 1;
+  if(a.suit===trump) return 0;
+  return 0;
+}
+
+function declaration(hand,trump){
+  if(hand.length>=5 && hand.every(c=>c.suit===trump)) return "ბურა";
+  const groups={};
+  hand.forEach(c=>{if(c.suit!==trump)groups[c.suit]=(groups[c.suit]||0)+1;});
+  if(Object.values(groups).some(n=>n>=5)) return "მალიუტკა";
+  return null;
+}
+
+async function mutateGame(mutator){
+  if(!roomRef||busy||!me)return;
+  busy=true;
+  try{
+    const result=await roomRef.child("game").transaction(g=>{
+      if(!g||g.status!=="playing")return;
+      const copy=JSON.parse(JSON.stringify(g));
+      const outcome=mutator(copy);
+      if(outcome===false)return;
+      return copy;
+    });
+    if(!result.committed) say("gameMessage","სვლა ვერ შესრულდა — გადაამოწმე სვლა და სცადე თავიდან.");
+  }catch(e){say("gameMessage",errorText(e));}
+  finally{busy=false;selectedCard=null;}
+}
+
+$("playCard").onclick=async()=>{
+  if(!selectedCard)return;
+  const uid=me.uid;
+  await mutateGame(g=>{
+    if(g.turn!==uid)return false;
+    const hand=g.hands[uid]||[];
+    const idx=hand.findIndex(c=>c.id===selectedCard);
+    if(idx<0)return false;
+    const card=hand.splice(idx,1)[0];
+    g.trick.push({uid,card});
+    logFeed(g,(roomData.players[uid]?.name||"მოთამაშე")+" დადო "+card.rank+card.suit);
+    const ids=playerIds(roomData);
+    if(g.trick.length===1){
+      g.turn=ids.find(id=>id!==uid);
+      g.message="მოწინააღმდეგის სვლაა.";
+      return;
+    }
+    if(g.trick.length===2){
+      const [first,second]=g.trick;
+      const winner=first.uid===uid ? (winsTrick(first.card,second.card,g.trump)===0?first.uid:second.uid) :
+        (winsTrick(first.card,second.card,g.trump)===0?first.uid:second.uid);
+      const value=g.trick.reduce((sum,p)=>sum+p.card.points,0);
+      g.scores[winner]=(g.scores[winner]||0)+value;
+      g.captured[winner]=(g.captured[winner]||[]).concat(g.trick.map(p=>p.card));
+      logFeed(g,(roomData.players[winner]?.name||"მოთამაშე")+" მოიგო სვლა (+"+value+" ქულა)");
+      g.trick=[];
+      if(g.deck.length){
+        for(const id of [winner,ids.find(x=>x!==winner)]){
+          if(g.deck.length && g.hands[id].length<5) g.hands[id].push(g.deck.pop());
+        }
+      }
+      const empty=ids.every(id=>g.hands[id].length===0) && g.deck.length===0;
+      if(empty){
+        g.status="finished";
+        g.message="თამაში დასრულდა. ქულები: "+ids.map(id=>(roomData.players[id]?.name||"მოთამაშე")+" "+g.scores[id]).join(" — ");
+        logFeed(g,g.message);
+      }else{
+        g.turn=winner;
+        g.message="სვლა მოიგო "+(roomData.players[winner]?.name||"მოთამაშემ")+".";
+      }
+    }
+  });
+};
+
+$("declareBura").onclick=async()=>{
+  const uid=me.uid;
+  await mutateGame(g=>{
+    if(g.turn!==uid || declaration(g.hands[uid],g.trump)!=="ბურა")return false;
+    g.status="finished";
+    g.message=(roomData.players[uid]?.name||"მოთამაშე")+"-მა გამოაცხადა ბურა და მოიგო!";
+    logFeed(g,g.message);
+  });
+};
+$("declareMaliutka").onclick=async()=>{
+  const uid=me.uid;
+  await mutateGame(g=>{
+    if(declaration(g.hands[uid],g.trump)!=="მალიუტკა")return false;
+    g.status="finished";
+    g.message=(roomData.players[uid]?.name||"მოთამაშე")+"-მა გამოაცხადა მალიუტკა და მოიგო!";
+    logFeed(g,g.message);
+  });
+};
+</script>
+</body>
+</html>
