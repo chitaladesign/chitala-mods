@@ -140,6 +140,15 @@ h1 {
   border-radius: 13px;
   outline: none;
   transition: border-color .2s, box-shadow .2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.search-wrap input::-webkit-search-cancel-button,
+.search-wrap input::-webkit-search-decoration,
+.search-wrap input::-webkit-search-results-button,
+.search-wrap input::-webkit-search-results-decoration {
+  display: none;
+  -webkit-appearance: none;
 }
 .search-wrap input:focus {
   border-color: var(--blue);
@@ -199,7 +208,7 @@ h2 { font-size: 23px; margin: 0; }
 }
 .home-category-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
 }
 .home-category {
@@ -434,7 +443,7 @@ footer strong { color: #b7c2d2; }
         <span class="search-icon" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
         </span>
-        <input id="homeSearch" type="search" placeholder="Search games" autocomplete="off" aria-label="Search games on Home">
+        <input id="homeSearch" type="search" placeholder="Search Category" autocomplete="off" aria-label="Search categories on Home">
         <button class="clear-search" id="homeClear" aria-label="Clear search" type="button">×</button>
       </div>
     </div>
@@ -443,12 +452,11 @@ footer strong { color: #b7c2d2; }
       <h2>Browse Categories</h2>
       <span class="section-note">Choose a category to explore</span>
     </div>
-    <div class="home-category-grid">
-      <button class="home-category" onclick="openCategory('all')"><span class="symbol">🎮</span><strong>All Games</strong></button>
-      <button class="home-category" onclick="openCategory('mod')"><span class="symbol">⚡</span><strong>Mod Games</strong></button>
-      <button class="home-category" onclick="openCategory('online')"><span class="symbol">🌐</span><strong>Online</strong></button>
-      <button class="home-category" onclick="openCategory('board')"><span class="symbol">♟</span><strong>Board Games</strong></button>
-      <button class="home-category" onclick="openCategory('fighting')"><span class="symbol">🥊</span><strong>Fighting</strong></button>
+    <div class="home-category-grid" id="homeCategories">
+      <button class="home-category" data-home-category="all" onclick="openCategory('all')"><span class="symbol">🎮</span><strong>All Games</strong></button>
+      <button class="home-category" data-home-category="mod" onclick="openCategory('mod')"><span class="symbol">⚡</span><strong>Mod Games</strong></button>
+      <button class="home-category" data-home-category="online" onclick="openCategory('online')"><span class="symbol">🌐</span><strong>Online</strong></button>
+      <button class="home-category" data-home-category="board" onclick="openCategory('board')"><span class="symbol">♟</span><strong>Board Games</strong></button>
     </div>
 
     <div class="section-head">
@@ -573,33 +581,60 @@ function cardHTML(game) {
         <h3>${game.title}</h3>
         <p>${game.description}</p>
         <div class="card-actions">
-          <a class="action-btn primary" href="${game.download}" target="_blank" rel="noopener noreferrer">Get Game ↗</a>
-          ${game.tutorial ? `<a class="action-btn" href="${game.tutorial}" target="_blank" rel="noopener noreferrer">Tutorial ↗</a>` : ""}
+          <a class="action-btn primary" href="${game.download}" target="_blank" rel="noopener noreferrer">Download</a>
+          ${game.tutorial ? `<a class="action-btn" href="${game.tutorial}" target="_blank" rel="noopener noreferrer">Tutorial</a>` : ""}
         </div>
       </div>
     </article>`;
 }
 
 function matches(game, query, categories) {
-  const text = (game.title + " " + game.description + " " + game.tagText.join(" ")).toLowerCase();
+  const text = (
+    game.title + " " +
+    game.description + " " +
+    game.tagText.join(" ") + " " +
+    game.tags.join(" ")
+  ).toLowerCase();
+
   const searchMatch = text.includes(query.toLowerCase().trim());
-  const categoryMatch = categories.size === 0 || [...categories].some(cat => game.tags.includes(cat));
+  const categoryMatch = categories.size === 0 ||
+    [...categories].some(cat => game.tags.includes(cat));
+
   return searchMatch && categoryMatch;
 }
 
 function renderGrid(targetId, emptyId, query, categories, limit = Infinity) {
   const found = games.filter(game => matches(game, query, categories));
   const shown = found.slice(0, limit);
+
   $(targetId).innerHTML = shown.map(cardHTML).join("");
   $(emptyId).style.display = shown.length ? "none" : "block";
+
   if (targetId === "gamesResults") {
-    $("gameCount").textContent = `${found.length} ${found.length === 1 ? "game" : "games"}`;
+    $("gameCount").textContent =
+      `${found.length} ${found.length === 1 ? "game" : "games"}`;
   }
 }
 
+function renderHomeCategories(query = "") {
+  const categories = $("homeCategories");
+  const buttons = [...categories.querySelectorAll("[data-home-category]")];
+  let visibleCount = 0;
+
+  buttons.forEach(button => {
+    const name = button.innerText.toLowerCase();
+    const matchesQuery = name.includes(query.toLowerCase().trim());
+    button.style.display = matchesQuery ? "" : "none";
+    if (matchesQuery) visibleCount++;
+  });
+
+  categories.style.display = visibleCount ? "" : "none";
+}
+
 function renderAll() {
-  renderGrid("homeResults", "homeEmpty", $("homeSearch").value, new Set(), 3);
+  renderGrid("homeResults", "homeEmpty", $("homeSearch").value, new Set(), 2);
   renderGrid("gamesResults", "gamesEmpty", $("gamesSearch").value, selectedCategories);
+  renderHomeCategories($("homeSearch").value);
   updateCategoryButtons();
 }
 
@@ -609,6 +644,7 @@ function updateCategoryButtons() {
     const active = category === "all"
       ? selectedCategories.size === 0
       : selectedCategories.has(category);
+
     button.classList.toggle("active", active);
     button.setAttribute("aria-pressed", String(active));
   });
@@ -620,22 +656,17 @@ function updateClear(inputId, buttonId) {
   button.style.display = input.value ? "flex" : "none";
 }
 
-function syncSearch(sourceId, destinationId, clearId) {
-  $(destinationId).value = $(sourceId).value;
-  updateClear(destinationId, clearId);
-}
-
 function showPage(page) {
   currentPage = page === "mods" ? "games" : page;
 
   document.querySelectorAll(".page").forEach(section => {
     section.classList.toggle("active", section.id === currentPage);
   });
+
   document.querySelectorAll(".nav-btn").forEach(button => {
     button.classList.toggle("active", button.dataset.page === currentPage);
   });
 
-  // Clear search whenever the user navigates to another page.
   $("homeSearch").value = "";
   $("gamesSearch").value = "";
   updateClear("homeSearch", "homeClear");
@@ -654,6 +685,7 @@ function openCategory(category) {
 document.querySelectorAll("#categoryFilters [data-category]").forEach(button => {
   button.addEventListener("click", () => {
     const category = button.dataset.category;
+
     if (category === "all") {
       selectedCategories.clear();
     } else if (selectedCategories.has(category)) {
@@ -661,14 +693,17 @@ document.querySelectorAll("#categoryFilters [data-category]").forEach(button => 
     } else {
       selectedCategories.add(category);
     }
+
     renderAll();
   });
 });
 
 $("homeSearch").addEventListener("input", () => {
   updateClear("homeSearch", "homeClear");
-  renderGrid("homeResults", "homeEmpty", $("homeSearch").value, new Set(), 3);
+  renderGrid("homeResults", "homeEmpty", $("homeSearch").value, new Set(), 2);
+  renderHomeCategories($("homeSearch").value);
 });
+
 $("gamesSearch").addEventListener("input", () => {
   updateClear("gamesSearch", "gamesClear");
   renderGrid("gamesResults", "gamesEmpty", $("gamesSearch").value, selectedCategories);
@@ -677,9 +712,11 @@ $("gamesSearch").addEventListener("input", () => {
 $("homeClear").addEventListener("click", () => {
   $("homeSearch").value = "";
   updateClear("homeSearch", "homeClear");
-  renderGrid("homeResults", "homeEmpty", "", new Set(), 3);
+  renderGrid("homeResults", "homeEmpty", "", new Set(), 2);
+  renderHomeCategories("");
   $("homeSearch").focus();
 });
+
 $("gamesClear").addEventListener("click", () => {
   $("gamesSearch").value = "";
   updateClear("gamesSearch", "gamesClear");
