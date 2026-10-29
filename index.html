@@ -1,321 +1,278 @@
-
 <!DOCTYPE html>
-<html lang="ka">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0b0b10">
-<title>CHITALA PROD — ითამაშე მეგობრებთან</title>
-<meta name="description" content="CHITALA PROD — ქართული ონლაინ თამაშების სივრცე.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHITALA MODS</title>
+
 <style>
-:root{
-  --bg:#0b0b10;--panel:#14141c;--panel2:#1b1b26;
-  --red:#ff3048;--red2:#c91430;--text:#f7f7fb;
-  --muted:#9999ac;--border:#292936;--green:#55e6a5
-}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);
-font-family:Arial,"Noto Sans Georgian",sans-serif}
-button,input{font:inherit}
-button,a{-webkit-tap-highlight-color:transparent}
-button{cursor:pointer}
-a{color:inherit;text-decoration:none}
-.container{width:min(1120px,calc(100% - 36px));margin:auto}
-header{position:sticky;top:0;z-index:10;background:#0b0b10ed;
-backdrop-filter:blur(15px);border-bottom:1px solid var(--border)}
-.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{display:flex;align-items:center;gap:11px;font-weight:1000;letter-spacing:1px;font-size:20px}
-.logo{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;
-background:linear-gradient(145deg,#ff4055,#a50022);box-shadow:0 5px 25px #ff30482b}
-.logo svg{width:25px;height:25px}
-.brand span{color:var(--red)}
-.navlinks{display:flex;align-items:center;gap:8px}
-.navlinks a{color:var(--muted);font-size:13px;font-weight:700;padding:11px 13px;border-radius:10px}
-.navlinks a:hover{background:var(--panel2);color:white}
-.nav-actions{display:flex;gap:8px}
-.btn{border:1px solid var(--border);background:var(--panel2);color:white;
-padding:11px 15px;border-radius:11px;font-weight:800;transition:.2s}
-.btn:hover{transform:translateY(-2px);border-color:#555568}
-.btn-red{border-color:var(--red);background:var(--red);color:white}
-.btn-red:hover{background:#ff4b60}
-.hero{position:relative;overflow:hidden;margin:32px 0 40px;padding:58px 38px;
-border:1px solid #38202b;border-radius:25px;
-background:radial-gradient(ellipse at 90% 5%,#a312353b,transparent 38%),
-linear-gradient(125deg,#19121a,#101016 60%,#1c0d14)}
-.hero:after{content:"♠";position:absolute;right:8%;top:-65px;
-font-size:300px;color:#ff30480b;transform:rotate(15deg);pointer-events:none}
-.eyebrow{color:var(--red);font-size:11px;font-weight:900;letter-spacing:3px}
-.hero h1{font-size:clamp(34px,6vw,60px);line-height:1.12;letter-spacing:-1.8px;
-max-width:700px;margin:18px 0 14px}
-.hero h1 span{color:var(--red)}
-.hero p{color:#b2b0c0;line-height:1.8;max-width:530px;font-size:15px}
-.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
-.hero-art{position:absolute;right:8%;top:50%;transform:translateY(-50%) rotate(9deg);
-display:flex;gap:10px;opacity:.9}
-.playing-card{width:85px;height:120px;border:1px solid #ffffff35;border-radius:13px;
-background:linear-gradient(145deg,#29202a,#111117);display:flex;flex-direction:column;
-align-items:center;justify-content:center;box-shadow:0 15px 40px #0008;font-size:35px}
-.playing-card b{font-size:12px;align-self:flex-start;margin:10px;color:var(--red)}
-.playing-card:nth-child(2){transform:translateY(-20px);color:var(--red)}
-.playing-card:nth-child(3){transform:translateY(12px)}
-.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:19px}
-.section-head h2{font-size:25px;letter-spacing:-.6px;margin:0}
-.section-head p{margin:8px 0 0;color:var(--muted);font-size:13px}
-.online-pill{display:flex;align-items:center;gap:8px;color:#c6c5d3;font-size:12px}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px #55e6a566}
-.search{width:100%;max-width:380px;padding:13px 16px;border-radius:12px;
-background:var(--panel);border:1px solid var(--border);color:white;outline:none}
-.search:focus{border-color:var(--red)}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}
-.filter{padding:9px 14px;border-radius:999px;border:1px solid var(--border);
-background:var(--panel);color:var(--muted);font-size:12px;font-weight:800}
-.filter.active,.filter:hover{background:#ff304818;color:#ff7888;border-color:#853044}
-.games{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
-.game{background:var(--panel);border:1px solid var(--border);border-radius:19px;
-overflow:hidden;transition:transform .2s,border-color .2s}
-.game:hover{transform:translateY(-5px);border-color:#703041}
-.game-art{height:155px;position:relative;display:grid;place-items:center;overflow:hidden}
-.game-art:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;
-background:#ffffff09;filter:blur(2px)}
-.art-bura{background:linear-gradient(135deg,#35121e,#170e16)}
-.art-team{background:linear-gradient(135deg,#24204c,#15121f)}
-.art-nardi{background:linear-gradient(135deg,#39251b,#17110e)}
-.art-joker{background:linear-gradient(135deg,#352044,#17101d)}
-.art-quiz{background:linear-gradient(135deg,#123b3b,#0d1d24)}
-.art-icon{position:relative;font-size:68px;filter:drop-shadow(0 10px 18px #0007)}
-.art-label{position:absolute;top:13px;left:13px;font-size:10px;
-padding:6px 9px;border-radius:7px;background:#09090dc9;color:#f7a8b4;font-weight:900}
-.game-content{padding:18px}
-.game h3{font-size:19px;margin:0 0 8px}
-.game p{font-size:12px;line-height:1.7;color:var(--muted);min-height:40px;margin:0 0 17px}
-.game-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.game-type{font-size:11px;color:#aaa9bb}
-.play-btn{background:var(--red);color:white;border:0;border-radius:10px;padding:10px 14px;
-font-weight:900;font-size:12px}
-.play-btn:hover{background:#ff5367}
-.empty{display:none;text-align:center;color:var(--muted);padding:35px}
-.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:55px 0}
-.feature{padding:22px;border:1px solid var(--border);border-radius:16px;background:#111117}
-.feature-icon{font-size:25px}
-.feature h3{font-size:15px;margin:14px 0 7px}
-.feature p{color:var(--muted);font-size:12px;line-height:1.7;margin:0}
-.cta{padding:32px;border:1px solid #3b202b;border-radius:20px;
-background:linear-gradient(110deg,#211019,#121017);margin-bottom:45px}
-.cta h2{margin:0 0 9px;font-size:24px}
-.cta p{color:var(--muted);font-size:13px;line-height:1.7}
-footer{border-top:1px solid var(--border);padding:25px 0;color:var(--muted);font-size:12px}
-.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:15px}
-footer strong{color:white}
-footer a{margin-left:14px}
-.modal-bg{display:none;position:fixed;inset:0;z-index:30;background:#000b;
-align-items:center;justify-content:center;padding:18px}
-.modal-bg.show{display:flex}
-.modal{width:min(420px,100%);background:#15151e;border:1px solid var(--border);
-border-radius:20px;padding:25px;position:relative}
-.modal h2{margin:0 0 8px}
-.modal p{font-size:13px;line-height:1.6;color:var(--muted)}
-.modal input{display:block;width:100%;margin:12px 0;padding:13px;border-radius:10px;
-border:1px solid var(--border);background:#0d0d13;color:white;outline:none}
-.modal input:focus{border-color:var(--red)}
-.modal .btn{width:100%;margin-top:7px}
-.close{position:absolute;right:15px;top:13px;background:none;border:0;color:#aaa;font-size:25px}
-.notice{font-size:12px;color:#ff9eab!important;margin-top:12px}
-@media(max-width:850px){
- .hero-art{right:3%;opacity:.25}.hero h1,.hero p,.hero-actions,.hero .eyebrow{position:relative;z-index:1}
- .games{grid-template-columns:repeat(2,minmax(0,1fr))}
- .navlinks{display:none}
+
+body{
+  margin:0;
+  background:#050608;
+  color:#fff;
+  font-family:Arial,sans-serif
 }
-@media(max-width:520px){
- .container{width:calc(100% - 24px)}
- .nav{height:66px}.brand{font-size:16px;gap:8px}.logo{width:36px;height:36px}
- .nav-actions .btn{padding:9px;font-size:11px}
- .hero{padding:36px 20px;margin:20px 0 33px}
- .hero h1{font-size:36px;letter-spacing:-1px}
- .hero p{font-size:13px}.hero-art{right:-30px}
- .playing-card{width:57px;height:85px;font-size:25px}
- .section-head{align-items:flex-start;flex-direction:column}
- .search{max-width:none}
- .games{gap:10px;grid-template-columns:repeat(2,minmax(0,1fr))}
- .game-art{height:115px}.art-icon{font-size:49px}
- .game-content{padding:12px}.game h3{font-size:15px}
- .game p{font-size:11px;min-height:54px}
- .game-bottom{align-items:flex-start;flex-direction:column}
- .play-btn{width:100%}.filters{gap:6px}
- .filter{padding:8px 10px;font-size:11px}
- .features{grid-template-columns:1fr;margin:35px 0}
- .cta{padding:23px}.footer-inner{align-items:flex-start;flex-direction:column}
+
+header{
+  text-align:center;
+  padding:35px 15px;
+  background:radial-gradient(ellipse at top,#460000,#100809 65%,#050608);
+  border-bottom:2px solid #ff101b
+}
+
+header h1{
+  font-size:clamp(32px,7vw,58px);
+  margin:0;
+  color:#ff1724;
+  font-weight:900;
+  text-shadow:0 0 20px #a00000
+}
+
+header p{
+  letter-spacing:5px;
+  color:#ddd;
+  margin-bottom:0
+}
+
+.search{
+  display:block;
+  width:90%;
+  max-width:600px;
+  margin:25px auto;
+  padding:15px;
+  background:#101216;
+  color:white;
+  border:1px solid #e50914;
+  border-radius:10px;
+  font-size:16px
+}
+
+.games{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+  max-width:1100px;
+  padding:16px;
+  margin:auto
+}
+
+.card{
+  background:linear-gradient(145deg,#15171c,#08090b);
+  border:1px solid #343740;
+  border-radius:15px;
+  overflow:hidden;
+  padding:12px;
+  box-shadow:0 8px 25px #0008
+}
+
+.card img{
+  display:block;
+  width:100%;
+  height:210px;
+  object-fit:cover;
+  border-radius:9px;
+  background:#190809
+}
+
+.poster{
+  height:210px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  flex-direction:column;
+  border-radius:9px;
+  background:radial-gradient(circle,#720000,#1a0507 65%,#050505)
+}
+
+.poster strong{
+  font-size:29px;
+  color:#ff2631;
+  text-shadow:0 0 15px red
+}
+
+.poster span{
+  font-size:15px;
+  letter-spacing:3px;
+  margin-top:8px
+}
+
+.card h2{
+  font-size:21px;
+  margin:16px 4px 10px
+}
+
+.tag{
+  display:inline-block;
+  background:#e50914;
+  color:white;
+  padding:7px 12px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold
+}
+
+.desc{
+  color:#b9bdc8;
+  line-height:1.55;
+  min-height:48px
+}
+
+.btn{
+  display:block;
+  text-align:center;
+  text-decoration:none;
+  background:linear-gradient(90deg,#ff0011,#c9000b);
+  color:white;
+  font-weight:bold;
+  padding:15px 8px;
+  border-radius:10px;
+  margin-top:12px;
+  transition:.2s
+}
+
+.btn:hover{
+  filter:brightness(1.2);
+  transform:translateY(-1px)
+}
+
+.tutorial{
+  background:linear-gradient(90deg,#292929,#151515);
+  border:1px solid #ff1724
+}
+
+.no-results{
+  display:none;
+  text-align:center;
+  color:#ff4650;
+  font-size:17px;
+  padding:25px 15px;
+  grid-column:1/-1
+}
+
+footer{
+  text-align:center;
+  padding:30px 10px;
+  color:#aaa;
+  letter-spacing:2px
 }
 </style>
 </head>
+
 <body>
+
 <header>
-  <div class="container nav">
-    <a class="brand" href="#home" aria-label="CHITALA PROD მთავარი">
-      <div class="logo">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2">
-          <path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/>
-        </svg>
-      </div>
-      CHITALA <span>PROD</span>
-    </a>
-    <nav class="navlinks">
-      <a href="#home">მთავარი</a><a href="#games">თამაშები</a>
-      <a href="#features">ჩვენ შესახებ</a>
-    </nav>
-    <div class="nav-actions">
-      <button class="btn" onclick="openModal('login')">შესვლა</button>
-      <button class="btn btn-red" onclick="openModal('register')">რეგისტრაცია</button>
-    </div>
-  </div>
+  <h1>CHITALA MODS</h1>
+  <p>YOUR GAMING WORLD</p>
 </header>
 
-<main class="container" id="home">
-  <section class="hero">
-    <div class="eyebrow">ქართული სათამაშო სივრცე</div>
-    <h1>ითამაშე შენი წესებით.<br><span>მოიგე მეგობრებთან!</span></h1>
-    <p>შენი საყვარელი მაგიდის თამაშები ერთ სივრცეში. აირჩიე თამაში, მოემზადე და დაიწყე გართობა.</p>
-    <div class="hero-actions">
-      <a class="btn btn-red" href="#games">🎮 თამაშების ნახვა</a>
-      <a class="btn" href="#features">გაიგე მეტი ↓</a>
-    </div>
-    <div class="hero-art" aria-hidden="true">
-      <div class="playing-card"><b>A</b>♠</div>
-      <div class="playing-card"><b>K</b>♥</div>
-      <div class="playing-card"><b>Q</b>♣</div>
-    </div>
+<input
+  class="search"
+  id="search"
+  placeholder="🔍 Search games..."
+  aria-label="Search games"
+  oninput="searchGames()"
+>
+
+<main class="games" id="games">
+
+  <section class="card" data-name="shadow fight 2 definitive edition">
+    <img src="shadow-fight-2.jpg" alt="Shadow Fight 2">
+
+    <h2>Shadow Fight 2: Definitive Edition</h2>
+    <span class="tag">MOD APK</span>
+
+    <p class="desc">
+      Action fighting game. Check the file details and compatibility before installing.
+    </p>
+
+    <a class="btn"
+       href="https://drive.usercontent.google.com/download?id=1nypebh2xJD1uXJwu2_VKxIGJ6lpCzupK&amp;export=download&amp;authuser=0"
+       target="_blank"
+       rel="noopener noreferrer">
+       ⬇ DOWNLOAD GAME
+    </a>
+
+    <a class="btn tutorial"
+       href="https://youtu.be/ecuTZ0yzTfg?si=6gsTHwQ99RolmMzb"
+       target="_blank"
+       rel="noopener noreferrer">
+       ▶ WATCH TUTORIAL
+    </a>
   </section>
 
-  <section id="games">
-    <div class="section-head">
-      <div><h2>აირჩიე შენი თამაში</h2><p>რომელი თამაშია დღეს შენი ფავორიტი?</p></div>
-      <div class="online-pill"><span class="dot"></span> CHITALA PROD</div>
-    </div>
-    <input class="search" id="search" type="search" placeholder="🔎 მოძებნე თამაში..." aria-label="თამაშის ძებნა">
-    <div class="filters" id="filters">
-      <button class="filter active" data-filter="all">ყველა</button>
-      <button class="filter" data-filter="cards">კარტი</button>
-      <button class="filter" data-filter="board">სამაგიდო</button>
-      <button class="filter" data-filter="quiz">ქვიზი</button>
+  <section class="card" data-name="invincible guarding the globe">
+    <div class="poster">
+      <strong>INVINCIBLE</strong>
+      <span>GUARDING THE GLOBE</span>
     </div>
 
-    <div class="games" id="gameGrid">
-      <article class="game" data-name="ბურა ბურას კარტი" data-category="cards">
-        <div class="game-art art-bura"><span class="art-label">კარტი</span><div class="art-icon">🂡</div></div>
-        <div class="game-content"><h3>ბურა</h3><p>შენი საყვარელი კარტის თამაში. გამოსცადე შენი სტრატეგია.</p>
-          <div class="game-bottom"><span class="game-type">♠ სტრატეგია</span><button class="play-btn" onclick="comingSoon('ბურა')">თამაში →</button></div>
-        </div>
-      </article>
-      <article class="game" data-name="ბურა 2v2 გუნდური კარტი" data-category="cards">
-        <div class="game-art art-team"><span class="art-label">გუნდური</span><div class="art-icon">🃏</div></div>
-        <div class="game-content"><h3>ბურა 2v2</h3><p>შეიკარი გუნდი და ითამაშე პარტნიორთან ერთად.</p>
-          <div class="game-bottom"><span class="game-type">♣ 2 მოთამაშე გუნდში</span><button class="play-btn" onclick="comingSoon('ბურა 2v2')">თამაში →</button></div>
-        </div>
-      </article>
-      <article class="game" data-name="ნარდი backgammon" data-category="board">
-        <div class="game-art art-nardi"><span class="art-label">სამაგიდო</span><div class="art-icon">🎲</div></div>
-        <div class="game-content"><h3>ნარდი</h3><p>დაგეგმე სვლები, გამოიყენე კამათელი და დაამარცხე მეტოქე.</p>
-          <div class="game-bottom"><span class="game-type">🎲 სტრატეგია</span><button class="play-btn" onclick="comingSoon('ნარდი')">თამაში →</button></div>
-        </div>
-      </article>
-      <article class="game" data-name="ჯოკერი joker კარტი" data-category="cards">
-        <div class="game-art art-joker"><span class="art-label">კარტი</span><div class="art-icon">🃏</div></div>
-        <div class="game-content"><h3>ჯოკერი</h3><p>გამოიცანი, დაგეგმე და სწორად შეაფასე შენი შესაძლებლობები.</p>
-          <div class="game-bottom"><span class="game-type">♥ ტაქტიკა</span><button class="play-btn" onclick="comingSoon('ჯოკერი')">თამაში →</button></div>
-        </div>
-      </article>
-      <article class="game" data-name="ქვიზი quiz გამოიცანი აპლიკაცია" data-category="quiz">
-        <div class="game-art art-quiz"><span class="art-label">გამოიცანი</span><div class="art-icon">❓</div></div>
-        <div class="game-content"><h3>ქვიზი</h3><p>გამოიცანი აპლიკაციები, უპასუხე კითხვებს და შეამოწმე ცოდნა.</p>
-          <div class="game-bottom"><span class="game-type">🧠 ცოდნა</span><button class="play-btn" onclick="comingSoon('ქვიზი')">თამაში →</button></div>
-        </div>
-      </article>
+    <h2>Invincible: Guarding the Globe</h2>
+    <span class="tag">MOBILE GAME</span>
+
+    <p class="desc">Build your team and battle your enemies.</p>
+
+    <a class="btn"
+       href="https://play.google.com/store/search?q=Invincible%20Guarding%20the%20Globe&amp;c=apps"
+       target="_blank"
+       rel="noopener noreferrer">
+       ↗ VIEW GAME
+    </a>
+  </section>
+
+  <section class="card" data-name="mortal kombat">
+    <div class="poster">
+      <strong>MORTAL KOMBAT</strong>
+      <span>FIGHTING GAME</span>
     </div>
-    <div class="empty" id="empty">თამაში ვერ მოიძებნა. სხვა სიტყვა სცადე.</div>
+
+    <h2>Mortal Kombat</h2>
+    <span class="tag">FIGHTING GAME</span>
+
+    <p class="desc">Enter the arena and fight.</p>
+
+    <a class="btn"
+       href="https://play.google.com/store/search?q=Mortal%20Kombat&amp;c=apps"
+       target="_blank"
+       rel="noopener noreferrer">
+       ↗ VIEW GAME
+    </a>
   </section>
 
-  <section class="features" id="features">
-    <article class="feature"><div class="feature-icon">🎮</div><h3>თამაშები ერთ სივრცეში</h3><p>იპოვე შენი საყვარელი თამაშები მარტივი და მოსახერხებელი მენიუდან.</p></article>
-    <article class="feature"><div class="feature-icon">📱</div><h3>მობილურზე მორგებული</h3><p>დიზაინი ადაპტირდება ტელეფონზე, პლანშეტსა და კომპიუტერზე.</p></article>
-    <article class="feature"><div class="feature-icon">🤝</div><h3>მეგობრებთან ერთად</h3><p>საიტის მომავალი მიზანია მეგობრებთან ონლაინ თამაშის შესაძლებლობა.</p></article>
-  </section>
+  <div class="no-results" id="noResults">
+    No games found. Try a different search.
+  </div>
 
-  <section class="cta">
-    <div class="eyebrow">CHITALA PROD</div>
-    <h2>მზად ხარ თამაშისთვის?</h2>
-    <p>აირჩიე თამაში და შემოგვიერთდი.</p>
-    <a class="btn btn-red" href="#games">თამაშების ნახვა ↑</a>
-  </section>
 </main>
 
-<footer>
-  <div class="container footer-inner">
-    <div>© <span id="year"></span> <strong>CHITALA PROD</strong> · ქართული თამაშების სივრცე</div>
-    <div><a href="https://t.me/chitalamod" target="_blank" rel="noopener">Telegram</a><a href="https://youtube.com/@chitalaa" target="_blank" rel="noopener">YouTube</a></div>
-  </div>
-</footer>
-
-<div class="modal-bg" id="modalBg" onclick="if(event.target===this)closeModal()">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <button class="close" onclick="closeModal()" aria-label="დახურვა">×</button>
-    <h2 id="modalTitle">შესვლა</h2>
-    <p id="modalDescription">შეიყვანე მონაცემები.</p>
-    <form id="accountForm">
-      <input id="username" autocomplete="username" placeholder="მომხმარებლის სახელი" required>
-      <input id="password" type="password" autocomplete="current-password" placeholder="პაროლი" required minlength="4">
-      <button class="btn btn-red" type="submit" id="submitBtn">შესვლა</button>
-    </form>
-    <p class="notice" id="notice">ეს მხოლოდ დიზაინის დემოა — ანგარიშების სისტემა ჯერ არ არის დაკავშირებული.</p>
-  </div>
-</div>
+<footer>CHITALA MODS © 2026</footer>
 
 <script>
-const search = document.getElementById('search');
-const cards = [...document.querySelectorAll('.game')];
-const filters = [...document.querySelectorAll('.filter')];
-let activeFilter = 'all';
+function searchGames(){
+  const query = document.getElementById("search").value
+    .trim()
+    .toLowerCase();
 
-function updateGames(){
-  const query = search.value.trim().toLocaleLowerCase('ka');
-  let visible = 0;
+  const cards = document.querySelectorAll(".card");
+  let found = 0;
+
   cards.forEach(card => {
-    const matchesText = card.dataset.name.toLocaleLowerCase('ka').includes(query);
-    const matchesCategory = activeFilter === 'all' || card.dataset.category === activeFilter;
-    card.style.display = matchesText && matchesCategory ? '' : 'none';
-    if(matchesText && matchesCategory) visible++;
-  });
-  document.getElementById('empty').style.display = visible ? 'none' : 'block';
-}
-search.addEventListener('input', updateGames);
-filters.forEach(button => button.addEventListener('click', () => {
-  activeFilter = button.dataset.filter;
-  filters.forEach(item => item.classList.toggle('active', item === button));
-  updateGames();
-}));
+    const name = card.dataset.name.toLowerCase();
+    const matches = name.includes(query);
 
-function comingSoon(game){
-  alert('„' + game + '“ — თამაში ჯერ არ არის დაკავშირებული. ეს ღილაკი ამ ეტაპზე მხოლოდ დემოა.');
+    card.style.display = matches ? "" : "none";
+
+    if(matches){
+      found++;
+    }
+  });
+
+  document.getElementById("noResults").style.display =
+    found === 0 ? "block" : "none";
 }
-function openModal(mode){
-  const register = mode === 'register';
-  document.getElementById('modalTitle').textContent = register ? 'ანგარიშის შექმნა' : 'შესვლა';
-  document.getElementById('modalDescription').textContent = register
-    ? 'შექმენი ანგარიში CHITALA PROD-ზე.'
-    : 'შეიყვანე შენი ანგარიშის მონაცემები.';
-  document.getElementById('submitBtn').textContent = register ? 'რეგისტრაცია' : 'შესვლა';
-  document.getElementById('password').autocomplete = register ? 'new-password' : 'current-password';
-  document.getElementById('notice').textContent = 'ეს მხოლოდ დიზაინის დემოა — რეალური ანგარიშების სისტემა ჯერ არ არის დაკავშირებული.';
-  document.getElementById('modalBg').classList.add('show');
-}
-function closeModal(){
-  document.getElementById('modalBg').classList.remove('show');
-}
-document.getElementById('accountForm').addEventListener('submit', event => {
-  event.preventDefault();
-  document.getElementById('notice').textContent = 'ფორმა მუშაობს დემოს რეჟიმში. რეალური შესვლისთვის საჭიროა სერვერი და ანგარიშების სისტემა.';
-});
-document.addEventListener('keydown', event => { if(event.key === 'Escape') closeModal(); });
-document.getElementById('year').textContent = new Date().getFullYear();
 </script>
+
 </body>
 </html>
