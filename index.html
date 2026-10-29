@@ -273,17 +273,53 @@ h2 { font-size: 23px; margin: 0; }
   margin-bottom: 12px;
 }
 .tag {
+  display: inline-flex;
+  align-items: center;
   font-size: 10px;
   font-weight: 800;
   letter-spacing: .6px;
   padding: 6px 8px;
+  border: 1px solid transparent;
   border-radius: 6px;
   background: #252e3a;
   color: #c5d5ed;
+  transition: filter .18s ease;
 }
+.tag:hover { filter: brightness(1.15); }
 .tag.mod {
   background: rgba(57,132,255,.15);
   color: #75adff;
+  border-color: rgba(57,132,255,.28);
+}
+.tag.underworld {
+  background: rgba(168,85,247,.14);
+  color: #c6a0ff;
+  border-color: rgba(168,85,247,.28);
+}
+.tag.fighting {
+  background: rgba(255,91,91,.13);
+  color: #ff9999;
+  border-color: rgba(255,91,91,.25);
+}
+.tag.online {
+  background: rgba(47,203,137,.12);
+  color: #79e2b4;
+  border-color: rgba(47,203,137,.25);
+}
+.tag.rpg {
+  background: rgba(255,190,72,.13);
+  color: #ffd17b;
+  border-color: rgba(255,190,72,.25);
+}
+.tag.superhero {
+  background: rgba(66,190,255,.13);
+  color: #88d8ff;
+  border-color: rgba(66,190,255,.25);
+}
+.tag.version {
+  background: rgba(174,184,198,.1);
+  color: #c6ceda;
+  border-color: rgba(174,184,198,.2);
 }
 .game-card h3 { margin: 0 0 9px; font-size: 19px; }
 .game-card p {
@@ -298,22 +334,31 @@ h2 { font-size: 23px; margin: 0; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 40px;
+  min-height: 42px;
   flex: 1;
   padding: 10px 12px;
-  border-radius: 9px;
-  border: 1px solid var(--border);
-  background: var(--panel2);
-  color: white;
+  border-radius: 10px;
+  border: 1px solid #394454;
+  background: linear-gradient(180deg, #252d39, #202630);
+  color: #e9eef8;
   font-size: 12px;
   font-weight: 800;
-  transition: .2s;
+  transition: background .18s ease, border-color .18s ease, transform .18s ease;
 }
 .action-btn.primary {
-  background: var(--blue);
-  border-color: var(--blue);
+  background: linear-gradient(135deg, #3984ff, #2868d8);
+  border-color: #3984ff;
+  color: white;
 }
-.action-btn:hover { filter: brightness(1.12); }
+.action-btn:hover {
+  transform: translateY(-1px);
+  border-color: #6c9fe9;
+}
+.action-btn.primary:hover {
+  background: linear-gradient(135deg, #5595ff, #3478ed);
+  border-color: #5595ff;
+}
+.action-btn:active { transform: translateY(0); }
 .empty {
   display: none;
   text-align: center;
@@ -537,30 +582,30 @@ footer strong { color: #b7c2d2; }
 const games = [
   {
     id: "shadow",
-    title: "Shadow Fight 2: Definitive Edition",
+    title: "Shadow Fight 2: Definitive Edition 2026",
     image: "shadow-fight-2.jpg",
     description: "Enter the fight with this special edition of Shadow Fight 2.",
     tags: ["mod", "fighting"],
-    tagText: ["MODDED", "FIGHTING"],
+    tagText: ["MOD", "UNDERWORLD", "FIGHTING", "2026"],
     download: "https://drive.usercontent.google.com/download?id=1nypebh2xJD1uXJwu2_VKxIGJ6lpCzupK&export=download&authuser=0",
     tutorial: "https://youtu.be/ecuTZ0yzTfg?si=6gsTHwQ99RolmMzb"
   },
   {
     id: "invincible",
-    title: "Invincible: Guarding the Globe",
+    title: "Invincible: Guarding the Globe 2026",
     image: "invincible.jpg",
     description: "Build your team of heroes and defend the globe.",
-    tags: ["online"],
-    tagText: ["ONLINE"],
+    tags: ["mod", "online"],
+    tagText: ["MOD", "IDLE RPG", "SUPERHERO", "2026"],
     download: "https://play.google.com/store/search?q=Invincible%20Guarding%20the%20Globe&c=apps"
   },
   {
     id: "mortal",
-    title: "Mortal Kombat",
+    title: "Mortal Kombat 2026",
     image: "mortal-kombat.jpg",
     description: "Fight with legendary characters in Mortal Kombat.",
-    tags: ["fighting", "online"],
-    tagText: ["FIGHTING", "ONLINE"],
+    tags: ["mod", "fighting", "online"],
+    tagText: ["MOD", "FIGHTING", "ONLINE", "2026"],
     download: "https://play.google.com/store/search?q=Mortal%20Kombat&c=apps"
   }
 ];
@@ -570,13 +615,26 @@ let currentPage = "home";
 
 const $ = id => document.getElementById(id);
 
+function tagClass(tag) {
+  const classes = {
+    "MOD": "mod",
+    "UNDERWORLD": "underworld",
+    "FIGHTING": "fighting",
+    "ONLINE": "online",
+    "IDLE RPG": "rpg",
+    "SUPERHERO": "superhero",
+    "2026": "version"
+  };
+  return classes[tag] || "";
+}
+
 function cardHTML(game) {
   return `
     <article class="game-card">
       <img class="game-image" src="${game.image}" alt="${game.title}" loading="lazy">
       <div class="game-content">
         <div class="tags">
-          ${game.tagText.map(tag => `<span class="tag ${tag === "MODDED" ? "mod" : ""}">${tag}</span>`).join("")}
+          ${game.tagText.map(tag => `<span class="tag ${tagClass(tag)}">${tag}</span>`).join("")}
         </div>
         <h3>${game.title}</h3>
         <p>${game.description}</p>
