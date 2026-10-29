@@ -3,19 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080d1b">
+<meta name="theme-color" content="#111318">
+
 <title>CHITALA MODS | Gaming Hub</title>
 
 <style>
 :root {
-  --bg: #080d1b;
-  --panel: #101a30;
-  --panel-light: #14223c;
-  --blue: #28d7ff;
-  --purple: #8b5cf6;
-  --text: #f4f7ff;
-  --muted: #9aabc5;
-  --border: rgba(125, 160, 220, .17);
+  --bg: #111318;
+  --surface: #191d25;
+  --surface2: #202630;
+  --blue: #48baff;
+  --blue-hover: #80d0ff;
+  --text: #f5f7fa;
+  --muted: #a3adbb;
+  --border: #303743;
 }
 
 * {
@@ -26,14 +27,12 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 100px;
 }
 
 body {
   min-height: 100vh;
-  background:
-    radial-gradient(ellipse at 15% 0%, rgba(38, 108, 255, .13), transparent 38%),
-    radial-gradient(ellipse at 90% 15%, rgba(139, 92, 246, .10), transparent 35%),
-    var(--bg);
+  background: var(--bg);
   color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
@@ -57,15 +56,19 @@ button {
   margin: auto;
 }
 
-/* HEADER */
+/* STICKY HEADER */
 
 header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(17, 19, 24, .96);
   border-bottom: 1px solid var(--border);
-  background: rgba(8, 13, 27, .88);
+  backdrop-filter: blur(14px);
 }
 
 .header-inner {
-  min-height: 82px;
+  min-height: 78px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -75,33 +78,32 @@ header {
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
-  min-width: 0;
+  gap: 11px;
+  flex-shrink: 0;
 }
 
 .brand-mark {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   flex-shrink: 0;
   overflow: hidden;
-  border: 1px solid rgba(40, 215, 255, .45);
-  border-radius: 13px;
-  background: #111d35;
-  box-shadow: 0 0 22px rgba(40, 215, 255, .10);
+  border: 1px solid #394352;
+  border-radius: 10px;
+  background: #202630;
 }
 
 .brand-mark img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  display: block;
 }
 
 .brand-name {
-  font-size: 20px;
-  line-height: 1.2;
+  font-size: 19px;
   font-weight: 900;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
+  line-height: 1.25;
 }
 
 .brand-name span {
@@ -109,56 +111,102 @@ header {
 }
 
 .brand-subtitle {
+  margin-top: 3px;
   color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 2.3px;
-  margin-top: 4px;
+  font-size: 9px;
+  letter-spacing: 2px;
 }
 
-.header-status {
-  color: #9eeaff;
-  border: 1px solid rgba(40, 215, 255, .23);
-  background: rgba(40, 215, 255, .06);
-  padding: 7px 12px;
-  border-radius: 20px;
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.nav-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 9px 14px;
+  color: #b6bfcc;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
   font-size: 11px;
-  letter-spacing: 1px;
-  white-space: nowrap;
+  font-weight: 800;
+  letter-spacing: .6px;
+  transition: .2s ease;
 }
 
-/* SEARCH — AT THE TOP */
-
-.search-section {
-  padding: 35px 0 22px;
+.nav-btn:hover {
+  color: white;
+  background: var(--surface2);
 }
+
+.nav-btn.active {
+  color: var(--blue);
+  background: rgba(72, 186, 255, .09);
+  border-color: rgba(72, 186, 255, .22);
+}
+
+/* PAGE CONTENT */
+
+main {
+  min-height: 65vh;
+}
+
+.page {
+  display: none;
+  padding-top: 28px;
+  padding-bottom: 65px;
+  animation: appear .18s ease;
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes appear {
+  from {
+    opacity: .6;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* SEARCH */
 
 .search-box {
   position: relative;
   width: 100%;
+  margin-bottom: 27px;
 }
 
 .search-icon {
   position: absolute;
-  left: 18px;
+  left: 17px;
   top: 50%;
   transform: translateY(-50%);
   color: var(--blue);
-  font-size: 21px;
+  font-size: 22px;
   pointer-events: none;
 }
 
 #gameSearch {
   width: 100%;
-  height: 60px;
-  padding: 0 52px 0 52px;
+  height: 56px;
+  padding: 0 50px;
   color: var(--text);
-  background: linear-gradient(110deg, #111c33, #10172a);
-  border: 1px solid rgba(40, 215, 255, .28);
-  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
   outline: none;
-  font-size: 15px;
-  transition: border-color .2s, box-shadow .2s;
   appearance: none;
+  font-size: 14px;
+  transition: border-color .2s, box-shadow .2s;
 }
 
 #gameSearch::-webkit-search-cancel-button {
@@ -166,153 +214,143 @@ header {
 }
 
 #gameSearch::placeholder {
-  color: #8192ae;
+  color: #8f99a8;
 }
 
 #gameSearch:focus {
   border-color: var(--blue);
-  box-shadow: 0 0 0 3px rgba(40, 215, 255, .09);
+  box-shadow: 0 0 0 3px rgba(72, 186, 255, .08);
 }
 
 #clearSearch {
   position: absolute;
-  right: 13px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 32px;
-  height: 32px;
   display: none;
   align-items: center;
   justify-content: center;
-  color: #c8d5ed;
-  background: #24334e;
-  border: none;
-  border-radius: 9px;
-  font-size: 21px;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 7px;
+  color: white;
+  background: var(--surface2);
+  font-size: 20px;
 }
 
 #clearSearch.visible {
   display: flex;
 }
 
-/* INTRO */
+/* HOME */
 
-.intro {
-  padding: 12px 0 26px;
+.home-panel {
+  padding: 29px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: linear-gradient(120deg, #1b2029, #161a22);
 }
 
 .eyebrow {
   color: var(--blue);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 7px;
-}
-
-.intro h1 {
-  font-size: clamp(28px, 5vw, 43px);
-  line-height: 1.2;
+  font-size: 10px;
   font-weight: 900;
-  letter-spacing: -.8px;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
 }
 
-.intro h1 span {
-  color: var(--blue);
+.home-panel h1 {
+  margin-top: 8px;
+  font-size: clamp(25px, 4vw, 34px);
+  line-height: 1.25;
+  font-weight: 900;
 }
 
-.intro p {
-  max-width: 560px;
-  color: var(--muted);
+.home-panel p {
+  max-width: 590px;
   margin-top: 10px;
+  color: var(--muted);
   font-size: 14px;
 }
 
-/* CATEGORY FILTERS */
-
-.filter-panel {
-  padding: 18px;
-  margin-bottom: 28px;
-  border: 1px solid var(--border);
-  border-radius: 15px;
-  background: linear-gradient(120deg, rgba(17, 29, 51, .94), rgba(13, 21, 39, .94));
-  position: relative;
-}
-
-.filter-panel::before,
-.filter-panel::after {
-  content: "";
-  position: absolute;
-  width: 22px;
-  height: 3px;
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 11px 17px;
+  color: #07131c;
   background: var(--blue);
-}
-
-.filter-panel::before {
-  top: -1px;
-  left: 18px;
-}
-
-.filter-panel::after {
-  bottom: -1px;
-  right: 18px;
-}
-
-.filter-heading {
-  color: #b5c6e3;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 1.7px;
-  margin-bottom: 13px;
-  text-transform: uppercase;
-}
-
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-}
-
-.filter-btn {
-  padding: 9px 15px;
-  color: #aebed8;
-  background: #121e34;
-  border: 1px solid #263653;
-  border-radius: 9px;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: .5px;
+  border: 1px solid var(--blue);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 900;
   transition: .2s ease;
 }
 
-.filter-btn:hover {
-  color: white;
+.primary-btn:hover {
+  background: var(--blue-hover);
+}
+
+.home-subheading {
+  margin: 30px 0 15px;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.home-shortcuts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.shortcut {
+  padding: 17px;
+  text-align: left;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  transition: .2s ease;
+}
+
+.shortcut:hover {
   border-color: var(--blue);
+  background: var(--surface2);
 }
 
-.filter-btn.active {
-  color: #06111d;
-  background: var(--blue);
-  border-color: var(--blue);
-  box-shadow: 0 0 18px rgba(40, 215, 255, .13);
+.shortcut-icon {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--blue);
+  font-size: 22px;
 }
 
-/* GAME CARDS */
-
-.games-section {
-  padding-bottom: 70px;
+.shortcut strong {
+  display: block;
+  font-size: 13px;
 }
+
+.shortcut span:last-child {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* GAMES PAGE */
 
 .section-heading {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 15px;
-  margin-bottom: 20px;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 18px;
 }
 
-.section-heading h2 {
-  font-size: 21px;
+.section-heading h1 {
+  font-size: 25px;
   font-weight: 900;
 }
 
@@ -323,34 +361,80 @@ header {
   white-space: nowrap;
 }
 
+/* FILTERS */
+
+.filter-panel {
+  margin-bottom: 26px;
+  padding: 17px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 11px;
+}
+
+.filter-heading {
+  margin-bottom: 12px;
+  color: #c3ccd8;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-btn {
+  padding: 8px 13px;
+  color: #b3bdca;
+  background: #202630;
+  border: 1px solid #343c49;
+  border-radius: 7px;
+  font-size: 10px;
+  font-weight: 900;
+  transition: .2s ease;
+}
+
+.filter-btn:hover {
+  color: white;
+  border-color: var(--blue);
+}
+
+.filter-btn.active {
+  color: #07131c;
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+/* GAME CARDS */
+
 .games-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  gap: 18px;
 }
 
 .game-card {
   min-width: 0;
   overflow: hidden;
+  background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  background: linear-gradient(155deg, #111d33, #0c1426 80%);
-  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+  border-radius: 12px;
+  transition: transform .2s ease, border-color .2s ease;
 }
 
 .game-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(40, 215, 255, .48);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, .22);
+  transform: translateY(-4px);
+  border-color: #4b7795;
 }
 
 .game-art {
   height: 205px;
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse at 50% 30%, rgba(40, 215, 255, .12), transparent 55%),
-    #111c31;
+  background: #202630;
   border-bottom: 1px solid var(--border);
 }
 
@@ -361,44 +445,44 @@ header {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform .35s ease;
+  transition: transform .3s ease;
 }
 
 .game-card:hover .game-art img {
-  transform: scale(1.045);
+  transform: scale(1.035);
 }
 
 .art-placeholder {
   position: absolute;
   inset: 0;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 8px;
-  color: #8fa6c9;
-  font-size: 12px;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 11px;
   letter-spacing: 1px;
 }
 
 .art-placeholder strong {
   color: var(--blue);
-  font-size: 32px;
+  font-size: 30px;
 }
 
 .game-info {
-  padding: 17px;
+  padding: 16px;
 }
 
 .game-title {
-  font-size: 17px;
-  line-height: 1.4;
+  font-size: 16px;
   font-weight: 900;
+  line-height: 1.45;
   margin-bottom: 8px;
 }
 
 .game-description {
-  min-height: 44px;
+  min-height: 42px;
   color: var(--muted);
   font-size: 12px;
   line-height: 1.7;
@@ -408,98 +492,99 @@ header {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin: 15px 0 17px;
+  margin: 14px 0 16px;
 }
 
 .tag {
-  padding: 5px 8px;
-  color: #9feaff;
-  background: rgba(40, 215, 255, .07);
-  border: 1px solid rgba(40, 215, 255, .17);
-  border-radius: 6px;
+  padding: 4px 7px;
+  color: #a9ddfa;
+  background: #202d3a;
+  border: 1px solid #334858;
+  border-radius: 5px;
   font-size: 9px;
-  font-weight: 800;
-  letter-spacing: .5px;
+  font-weight: 900;
+  letter-spacing: .3px;
 }
 
 .card-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 9px;
+  gap: 8px;
 }
 
 .action-btn {
   flex: 1 1 105px;
-  min-height: 40px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 9px 10px;
-  border-radius: 9px;
-  font-size: 11px;
-  font-weight: 900;
+  min-height: 39px;
+  padding: 9px;
+  border-radius: 7px;
   text-align: center;
+  font-size: 10px;
+  font-weight: 900;
   transition: .2s ease;
 }
 
 .action-primary {
-  color: #06111d;
+  color: #07131c;
   background: var(--blue);
   border: 1px solid var(--blue);
 }
 
 .action-primary:hover {
-  background: #83eaff;
+  background: var(--blue-hover);
 }
 
 .action-secondary {
-  color: #d4c7ff;
-  background: rgba(139, 92, 246, .09);
-  border: 1px solid rgba(139, 92, 246, .35);
+  color: #d7e7f2;
+  background: #242b36;
+  border: 1px solid #3a4554;
 }
 
 .action-secondary:hover {
-  background: rgba(139, 92, 246, .2);
+  border-color: var(--blue);
 }
 
 .no-results {
   display: none;
-  padding: 45px 15px;
+  padding: 40px 15px;
   text-align: center;
   color: var(--muted);
-  border: 1px dashed #2b3b58;
-  border-radius: 14px;
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: 10px;
 }
 
 .no-results strong {
   display: block;
-  color: var(--text);
-  font-size: 18px;
-  margin-bottom: 7px;
+  margin-bottom: 6px;
+  color: white;
+  font-size: 17px;
 }
 
 /* FOOTER */
 
 footer {
   border-top: 1px solid var(--border);
-  background: rgba(5, 9, 19, .7);
+  background: #0d0f14;
 }
 
 .footer-inner {
-  min-height: 90px;
+  min-height: 75px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 15px;
+  gap: 12px;
   flex-wrap: wrap;
-  padding-top: 18px;
-  padding-bottom: 18px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .footer-brand {
-  font-weight: 900;
-  letter-spacing: 1.5px;
   font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 1px;
 }
 
 .footer-brand span {
@@ -511,7 +596,7 @@ footer {
   font-size: 11px;
 }
 
-/* RESPONSIVE */
+/* MOBILE */
 
 @media (max-width: 850px) {
   .games-grid {
@@ -529,68 +614,83 @@ footer {
   }
 
   .header-inner {
-    min-height: 72px;
+    min-height: 70px;
+    gap: 8px;
+  }
+
+  .brand {
+    gap: 8px;
   }
 
   .brand-mark {
-    width: 42px;
-    height: 42px;
+    width: 37px;
+    height: 37px;
   }
 
   .brand-name {
-    font-size: 17px;
+    font-size: 15px;
+    letter-spacing: .5px;
   }
 
   .brand-subtitle {
+    font-size: 8px;
+    letter-spacing: 1.3px;
+  }
+
+  .main-nav {
+    gap: 2px;
+  }
+
+  .nav-btn {
+    padding: 8px 7px;
     font-size: 9px;
-    letter-spacing: 1.5px;
+    letter-spacing: 0;
   }
 
-  .header-status {
-    font-size: 9px;
-    padding: 6px 8px;
+  .page {
+    padding-top: 20px;
+    padding-bottom: 45px;
   }
 
-  .search-section {
-    padding-top: 25px;
+  .home-panel {
+    padding: 21px;
   }
 
-  #gameSearch {
-    height: 54px;
+  .home-panel h1 {
+    font-size: 27px;
   }
 
-  .intro h1 {
-    font-size: 29px;
+  .home-shortcuts {
+    grid-template-columns: 1fr;
   }
 
-  .filter-panel {
+  .shortcut {
     padding: 14px;
-  }
-
-  .filters {
-    gap: 7px;
-  }
-
-  .filter-btn {
-    padding: 8px 10px;
-    font-size: 10px;
   }
 
   .games-grid {
     grid-template-columns: 1fr;
-    gap: 15px;
   }
 
   .game-art {
     height: 225px;
   }
 
-  .game-info {
-    padding: 16px;
-  }
-
   .game-description {
     min-height: 0;
+  }
+
+  .filter-panel {
+    padding: 13px;
+  }
+
+  .filter-btn {
+    padding: 8px 9px;
+    font-size: 9px;
+  }
+
+  .section-heading h1 {
+    font-size: 22px;
   }
 }
 
@@ -600,6 +700,7 @@ footer {
   }
 
   *, *::before, *::after {
+    animation-duration: .01ms !important;
     transition-duration: .01ms !important;
   }
 }
@@ -610,24 +711,41 @@ footer {
 
 <header>
   <div class="container header-inner">
-    <a class="brand" href="#" aria-label="CHITALA MODS Home">
+
+    <!-- Clicking the logo always returns to HOME -->
+    <a class="brand" href="#home" id="brandHome"
+       aria-label="CHITALA MODS Home">
+
       <div class="brand-mark">
         <img src="logo.png" alt="CHITALA MODS logo">
       </div>
+
       <div>
         <div class="brand-name">CHITALA <span>MODS</span></div>
         <div class="brand-subtitle">GAMING HUB</div>
       </div>
     </a>
 
-    <div class="header-status">● GAMER ZONE</div>
+    <nav class="main-nav" aria-label="Main navigation">
+      <button class="nav-btn active" data-page="home" type="button">
+        HOME
+      </button>
+      <button class="nav-btn" data-page="games" type="button">
+        GAMES
+      </button>
+      <button class="nav-btn" data-page="mods" type="button">
+        MOD APK
+      </button>
+    </nav>
+
   </div>
 </header>
 
 <main class="container">
 
-  <!-- SEARCH IS THE FIRST MAIN SECTION -->
-  <section class="search-section" aria-label="Search games">
+  <!-- HOME PAGE -->
+  <section class="page active" id="homePage">
+
     <div class="search-box">
       <span class="search-icon" aria-hidden="true">⌕</span>
       <input
@@ -637,31 +755,87 @@ footer {
         autocomplete="off"
         aria-label="Search games"
       >
-      <button id="clearSearch" type="button" aria-label="Clear search">×</button>
+      <button id="clearSearch" type="button" aria-label="Clear search">
+        ×
+      </button>
+    </div>
+
+    <div class="home-panel">
+      <div class="eyebrow">CHITALA MODS</div>
+      <h1>Welcome to the Gaming Hub</h1>
+      <p>
+        Explore mobile games, discover action-packed adventures,
+        and find your next game.
+      </p>
+
+      <button class="primary-btn" type="button" data-go="games">
+        EXPLORE GAMES &nbsp; →
+      </button>
+    </div>
+
+    <h2 class="home-subheading">Browse Categories</h2>
+
+    <div class="home-shortcuts">
+
+      <button class="shortcut" type="button" data-category="all">
+        <span class="shortcut-icon">🎮</span>
+        <strong>All Games</strong>
+        <span>Browse the complete collection</span>
+      </button>
+
+      <button class="shortcut" type="button" data-category="mod">
+        <span class="shortcut-icon">⚡</span>
+        <strong>MOD APK</strong>
+        <span>Explore the mod category</span>
+      </button>
+
+      <button class="shortcut" type="button" data-category="fighting">
+        <span class="shortcut-icon">⚔</span>
+        <strong>Fighting Games</strong>
+        <span>Discover combat and action games</span>
+      </button>
+
     </div>
   </section>
 
-  <section class="intro">
-    <div class="eyebrow">Welcome to Chitala Mods</div>
-    <h1>Your Next <span>Gaming Adventure</span></h1>
-    <p>Discover mobile games, explore the collection, and find your next favorite game.</p>
-  </section>
+  <!-- GAMES PAGE -->
+  <section class="page" id="gamesPage">
 
-  <section class="filter-panel" aria-label="Game categories">
-    <div class="filter-heading">Browse by category</div>
-    <div class="filters">
-      <button class="filter-btn active" type="button" data-filter="all">ALL GAMES</button>
-      <button class="filter-btn" type="button" data-filter="mod">MOD APK</button>
-      <button class="filter-btn" type="button" data-filter="fighting">FIGHTING</button>
-      <button class="filter-btn" type="button" data-filter="online">ONLINE</button>
-      <button class="filter-btn" type="button" data-filter="action">ACTION</button>
+    <div class="search-box">
+      <span class="search-icon" aria-hidden="true">⌕</span>
+      <input
+        type="search"
+        id="gameSearchDuplicate"
+        placeholder="Search games..."
+        autocomplete="off"
+        aria-label="Search games"
+      >
     </div>
-  </section>
 
-  <section class="games-section" aria-label="Game collection">
     <div class="section-heading">
-      <h2>Game Collection</h2>
+      <h1>Game Collection</h1>
       <span class="game-count" id="gameCount">3 GAMES</span>
+    </div>
+
+    <div class="filter-panel">
+      <div class="filter-heading">Browse by category</div>
+      <div class="filters">
+        <button class="filter-btn active" type="button" data-filter="all">
+          ALL GAMES
+        </button>
+        <button class="filter-btn" type="button" data-filter="mod">
+          MOD APK
+        </button>
+        <button class="filter-btn" type="button" data-filter="fighting">
+          FIGHTING
+        </button>
+        <button class="filter-btn" type="button" data-filter="online">
+          ONLINE
+        </button>
+        <button class="filter-btn" type="button" data-filter="action">
+          ACTION
+        </button>
+      </div>
     </div>
 
     <div class="games-grid" id="gamesGrid">
@@ -675,8 +849,9 @@ footer {
           <img src="shadow-fight-2.jpg"
                alt="Shadow Fight 2"
                loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="art-placeholder" style="display:none">
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+          <div class="art-placeholder">
             <strong>SF2</strong>
             <span>SHADOW FIGHT 2</span>
           </div>
@@ -700,6 +875,7 @@ footer {
                target="_blank" rel="noopener noreferrer">
               DOWNLOAD
             </a>
+
             <a class="action-btn action-secondary"
                href="https://youtu.be/ecuTZ0yzTfg?si=6gsTHwQ99RolmMzb"
                target="_blank" rel="noopener noreferrer">
@@ -718,8 +894,9 @@ footer {
           <img src="invincible.jpg"
                alt="Invincible: Guarding the Globe"
                loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="art-placeholder" style="display:none">
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+          <div class="art-placeholder">
             <strong>INV</strong>
             <span>INVINCIBLE</span>
           </div>
@@ -756,8 +933,9 @@ footer {
           <img src="mortal-kombat.jpg"
                alt="Mortal Kombat"
                loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="art-placeholder" style="display:none">
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+          <div class="art-placeholder">
             <strong>MK</strong>
             <span>MORTAL KOMBAT</span>
           </div>
@@ -790,26 +968,93 @@ footer {
       <strong>No games found</strong>
       Try another name or select a different category.
     </div>
+
   </section>
+
+  <!-- MOD APK PAGE -->
+  <section class="page" id="modsPage">
+
+    <div class="section-heading">
+      <h1>MOD APK Collection</h1>
+      <span class="game-count" id="modCount">1 GAME</span>
+    </div>
+
+    <p style="color:var(--muted);font-size:13px;margin-bottom:22px">
+      Browse games listed in the MOD APK category.
+    </p>
+
+    <div class="games-grid" id="modsGrid"></div>
+
+    <div class="no-results" id="modsEmpty">
+      <strong>No MOD APK games listed yet</strong>
+      New games can be added to the collection later.
+    </div>
+
+  </section>
+
 </main>
 
 <footer>
   <div class="container footer-inner">
-    <div class="footer-brand">CHITALA <span>MODS</span></div>
+    <a class="footer-brand" href="#home">
+      CHITALA <span>MODS</span>
+    </a>
     <div class="footer-note">Gaming community · Made for gamers</div>
   </div>
 </footer>
 
 <script>
+const pages = {
+  home: document.getElementById("homePage"),
+  games: document.getElementById("gamesPage"),
+  mods: document.getElementById("modsPage")
+};
+
+const navButtons = document.querySelectorAll(".nav-btn");
 const searchInput = document.getElementById("gameSearch");
+const duplicateSearch = document.getElementById("gameSearchDuplicate");
 const clearButton = document.getElementById("clearSearch");
-const filterButtons = document.querySelectorAll(".filter-btn");
-const gameCards = document.querySelectorAll(".game-card");
-const gameCount = document.getElementById("gameCount");
-const noResults = document.getElementById("noResults");
+
+const gameCards = Array.from(document.querySelectorAll(".game-card"));
 const gamesGrid = document.getElementById("gamesGrid");
+const modsGrid = document.getElementById("modsGrid");
+
+const gameCount = document.getElementById("gameCount");
+const modCount = document.getElementById("modCount");
+const noResults = document.getElementById("noResults");
+const modsEmpty = document.getElementById("modsEmpty");
 
 let activeCategory = "all";
+let currentPage = "home";
+
+function showPage(pageName, updateHash = true) {
+  if (!pages[pageName]) pageName = "home";
+
+  currentPage = pageName;
+
+  Object.entries(pages).forEach(([name, element]) => {
+    element.classList.toggle("active", name === pageName);
+  });
+
+  navButtons.forEach(button => {
+    const active = button.dataset.page === pageName;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+
+  if (updateHash && location.hash !== "#" + pageName) {
+    history.replaceState(null, "", "#" + pageName);
+  }
+
+  window.scrollTo({ top: 0, behavior: "auto" });
+  filterGames();
+}
+
+function setSearch(value) {
+  searchInput.value = value;
+  duplicateSearch.value = value;
+  filterGames();
+}
 
 function filterGames() {
   const query = searchInput.value.trim().toLowerCase();
@@ -817,13 +1062,11 @@ function filterGames() {
 
   gameCards.forEach(card => {
     const name = (card.dataset.name || "").toLowerCase();
-    const categories = (card.dataset.categories || "")
-      .toLowerCase()
-      .split(/\s+/);
+    const categories = (card.dataset.categories || "").split(/\s+/);
+    const text = card.innerText.toLowerCase();
 
-    const searchableText = card.innerText.toLowerCase();
     const matchesSearch =
-      !query || name.includes(query) || searchableText.includes(query);
+      !query || name.includes(query) || text.includes(query);
 
     const matchesCategory =
       activeCategory === "all" || categories.includes(activeCategory);
@@ -841,37 +1084,130 @@ function filterGames() {
   noResults.style.display = visibleCount === 0 ? "block" : "none";
   gamesGrid.style.display = visibleCount === 0 ? "none" : "grid";
 
-  clearButton.classList.toggle("visible", searchInput.value.length > 0);
+  clearButton.classList.toggle("visible", query.length > 0);
+
+  const modCards = gameCards.filter(card =>
+    (card.dataset.categories || "").split(/\s+/).includes("mod")
+  );
+
+  modsGrid.innerHTML = "";
+
+  let visibleMods = 0;
+
+  modCards.forEach(card => {
+    const matchesSearch =
+      !query ||
+      (card.dataset.name || "").toLowerCase().includes(query) ||
+      card.innerText.toLowerCase().includes(query);
+
+    if (matchesSearch) {
+      modsGrid.appendChild(card);
+      visibleMods++;
+    } else {
+      gamesGrid.appendChild(card);
+    }
+  });
+
+  modCount.textContent =
+    visibleMods + (visibleMods === 1 ? " GAME" : " GAMES");
+
+  modsEmpty.style.display = visibleMods === 0 ? "block" : "none";
+  modsGrid.style.display = visibleMods === 0 ? "none" : "grid";
+
+  if (currentPage === "games") {
+    gameCards.forEach(card => {
+      const categories = (card.dataset.categories || "").split(/\s+/);
+      const matchesSearch =
+        !query ||
+        (card.dataset.name || "").toLowerCase().includes(query) ||
+        card.innerText.toLowerCase().includes(query);
+      const matchesCategory =
+        activeCategory === "all" || categories.includes(activeCategory);
+
+      if (matchesSearch && matchesCategory) {
+        gamesGrid.appendChild(card);
+        card.style.display = "";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  }
 }
 
-searchInput.addEventListener("input", filterGames);
+navButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    showPage(button.dataset.page);
+  });
+});
 
-clearButton.addEventListener("click", () => {
-  searchInput.value = "";
-  searchInput.focus();
+document.getElementById("brandHome").addEventListener("click", event => {
+  event.preventDefault();
+  showPage("home");
+});
+
+document.querySelectorAll(".footer-brand").forEach(link => {
+  link.addEventListener("click", event => {
+    event.preventDefault();
+    showPage("home");
+  });
+});
+
+document.querySelectorAll("[data-go]").forEach(button => {
+  button.addEventListener("click", () => {
+    showPage(button.dataset.go);
+  });
+});
+
+document.querySelectorAll("[data-category]").forEach(button => {
+  button.addEventListener("click", () => {
+    activeCategory = button.dataset.category;
+
+    document.querySelectorAll(".filter-btn").forEach(filter => {
+      const active = filter.dataset.filter === activeCategory;
+      filter.classList.toggle("active", active);
+      filter.setAttribute("aria-pressed", String(active));
+    });
+
+    showPage("games");
+  });
+});
+
+searchInput.addEventListener("input", () => {
+  duplicateSearch.value = searchInput.value;
   filterGames();
 });
 
-filterButtons.forEach(button => {
+duplicateSearch.addEventListener("input", () => {
+  searchInput.value = duplicateSearch.value;
+  filterGames();
+});
+
+clearButton.addEventListener("click", () => {
+  setSearch("");
+  searchInput.focus();
+});
+
+document.querySelectorAll(".filter-btn").forEach(button => {
   button.addEventListener("click", () => {
     activeCategory = button.dataset.filter;
 
-    filterButtons.forEach(item => {
-      const active = item === button;
-      item.classList.toggle("active", active);
-      item.setAttribute("aria-pressed", String(active));
+    document.querySelectorAll(".filter-btn").forEach(filter => {
+      const active = filter === button;
+      filter.classList.toggle("active", active);
+      filter.setAttribute("aria-pressed", String(active));
     });
 
     filterGames();
   });
-
-  button.setAttribute(
-    "aria-pressed",
-    String(button.classList.contains("active"))
-  );
 });
 
-filterGames();
+window.addEventListener("hashchange", () => {
+  const page = location.hash.replace("#", "");
+  if (pages[page]) showPage(page, false);
+});
+
+const initialPage = location.hash.replace("#", "");
+showPage(pages[initialPage] ? initialPage : "home", false);
 </script>
 
 </body>
