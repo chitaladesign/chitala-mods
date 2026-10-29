@@ -8,711 +8,242 @@
 
 <style>
 :root {
-  --bg: #07100d;
-  --green: #0b3022;
-  --panel: #0c1c16;
-  --gold: #f3c56b;
-  --gold-light: #ffe5a1;
-  --text: #f7f3e9;
-  --muted: #b7c2b9;
-  --border: #9c793a;
-  --red: #9e2935;
+  --bg:#07100d;--green:#0b3022;--panel:#0c1c16;
+  --gold:#f3c56b;--gold-light:#ffe5a1;--text:#f7f3e9;
+  --muted:#b7c2b9;--border:#9c793a;--red:#9e2935;
 }
-
-* { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  color: var(--text);
-  background:
-    radial-gradient(ellipse at 50% 0%, #19422d 0%, transparent 48%),
-    var(--bg);
-  font-family: Arial, "Noto Sans Georgian", sans-serif;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{
+  margin:0;min-height:100vh;color:var(--text);
+  background:radial-gradient(ellipse at 50% 0%,#19422d 0%,transparent 48%),var(--bg);
+  font-family:Arial,"Noto Sans Georgian",sans-serif
 }
+button,input{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible{outline:2px solid var(--gold-light);outline-offset:3px}
+.container{width:min(1120px,calc(100% - 32px));margin-inline:auto}
 
-button, input { font: inherit; }
-button { cursor: pointer; }
-button:focus-visible, input:focus-visible {
-  outline: 2px solid var(--gold-light);
-  outline-offset: 3px;
+/* HEADER — მხოლოდ ზედა მენიუ შეიცვალა */
+header{
+  padding:13px 0;border:1px solid #a87e34;border-radius:0 0 18px 18px;
+  background:linear-gradient(110deg,#06100c,#12241a,#06100c);
+  box-shadow:0 5px 28px #0007
 }
-
-.container {
-  width: min(1120px, calc(100% - 32px));
-  margin-inline: auto;
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:15px}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.crown{color:var(--gold);font-size:37px;line-height:1}
+.brand-name{font-weight:900;font-size:19px;line-height:1.1}
+.brand-name span{color:var(--gold)}
+.brand-divider{height:36px;width:1px;background:#8e713b;margin-inline:4px}
+.brand-game{color:var(--gold);font-size:23px;font-weight:900;white-space:nowrap}
+.header-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  border:1px solid #80612e;border-radius:10px;padding:11px 15px;
+  color:var(--text);background:#10241a;font-weight:800;transition:.2s
 }
-
-/* HEADER */
-
-header {
-  padding: 13px 0;
-  border: 1px solid #a87e34;
-  border-radius: 0 0 18px 18px;
-  background: linear-gradient(110deg, #06100c, #12241a, #06100c);
-  box-shadow: 0 5px 28px #0007;
+.btn:hover{border-color:var(--gold-light);transform:translateY(-2px)}
+.btn-gold{
+  color:#17150e;background:linear-gradient(135deg,#ffe6a0,#d7a443);
+  border-color:#ffdf8d;box-shadow:0 4px 18px #dba94425
 }
+.btn-red{background:linear-gradient(135deg,#a8323e,#641a25);border-color:#b04b52}
 
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
+/* პროფილის ღილაკი */
+.profile-button{
+  width:47px;height:47px;flex-shrink:0;display:grid;place-items:center;
+  border:2px solid var(--gold);border-radius:50%;
+  color:var(--gold-light);background:linear-gradient(145deg,#193d2b,#07140e);
+  box-shadow:0 0 14px #e8bd6020;transition:.2s
 }
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-}
-
-.crown {
-  color: var(--gold);
-  font-size: 37px;
-  line-height: 1;
-}
-
-.brand-name {
-  font-weight: 900;
-  font-size: 19px;
-  line-height: 1.1;
-}
-
-.brand-name span { color: var(--gold); }
-
-.brand-divider {
-  height: 36px;
-  width: 1px;
-  background: #8e713b;
-  margin-inline: 4px;
-}
-
-.brand-game {
-  color: var(--gold);
-  font-size: 23px;
-  font-weight: 900;
-}
-
-.header-actions {
-  display: flex;
-  gap: 9px;
-  align-items: center;
-}
-
-.btn {
-  border: 1px solid #80612e;
-  border-radius: 10px;
-  padding: 11px 15px;
-  color: var(--text);
-  background: #10241a;
-  font-weight: 800;
-  transition: .2s;
-}
-
-.btn:hover {
-  border-color: var(--gold-light);
-  transform: translateY(-2px);
-}
-
-.btn-gold {
-  color: #17150e;
-  background: linear-gradient(135deg, #ffe6a0, #d7a443);
-  border-color: #ffdf8d;
-  box-shadow: 0 4px 18px #dba94425;
-}
-
-.btn-red {
-  background: linear-gradient(135deg, #a8323e, #641a25);
-  border-color: #b04b52;
-}
+.profile-button:hover{transform:scale(1.05);border-color:var(--gold-light)}
+.profile-button svg{width:25px;height:25px}
+.home-button{white-space:nowrap}
 
 /* HERO */
-
-.hero {
-  padding: 42px 0 24px;
-  text-align: center;
+.hero{padding:42px 0 24px;text-align:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;padding:8px 13px;
+  border:1px solid #8d6b32;border-radius:30px;color:var(--gold-light);
+  background:#d8a9440c;font-size:11px;font-weight:900;letter-spacing:1.3px
 }
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 13px;
-  border: 1px solid #8d6b32;
-  border-radius: 30px;
-  color: var(--gold-light);
-  background: #d8a9440c;
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 1.3px;
-}
-
-.status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #5cf09a;
-  box-shadow: 0 0 10px #5cf09a;
-}
-
-h1 {
-  margin: 17px 0 10px;
-  font-size: clamp(31px, 5vw, 49px);
-  font-weight: 900;
-  line-height: 1.2;
-}
-
-h1 span { color: var(--gold); }
-
-.hero p {
-  max-width: 570px;
-  margin: 0 auto;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.8;
-}
+.status-dot{width:8px;height:8px;border-radius:50%;background:#5cf09a;box-shadow:0 0 10px #5cf09a}
+h1{margin:17px 0 10px;font-size:clamp(31px,5vw,49px);font-weight:900;line-height:1.2}
+h1 span{color:var(--gold)}
+.hero p{max-width:570px;margin:0 auto;color:var(--muted);font-size:14px;line-height:1.8}
 
 /* GAME MODE CAROUSEL */
-
-.mode-section { padding: 18px 0 28px; }
-
-.section-title {
-  margin: 0 0 7px;
-  text-align: center;
-  font-size: 24px;
+.mode-section{padding:18px 0 28px}
+.section-title{margin:0 0 7px;text-align:center;font-size:24px}
+.section-subtitle{margin:0 0 22px;text-align:center;color:var(--muted);font-size:12px}
+.carousel{position:relative;max-width:900px;margin:auto}
+.mode-track{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:19px}
+.mode-card{
+  min-width:0;position:relative;overflow:hidden;padding:24px 21px 22px;
+  border:1px solid var(--border);border-radius:18px;text-align:center;
+  background:radial-gradient(ellipse at 50% 30%,#16472f88,transparent 60%),
+  linear-gradient(145deg,#10291d,#07140f 80%);
+  box-shadow:inset 0 0 0 4px #d9ac4c08,0 12px 30px #0005;
+  transition:border-color .2s,transform .2s,box-shadow .2s
 }
-
-.section-subtitle {
-  margin: 0 0 22px;
-  text-align: center;
-  color: var(--muted);
-  font-size: 12px;
+.mode-card::before{
+  content:"";position:absolute;inset:7px;border:1px solid #b58b3a35;
+  border-radius:12px;pointer-events:none
 }
-
-.carousel {
-  position: relative;
-  max-width: 900px;
-  margin: auto;
+.mode-card:hover{transform:translateY(-3px);border-color:var(--gold-light);box-shadow:0 12px 35px #0007,0 0 20px #e7b9550b}
+.mode-card.active{border-color:var(--gold-light);box-shadow:inset 0 0 0 2px #e9bb5a30,0 0 25px #e9bb5a15}
+.mode-art{position:relative;min-height:158px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.suit-watermark{position:absolute;font-size:110px;color:#e5bb5b13;user-select:none}
+.cards-art{position:relative;width:210px;height:135px}
+.playing-card{
+  position:absolute;top:11px;left:50%;width:77px;height:112px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border:1px solid #d8caa9;border-radius:8px;
+  background:linear-gradient(145deg,#fffdf5,#e8dfc9);
+  box-shadow:0 9px 15px #0007;color:#171713
 }
-
-.mode-track {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 19px;
+.playing-card .rank{font-size:24px;font-weight:900;line-height:1}
+.playing-card .suit{font-size:35px}
+.playing-card.red{color:#c62b37}
+.playing-card.one{transform:translateX(-67px) rotate(-15deg)}
+.playing-card.two{transform:translateX(-24px) rotate(-5deg);top:1px}
+.playing-card.three{transform:translateX(21px) rotate(9deg);top:8px}
+.team-icons{position:absolute;bottom:0;display:flex;align-items:center;justify-content:center;gap:15px;width:100%}
+.team-icon{
+  width:47px;height:47px;display:grid;place-items:center;border:2px solid var(--gold);
+  border-radius:50%;color:var(--gold-light);background:#07150f;font-size:23px
 }
-
-.mode-card {
-  min-width: 0;
-  position: relative;
-  overflow: hidden;
-  padding: 24px 21px 22px;
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  text-align: center;
-  background:
-    radial-gradient(ellipse at 50% 30%, #16472f88, transparent 60%),
-    linear-gradient(145deg, #10291d, #07140f 80%);
-  box-shadow: inset 0 0 0 4px #d9ac4c08, 0 12px 30px #0005;
-  transition: border-color .2s, transform .2s, box-shadow .2s;
+.team-vs{color:var(--gold);font-weight:900}
+.mode-label{
+  display:inline-block;margin-bottom:8px;padding:5px 9px;border:1px solid #d6ae5940;
+  border-radius:5px;color:var(--gold-light);background:#e6b7530d;
+  font-size:10px;font-weight:900;letter-spacing:1.3px
 }
-
-.mode-card::before {
-  content: "";
-  position: absolute;
-  inset: 7px;
-  border: 1px solid #b58b3a35;
-  border-radius: 12px;
-  pointer-events: none;
+.mode-card h3{margin:0;color:var(--gold-light);font-size:clamp(27px,4vw,37px);font-weight:900;text-shadow:0 0 18px #f4c86c22}
+.mode-description{min-height:42px;margin:8px 0 17px;color:#d0d9d0;font-size:13px;line-height:1.7}
+.mode-btn{position:relative;z-index:1;width:100%;padding:14px 10px;border-radius:30px;font-size:14px}
+.carousel-arrow{
+  position:absolute;z-index:3;top:38%;width:43px;height:49px;
+  border:1px solid var(--gold);border-radius:12px;color:var(--gold-light);
+  background:#07140ff2;font-size:25px;box-shadow:0 5px 15px #0006
 }
-
-.mode-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--gold-light);
-  box-shadow: 0 12px 35px #0007, 0 0 20px #e7b9550b;
-}
-
-.mode-card.active {
-  border-color: var(--gold-light);
-  box-shadow: inset 0 0 0 2px #e9bb5a30, 0 0 25px #e9bb5a15;
-}
-
-.mode-art {
-  position: relative;
-  min-height: 158px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 12px;
-}
-
-.suit-watermark {
-  position: absolute;
-  font-size: 110px;
-  color: #e5bb5b13;
-  user-select: none;
-}
-
-.cards-art {
-  position: relative;
-  width: 210px;
-  height: 135px;
-}
-
-.playing-card {
-  position: absolute;
-  top: 11px;
-  left: 50%;
-  width: 77px;
-  height: 112px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #d8caa9;
-  border-radius: 8px;
-  background: linear-gradient(145deg, #fffdf5, #e8dfc9);
-  box-shadow: 0 9px 15px #0007;
-  color: #171713;
-}
-
-.playing-card .rank {
-  font-size: 24px;
-  font-weight: 900;
-  line-height: 1;
-}
-
-.playing-card .suit { font-size: 35px; }
-
-.playing-card.red { color: #c62b37; }
-
-.playing-card.one { transform: translateX(-67px) rotate(-15deg); }
-.playing-card.two { transform: translateX(-24px) rotate(-5deg); top: 1px; }
-.playing-card.three { transform: translateX(21px) rotate(9deg); top: 8px; }
-
-.team-icons {
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  width: 100%;
-}
-
-.team-icon {
-  width: 47px;
-  height: 47px;
-  display: grid;
-  place-items: center;
-  border: 2px solid var(--gold);
-  border-radius: 50%;
-  color: var(--gold-light);
-  background: #07150f;
-  font-size: 23px;
-}
-
-.team-vs {
-  color: var(--gold);
-  font-weight: 900;
-}
-
-.mode-label {
-  display: inline-block;
-  margin-bottom: 8px;
-  padding: 5px 9px;
-  border: 1px solid #d6ae5940;
-  border-radius: 5px;
-  color: var(--gold-light);
-  background: #e6b7530d;
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: 1.3px;
-}
-
-.mode-card h3 {
-  margin: 0;
-  color: var(--gold-light);
-  font-size: clamp(27px, 4vw, 37px);
-  font-weight: 900;
-  text-shadow: 0 0 18px #f4c86c22;
-}
-
-.mode-description {
-  min-height: 42px;
-  margin: 8px 0 17px;
-  color: #d0d9d0;
-  font-size: 13px;
-  line-height: 1.7;
-}
-
-.mode-btn {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  padding: 14px 10px;
-  border-radius: 30px;
-  font-size: 14px;
-}
-
-.carousel-arrow {
-  position: absolute;
-  z-index: 3;
-  top: 38%;
-  width: 43px;
-  height: 49px;
-  border: 1px solid var(--gold);
-  border-radius: 12px;
-  color: var(--gold-light);
-  background: #07140ff2;
-  font-size: 25px;
-  box-shadow: 0 5px 15px #0006;
-}
-
-.carousel-arrow:hover { background: #173a28; }
-.carousel-arrow.left { left: -55px; }
-.carousel-arrow.right { right: -55px; }
-
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 9px;
-  margin-top: 20px;
-}
-
-.carousel-dot {
-  width: 9px;
-  height: 9px;
-  padding: 0;
-  border: 1px solid #a0a99f;
-  border-radius: 50%;
-  background: #51675b;
-}
-
-.carousel-dot.active {
-  background: var(--gold);
-  border-color: var(--gold);
-  box-shadow: 0 0 12px #e8bd60a0;
-}
+.carousel-arrow:hover{background:#173a28}
+.carousel-arrow.left{left:-55px}
+.carousel-arrow.right{right:-55px}
+.carousel-dots{display:flex;justify-content:center;gap:9px;margin-top:20px}
+.carousel-dot{width:9px;height:9px;padding:0;border:1px solid #a0a99f;border-radius:50%;background:#51675b}
+.carousel-dot.active{background:var(--gold);border-color:var(--gold);box-shadow:0 0 12px #e8bd60a0}
 
 /* RULES AND ACCOUNT */
+.bottom-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;margin:6px 0 44px}
+.panel{padding:19px;border:1px solid #8e6a32;border-radius:14px;background:linear-gradient(135deg,#0c2017,#08130e)}
+.panel h2{display:flex;align-items:center;gap:9px;margin:0 0 15px;font-size:19px}
+.panel h2 span{color:var(--gold)}
+.rules-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.rule{padding:12px 10px;border:1px solid #ffffff12;border-radius:10px;background:#07130d7a}
+.rule-icon{margin-bottom:7px;color:var(--gold);font-size:23px}
+.rule strong{display:block;margin-bottom:6px;color:var(--gold-light);font-size:12px}
+.rule p{margin:0;color:var(--muted);font-size:11px;line-height:1.7}
+.account-panel{display:flex;flex-direction:column;justify-content:center}
+.account-heading{display:flex;align-items:center;gap:12px;margin-bottom:17px}
+.account-avatar{flex-shrink:0;width:46px;height:46px;display:grid;place-items:center;border:1px solid var(--gold);border-radius:50%;background:#10281c;color:var(--gold-light);font-size:22px}
+.account-heading strong{font-size:14px}
+.account-heading p{margin:5px 0 0;color:var(--muted);font-size:11px;line-height:1.6}
+.account-buttons{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.account-buttons .btn{min-width:0}
 
-.bottom-grid {
-  display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  gap: 16px;
-  margin: 6px 0 44px;
+/* AUTH / PROFILE MODAL */
+.overlay{
+  display:none;position:fixed;inset:0;z-index:20;align-items:center;
+  justify-content:center;padding:16px;background:#000c;backdrop-filter:blur(7px)
 }
-
-.panel {
-  padding: 19px;
-  border: 1px solid #8e6a32;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #0c2017, #08130e);
+.overlay.open{display:flex}
+.modal{
+  position:relative;width:min(410px,100%);max-height:90vh;overflow-y:auto;
+  padding:25px;border:1px solid var(--gold);border-radius:17px;
+  background:linear-gradient(145deg,#13291e,#07110c);box-shadow:0 20px 70px #0009
 }
-
-.panel h2 {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  margin: 0 0 15px;
-  font-size: 19px;
+.modal h2{margin:0 0 8px;color:var(--gold-light);font-size:23px}
+.modal-intro{margin:0 0 19px;color:var(--muted);font-size:12px;line-height:1.7}
+.close{
+  position:absolute;top:11px;right:11px;width:34px;height:34px;
+  border:1px solid #7d6538;border-radius:9px;color:white;background:#102319;font-size:21px
 }
-
-.panel h2 span { color: var(--gold); }
-
-.rules-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 9px;
+.field{margin-bottom:13px}
+.field label{display:block;margin-bottom:6px;font-size:12px;font-weight:800}
+.field input{width:100%;padding:12px;border:1px solid #405447;border-radius:8px;color:white;background:#07120d;font-size:13px}
+.field input::placeholder{color:#839186}
+.auth-submit{width:100%;margin-top:4px}
+.auth-message{display:none;margin-top:13px;padding:10px;border:1px solid #a96e40;border-radius:8px;color:#ffe0ac;background:#402d18;font-size:12px;line-height:1.6}
+.auth-message.show{display:block}
+.modal-switch{margin-top:15px;text-align:center;color:var(--muted);font-size:12px}
+.modal-switch button{border:0;color:var(--gold-light);background:transparent;font-weight:900}
+.profile-modal-avatar{
+  width:76px;height:76px;display:grid;place-items:center;margin:0 auto 13px;
+  border:2px solid var(--gold);border-radius:50%;color:var(--gold-light);
+  background:linear-gradient(145deg,#19442d,#07140e);font-size:34px
 }
+.profile-name{margin:0 0 6px;text-align:center;font-weight:900;font-size:19px;overflow-wrap:anywhere}
+.profile-email{margin:0 0 20px;text-align:center;color:var(--muted);font-size:12px;overflow-wrap:anywhere}
+.profile-menu-actions{display:grid;gap:10px}
+.profile-menu-actions .btn{width:100%}
+.notice{display:none;margin:15px auto 0;max-width:650px;padding:13px 16px;border:1px solid #8c6a35;border-radius:10px;color:var(--gold-light);background:#10251a;text-align:center;font-size:13px;line-height:1.7}
+.notice.show{display:block}
+footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
+.footer-inner{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.footer-brand{color:var(--gold-light);font-weight:900;letter-spacing:1px}
 
-.rule {
-  padding: 12px 10px;
-  border: 1px solid #ffffff12;
-  border-radius: 10px;
-  background: #07130d7a;
+/* RESPONSIVE */
+@media(max-width:1000px){
+  .carousel-arrow.left{left:5px}.carousel-arrow.right{right:5px}
+  .carousel-arrow{top:35%}.mode-track{padding-inline:48px}
 }
-
-.rule-icon {
-  margin-bottom: 7px;
-  color: var(--gold);
-  font-size: 23px;
+@media(max-width:700px){
+  .bottom-grid{grid-template-columns:1fr}
+  .rules-grid{grid-template-columns:1fr}
+  .rule{display:grid;grid-template-columns:35px 1fr;column-gap:8px}
+  .rule-icon{grid-row:span 2}.rule strong{margin:0 0 4px}.rule p{grid-column:2}
 }
-
-.rule strong {
-  display: block;
-  margin-bottom: 6px;
-  color: var(--gold-light);
-  font-size: 12px;
+@media(max-width:520px){
+  .container{width:calc(100% - 22px)}
+  header{border-radius:0 0 13px 13px}
+  .header-inner{gap:7px}
+  .crown{font-size:29px}
+  .brand{gap:6px}
+  .brand-name{font-size:12px}
+  .brand-divider{height:29px;margin-inline:2px}
+  .brand-game{font-size:16px}
+  .header-actions{gap:6px}
+  .home-button{padding:9px 8px;font-size:10px}
+  .profile-button{width:39px;height:39px}
+  .profile-button svg{width:21px;height:21px}
+  .hero{padding-top:33px}
+  h1{font-size:31px}
+  .hero p{font-size:12px}
+  .section-title{font-size:21px}
+  .mode-track{display:flex;padding:0 37px;overflow:hidden;touch-action:pan-y}
+  .mode-card{display:none;width:100%;flex:0 0 100%;padding:19px 15px}
+  .mode-card.active{display:block}
+  .mode-art{min-height:145px}
+  .cards-art{transform:scale(.9)}
+  .mode-card h3{font-size:30px}
+  .mode-description{min-height:0}
+  .carousel-arrow{top:36%;width:34px;height:42px;font-size:21px}
+  .carousel-arrow.left{left:0}.carousel-arrow.right{right:0}
+  .panel{padding:15px}
+  .account-buttons{grid-template-columns:1fr}
+  .footer-inner{flex-direction:column}
+  .modal{padding:22px 17px}
 }
-
-.rule p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 1.7;
-}
-
-.account-panel {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.account-heading {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 17px;
-}
-
-.account-avatar {
-  flex-shrink: 0;
-  width: 46px;
-  height: 46px;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--gold);
-  border-radius: 50%;
-  background: #10281c;
-  color: var(--gold-light);
-  font-size: 22px;
-}
-
-.account-heading strong { font-size: 14px; }
-.account-heading p {
-  margin: 5px 0 0;
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 1.6;
-}
-
-.account-buttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 9px;
-}
-
-.account-buttons .btn { min-width: 0; }
-
-/* AUTH MODAL */
-
-.overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 20;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  background: #000c;
-  backdrop-filter: blur(7px);
-}
-
-.overlay.open { display: flex; }
-
-.modal {
-  position: relative;
-  width: min(410px, 100%);
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 25px;
-  border: 1px solid var(--gold);
-  border-radius: 17px;
-  background: linear-gradient(145deg, #13291e, #07110c);
-  box-shadow: 0 20px 70px #0009;
-}
-
-.modal h2 {
-  margin: 0 0 8px;
-  color: var(--gold-light);
-  font-size: 23px;
-}
-
-.modal-intro {
-  margin: 0 0 19px;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.7;
-}
-
-.close {
-  position: absolute;
-  top: 11px;
-  right: 11px;
-  width: 34px;
-  height: 34px;
-  border: 1px solid #7d6538;
-  border-radius: 9px;
-  color: white;
-  background: #102319;
-  font-size: 21px;
-}
-
-.field { margin-bottom: 13px; }
-
-.field label {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 12px;
-  font-weight: 800;
-}
-
-.field input {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #405447;
-  border-radius: 8px;
-  color: white;
-  background: #07120d;
-  font-size: 13px;
-}
-
-.field input::placeholder { color: #839186; }
-
-.auth-submit { width: 100%; margin-top: 4px; }
-
-.auth-message {
-  display: none;
-  margin-top: 13px;
-  padding: 10px;
-  border: 1px solid #a96e40;
-  border-radius: 8px;
-  color: #ffe0ac;
-  background: #402d18;
-  font-size: 12px;
-  line-height: 1.6;
-}
-
-.auth-message.show { display: block; }
-
-.modal-switch {
-  margin-top: 15px;
-  text-align: center;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.modal-switch button {
-  border: 0;
-  color: var(--gold-light);
-  background: transparent;
-  font-weight: 900;
-}
-
-/* MODE NOTICE */
-
-.notice {
-  display: none;
-  margin: 15px auto 0;
-  max-width: 650px;
-  padding: 13px 16px;
-  border: 1px solid #8c6a35;
-  border-radius: 10px;
-  color: var(--gold-light);
-  background: #10251a;
-  text-align: center;
-  font-size: 13px;
-  line-height: 1.7;
-}
-
-.notice.show { display: block; }
-
-footer {
-  padding: 22px 0;
-  border-top: 1px solid #3c382a;
-  color: #8e9a90;
-  font-size: 11px;
-}
-
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.footer-brand {
-  color: var(--gold-light);
-  font-weight: 900;
-  letter-spacing: 1px;
-}
-
-/* MOBILE */
-
-@media (max-width: 1000px) {
-  .carousel-arrow.left { left: 5px; }
-  .carousel-arrow.right { right: 5px; }
-  .carousel-arrow { top: 35%; }
-  .mode-track { padding-inline: 48px; }
-}
-
-@media (max-width: 700px) {
-  .header-inner { flex-wrap: wrap; }
-  .brand-name { font-size: 16px; }
-  .brand-game { font-size: 19px; }
-  .header-actions .btn { padding: 9px 10px; font-size: 11px; }
-  .hero { padding-top: 33px; }
-  .bottom-grid { grid-template-columns: 1fr; }
-  .rules-grid { grid-template-columns: 1fr; }
-  .rule { display: grid; grid-template-columns: 35px 1fr; column-gap: 8px; }
-  .rule-icon { grid-row: span 2; }
-  .rule strong { margin: 0 0 4px; }
-  .rule p { grid-column: 2; }
-}
-
-@media (max-width: 520px) {
-  .container { width: calc(100% - 22px); }
-  header { border-radius: 0 0 13px 13px; }
-  .crown { font-size: 29px; }
-  .brand-name { font-size: 13px; }
-  .brand-divider { height: 29px; }
-  .brand-game { font-size: 17px; }
-  .header-actions { gap: 5px; }
-  .header-actions .btn { padding: 8px; font-size: 10px; }
-  h1 { font-size: 31px; }
-  .hero p { font-size: 12px; }
-  .section-title { font-size: 21px; }
-  .mode-track {
-    display: flex;
-    padding: 0 37px;
-    overflow: hidden;
-    touch-action: pan-y;
-  }
-  .mode-card {
-    display: none;
-    width: 100%;
-    flex: 0 0 100%;
-    padding: 19px 15px;
-  }
-  .mode-card.active { display: block; }
-  .mode-art { min-height: 145px; }
-  .cards-art { transform: scale(.9); }
-  .mode-card h3 { font-size: 30px; }
-  .mode-description { min-height: 0; }
-  .carousel-arrow {
-    top: 36%;
-    width: 34px;
-    height: 42px;
-    font-size: 21px;
-  }
-  .carousel-arrow.left { left: 0; }
-  .carousel-arrow.right { right: 0; }
-  .panel { padding: 15px; }
-  .account-buttons { grid-template-columns: 1fr; }
-  .footer-inner { flex-direction: column; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition: none !important; }
-  html { scroll-behavior: auto; }
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important}
+  html{scroll-behavior:auto}
 }
 </style>
 </head>
 
-<body>
+<body id="top">
 
 <header>
   <div class="container header-inner">
@@ -720,12 +251,22 @@ footer {
       <div class="crown" aria-hidden="true">♛</div>
       <div class="brand-name">CHITALA<br><span>PROD</span></div>
       <div class="brand-divider"></div>
-      <div class="brand-game">ბურა</div>
     </div>
 
     <div class="header-actions">
-      <button class="btn" id="headerAccount" type="button">♙ ანგარიში</button>
-      <button class="btn" id="headerSettings" type="button">⚙ პარამეტრები</button>
+      <div class="brand-game">ბურა</div>
+
+      <button class="profile-button" id="headerProfile" type="button"
+        aria-label="პროფილის მენიუს გახსნა" title="პროფილი">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="8" r="4" fill="#f3c56b"/>
+          <path d="M4 21v-2a8 8 0 0 1 16 0v2Z" fill="#f3c56b"/>
+        </svg>
+      </button>
+
+      <button class="btn home-button" id="returnHome" type="button">
+        ⌂ &nbsp; მთავარზე დაბრუნება
+      </button>
     </div>
   </div>
 </header>
@@ -738,7 +279,7 @@ footer {
     <p>შეიკრიბე მეგობრებთან, გამოსცადე შენი სტრატეგია და იბრძოლე გამარჯვებისთვის.</p>
   </section>
 
-  <section class="mode-section" aria-label="თამაშის რეჟიმები">
+  <section class="mode-section" id="gameModes" aria-label="თამაშის რეჟიმები">
     <h2 class="section-title">თამაშის რეჟიმები</h2>
     <p class="section-subtitle">გადადი სასურველ რეჟიმზე და დაიწყე თამაში</p>
 
@@ -747,95 +288,62 @@ footer {
       <button class="carousel-arrow right" id="nextMode" type="button" aria-label="შემდეგი რეჟიმი">›</button>
 
       <div class="mode-track" id="modeTrack">
-
         <article class="mode-card active" data-mode="classic">
           <div class="mode-art">
             <div class="suit-watermark">♠</div>
             <div class="cards-art" aria-hidden="true">
-              <div class="playing-card one">
-                <span class="rank">A</span><span class="suit">♠</span>
-              </div>
-              <div class="playing-card red two">
-                <span class="rank">10</span><span class="suit">♥</span>
-              </div>
-              <div class="playing-card three">
-                <span class="rank">K</span><span class="suit">♣</span>
-              </div>
+              <div class="playing-card one"><span class="rank">A</span><span class="suit">♠</span></div>
+              <div class="playing-card red two"><span class="rank">10</span><span class="suit">♥</span></div>
+              <div class="playing-card three"><span class="rank">K</span><span class="suit">♣</span></div>
             </div>
           </div>
-
           <span class="mode-label">კლასიკური რეჟიმი</span>
           <h3>ბურა</h3>
-          <p class="mode-description">
-            კლასიკური ბურა ორ მოთამაშეს შორის. გამოიყენე კოზირი,
-            დაგეგმე სვლები და დააგროვე 11 ქულა.
-          </p>
-          <button class="btn btn-gold mode-btn" data-start="classic" type="button">
-            ➜ &nbsp; თამაშის დაწყება
-          </button>
+          <p class="mode-description">კლასიკური ბურა ორ მოთამაშეს შორის. გამოიყენე კოზირი, დაგეგმე სვლები და დააგროვე 11 ქულა.</p>
+          <button class="btn btn-gold mode-btn" data-start="classic" type="button">➜ &nbsp; თამაშის დაწყება</button>
         </article>
 
         <article class="mode-card" data-mode="team">
           <div class="mode-art">
             <div class="suit-watermark">♣</div>
             <div class="cards-art" aria-hidden="true">
-              <div class="playing-card one">
-                <span class="rank">A</span><span class="suit">♠</span>
-              </div>
-              <div class="playing-card red two">
-                <span class="rank">10</span><span class="suit">♥</span>
-              </div>
-              <div class="playing-card three">
-                <span class="rank">K</span><span class="suit">♣</span>
-              </div>
+              <div class="playing-card one"><span class="rank">A</span><span class="suit">♠</span></div>
+              <div class="playing-card red two"><span class="rank">10</span><span class="suit">♥</span></div>
+              <div class="playing-card three"><span class="rank">K</span><span class="suit">♣</span></div>
             </div>
             <div class="team-icons" aria-hidden="true">
-              <span class="team-icon">♟</span>
-              <span class="team-vs">VS</span>
-              <span class="team-icon">♟</span>
+              <span class="team-icon">♟</span><span class="team-vs">VS</span><span class="team-icon">♟</span>
             </div>
           </div>
-
           <span class="mode-label">გუნდური რეჟიმი</span>
           <h3>ბურა 2v2</h3>
-          <p class="mode-description">
-            ითამაშე პარტნიორთან ერთად, შეათანხმე სტრატეგია
-            და დაუპირისპირდი მეორე გუნდს.
-          </p>
-          <button class="btn btn-gold mode-btn" data-start="team" type="button">
-            ➜ &nbsp; რეჟიმის არჩევა
-          </button>
+          <p class="mode-description">ითამაშე პარტნიორთან ერთად, შეათანხმე სტრატეგია და დაუპირისპირდი მეორე გუნდს.</p>
+          <button class="btn btn-gold mode-btn" data-start="team" type="button">➜ &nbsp; რეჟიმის არჩევა</button>
         </article>
-
       </div>
 
       <div class="carousel-dots" aria-label="რეჟიმის არჩევა">
         <button class="carousel-dot active" data-dot="0" type="button" aria-label="ბურა"></button>
         <button class="carousel-dot" data-dot="1" type="button" aria-label="ბურა 2v2"></button>
       </div>
-
       <div class="notice" id="modeNotice" role="status"></div>
     </div>
   </section>
 
   <section class="bottom-grid">
-
     <div class="panel">
       <h2><span>★</span> თამაშის წესები</h2>
-
       <div class="rules-grid">
         <div class="rule">
           <div class="rule-icon">🏆</div>
           <strong>11 ქულამდე</strong>
           <p>მატჩს იგებს მოთამაშე, რომელიც პირველი დააგროვებს 11 ქულას.</p>
         </div>
-
         <div class="rule">
           <div class="rule-icon">♠</div>
           <strong>ხელის კოეფიციენტი</strong>
           <p>დავი ×2, სე ×3, ჩარი ×4, ფანჯი ×5, შაში ×6.</p>
         </div>
-
         <div class="rule">
           <div class="rule-icon">🃏</div>
           <strong>ბურა / მალიუტკა</strong>
@@ -852,14 +360,12 @@ footer {
           <p id="accountSubtitle">ანგარიშის შესაქმნელად გამოიყენე ელფოსტა.</p>
         </div>
       </div>
-
       <div class="account-buttons">
         <button class="btn" id="loginButton" type="button">♙ &nbsp; შესვლა</button>
         <button class="btn btn-gold" id="registerButton" type="button">♟ &nbsp; რეგისტრაცია</button>
         <button class="btn btn-red" id="logoutButton" type="button" hidden>ანგარიშიდან გამოსვლა</button>
       </div>
     </div>
-
   </section>
 </main>
 
@@ -870,6 +376,31 @@ footer {
   </div>
 </footer>
 
+<!-- პროფილის მენიუ -->
+<div class="overlay" id="profileOverlay" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle">
+  <div class="modal">
+    <button class="close" id="closeProfile" type="button" aria-label="დახურვა">×</button>
+    <div class="profile-modal-avatar" id="profileAvatar">♙</div>
+    <h2 id="profileModalTitle" style="text-align:center">პროფილი</h2>
+    <p class="profile-name" id="profileName">სტუმარი</p>
+    <p class="profile-email" id="profileEmail">ანგარიშში ჯერ არ შესულხარ.</p>
+
+    <div class="profile-menu-actions" id="profileLoggedOut">
+      <button class="btn btn-gold" id="profileLogin" type="button">შესვლა</button>
+      <button class="btn" id="profileRegister" type="button">რეგისტრაცია</button>
+    </div>
+
+    <div class="profile-menu-actions" id="profileLoggedIn" hidden>
+      <button class="btn" id="profileLogoutButton" type="button">ანგარიშიდან გამოსვლა</button>
+    </div>
+
+    <div class="profile-menu-actions" style="margin-top:10px">
+      <button class="btn" id="profileReturnHome" type="button">⌂ &nbsp; მთავარ მენიუში დაბრუნება</button>
+    </div>
+  </div>
+</div>
+
+<!-- შესვლა / რეგისტრაცია -->
 <div class="overlay" id="authOverlay" role="dialog" aria-modal="true" aria-labelledby="authTitle">
   <div class="modal">
     <button class="close" id="closeAuth" type="button" aria-label="დახურვა">×</button>
@@ -881,22 +412,18 @@ footer {
         <label for="displayName">მომხმარებლის სახელი</label>
         <input id="displayName" type="text" maxlength="24" autocomplete="nickname" placeholder="შენი სახელი">
       </div>
-
       <div class="field">
         <label for="email">ელფოსტა</label>
         <input id="email" type="email" required autocomplete="email" placeholder="name@example.com">
       </div>
-
       <div class="field">
         <label for="password">პაროლი</label>
         <input id="password" type="password" minlength="6" required autocomplete="current-password" placeholder="მინიმუმ 6 სიმბოლო">
       </div>
-
       <button class="btn btn-gold auth-submit" id="submitAuth" type="submit">შესვლა</button>
     </form>
 
     <div class="auth-message" id="authMessage" role="status"></div>
-
     <div class="modal-switch">
       <span id="switchText">არ გაქვს ანგარიში?</span>
       <button id="switchMode" type="button">რეგისტრაცია</button>
@@ -913,72 +440,49 @@ let currentMode = 0;
 
 function selectMode(index) {
   currentMode = (index + modeCards.length) % modeCards.length;
-
-  modeCards.forEach((card, i) => {
-    card.classList.toggle("active", i === currentMode);
-  });
-
-  dots.forEach((dot, i) => {
-    dot.classList.toggle("active", i === currentMode);
-  });
-
+  modeCards.forEach((card, i) => card.classList.toggle("active", i === currentMode));
+  dots.forEach((dot, i) => dot.classList.toggle("active", i === currentMode));
   notice.classList.remove("show");
 }
-
-document.getElementById("prevMode").addEventListener("click", () => {
-  selectMode(currentMode - 1);
-});
-
-document.getElementById("nextMode").addEventListener("click", () => {
-  selectMode(currentMode + 1);
-});
-
-dots.forEach(dot => {
-  dot.addEventListener("click", () => selectMode(Number(dot.dataset.dot)));
-});
+document.getElementById("prevMode").addEventListener("click", () => selectMode(currentMode - 1));
+document.getElementById("nextMode").addEventListener("click", () => selectMode(currentMode + 1));
+dots.forEach(dot => dot.addEventListener("click", () => selectMode(Number(dot.dataset.dot))));
 
 /* მობილურზე თითით გადასრიალება */
 const carousel = document.getElementById("carousel");
-let touchStartX = 0;
-let touchStartY = 0;
-
+let touchStartX = 0, touchStartY = 0;
 carousel.addEventListener("touchstart", event => {
   touchStartX = event.changedTouches[0].clientX;
   touchStartY = event.changedTouches[0].clientY;
 }, { passive: true });
-
 carousel.addEventListener("touchend", event => {
   const dx = event.changedTouches[0].clientX - touchStartX;
   const dy = event.changedTouches[0].clientY - touchStartY;
-
   if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.25) {
     selectMode(currentMode + (dx < 0 ? 1 : -1));
   }
 }, { passive: true });
 
-/* რეჟიმის ღილაკები */
-document.querySelectorAll("[data-start]").forEach(button => {
-  button.addEventListener("click", () => {
-    const mode = button.dataset.start;
-
-    if (mode === "classic") {
-      showNotice("არჩეულია კლასიკური ბურა. შემდეგ ეტაპზე აქ დავუკავშირებთ შენს ონლაინ ლობისა და თამაშის ეკრანს.");
-    } else {
-      showNotice("ბურა 2v2 რეჟიმის მენიუ მზადაა. გუნდური ონლაინ თამაშისთვის ცალკე ოთახების ლოგიკა უნდა დაემატოს.");
-    }
-  });
-});
-
 function showNotice(text) {
   notice.textContent = text;
   notice.classList.add("show");
-  notice.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
-/* Firebase ავტორიზაცია */
+/* რეჟიმის ღილაკები — არსებული ქცევა შენარჩუნებულია */
+document.querySelectorAll("[data-start]").forEach(button => {
+  button.addEventListener("click", () => {
+    showNotice(button.dataset.start === "classic"
+      ? "არჩეულია კლასიკური ბურა. ონლაინ ლობისა და თამაშის ეკრანი უნდა იყოს დაკავშირებული ცალკე თამაშის კოდთან."
+      : "არჩეულია ბურა 2v2. გუნდური ონლაინ თამაშისთვის საჭიროა ცალკე 4-მოთამაშიანი ოთახის ლოგიკა.");
+  });
+});
+
+/* წელი */
 document.getElementById("year").textContent = new Date().getFullYear();
 
+/* პროფილისა და ფანჯრების მართვა */
 const authOverlay = document.getElementById("authOverlay");
+const profileOverlay = document.getElementById("profileOverlay");
 const authForm = document.getElementById("authForm");
 const authMessage = document.getElementById("authMessage");
 const nameField = document.getElementById("nameField");
@@ -989,95 +493,137 @@ const passwordInput = document.getElementById("password");
 let authMode = "login";
 let currentUser = null;
 
+function openOverlay(element) {
+  element.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function closeOverlay(element) {
+  element.classList.remove("open");
+  if (!document.querySelector(".overlay.open")) document.body.style.overflow = "";
+}
+function openProfileMenu() {
+  updateProfileMenu();
+  openOverlay(profileOverlay);
+}
+function updateProfileMenu() {
+  const loggedIn = Boolean(currentUser);
+  document.getElementById("profileLoggedOut").hidden = loggedIn;
+  document.getElementById("profileLoggedIn").hidden = !loggedIn;
+
+  const name = currentUser
+    ? (currentUser.displayName || currentUser.email.split("@")[0])
+    : "სტუმარი";
+
+  document.getElementById("profileName").textContent = name;
+  document.getElementById("profileEmail").textContent = currentUser
+    ? currentUser.email
+    : "ანგარიშში ჯერ არ შესულხარ.";
+
+  document.getElementById("profileAvatar").textContent =
+    name.trim().charAt(0).toLocaleUpperCase("ka") || "♙";
+
+  document.getElementById("accountTitle").textContent = loggedIn
+    ? name
+    : "შედი ან დარეგისტრირდი";
+
+  document.getElementById("accountSubtitle").textContent = loggedIn
+    ? "შენი ანგარიში აქტიურია."
+    : "ანგარიშის შესაქმნელად გამოიყენე ელფოსტა.";
+
+  document.getElementById("loginButton").hidden = loggedIn;
+  document.getElementById("registerButton").hidden = loggedIn;
+  document.getElementById("logoutButton").hidden = !loggedIn;
+}
+
 function openAuth(mode) {
   authMode = mode;
   updateAuthMode();
   authMessage.classList.remove("show");
-  authOverlay.classList.add("open");
-  document.body.style.overflow = "hidden";
+  closeOverlay(profileOverlay);
+  openOverlay(authOverlay);
 }
-
-function closeAuth() {
-  authOverlay.classList.remove("open");
-  document.body.style.overflow = "";
-}
-
+function closeAuth() { closeOverlay(authOverlay); }
 function updateAuthMode() {
   const registering = authMode === "register";
-
-  document.getElementById("authTitle").textContent =
-    registering ? "ანგარიშის შექმნა" : "შესვლა";
-
-  document.getElementById("authIntro").textContent =
-    registering
-      ? "შექმენი ანგარიში CHITALA PROD-ზე."
-      : "შედი ანგარიშში და გააგრძელე თამაში.";
-
-  document.getElementById("submitAuth").textContent =
-    registering ? "რეგისტრაცია" : "შესვლა";
-
-  document.getElementById("switchText").textContent =
-    registering ? "უკვე გაქვს ანგარიში?" : "არ გაქვს ანგარიში?";
-
-  document.getElementById("switchMode").textContent =
-    registering ? "შესვლა" : "რეგისტრაცია";
-
+  document.getElementById("authTitle").textContent = registering ? "ანგარიშის შექმნა" : "შესვლა";
+  document.getElementById("authIntro").textContent = registering
+    ? "შექმენი ანგარიში CHITALA PROD-ზე."
+    : "შედი ანგარიშში და გააგრძელე თამაში.";
+  document.getElementById("submitAuth").textContent = registering ? "რეგისტრაცია" : "შესვლა";
+  document.getElementById("switchText").textContent = registering
+    ? "უკვე გაქვს ანგარიში?"
+    : "არ გაქვს ანგარიში?";
+  document.getElementById("switchMode").textContent = registering ? "შესვლა" : "რეგისტრაცია";
   nameField.hidden = !registering;
   displayNameInput.required = registering;
   passwordInput.autocomplete = registering ? "new-password" : "current-password";
 }
-
 function showAuthMessage(text) {
   authMessage.textContent = text;
   authMessage.classList.add("show");
 }
 
+/* პროფილის ფოტო ზედა მენიუში ხსნის პროფილის მენიუს */
+document.getElementById("headerProfile").addEventListener("click", openProfileMenu);
 document.getElementById("loginButton").addEventListener("click", () => openAuth("login"));
 document.getElementById("registerButton").addEventListener("click", () => openAuth("register"));
-document.getElementById("headerAccount").addEventListener("click", () => {
-  if (currentUser) {
-    showNotice("შესული ხარ ანგარიშით: " + (currentUser.displayName || currentUser.email));
-  } else {
-    openAuth("login");
-  }
-});
+document.getElementById("profileLogin").addEventListener("click", () => openAuth("login"));
+document.getElementById("profileRegister").addEventListener("click", () => openAuth("register"));
 
 document.getElementById("switchMode").addEventListener("click", () => {
   openAuth(authMode === "login" ? "register" : "login");
 });
 
 document.getElementById("closeAuth").addEventListener("click", closeAuth);
+document.getElementById("closeProfile").addEventListener("click", () => closeOverlay(profileOverlay));
 
 authOverlay.addEventListener("click", event => {
   if (event.target === authOverlay) closeAuth();
 });
-
-document.addEventListener("keydown", event => {
-  if (event.key === "Escape") closeAuth();
+profileOverlay.addEventListener("click", event => {
+  if (event.target === profileOverlay) closeOverlay(profileOverlay);
 });
 
-/* ეს არის UI-ის პარამეტრების ღილაკი */
-document.getElementById("headerSettings").addEventListener("click", () => {
-  showNotice("პარამეტრები: შემდეგ ეტაპზე აქ დავამატებთ ხმას, ბარათების დიზაინსა და ეკრანის პარამეტრებს.");
-});
+/* მთავარზე დაბრუნება */
+function returnToMainMenu() {
+  closeOverlay(profileOverlay);
+  closeOverlay(authOverlay);
+  selectMode(0);
+  notice.classList.remove("show");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+document.getElementById("returnHome").addEventListener("click", returnToMainMenu);
+document.getElementById("profileReturnHome").addEventListener("click", returnToMainMenu);
 
-/*
-  Firebase-ის ავტორიზაცია გააქტიურდება მხოლოდ მაშინ,
-  როცა შენს არსებულ firebaseConfig-ს დაამატებ.
-  ეს მენიუ თავისით არ ქმნის Firebase სესიას ან ონლაინ ოთახს.
-*/
+/* პარამეტრების ღილაკი აღარ არის — მის ნაცვლად პროფილის ღილაკია */
 document.getElementById("authForm").addEventListener("submit", event => {
   event.preventDefault();
-
   showAuthMessage(
     "ავტორიზაცია ჯერ არ არის დაკავშირებული Firebase-თან. " +
-    "შემდეგ ეტაპზე დავაკავშირებთ შენს chitala-mods პროექტს."
+    "ამ მენიუს შესვლა/რეგისტრაცია რეალურად იმუშავებს მხოლოდ Firebase Auth-ის მიერთების შემდეგ."
   );
 });
 
-document.getElementById("logoutButton").addEventListener("click", () => {
-  showNotice("ანგარიშიდან გამოსვლის ფუნქცია Firebase Auth-ის დაკავშირების შემდეგ ჩაირთვება.");
+/* გამოსვლის ღილაკები */
+function logoutNotice() {
+  showAuthMessage("ანგარიშიდან გამოსვლა იმუშავებს Firebase Authentication-ის დაკავშირების შემდეგ.");
+}
+document.getElementById("logoutButton").addEventListener("click", logoutNotice);
+document.getElementById("profileLogoutButton").addEventListener("click", logoutNotice);
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    closeAuth();
+    closeOverlay(profileOverlay);
+  }
 });
+
+/* თუ მომავალში Firebase Auth დაემატება, ამ ფუნქციით განახლდება პროფილი */
+function setProfileUser(user) {
+  currentUser = user || null;
+  updateProfileMenu();
+}
+updateProfileMenu();
 </script>
 
 </body>
