@@ -21,22 +21,27 @@ body{
 }
 button,input{font:inherit}
 button{cursor:pointer}
-button:focus-visible,input:focus-visible{outline:2px solid var(--gold-light);outline-offset:3px}
+button:focus-visible,input:focus-visible,a:focus-visible{
+  outline:2px solid var(--gold-light);outline-offset:3px
+}
 .container{width:min(1120px,calc(100% - 32px));margin-inline:auto}
+[hidden]{display:none!important}
 
-/* HEADER — მხოლოდ ზედა მენიუ შეიცვალა */
+/* HEADER */
 header{
   padding:13px 0;border:1px solid #a87e34;border-radius:0 0 18px 18px;
   background:linear-gradient(110deg,#06100c,#12241a,#06100c);
   box-shadow:0 5px 28px #0007
 }
 .header-inner{display:flex;align-items:center;justify-content:space-between;gap:15px}
-.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.brand{
+  display:flex;align-items:center;gap:11px;min-width:0;
+  color:inherit;text-decoration:none;flex-shrink:0
+}
 .crown{color:var(--gold);font-size:37px;line-height:1}
 .brand-name{font-weight:900;font-size:19px;line-height:1.1}
 .brand-name span{color:var(--gold)}
 .brand-divider{height:36px;width:1px;background:#8e713b;margin-inline:4px}
-.brand-game{color:var(--gold);font-size:23px;font-weight:900;white-space:nowrap}
 .header-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:7px;
@@ -44,22 +49,24 @@ header{
   color:var(--text);background:#10241a;font-weight:800;transition:.2s
 }
 .btn:hover{border-color:var(--gold-light);transform:translateY(-2px)}
+.btn:disabled{opacity:.6;cursor:wait;transform:none}
 .btn-gold{
   color:#17150e;background:linear-gradient(135deg,#ffe6a0,#d7a443);
   border-color:#ffdf8d;box-shadow:0 4px 18px #dba94425
 }
 .btn-red{background:linear-gradient(135deg,#a8323e,#641a25);border-color:#b04b52}
+.home-button{white-space:nowrap}
 
-/* პროფილის ღილაკი */
+/* HEADER PROFILE PHOTO */
 .profile-button{
   width:47px;height:47px;flex-shrink:0;display:grid;place-items:center;
-  border:2px solid var(--gold);border-radius:50%;
+  overflow:hidden;padding:0;border:2px solid var(--gold);border-radius:50%;
   color:var(--gold-light);background:linear-gradient(145deg,#193d2b,#07140e);
   box-shadow:0 0 14px #e8bd6020;transition:.2s
 }
 .profile-button:hover{transform:scale(1.05);border-color:var(--gold-light)}
 .profile-button svg{width:25px;height:25px}
-.home-button{white-space:nowrap}
+.profile-button img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
 
 /* HERO */
 .hero{padding:42px 0 24px;text-align:center}
@@ -153,10 +160,11 @@ h1 span{color:var(--gold)}
 .account-buttons{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .account-buttons .btn{min-width:0}
 
-/* AUTH / PROFILE MODAL */
+/* PROFILE AND AUTH MODALS */
 .overlay{
   display:none;position:fixed;inset:0;z-index:20;align-items:center;
-  justify-content:center;padding:16px;background:#000c;backdrop-filter:blur(7px)
+  justify-content:center;padding:16px;background:#000c;backdrop-filter:blur(7px);
+  overflow-y:auto
 }
 .overlay.open{display:flex}
 .modal{
@@ -179,22 +187,38 @@ h1 span{color:var(--gold)}
 .auth-message.show{display:block}
 .modal-switch{margin-top:15px;text-align:center;color:var(--muted);font-size:12px}
 .modal-switch button{border:0;color:var(--gold-light);background:transparent;font-weight:900}
+
+/* Profile layout */
+.profile-photo-wrap{position:relative;width:94px;margin:0 auto 14px}
 .profile-modal-avatar{
-  width:76px;height:76px;display:grid;place-items:center;margin:0 auto 13px;
-  border:2px solid var(--gold);border-radius:50%;color:var(--gold-light);
-  background:linear-gradient(145deg,#19442d,#07140e);font-size:34px
+  width:94px;height:94px;display:grid;place-items:center;overflow:hidden;
+  margin:0 auto;border:2px solid var(--gold);border-radius:50%;
+  color:var(--gold-light);background:linear-gradient(145deg,#19442d,#07140e);
+  font-size:34px;box-shadow:0 0 22px #e8bd6020
 }
-.profile-name{margin:0 0 6px;text-align:center;font-weight:900;font-size:19px;overflow-wrap:anywhere}
+.profile-modal-avatar img{display:block;width:100%;height:100%;object-fit:cover;border-radius:50%}
+.photo-edit{
+  position:absolute;right:0;bottom:0;width:32px;height:32px;display:grid;place-items:center;
+  border:2px solid #102319;border-radius:50%;background:var(--gold);color:#102319;font-size:16px
+}
+.profile-name{margin:0 0 6px;text-align:center;font-weight:900;font-size:19px;overflow-wrap:anywhere;color:var(--gold-light)}
 .profile-email{margin:0 0 20px;text-align:center;color:var(--muted);font-size:12px;overflow-wrap:anywhere}
-.profile-menu-actions{display:grid;gap:10px}
+.profile-detail{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;margin:10px 0;background:#07120d;border:1px solid #405447;border-radius:9px}
+.profile-detail-info{min-width:0;flex:1}
+.profile-detail small{display:block;color:var(--muted);font-size:10px;margin-bottom:5px}
+.profile-detail strong{display:block;overflow-wrap:anywhere;font-size:13px}
+.profile-detail button{flex-shrink:0;padding:8px 10px;border:1px solid #80612e;border-radius:7px;background:#10241a;color:var(--gold-light);font-size:11px;font-weight:800}
+.profile-edit-form{margin-top:10px}
+.profile-menu-actions{display:grid;gap:10px;margin-top:12px}
 .profile-menu-actions .btn{width:100%}
+.profile-note{margin-top:12px;color:var(--muted);font-size:10px;line-height:1.7;text-align:center}
 .notice{display:none;margin:15px auto 0;max-width:650px;padding:13px 16px;border:1px solid #8c6a35;border-radius:10px;color:var(--gold-light);background:#10251a;text-align:center;font-size:13px;line-height:1.7}
 .notice.show{display:block}
 footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
 .footer-inner{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .footer-brand{color:var(--gold-light);font-weight:900;letter-spacing:1px}
+.footer-brand a{color:inherit;text-decoration:none}
 
-/* RESPONSIVE */
 @media(max-width:1000px){
   .carousel-arrow.left{left:5px}.carousel-arrow.right{right:5px}
   .carousel-arrow{top:35%}.mode-track{padding-inline:48px}
@@ -213,8 +237,7 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
   .brand{gap:6px}
   .brand-name{font-size:12px}
   .brand-divider{height:29px;margin-inline:2px}
-  .brand-game{font-size:16px}
-  .header-actions{gap:6px}
+  .header-actions{gap:7px}
   .home-button{padding:9px 8px;font-size:10px}
   .profile-button{width:39px;height:39px}
   .profile-button svg{width:21px;height:21px}
@@ -247,15 +270,15 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
 
 <header>
   <div class="container header-inner">
-    <div class="brand">
+    <!-- CHITALA PROD-ზე დაჭერით მთავარ გვერდზე გადასვლა -->
+    <a class="brand" href="index.html" aria-label="CHITALA PROD — მთავარ გვერდზე დაბრუნება">
       <div class="crown" aria-hidden="true">♛</div>
       <div class="brand-name">CHITALA<br><span>PROD</span></div>
       <div class="brand-divider"></div>
-    </div>
+    </a>
 
     <div class="header-actions">
-      <div class="brand-game">ბურა</div>
-
+      <!-- ბურა წარწერა ამოღებულია; მის ადგილას პროფილის ფოტო -->
       <button class="profile-button" id="headerProfile" type="button"
         aria-label="პროფილის მენიუს გახსნა" title="პროფილი">
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -264,15 +287,14 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
         </svg>
       </button>
 
-      <button class="btn home-button" id="returnHome" type="button">
+      <a class="btn home-button btn-gold" href="index.html">
         ⌂ &nbsp; მთავარზე დაბრუნება
-      </button>
+      </a>
     </div>
   </div>
 </header>
 
 <main class="container">
-
   <section class="hero">
     <div class="eyebrow"><span class="status-dot"></span> CHITALA PROD • ბანქოს თამაშები</div>
     <h1>აირჩიე შენი <span>თამაშის რეჟიმი</span></h1>
@@ -371,17 +393,27 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
 
 <footer>
   <div class="container footer-inner">
-    <div class="footer-brand">♛ CHITALA PROD • ბურა</div>
+    <div class="footer-brand">
+      <a href="index.html">♛ CHITALA PROD</a> • ბურა
+    </div>
     <div>© <span id="year"></span> CHITALA PROD · ყველა უფლება დაცულია</div>
   </div>
 </footer>
 
-<!-- პროფილის მენიუ -->
+<!-- პროფილის მენიუ — მთავარი საიტის მსგავსად -->
 <div class="overlay" id="profileOverlay" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle">
   <div class="modal">
     <button class="close" id="closeProfile" type="button" aria-label="დახურვა">×</button>
-    <div class="profile-modal-avatar" id="profileAvatar">♙</div>
-    <h2 id="profileModalTitle" style="text-align:center">პროფილი</h2>
+
+    <div class="profile-photo-wrap">
+      <div class="profile-modal-avatar" id="profileAvatar">♙</div>
+      <button class="photo-edit" id="changePhotoButton" type="button"
+        aria-label="პროფილის ფოტოს შეცვლა" title="ფოტოს არჩევა">✎</button>
+      <input id="profilePhotoInput" type="file"
+        accept="image/jpeg,image/png,image/webp" hidden>
+    </div>
+
+    <h2 id="profileModalTitle" style="text-align:center">ჩემი პროფილი</h2>
     <p class="profile-name" id="profileName">სტუმარი</p>
     <p class="profile-email" id="profileEmail">ანგარიშში ჯერ არ შესულხარ.</p>
 
@@ -390,12 +422,44 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
       <button class="btn" id="profileRegister" type="button">რეგისტრაცია</button>
     </div>
 
-    <div class="profile-menu-actions" id="profileLoggedIn" hidden>
-      <button class="btn" id="profileLogoutButton" type="button">ანგარიშიდან გამოსვლა</button>
+    <div id="profileLoggedIn" hidden>
+      <div class="profile-detail">
+        <div class="profile-detail-info">
+          <small>მომხმარებლის სახელი</small>
+          <strong id="profileNameDetail">მოთამაშე</strong>
+        </div>
+        <button id="editNameButton" type="button">რედაქტირება</button>
+      </div>
+
+      <form class="profile-edit-form" id="profileForm" hidden>
+        <div class="field">
+          <label for="profileNameInput">ახალი მომხმარებლის სახელი</label>
+          <input id="profileNameInput" maxlength="24" autocomplete="nickname" required>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn" id="cancelNameEdit" type="button">გაუქმება</button>
+          <button class="btn btn-gold" id="saveProfile" type="submit">შენახვა</button>
+        </div>
+      </form>
+
+      <div class="profile-detail">
+        <div class="profile-detail-info">
+          <small>ელფოსტა</small>
+          <strong id="profileEmailDetail" style="overflow-wrap:anywhere">••••••••</strong>
+        </div>
+        <button id="toggleEmailButton" type="button" aria-pressed="false">ჩვენება</button>
+      </div>
+
+      <div class="profile-menu-actions">
+        <button class="btn btn-red" id="profileLogoutButton" type="button">ანგარიშიდან გამოსვლა</button>
+      </div>
     </div>
 
-    <div class="profile-menu-actions" style="margin-top:10px">
-      <button class="btn" id="profileReturnHome" type="button">⌂ &nbsp; მთავარ მენიუში დაბრუნება</button>
+    <div class="auth-message" id="profileMessage" role="status" aria-live="polite"></div>
+    <div class="profile-note">პროფილის ფოტო ინახება ამ ბრაუზერში. სხვა მოწყობილობაზე ავტომატურად არ გამოჩნდება.</div>
+
+    <div class="profile-menu-actions">
+      <a class="btn btn-gold" href="index.html">⌂ &nbsp; მთავარ მენიუში დაბრუნება</a>
     </div>
   </div>
 </div>
@@ -423,7 +487,8 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
       <button class="btn btn-gold auth-submit" id="submitAuth" type="submit">შესვლა</button>
     </form>
 
-    <div class="auth-message" id="authMessage" role="status"></div>
+    <button id="forgotPassword" type="button" class="modal-switch" style="display:block;margin-inline:auto;border:0;background:transparent">პაროლი დაგავიწყდა?</button>
+    <div class="auth-message" id="authMessage" role="status" aria-live="polite"></div>
     <div class="modal-switch">
       <span id="switchText">არ გაქვს ანგარიში?</span>
       <button id="switchMode" type="button">რეგისტრაცია</button>
@@ -431,7 +496,27 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
   </div>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
 <script>
+"use strict";
+
+/* იგივე Firebase პროექტი, რაც მთავარ გვერდზე */
+const firebaseConfig = {
+  apiKey: "AIzaSyChOYCwVd2AaZzLGx_tQsT2PqNlbNXqkis",
+  authDomain: "chitala-mods.firebaseapp.com",
+  projectId: "chitala-mods",
+  storageBucket: "chitala-mods.firebasestorage.app",
+  messagingSenderId: "415729264734",
+  appId: "1:415729264734:web:edba39f96e5cbdfd6beccf"
+};
+
+if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+
+auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(console.error);
+
 /* რეჟიმების კარუსელი */
 const modeCards = [...document.querySelectorAll(".mode-card")];
 const dots = [...document.querySelectorAll(".carousel-dot")];
@@ -454,37 +539,36 @@ let touchStartX = 0, touchStartY = 0;
 carousel.addEventListener("touchstart", event => {
   touchStartX = event.changedTouches[0].clientX;
   touchStartY = event.changedTouches[0].clientY;
-}, { passive: true });
+}, {passive:true});
 carousel.addEventListener("touchend", event => {
   const dx = event.changedTouches[0].clientX - touchStartX;
   const dy = event.changedTouches[0].clientY - touchStartY;
   if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.25) {
     selectMode(currentMode + (dx < 0 ? 1 : -1));
   }
-}, { passive: true });
+}, {passive:true});
 
 function showNotice(text) {
   notice.textContent = text;
   notice.classList.add("show");
 }
 
-/* რეჟიმის ღილაკები — არსებული ქცევა შენარჩუნებულია */
 document.querySelectorAll("[data-start]").forEach(button => {
   button.addEventListener("click", () => {
     showNotice(button.dataset.start === "classic"
-      ? "არჩეულია კლასიკური ბურა. ონლაინ ლობისა და თამაშის ეკრანი უნდა იყოს დაკავშირებული ცალკე თამაშის კოდთან."
-      : "არჩეულია ბურა 2v2. გუნდური ონლაინ თამაშისთვის საჭიროა ცალკე 4-მოთამაშიანი ოთახის ლოგიკა.");
+      ? "არჩეულია კლასიკური ბურა. ონლაინ ლობისა და თამაშის ეკრანი ცალკე თამაშის კოდთან უნდა იყოს დაკავშირებული."
+      : "არჩეულია ბურა 2v2. გუნდური ონლაინ თამაშისთვის საჭიროა ოთხმოთამაშიანი ოთახის ლოგიკა.");
   });
 });
 
-/* წელი */
 document.getElementById("year").textContent = new Date().getFullYear();
 
-/* პროფილისა და ფანჯრების მართვა */
+/* პროფილი და ავტორიზაცია */
 const authOverlay = document.getElementById("authOverlay");
 const profileOverlay = document.getElementById("profileOverlay");
 const authForm = document.getElementById("authForm");
 const authMessage = document.getElementById("authMessage");
+const profileMessage = document.getElementById("profileMessage");
 const nameField = document.getElementById("nameField");
 const displayNameInput = document.getElementById("displayName");
 const emailInput = document.getElementById("email");
@@ -492,6 +576,8 @@ const passwordInput = document.getElementById("password");
 
 let authMode = "login";
 let currentUser = null;
+let emailIsVisible = false;
+let authBusy = false;
 
 function openOverlay(element) {
   element.classList.add("open");
@@ -501,48 +587,35 @@ function closeOverlay(element) {
   element.classList.remove("open");
   if (!document.querySelector(".overlay.open")) document.body.style.overflow = "";
 }
-function openProfileMenu() {
-  updateProfileMenu();
-  openOverlay(profileOverlay);
+function showAuthMessage(text) {
+  authMessage.textContent = text;
+  authMessage.classList.add("show");
 }
-function updateProfileMenu() {
-  const loggedIn = Boolean(currentUser);
-  document.getElementById("profileLoggedOut").hidden = loggedIn;
-  document.getElementById("profileLoggedIn").hidden = !loggedIn;
-
-  const name = currentUser
-    ? (currentUser.displayName || currentUser.email.split("@")[0])
-    : "სტუმარი";
-
-  document.getElementById("profileName").textContent = name;
-  document.getElementById("profileEmail").textContent = currentUser
-    ? currentUser.email
-    : "ანგარიშში ჯერ არ შესულხარ.";
-
-  document.getElementById("profileAvatar").textContent =
-    name.trim().charAt(0).toLocaleUpperCase("ka") || "♙";
-
-  document.getElementById("accountTitle").textContent = loggedIn
-    ? name
-    : "შედი ან დარეგისტრირდი";
-
-  document.getElementById("accountSubtitle").textContent = loggedIn
-    ? "შენი ანგარიში აქტიურია."
-    : "ანგარიშის შესაქმნელად გამოიყენე ელფოსტა.";
-
-  document.getElementById("loginButton").hidden = loggedIn;
-  document.getElementById("registerButton").hidden = loggedIn;
-  document.getElementById("logoutButton").hidden = !loggedIn;
-}
-
-function openAuth(mode) {
-  authMode = mode;
-  updateAuthMode();
+function clearAuthMessage() {
+  authMessage.textContent = "";
   authMessage.classList.remove("show");
+}
+function showProfileMessage(text) {
+  profileMessage.textContent = text;
+  profileMessage.classList.add("show");
+}
+function clearProfileMessage() {
+  profileMessage.textContent = "";
+  profileMessage.classList.remove("show");
+}
+
+function openAuth(next) {
+  authMode = next;
+  updateAuthMode();
+  clearAuthMessage();
   closeOverlay(profileOverlay);
   openOverlay(authOverlay);
 }
-function closeAuth() { closeOverlay(authOverlay); }
+function closeAuth() {
+  closeOverlay(authOverlay);
+  clearAuthMessage();
+}
+
 function updateAuthMode() {
   const registering = authMode === "register";
   document.getElementById("authTitle").textContent = registering ? "ანგარიშის შექმნა" : "შესვლა";
@@ -550,20 +623,119 @@ function updateAuthMode() {
     ? "შექმენი ანგარიში CHITALA PROD-ზე."
     : "შედი ანგარიშში და გააგრძელე თამაში.";
   document.getElementById("submitAuth").textContent = registering ? "რეგისტრაცია" : "შესვლა";
-  document.getElementById("switchText").textContent = registering
-    ? "უკვე გაქვს ანგარიში?"
-    : "არ გაქვს ანგარიში?";
+  document.getElementById("switchText").textContent = registering ? "უკვე გაქვს ანგარიში?" : "არ გაქვს ანგარიში?";
   document.getElementById("switchMode").textContent = registering ? "შესვლა" : "რეგისტრაცია";
   nameField.hidden = !registering;
   displayNameInput.required = registering;
   passwordInput.autocomplete = registering ? "new-password" : "current-password";
-}
-function showAuthMessage(text) {
-  authMessage.textContent = text;
-  authMessage.classList.add("show");
+  document.getElementById("forgotPassword").hidden = registering;
 }
 
-/* პროფილის ფოტო ზედა მენიუში ხსნის პროფილის მენიუს */
+function openProfileMenu() {
+  updateProfileMenu();
+  clearProfileMessage();
+  openOverlay(profileOverlay);
+}
+
+function photoKey(user) {
+  return "chitala_profile_photo_" + user.uid;
+}
+function getPhoto(user) {
+  try { return localStorage.getItem(photoKey(user)); }
+  catch { return null; }
+}
+function savePhoto(user, data) {
+  localStorage.setItem(photoKey(user), data);
+}
+
+function setAvatar(element, user, name) {
+  element.replaceChildren();
+  const photo = user ? getPhoto(user) : null;
+
+  if (photo) {
+    const img = document.createElement("img");
+    img.src = photo;
+    img.alt = "პროფილის ფოტო";
+    img.onerror = () => {
+      element.replaceChildren();
+      element.textContent = name.trim().charAt(0).toLocaleUpperCase("ka") || "♙";
+    };
+    element.appendChild(img);
+  } else {
+    element.textContent = name.trim().charAt(0).toLocaleUpperCase("ka") || "♙";
+  }
+}
+
+function updateProfileMenu() {
+  const loggedIn = Boolean(currentUser);
+  const name = currentUser
+    ? (currentUser.displayName || currentUser.email?.split("@")[0] || "მოთამაშე")
+    : "სტუმარი";
+
+  document.getElementById("profileLoggedOut").hidden = loggedIn;
+  document.getElementById("profileLoggedIn").hidden = !loggedIn;
+  document.getElementById("profileName").textContent = name;
+  document.getElementById("profileEmail").textContent = loggedIn
+    ? "შენი ანგარიშის ინფორმაცია"
+    : "ანგარიშში ჯერ არ შესულხარ.";
+
+  setAvatar(document.getElementById("profileAvatar"), currentUser, name);
+  updateHeaderProfile();
+
+  document.getElementById("accountTitle").textContent = loggedIn ? name : "შედი ან დარეგისტრირდი";
+  document.getElementById("accountSubtitle").textContent = loggedIn
+    ? "შენი ანგარიში აქტიურია."
+    : "ანგარიშის შესაქმნელად გამოიყენე ელფოსტა.";
+
+  document.getElementById("loginButton").hidden = loggedIn;
+  document.getElementById("registerButton").hidden = loggedIn;
+  document.getElementById("logoutButton").hidden = !loggedIn;
+
+  document.getElementById("profileNameDetail").textContent = name;
+  document.getElementById("profileEmailDetail").textContent = emailIsVisible && loggedIn
+    ? currentUser.email
+    : "••••••••••••";
+
+  document.getElementById("toggleEmailButton").textContent = emailIsVisible ? "დამალვა" : "ჩვენება";
+  document.getElementById("toggleEmailButton").setAttribute("aria-pressed", String(emailIsVisible));
+
+  document.getElementById("profileForm").hidden = true;
+  document.getElementById("editNameButton").hidden = !loggedIn;
+}
+
+function updateHeaderProfile() {
+  const button = document.getElementById("headerProfile");
+  button.replaceChildren();
+
+  const name = currentUser
+    ? (currentUser.displayName || currentUser.email?.split("@")[0] || "მოთამაშე")
+    : "სტუმარი";
+  const photo = currentUser ? getPhoto(currentUser) : null;
+
+  if (photo) {
+    const img = document.createElement("img");
+    img.src = photo;
+    img.alt = "პროფილის ფოტო";
+    img.onerror = () => {
+      button.replaceChildren();
+      button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="#f3c56b"/><path d="M4 21v-2a8 8 0 0 1 16 0v2Z" fill="#f3c56b"/></svg>';
+    };
+    button.appendChild(img);
+  } else {
+    button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="#f3c56b"/><path d="M4 21v-2a8 8 0 0 1 16 0v2Z" fill="#f3c56b"/></svg>';
+  }
+  button.title = currentUser ? name : "შესვლა / პროფილი";
+}
+
+function updateProfileDetails() {
+  if (!currentUser) return;
+  const name = currentUser.displayName || currentUser.email?.split("@")[0] || "მოთამაშე";
+  document.getElementById("profileNameDetail").textContent = name;
+  document.getElementById("profileNameInput").value = name;
+  setAvatar(document.getElementById("profileAvatar"), currentUser, name);
+  updateHeaderProfile();
+}
+
 document.getElementById("headerProfile").addEventListener("click", openProfileMenu);
 document.getElementById("loginButton").addEventListener("click", () => openAuth("login"));
 document.getElementById("registerButton").addEventListener("click", () => openAuth("register"));
@@ -573,7 +745,6 @@ document.getElementById("profileRegister").addEventListener("click", () => openA
 document.getElementById("switchMode").addEventListener("click", () => {
   openAuth(authMode === "login" ? "register" : "login");
 });
-
 document.getElementById("closeAuth").addEventListener("click", closeAuth);
 document.getElementById("closeProfile").addEventListener("click", () => closeOverlay(profileOverlay));
 
@@ -584,33 +755,6 @@ profileOverlay.addEventListener("click", event => {
   if (event.target === profileOverlay) closeOverlay(profileOverlay);
 });
 
-/* მთავარზე დაბრუნება */
-function returnToMainMenu() {
-  closeOverlay(profileOverlay);
-  closeOverlay(authOverlay);
-  selectMode(0);
-  notice.classList.remove("show");
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-document.getElementById("returnHome").addEventListener("click", returnToMainMenu);
-document.getElementById("profileReturnHome").addEventListener("click", returnToMainMenu);
-
-/* პარამეტრების ღილაკი აღარ არის — მის ნაცვლად პროფილის ღილაკია */
-document.getElementById("authForm").addEventListener("submit", event => {
-  event.preventDefault();
-  showAuthMessage(
-    "ავტორიზაცია ჯერ არ არის დაკავშირებული Firebase-თან. " +
-    "ამ მენიუს შესვლა/რეგისტრაცია რეალურად იმუშავებს მხოლოდ Firebase Auth-ის მიერთების შემდეგ."
-  );
-});
-
-/* გამოსვლის ღილაკები */
-function logoutNotice() {
-  showAuthMessage("ანგარიშიდან გამოსვლა იმუშავებს Firebase Authentication-ის დაკავშირების შემდეგ.");
-}
-document.getElementById("logoutButton").addEventListener("click", logoutNotice);
-document.getElementById("profileLogoutButton").addEventListener("click", logoutNotice);
-
 document.addEventListener("keydown", event => {
   if (event.key === "Escape") {
     closeAuth();
@@ -618,13 +762,239 @@ document.addEventListener("keydown", event => {
   }
 });
 
-/* თუ მომავალში Firebase Auth დაემატება, ამ ფუნქციით განახლდება პროფილი */
-function setProfileUser(user) {
-  currentUser = user || null;
+/* სახელის რედაქტირება */
+document.getElementById("editNameButton").addEventListener("click", () => {
+  if (!currentUser) return;
+  clearProfileMessage();
+  document.getElementById("profileNameInput").value =
+    currentUser.displayName || currentUser.email?.split("@")[0] || "";
+  document.getElementById("profileForm").hidden = false;
+  document.getElementById("profileNameInput").focus();
+});
+
+document.getElementById("cancelNameEdit").addEventListener("click", () => {
+  document.getElementById("profileForm").hidden = true;
+  clearProfileMessage();
+});
+
+document.getElementById("profileForm").addEventListener("submit", async event => {
+  event.preventDefault();
+  if (!currentUser) return;
+
+  const name = document.getElementById("profileNameInput").value.trim();
+  const button = document.getElementById("saveProfile");
+
+  if (!name || name.length > 24) {
+    showProfileMessage("სახელი შეიყვანე სწორად — მაქსიმუმ 24 სიმბოლო.");
+    return;
+  }
+
+  button.disabled = true;
+  button.textContent = "ინახება...";
+
+  try {
+    await currentUser.updateProfile({displayName:name});
+    await currentUser.reload();
+    currentUser = auth.currentUser;
+    updateProfileMenu();
+    showProfileMessage("მომხმარებლის სახელი წარმატებით შეიცვალა.");
+  } catch (error) {
+    showProfileMessage("სახელის შეცვლა ვერ მოხერხდა. სცადე თავიდან.");
+  } finally {
+    button.disabled = false;
+    button.textContent = "შენახვა";
+  }
+});
+
+/* ელფოსტის ჩვენება/დამალვა */
+document.getElementById("toggleEmailButton").addEventListener("click", () => {
+  if (!currentUser) return;
+  emailIsVisible = !emailIsVisible;
   updateProfileMenu();
+});
+
+/* პროფილის ფოტოს არჩევა */
+document.getElementById("changePhotoButton").addEventListener("click", () => {
+  if (!currentUser) {
+    showProfileMessage("ჯერ შედი შენს ანგარიშში, რომ პროფილის ფოტო შეცვალო.");
+    return;
+  }
+  document.getElementById("profilePhotoInput").click();
+});
+
+function compressImage(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    const image = new Image();
+
+    reader.onload = () => {
+      image.onload = () => {
+        const side = Math.min(image.width, image.height);
+        const sx = (image.width - side) / 2;
+        const sy = (image.height - side) / 2;
+        const canvas = document.createElement("canvas");
+        canvas.width = 256;
+        canvas.height = 256;
+
+        const context = canvas.getContext("2d");
+        if (!context) {
+          reject(new Error("canvas-unavailable"));
+          return;
+        }
+
+        context.drawImage(image, sx, sy, side, side, 0, 0, 256, 256);
+        canvas.toBlob(blob => {
+          if (!blob) {
+            reject(new Error("image-compression-failed"));
+            return;
+          }
+          const output = new FileReader();
+          output.onload = () => resolve(output.result);
+          output.onerror = () => reject(new Error("file-read-failed"));
+          output.readAsDataURL(blob);
+        }, "image/jpeg", 0.65);
+      };
+      image.onerror = () => reject(new Error("image-load-failed"));
+      image.src = reader.result;
+    };
+    reader.onerror = () => reject(new Error("file-read-failed"));
+    reader.readAsDataURL(file);
+  });
 }
+
+document.getElementById("profilePhotoInput").addEventListener("change", async event => {
+  const file = event.target.files?.[0];
+  event.target.value = "";
+  if (!file || !currentUser) return;
+
+  if (!["image/jpeg","image/png","image/webp"].includes(file.type)) {
+    showProfileMessage("აირჩიე JPG, PNG ან WEBP ფოტო.");
+    return;
+  }
+  if (file.size > 10 * 1024 * 1024) {
+    showProfileMessage("ფოტო 10 MB-ზე ნაკლები უნდა იყოს.");
+    return;
+  }
+
+  const button = document.getElementById("changePhotoButton");
+  button.disabled = true;
+
+  try {
+    const photo = await compressImage(file);
+    localStorage.setItem(photoKey(currentUser), photo);
+    updateProfileMenu();
+    showProfileMessage("პროფილის ფოტო შეიცვალა.");
+  } catch (error) {
+    showProfileMessage("ფოტოს შენახვა ვერ მოხერხდა. სცადე სხვა ან უფრო პატარა ფოტო.");
+  } finally {
+    button.disabled = false;
+  }
+});
+
+/* ავტორიზაცია — იგივე Firebase Authentication პროექტით */
+function authErrorMessage(error) {
+  const messages = {
+    "auth/email-already-in-use":"ეს ელფოსტა უკვე რეგისტრირებულია.",
+    "auth/invalid-email":"ელფოსტის მისამართი არასწორია.",
+    "auth/weak-password":"პაროლი მინიმუმ 6 სიმბოლოსგან უნდა შედგებოდეს.",
+    "auth/invalid-credential":"ელფოსტა ან პაროლი არასწორია.",
+    "auth/user-not-found":"ელფოსტა ან პაროლი არასწორია.",
+    "auth/wrong-password":"ელფოსტა ან პაროლი არასწორია.",
+    "auth/too-many-requests":"ძალიან ბევრი მცდელობაა. მოგვიანებით სცადე.",
+    "auth/network-request-failed":"ინტერნეტთან დაკავშირება ვერ მოხერხდა.",
+    "auth/operation-not-allowed":"Firebase-ში Email/Password ავტორიზაცია ჩართული არ არის.",
+    "auth/unauthorized-domain":"ეს დომენი Firebase-ის დაშვებულ დომენებში დაამატე."
+  };
+  return messages[error.code] || "მოქმედება ვერ შესრულდა. გადაამოწმე ინტერნეტი და სცადე თავიდან.";
+}
+
+authForm.addEventListener("submit", async event => {
+  event.preventDefault();
+  if (authBusy || !authForm.reportValidity()) return;
+
+  const email = emailInput.value.trim();
+  const password = passwordInput.value;
+  const name = displayNameInput.value.trim();
+  const button = document.getElementById("submitAuth");
+
+  if (authMode === "register" && !name) {
+    showAuthMessage("შეიყვანე მომხმარებლის სახელი.");
+    return;
+  }
+
+  authBusy = true;
+  button.disabled = true;
+  button.textContent = "მოიცადე...";
+  clearAuthMessage();
+
+  try {
+    if (authMode === "register") {
+      const credential = await auth.createUserWithEmailAndPassword(email, password);
+      await credential.user.updateProfile({displayName:name});
+      currentUser = auth.currentUser;
+      updateProfileMenu();
+      showAuthMessage("ანგარიში წარმატებით შეიქმნა!");
+      setTimeout(() => closeOverlay(authOverlay), 800);
+    } else {
+      await auth.signInWithEmailAndPassword(email, password);
+      showAuthMessage("წარმატებით შეხვედი ანგარიშში!");
+      setTimeout(() => closeOverlay(authOverlay), 700);
+    }
+  } catch (error) {
+    showAuthMessage(authErrorMessage(error));
+  } finally {
+    authBusy = false;
+    button.disabled = false;
+    button.textContent = authMode === "register" ? "რეგისტრაცია" : "შესვლა";
+  }
+});
+
+/* პაროლის აღდგენა */
+document.getElementById("forgotPassword").addEventListener("click", async () => {
+  const email = emailInput.value.trim();
+
+  if (!email) {
+    showAuthMessage("ჯერ შეიყვანე ელფოსტა.");
+    emailInput.focus();
+    return;
+  }
+  if (!emailInput.checkValidity()) {
+    showAuthMessage("ელფოსტის მისამართი სწორად შეიყვანე.");
+    return;
+  }
+
+  try {
+    await auth.sendPasswordResetEmail(email);
+    showAuthMessage("თუ ამ ელფოსტაზე ანგარიში არსებობს, აღდგენის წერილი გამოგზავნილია. შეამოწმე Inbox და Spam.");
+  } catch (error) {
+    showAuthMessage(authErrorMessage(error));
+  }
+});
+
+/* გამოსვლა */
+async function logoutUser() {
+  try {
+    await auth.signOut();
+    currentUser = null;
+    emailIsVisible = false;
+    closeOverlay(profileOverlay);
+    updateProfileMenu();
+  } catch (error) {
+    showProfileMessage("ანგარიშიდან გამოსვლა ვერ მოხერხდა. სცადე თავიდან.");
+  }
+}
+document.getElementById("logoutButton").addEventListener("click", logoutUser);
+document.getElementById("profileLogoutButton").addEventListener("click", logoutUser);
+
+/* Firebase-ის მიმდინარე ანგარიშის მდგომარეობა */
+auth.onAuthStateChanged(user => {
+  currentUser = user;
+  emailIsVisible = false;
+  updateProfileMenu();
+});
+
+/* საწყისი მდგომარეობა */
 updateProfileMenu();
 </script>
-
 </body>
 </html>
