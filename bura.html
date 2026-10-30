@@ -109,21 +109,21 @@ h1 span{color:var(--gold)}
 .suit-watermark{position:absolute;font-size:110px;color:#e5bb5b13;user-select:none}
 
 /* კლასიკური ბურის უკანა სურათი */
-.mode-cover{
+  .mode-cover{
   position:relative;
   z-index:1;
   display:block;
   width:min(100%, 420px);
-  height:230px;
-  object-fit:contain;
-  padding:7px;
-  border:2px solid #d8b568;
+  height:auto;
+  aspect-ratio:420 / 393;
+  object-fit:cover;
+  padding:0;
+  border:3px solid #d8b568;
   border-radius:17px;
   background:#07140f;
   box-shadow:
     0 8px 22px #0009,
-    0 0 18px #e9bb5a35,
-    inset 0 0 0 2px #fff2;
+    0 0 18px #e9bb5a35;
 }
   
 .team-icons{position:absolute;bottom:0;display:flex;align-items:center;justify-content:center;gap:15px;width:100%}
