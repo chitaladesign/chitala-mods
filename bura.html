@@ -108,19 +108,24 @@ h1 span{color:var(--gold)}
 .mode-art{position:relative;min-height:158px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
 .suit-watermark{position:absolute;font-size:110px;color:#e5bb5b13;user-select:none}
 
-/* NEW GAME COVER IMAGE */
+/* NEW GAME COVER IMAGE — GOLD FRAME */
 .mode-cover{
   position:relative;
   z-index:1;
   display:block;
-  width:210px;
-  height:135px;
+  width:230px;
+  height:145px;
   object-fit:cover;
-  border:1px solid #d8bd7b;
-  border-radius:10px;
-  box-shadow:0 8px 20px #0008;
+  border:2px solid #d8b568;
+  border-radius:15px;
+  padding:4px;
+  background:linear-gradient(135deg,#ffe5a1,#94702f,#f3c56b);
+  box-shadow:
+    0 8px 22px #0009,
+    0 0 15px #e9bb5a35,
+    inset 0 0 0 1px #fff5;
 }
-
+  
 .team-icons{position:absolute;bottom:0;display:flex;align-items:center;justify-content:center;gap:15px;width:100%}
 .team-icon{
   width:47px;height:47px;display:grid;place-items:center;border:2px solid var(--gold);
