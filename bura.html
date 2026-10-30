@@ -442,13 +442,30 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
       <div class="room-mode-options">
         <button class="room-mode-option active" type="button" data-room-mode="classic">
       <span class="room-mode-icon">
-        <svg viewBox="0 0 54 54" width="46" height="46" aria-hidden="true">
-        <rect x="8" y="4" width="38" height="46" rx="6"
-        fill="#f8f0dc" stroke="#d6ad5b" stroke-width="2.5"/>
-        <text x="27" y="37" text-anchor="middle"
-        font-size="30" fill="#a51e32">♥</text>
-     </svg>
-    </span>
+      <svg width="68" height="60" viewBox="0 0 68 60"
+       xmlns="http://www.w3.org/2000/svg">
+       <defs>
+      <linearGradient id="teamGold" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#fff0a6"/>
+        <stop offset="100%" stop-color="#b47b26"/>
+      </linearGradient>
+    </defs>
+    <rect x="4" y="8" width="35" height="46" rx="5"
+      fill="#f7f5ef" stroke="url(#teamGold)" stroke-width="2"
+      transform="rotate(-12 21 31)"/>
+    <rect x="29" y="8" width="35" height="46" rx="5"
+      fill="#f7f5ef" stroke="url(#teamGold)" stroke-width="2"
+      transform="rotate(12 46 31)"/>
+    <text x="19" y="27" text-anchor="middle"
+      font-size="17" fill="#d71935">♥</text>
+    <text x="48" y="27" text-anchor="middle"
+      font-size="17" fill="#171717">♠</text>
+    <text x="19" y="43" text-anchor="middle"
+      font-size="10" font-weight="bold" fill="#b51e32">A</text>
+    <text x="48" y="43" text-anchor="middle"
+      font-size="10" font-weight="bold" fill="#171717">A</text>
+  </svg>
+</span>
           <strong>კლასიკური ბურა</strong>
           <small>2 მოთამაშე • ერთი ერთზე</small>
         </button>
