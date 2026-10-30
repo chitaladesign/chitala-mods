@@ -487,19 +487,44 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
         </button>  
         <button class="room-mode-option" type="button" data-room-mode="team">  
           <span class="room-mode-icon">  
-  <svg viewBox="0 0 66 54" width="56" height="46" aria-hidden="true">  
-    <rect x="4" y="8" width="34" height="42" rx="5"  
-      fill="#f8f0dc" stroke="#d6ad5b" stroke-width="2"  
-      transform="rotate(-10 21 29)"/>  
-    <rect x="29" y="8" width="34" height="42" rx="5"  
-      fill="#fff8e9" stroke="#d6ad5b" stroke-width="2"  
-      transform="rotate(10 46 29)"/>  
-    <text x="20" y="36" text-anchor="middle"  
-      font-size="22" fill="#a51e32">♥</text>  
-    <text x="47" y="36" text-anchor="middle"  
-      font-size="22" fill="#151515">♠</text>  
-  </svg>  
-</span>  
+      <svg viewBox="0 0 140 112" width="112" height="90"
+        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+        <linearGradient id="classicCard" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#fffdf3"/>
+        <stop offset=".55" stop-color="#f3e8cd"/>
+        <stop offset="1" stop-color="#d7c49c"/>
+      </linearGradient>
+      <linearGradient id="classicGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff0b5"/>
+      <stop offset=".5" stop-color="#e5bd68"/>
+      <stop offset="1" stop-color="#9b702d"/>
+      </linearGradient>
+      <filter id="classicShadow" x="-40%" y="-40%" width="180%" height="190%">
+      <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#000" flood-opacity=".65"/>
+    </filter>
+  </defs>
+
+  <g transform="rotate(-12 42 56)" filter="url(#classicShadow)">
+    <rect x="12" y="8" width="62" height="96" rx="8"
+          fill="url(#classicCard)" stroke="url(#classicGold)" stroke-width="3"/>
+    <rect x="17" y="13" width="52" height="86" rx="5"
+          fill="none" stroke="#b99550"/>
+    <text x="24" y="36" font-size="19" font-weight="bold" fill="#a51e32">A</text>
+    <text x="24" y="57" font-size="22" fill="#a51e32">♥</text>
+    <text x="43" y="88" text-anchor="middle" font-size="34" fill="#a51e32">♥</text>
+  </g>
+
+  <g transform="rotate(12 98 56)" filter="url(#classicShadow)">
+    <rect x="66" y="8" width="62" height="96" rx="8"
+          fill="url(#classicCard)" stroke="url(#classicGold)" stroke-width="3"/>
+    <rect x="71" y="13" width="52" height="86" rx="5"
+          fill="none" stroke="#b99550"/>
+    <text x="78" y="36" font-size="19" font-weight="bold" fill="#171717">K</text>
+    <text x="78" y="57" font-size="22" fill="#171717">♦</text>
+    <text x="97" y="88" text-anchor="middle" font-size="34" fill="#171717">♦</text>
+  </g>
+</svg>  
           <strong>ბურა 2v2</strong>  
           <small>4 მოთამაშე • გუნდური თამაში</small>  
         </button>  
