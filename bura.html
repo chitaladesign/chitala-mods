@@ -143,7 +143,35 @@ h1 span{color:var(--gold)}
   font-size:10px;font-weight:900;letter-spacing:1.3px
 }
 .mode-card h3{margin:0;color:var(--gold-light);font-size:clamp(27px,4vw,37px);font-weight:900;text-shadow:0 0 18px #f4c86c22}
-.mode-description{min-height:42px;margin:8px 0 17px;color:#d0d9d0;font-size:13px;line-height:1.7}
+
+/* PLAYER SLOTS */
+.player-slots{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:18px;
+  min-height:76px;
+  margin:8px 0 17px;
+}
+.player-slot{
+  width:55px;
+  height:55px;
+  display:grid;
+  place-items:center;
+  border:2px dashed #b58b3a;
+  border-radius:50%;
+  color:var(--gold);
+  background:linear-gradient(145deg,#183b29,#07140f);
+  box-shadow:inset 0 0 12px #e9bb5a12,0 0 13px #e9bb5a0b;
+  font-size:25px;
+  transition:.2s;
+}
+.player-slot:hover{
+  border-style:solid;
+  border-color:var(--gold-light);
+  box-shadow:0 0 17px #e9bb5a35;
+  transform:scale(1.06);
+}
 .mode-btn{position:relative;z-index:1;width:100%;padding:14px 10px;border-radius:30px;font-size:14px}
 .carousel-arrow{
   position:absolute;z-index:3;top:38%;width:43px;height:49px;
@@ -266,7 +294,6 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
   .mode-art{min-height:145px}
   .cards-art{transform:scale(.9)}
   .mode-card h3{font-size:30px}
-  .mode-description{min-height:0}
   .carousel-arrow{top:36%;width:34px;height:42px;font-size:21px}
   .carousel-arrow.left{left:0}.carousel-arrow.right{right:0}
   .panel{padding:15px}
@@ -329,7 +356,10 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
           </div>
           <span class="mode-label">კლასიკური რეჟიმი</span>
           <h3>ბურა</h3>
-          <p class="mode-description">კლასიკური 5 კარტა ბურა ორ მოთამაშეს შორის, მოიგე ან წააგე შენი სვლებით.</p>
+          <div class="player-slots">
+            <div class="player-slot">♙</div>
+            <div class="player-slot">♙</div>
+          </div>
           <button class="btn btn-gold mode-btn" data-start="classic" type="button">➜ &nbsp; თამაშის დაწყება</button>
         </article>
 
@@ -347,7 +377,12 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
           </div>
           <span class="mode-label">გუნდური რეჟიმი</span>
           <h3>ბურა 2v2</h3>
-          <p class="mode-description">ითამაშე პარტნიორთან ერთად, შეათანხმე სტრატეგია და დაუპირისპირდი მეორე გუნდს.</p>
+          <div class="player-slots">
+            <div class="player-slot">♙</div>
+            <div class="player-slot">♙</div>
+            <div class="player-slot">♙</div>
+            <div class="player-slot">♙</div>
+          </div>
           <button class="btn btn-gold mode-btn" data-start="team" type="button">➜ &nbsp; რეჟიმის არჩევა</button>
         </article>
       </div>
