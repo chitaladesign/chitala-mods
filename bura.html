@@ -86,9 +86,11 @@ h1 span{color:var(--gold)}
 .hero p{max-width:570px;margin:0 auto;color:var(--muted);font-size:14px;line-height:1.8}
 
 /* MAIN TABS */
+.mode-section{padding:8px 0 28px}
+.section-title{margin:0 0 7px;text-align:center;font-size:24px}
 .main-tabs{
   display:flex;justify-content:center;gap:10px;flex-wrap:wrap;
-  margin:25px auto 28px
+  margin:16px auto 28px
 }
 .main-tab{
   padding:12px 20px;border:1px solid var(--border);border-radius:10px;
@@ -104,9 +106,6 @@ h1 span{color:var(--gold)}
 .tab-page.active{display:block}
 
 /* GAME MODE CAROUSEL */
-.mode-section{padding:8px 0 28px}
-.section-title{margin:0 0 7px;text-align:center;font-size:24px}
-.section-subtitle{margin:0 0 22px;text-align:center;color:var(--muted);font-size:12px}
 .carousel{position:relative;max-width:900px;margin:auto}
 .mode-track{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:19px}
 .mode-card{
@@ -135,7 +134,6 @@ h1 span{color:var(--gold)}
   background:#07140f;
   box-shadow:0 8px 22px #0009,0 0 18px #e9bb5a35,inset 0 0 0 2px #fff2
 }
-
 .team-icons{position:absolute;bottom:0;display:flex;align-items:center;justify-content:center;gap:15px;width:100%}
 .team-icon{
   width:47px;height:47px;display:grid;place-items:center;border:2px solid var(--gold);
@@ -303,6 +301,8 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
   h1{font-size:31px}
   .hero p{font-size:12px}
   .section-title{font-size:21px}
+  .main-tabs{gap:6px;margin:14px auto 22px}
+  .main-tab{padding:10px 11px;font-size:11px}
   .mode-track{display:flex;padding:0 37px;overflow:hidden;touch-action:pan-y}
   .mode-card{display:none;width:100%;flex:0 0 100%;padding:19px 15px}
   .mode-card.active{display:block}
@@ -318,8 +318,6 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
   .account-buttons{grid-template-columns:1fr}
   .footer-inner{flex-direction:column}
   .modal{padding:22px 17px}
-  .main-tabs{gap:6px;margin:18px auto 22px}
-  .main-tab{padding:10px 11px;font-size:11px}
   .other-page{padding:23px 15px}
   .other-page h2{font-size:23px}
 }
@@ -357,69 +355,68 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
 
 <main class="container">
 
-  <!-- MAIN NAVIGATION -->
-  <nav class="main-tabs" aria-label="მთავარი მენიუ">
-    <button class="main-tab active" type="button" data-tab="fun" aria-selected="true">🏠 გასართობი</button>
-    <button class="main-tab" type="button" data-tab="create" aria-selected="false">＋ ოთახის შექმნა</button>
-    <button class="main-tab" type="button" data-tab="join" aria-selected="false">🔑 კოდით შესვლა</button>
-  </nav>
+  <!-- GAME MODES TITLE AND ALWAYS-VISIBLE TABS -->
+  <section class="mode-section" aria-label="თამაშის რეჟიმები">
+    <h2 class="section-title">თამაშის რეჟიმები</h2>
+
+    <nav class="main-tabs" aria-label="მთავარი მენიუ">
+      <button class="main-tab active" type="button" data-tab="fun" aria-selected="true">🏠 გასართობი</button>
+      <button class="main-tab" type="button" data-tab="create" aria-selected="false">＋ ოთახის შექმნა</button>
+      <button class="main-tab" type="button" data-tab="join" aria-selected="false">🔑 კოდით შესვლა</button>
+    </nav>
+  </section>
 
   <!-- ENTERTAINMENT -->
   <section class="tab-page active" id="funPage">
 
-    <section class="mode-section" id="gameModes" aria-label="თამაშის რეჟიმები">
-      <h2 class="section-title">თამაშის რეჟიმები</h2>
-      <p class="section-subtitle">გადადი სასურველ რეჟიმზე და დაიწყე თამაში</p>
+    <div class="carousel" id="carousel">
+      <button class="carousel-arrow left" id="prevMode" type="button" aria-label="წინა რეჟიმი">‹</button>
+      <button class="carousel-arrow right" id="nextMode" type="button" aria-label="შემდეგი რეჟიმი">›</button>
 
-      <div class="carousel" id="carousel">
-        <button class="carousel-arrow left" id="prevMode" type="button" aria-label="წინა რეჟიმი">‹</button>
-        <button class="carousel-arrow right" id="nextMode" type="button" aria-label="შემდეგი რეჟიმი">›</button>
+      <div class="mode-track" id="modeTrack">
 
-        <div class="mode-track" id="modeTrack">
+        <article class="mode-card active" data-mode="classic">
+          <div class="mode-art">
+            <div class="suit-watermark">♠</div>
+            <img class="mode-cover" src="buracover.jpg" alt="კლასიკური ბურა">
+          </div>
+          <span class="mode-label">კლასიკური რეჟიმი</span>
+          <h3>ბურა</h3>
+          <div class="player-slots">
+            <div class="player-slot" aria-label="მოთამაშის ადგილი">♙</div>
+            <div class="player-slot" aria-label="მოთამაშის ადგილი">♙</div>
+          </div>
+          <button class="btn btn-gold mode-btn" data-start="classic" type="button">
+            ➜ &nbsp; მაგიდაზე დაჯდომა
+          </button>
+        </article>
 
-          <article class="mode-card active" data-mode="classic">
-            <div class="mode-art">
-              <div class="suit-watermark">♠</div>
-              <img class="mode-cover" src="buracover.jpg" alt="კლასიკური ბურა">
-            </div>
-            <span class="mode-label">კლასიკური რეჟიმი</span>
-            <h3>ბურა</h3>
-            <div class="player-slots">
-              <div class="player-slot" aria-label="მოთამაშის ადგილი">♙</div>
-              <div class="player-slot" aria-label="მოთამაშის ადგილი">♙</div>
-            </div>
-            <button class="btn btn-gold mode-btn" data-start="classic" type="button">
-              ➜ &nbsp; მაგიდაზე დაჯდომა
-            </button>
-          </article>
+        <article class="mode-card" data-mode="team">
+          <div class="mode-art">
+            <div class="suit-watermark">♣</div>
+            <img class="mode-cover" src="buracover.jpg" alt="ბურა 2v2">
+          </div>
+          <span class="mode-label">გუნდური რეჟიმი</span>
+          <h3>ბურა 2v2</h3>
+          <div class="player-slots team-slots">
+            <div class="player-slot" aria-label="მოთამაშის ადგილი">♙</div>
+            <div class="player-slot" aria-label="მოთამაშის ადგილი">♙</div>
+            <div class="player-slot" aria-label="მოთამაშის ადგილი">♙</div>
+            <div class="player-slot" aria-label="მოთამაშის ადგილი">♙</div>
+          </div>
+          <button class="btn btn-gold mode-btn" data-start="team" type="button">
+            ➜ &nbsp; მაგიდაზე დაჯდომა
+          </button>
+        </article>
 
-          <article class="mode-card" data-mode="team">
-            <div class="mode-art">
-              <div class="suit-watermark">♣</div>
-              <img class="mode-cover" src="buracover.jpg" alt="ბურა 2v2">
-            </div>
-            <span class="mode-label">გუნდური რეჟიმი</span>
-            <h3>ბურა 2v2</h3>
-            <div class="player-slots team-slots">
-              <div class="player-slot" aria-label="მოთამაშის ადგილი">♙</div>
-              <div class="player-slot" aria-label="მოთამაშის ადგილი">♙</div>
-              <div class="player-slot" aria-label="მოთამაშის ადგილი">♙</div>
-              <div class="player-slot" aria-label="მოთამაშის ადგილი">♙</div>
-            </div>
-            <button class="btn btn-gold mode-btn" data-start="team" type="button">
-              ➜ &nbsp; მაგიდაზე დაჯდომა
-            </button>
-          </article>
-
-        </div>
-
-        <div class="carousel-dots" aria-label="რეჟიმის არჩევა">
-          <button class="carousel-dot active" data-dot="0" type="button" aria-label="ბურა"></button>
-          <button class="carousel-dot" data-dot="1" type="button" aria-label="ბურა 2v2"></button>
-        </div>
-        <div class="notice" id="modeNotice" role="status"></div>
       </div>
-    </section>
+
+      <div class="carousel-dots" aria-label="რეჟიმის არჩევა">
+        <button class="carousel-dot active" data-dot="0" type="button" aria-label="ბურა"></button>
+        <button class="carousel-dot" data-dot="1" type="button" aria-label="ბურა 2v2"></button>
+      </div>
+      <div class="notice" id="modeNotice" role="status"></div>
+    </div>
 
     <section class="bottom-grid">
       <div class="panel">
