@@ -43,11 +43,8 @@ header{
 .brand-name span{color:var(--gold)}
 .brand-divider{height:36px;width:1px;background:#8e713b;margin-inline:4px}
 .header-actions{
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  gap:18px;
-  margin-right:30px;
+  display:flex;align-items:center;justify-content:flex-end;
+  gap:18px;margin-right:30px
 }
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:7px;
@@ -62,22 +59,15 @@ header{
   border-color:#ffdf8d;box-shadow:0 4px 18px #dba94425
 }
 .btn-red{background:linear-gradient(135deg,#a8323e,#641a25);border-color:#b04b52}
-.home-button{
-  white-space:nowrap;
-  transform:translateX(15px);
-}
-.home-button:hover{
-  border-color:var(--gold-light);
-  transform:translate(15px,-2px);
-}
+.home-button{white-space:nowrap;transform:translateX(15px)}
+.home-button:hover{border-color:var(--gold-light);transform:translate(15px,-2px)}
 
 /* HEADER PROFILE PHOTO */
 .profile-button{
   width:47px;height:47px;flex-shrink:0;display:grid;place-items:center;
   overflow:hidden;padding:0;border:2px solid var(--gold);border-radius:50%;
   color:var(--gold-light);background:linear-gradient(145deg,#193d2b,#07140e);
-  box-shadow:0 0 14px #e8bd6020;transition:.2s;
-  transform:translateX(-6px)
+  box-shadow:0 0 14px #e8bd6020;transition:.2s;transform:translateX(-6px)
 }
 .profile-button:hover{transform:translateX(-6px) scale(1.05);border-color:var(--gold-light)}
 .profile-button svg{width:25px;height:25px}
@@ -144,34 +134,61 @@ h1 span{color:var(--gold)}
 }
 .mode-card h3{margin:0;color:var(--gold-light);font-size:clamp(27px,4vw,37px);font-weight:900;text-shadow:0 0 18px #f4c86c22}
 
-/* PLAYER SLOTS */
+/* PLAYER SLOTS — REFINED DESIGN */
 .player-slots{
   display:flex;
   justify-content:center;
   align-items:center;
-  gap:18px;
-  min-height:76px;
-  margin:8px 0 17px;
+  gap:22px;
+  min-height:82px;
+  margin:9px 0 17px;
 }
 .player-slot{
-  width:55px;
-  height:55px;
+  position:relative;
+  width:59px;
+  height:59px;
+  flex:0 0 59px;
   display:grid;
   place-items:center;
-  border:2px dashed #b58b3a;
-  border-radius:50%;
-  color:var(--gold);
-  background:linear-gradient(145deg,#183b29,#07140f);
-  box-shadow:inset 0 0 12px #e9bb5a12,0 0 13px #e9bb5a0b;
-  font-size:25px;
+  border:1px solid #c69b4d;
+  border-radius:16px;
+  color:var(--gold-light);
+  background:
+    radial-gradient(circle at 35% 25%,#315b40,#10271b 70%);
+  box-shadow:
+    inset 0 1px 4px #ffffff20,
+    inset 0 -5px 12px #0005,
+    0 4px 12px #0005,
+    0 0 12px #e9bb5a12;
+  font-size:27px;
   transition:.2s;
 }
-.player-slot:hover{
-  border-style:solid;
-  border-color:var(--gold-light);
-  box-shadow:0 0 17px #e9bb5a35;
-  transform:scale(1.06);
+.player-slot::after{
+  content:"";
+  position:absolute;
+  inset:4px;
+  border:1px solid #e9bb5a35;
+  border-radius:11px;
+  pointer-events:none;
 }
+.player-slot:hover{
+  border-color:var(--gold-light);
+  background:linear-gradient(145deg,#315b40,#10271b);
+  box-shadow:0 0 18px #e9bb5a35;
+  transform:translateY(-2px);
+}
+
+/* FOUR SMALLER, EQUAL SLOTS FOR 2V2 */
+.player-slots.team-slots{gap:12px}
+.player-slots.team-slots .player-slot{
+  width:45px;
+  height:45px;
+  flex-basis:45px;
+  border-radius:13px;
+  font-size:21px;
+}
+.player-slots.team-slots .player-slot::after{border-radius:9px}
+
 .mode-btn{position:relative;z-index:1;width:100%;padding:14px 10px;border-radius:30px;font-size:14px}
 .carousel-arrow{
   position:absolute;z-index:3;top:38%;width:43px;height:49px;
@@ -231,7 +248,7 @@ h1 span{color:var(--gold)}
 .modal-switch{margin-top:15px;text-align:center;color:var(--muted);font-size:12px}
 .modal-switch button{border:0;color:var(--gold-light);background:transparent;font-weight:900}
 
-/* Profile layout */
+/* PROFILE LAYOUT */
 .profile-photo-wrap{position:relative;width:94px;margin:0 auto 14px}
 .profile-modal-avatar{
   width:94px;height:94px;display:grid;place-items:center;overflow:hidden;
@@ -294,6 +311,12 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
   .mode-art{min-height:145px}
   .cards-art{transform:scale(.9)}
   .mode-card h3{font-size:30px}
+  .player-slots{gap:18px}
+  .player-slot{width:54px;height:54px;flex-basis:54px}
+  .player-slots.team-slots{gap:10px}
+  .player-slots.team-slots .player-slot{
+    width:41px;height:41px;flex-basis:41px
+  }
   .carousel-arrow{top:36%;width:34px;height:42px;font-size:21px}
   .carousel-arrow.left{left:0}.carousel-arrow.right{right:0}
   .panel{padding:15px}
@@ -345,6 +368,8 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
       <button class="carousel-arrow right" id="nextMode" type="button" aria-label="შემდეგი რეჟიმი">›</button>
 
       <div class="mode-track" id="modeTrack">
+
+        <!-- CLASSIC BURA -->
         <article class="mode-card active" data-mode="classic">
           <div class="mode-art">
             <div class="suit-watermark">♠</div>
@@ -354,15 +379,21 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
               <div class="playing-card three"><span class="rank">K</span><span class="suit">♣</span></div>
             </div>
           </div>
+
           <span class="mode-label">კლასიკური რეჟიმი</span>
           <h3>ბურა</h3>
+
           <div class="player-slots">
-            <div class="player-slot">♙</div>
-            <div class="player-slot">♙</div>
+            <div class="player-slot" aria-label="მოთამაშის ადგილი">♙</div>
+            <div class="player-slot" aria-label="მოთამაშის ადგილი">♙</div>
           </div>
-          <button class="btn btn-gold mode-btn" data-start="classic" type="button">➜ &nbsp; თამაშის დაწყება</button>
+
+          <button class="btn btn-gold mode-btn" data-start="classic" type="button">
+            ➜ &nbsp; მაგიდაზე დაჯდომა
+          </button>
         </article>
 
+        <!-- BURA 2V2 -->
         <article class="mode-card" data-mode="team">
           <div class="mode-art">
             <div class="suit-watermark">♣</div>
@@ -375,16 +406,22 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
               <span class="team-icon">♟</span><span class="team-vs">VS</span><span class="team-icon">♟</span>
             </div>
           </div>
+
           <span class="mode-label">გუნდური რეჟიმი</span>
           <h3>ბურა 2v2</h3>
-          <div class="player-slots">
-            <div class="player-slot">♙</div>
-            <div class="player-slot">♙</div>
-            <div class="player-slot">♙</div>
-            <div class="player-slot">♙</div>
+
+          <div class="player-slots team-slots">
+            <div class="player-slot" aria-label="მოთამაშის ადგილი">♙</div>
+            <div class="player-slot" aria-label="მოთამაშის ადგილი">♙</div>
+            <div class="player-slot" aria-label="მოთამაშის ადგილი">♙</div>
+            <div class="player-slot" aria-label="მოთამაშის ადგილი">♙</div>
           </div>
-          <button class="btn btn-gold mode-btn" data-start="team" type="button">➜ &nbsp; რეჟიმის არჩევა</button>
+
+          <button class="btn btn-gold mode-btn" data-start="team" type="button">
+            ➜ &nbsp; მაგიდაზე დაჯდომა
+          </button>
         </article>
+
       </div>
 
       <div class="carousel-dots" aria-label="რეჟიმის არჩევა">
