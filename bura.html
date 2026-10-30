@@ -161,7 +161,17 @@ h1 span{color:var(--gold)}
   background:radial-gradient(ellipse at 50% 30%,#16472f88,transparent 60%),linear-gradient(145deg,#10291d,#07140f 80%);
   box-shadow:inset 0 0 0 4px #d9ac4c08,0 12px 30px #0005
 }
-.other-icon{font-size:48px;margin-bottom:15px}
+.other-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:15px;
+}
+.other-icon svg{
+  width:88px;
+  height:72px;
+  filter:drop-shadow(0 5px 8px #0008);
+}
 .other-page h2{color:var(--gold-light);font-size:27px;margin:0 0 10px}
 .other-page p{color:var(--muted);font-size:13px;line-height:1.8;margin:0 0 20px}
 .form-field{width:100%;padding:14px;margin-bottom:12px;border:1px solid #80612e;border-radius:9px;background:#07140f;color:var(--text);outline:none}
@@ -176,7 +186,16 @@ h1 span{color:var(--gold)}
   color:var(--text);background:linear-gradient(145deg,#10291d,#07140f);transition:.2s
 }
 .room-mode-option:hover,.room-mode-option.active{border-color:var(--gold-light);box-shadow:0 0 18px #e9bb5a20;color:var(--gold-light)}
-.room-mode-icon{font-size:30px}
+.room-mode-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+}
+.room-mode-icon svg{
+  display:block;
+  filter:drop-shadow(0 3px 5px #0008);
+}
 .room-mode-option strong{font-size:14px}
 .room-mode-option small{color:var(--muted);font-size:10px}
 .room-preview{padding:17px;margin-bottom:16px;border:1px solid #8e6a32;border-radius:12px;background:#07140f}
@@ -398,18 +417,56 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
   <!-- CREATE ROOM -->
   <section class="tab-page" id="createPage">
     <div class="other-page">
-      <div class="other-icon">🎮</div>
+      <div class="other-icon">
+  <svg viewBox="0 0 110 85" aria-hidden="true">
+    <defs>
+      <linearGradient id="cardGold" x1="0" y1="0" x2="1" y2="1">
+        <stop stop-color="#fff0b5"/>
+        <stop offset=".5" stop-color="#e4b85c"/>
+        <stop offset="1" stop-color="#9b702d"/>
+      </linearGradient>
+    </defs>
+    <rect x="9" y="9" width="55" height="69" rx="8"
+      fill="#f8f0dc" stroke="url(#cardGold)" stroke-width="3"
+      transform="rotate(-13 36 43)"/>
+    <rect x="47" y="9" width="55" height="69" rx="8"
+      fill="#fff8e9" stroke="url(#cardGold)" stroke-width="3"
+      transform="rotate(13 74 43)"/>
+    <text x="25" y="48" font-size="29" fill="#a51e32">♥</text>
+    <text x="64" y="51" font-size="31" fill="#151515">♠</text>
+  </svg>
+</div>
       <h2>ოთახის შექმნა</h2>
       <p>აირჩიე თამაშის რეჟიმი და მოამზადე შენი მაგიდა მეგობრებისთვის.</p>
 
       <div class="room-mode-options">
         <button class="room-mode-option active" type="button" data-room-mode="classic">
-          <span class="room-mode-icon">🃏</span>
+      <span class="room-mode-icon">
+        <svg viewBox="0 0 54 54" width="46" height="46" aria-hidden="true">
+        <rect x="8" y="4" width="38" height="46" rx="6"
+        fill="#f8f0dc" stroke="#d6ad5b" stroke-width="2.5"/>
+        <text x="27" y="37" text-anchor="middle"
+        font-size="30" fill="#a51e32">♥</text>
+     </svg>
+    </span>
           <strong>კლასიკური ბურა</strong>
           <small>2 მოთამაშე • ერთი ერთზე</small>
         </button>
         <button class="room-mode-option" type="button" data-room-mode="team">
-          <span class="room-mode-icon">♟</span>
+          <span class="room-mode-icon">
+  <svg viewBox="0 0 66 54" width="56" height="46" aria-hidden="true">
+    <rect x="4" y="8" width="34" height="42" rx="5"
+      fill="#f8f0dc" stroke="#d6ad5b" stroke-width="2"
+      transform="rotate(-10 21 29)"/>
+    <rect x="29" y="8" width="34" height="42" rx="5"
+      fill="#fff8e9" stroke="#d6ad5b" stroke-width="2"
+      transform="rotate(10 46 29)"/>
+    <text x="20" y="36" text-anchor="middle"
+      font-size="22" fill="#a51e32">♥</text>
+    <text x="47" y="36" text-anchor="middle"
+      font-size="22" fill="#151515">♠</text>
+  </svg>
+</span>
           <strong>ბურა 2v2</strong>
           <small>4 მოთამაშე • გუნდური თამაში</small>
         </button>
