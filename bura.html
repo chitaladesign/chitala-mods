@@ -134,7 +134,7 @@ h1 span{color:var(--gold)}
 }
 .mode-card h3{margin:0;color:var(--gold-light);font-size:clamp(27px,4vw,37px);font-weight:900;text-shadow:0 0 18px #f4c86c22}
 
-/* PLAYER SLOTS — REFINED DESIGN */
+/* PLAYER SLOTS — SAME SIZE IN BOTH MODES */
 .player-slots{
   display:flex;
   justify-content:center;
@@ -153,8 +153,7 @@ h1 span{color:var(--gold)}
   border:1px solid #c69b4d;
   border-radius:16px;
   color:var(--gold-light);
-  background:
-    radial-gradient(circle at 35% 25%,#315b40,#10271b 70%);
+  background:radial-gradient(circle at 35% 25%,#315b40,#10271b 70%);
   box-shadow:
     inset 0 1px 4px #ffffff20,
     inset 0 -5px 12px #0005,
@@ -178,16 +177,8 @@ h1 span{color:var(--gold)}
   transform:translateY(-2px);
 }
 
-/* FOUR SMALLER, EQUAL SLOTS FOR 2V2 */
+/* 2V2 — SAME SIZE, CLOSER TOGETHER */
 .player-slots.team-slots{gap:12px}
-.player-slots.team-slots .player-slot{
-  width:45px;
-  height:45px;
-  flex-basis:45px;
-  border-radius:13px;
-  font-size:21px;
-}
-.player-slots.team-slots .player-slot::after{border-radius:9px}
 
 .mode-btn{position:relative;z-index:1;width:100%;padding:14px 10px;border-radius:30px;font-size:14px}
 .carousel-arrow{
@@ -314,9 +305,6 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
   .player-slots{gap:18px}
   .player-slot{width:54px;height:54px;flex-basis:54px}
   .player-slots.team-slots{gap:10px}
-  .player-slots.team-slots .player-slot{
-    width:41px;height:41px;flex-basis:41px
-  }
   .carousel-arrow{top:36%;width:34px;height:42px;font-size:21px}
   .carousel-arrow.left{left:0}.carousel-arrow.right{right:0}
   .panel{padding:15px}
