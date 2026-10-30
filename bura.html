@@ -108,22 +108,22 @@ h1 span{color:var(--gold)}
 .mode-art{position:relative;min-height:158px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
 .suit-watermark{position:absolute;font-size:110px;color:#e5bb5b13;user-select:none}
 
-/* NEW GAME COVER IMAGE — GOLD FRAME */
+/* კლასიკური ბურის უკანა სურათი */
 .mode-cover{
   position:relative;
   z-index:1;
   display:block;
-  width:230px;
-  height:145px;
-  object-fit:cover;
+  width:min(100%, 420px);
+  height:230px;
+  object-fit:contain;
+  padding:7px;
   border:2px solid #d8b568;
-  border-radius:15px;
-  padding:4px;
-  background:linear-gradient(135deg,#ffe5a1,#94702f,#f3c56b);
+  border-radius:17px;
+  background:#07140f;
   box-shadow:
     0 8px 22px #0009,
-    0 0 15px #e9bb5a35,
-    inset 0 0 0 1px #fff5;
+    0 0 18px #e9bb5a35,
+    inset 0 0 0 2px #fff2;
 }
   
 .team-icons{position:absolute;bottom:0;display:flex;align-items:center;justify-content:center;gap:15px;width:100%}
@@ -304,7 +304,12 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
   .mode-card{display:none;width:100%;flex:0 0 100%;padding:19px 15px}
   .mode-card.active{display:block}
   .mode-art{min-height:145px}
-  .mode-cover{width:230px;height:145px}
+.mode-cover{
+  width:100%;
+  max-width:420px;
+  height:210px;
+  object-fit:contain;
+}
   .mode-card h3{font-size:30px}
   .player-slots{gap:18px}
   .player-slot{width:54px;height:54px;flex-basis:54px}
