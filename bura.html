@@ -107,20 +107,20 @@ h1 span{color:var(--gold)}
 .mode-card.active{border-color:var(--gold-light);box-shadow:inset 0 0 0 2px #e9bb5a30,0 0 25px #e9bb5a15}
 .mode-art{position:relative;min-height:158px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
 .suit-watermark{position:absolute;font-size:110px;color:#e5bb5b13;user-select:none}
-.cards-art{position:relative;width:210px;height:135px}
-.playing-card{
-  position:absolute;top:11px;left:50%;width:77px;height:112px;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  border:1px solid #d8caa9;border-radius:8px;
-  background:linear-gradient(145deg,#fffdf5,#e8dfc9);
-  box-shadow:0 9px 15px #0007;color:#171713
+
+/* NEW GAME COVER IMAGE */
+.mode-cover{
+  position:relative;
+  z-index:1;
+  display:block;
+  width:210px;
+  height:135px;
+  object-fit:cover;
+  border:1px solid #d8bd7b;
+  border-radius:10px;
+  box-shadow:0 8px 20px #0008;
 }
-.playing-card .rank{font-size:24px;font-weight:900;line-height:1}
-.playing-card .suit{font-size:35px}
-.playing-card.red{color:#c62b37}
-.playing-card.one{transform:translateX(-67px) rotate(-15deg)}
-.playing-card.two{transform:translateX(-24px) rotate(-5deg);top:1px}
-.playing-card.three{transform:translateX(21px) rotate(9deg);top:8px}
+
 .team-icons{position:absolute;bottom:0;display:flex;align-items:center;justify-content:center;gap:15px;width:100%}
 .team-icon{
   width:47px;height:47px;display:grid;place-items:center;border:2px solid var(--gold);
@@ -134,7 +134,7 @@ h1 span{color:var(--gold)}
 }
 .mode-card h3{margin:0;color:var(--gold-light);font-size:clamp(27px,4vw,37px);font-weight:900;text-shadow:0 0 18px #f4c86c22}
 
-/* PLAYER SLOTS — SAME SIZE IN BOTH MODES */
+/* PLAYER SLOTS */
 .player-slots{
   display:flex;
   justify-content:center;
@@ -176,7 +176,6 @@ h1 span{color:var(--gold)}
   box-shadow:0 0 18px #e9bb5a35;
   transform:translateY(-2px);
 }
-
 /* 2V2 — SAME SIZE, CLOSER TOGETHER */
 .player-slots.team-slots{gap:12px}
 
@@ -300,7 +299,7 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
   .mode-card{display:none;width:100%;flex:0 0 100%;padding:19px 15px}
   .mode-card.active{display:block}
   .mode-art{min-height:145px}
-  .cards-art{transform:scale(.9)}
+  .mode-cover{width:210px;height:135px}
   .mode-card h3{font-size:30px}
   .player-slots{gap:18px}
   .player-slot{width:54px;height:54px;flex-basis:54px}
@@ -313,7 +312,7 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
   .modal{padding:22px 17px}
 }
 @media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{transition:none!important}
+  *{transition:none!important}
   html{scroll-behavior:auto}
 }
 </style>
@@ -361,11 +360,7 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
         <article class="mode-card active" data-mode="classic">
           <div class="mode-art">
             <div class="suit-watermark">♠</div>
-            <div class="cards-art" aria-hidden="true">
-              <div class="playing-card one"><span class="rank">A</span><span class="suit">♠</span></div>
-              <div class="playing-card red two"><span class="rank">10</span><span class="suit">♥</span></div>
-              <div class="playing-card three"><span class="rank">K</span><span class="suit">♣</span></div>
-            </div>
+            <img class="mode-cover" src="buracover.jpg" alt="კლასიკური ბურა">
           </div>
 
           <span class="mode-label">კლასიკური რეჟიმი</span>
@@ -385,11 +380,7 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
         <article class="mode-card" data-mode="team">
           <div class="mode-art">
             <div class="suit-watermark">♣</div>
-            <div class="cards-art" aria-hidden="true">
-              <div class="playing-card one"><span class="rank">A</span><span class="suit">♠</span></div>
-              <div class="playing-card red two"><span class="rank">10</span><span class="suit">♥</span></div>
-              <div class="playing-card three"><span class="rank">K</span><span class="suit">♣</span></div>
-            </div>
+            <img class="mode-cover" src="buracover.jpg" alt="ბურა 2v2">
             <div class="team-icons" aria-hidden="true">
               <span class="team-icon">♟</span><span class="team-vs">VS</span><span class="team-icon">♟</span>
             </div>
