@@ -596,33 +596,63 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
     </g>
 
     <g transform="rotate(-12 25 35)">
-      <text x="12" y="25" font-size="12" font-weight="bold" fill="#a51e32">A</text>
-      <text x="25" y="48" text-anchor="middle" font-size="26" fill="#c51f36">♥</text>
-    </g>
+<!-- CREATE ROOM -->
+<section class="tab-page" id="createPage">
+  <div class="other-page">
 
-    <g transform="rotate(12 53 35)">
-      <text x="40" y="25" font-size="12" font-weight="bold" fill="#171717">A</text>
-      <text x="53" y="48" text-anchor="middle" font-size="26" fill="#171717">♠</text>
-    </g>
-  </svg>
-</span>
-          <strong>ბურა 2v2</strong>
-          <small>4 მოთამაშე • გუნდური თამაში</small>
-        </button>
-      </div>
-
-      <div class="room-preview" id="roomPreview">
-        <strong id="roomPreviewTitle">კლასიკური ბურა</strong>
-        <p id="roomPreviewDescription">ოთახში ითამაშებს 2 მოთამაშე.</p>
-        <div class="room-player-slots" id="roomPlayerSlots">
-          <span>♙</span><span>♙</span>
-        </div>
-      </div>
-
-      <button class="btn btn-gold wide-button" id="createRoomButton" type="button">＋ ოთახის შექმნა</button>
-      <div class="notice" id="createNotice" role="status"></div>
+    <div class="other-icon">
+      <svg viewBox="0 0 160 125" xmlns="http://www.w3.org/2000/svg">
+        <rect x="22" y="17" width="67" height="91" rx="9"
+          fill="#fffdf4" stroke="#e4b85c" stroke-width="3"
+          transform="rotate(-15 55 62)"/>
+        <rect x="70" y="17" width="67" height="91" rx="9"
+          fill="#fffdf4" stroke="#e4b85c" stroke-width="3"
+          transform="rotate(15 103 62)"/>
+        <text x="55" y="83" text-anchor="middle" font-size="39" fill="#c51f36">♥</text>
+        <text x="103" y="83" text-anchor="middle" font-size="39" fill="#171717">♠</text>
+      </svg>
     </div>
-  </section>
+
+    <h2>ოთახის შექმნა</h2>
+    <p>აირჩიე თამაშის რეჟიმი და მოამზადე შენი მაგიდა მეგობრებისთვის.</p>
+
+    <div class="room-mode-options">
+
+      <button class="room-mode-option active" type="button" data-room-mode="classic">
+        <span class="room-mode-icon">
+          <span style="font-size:48px">🂱</span>
+        </span>
+        <strong>კლასიკური ბურა</strong>
+        <small>2 მოთამაშე • ერთი ერთზე</small>
+      </button>
+
+      <button class="room-mode-option" type="button" data-room-mode="team">
+        <span class="room-mode-icon">
+          <span style="font-size:48px">🃏</span>
+        </span>
+        <strong>ბურა 2v2</strong>
+        <small>4 მოთამაშე • გუნდური თამაში</small>
+      </button>
+
+    </div>
+
+    <div class="room-preview" id="roomPreview">
+      <strong id="roomPreviewTitle">კლასიკური ბურა</strong>
+      <p id="roomPreviewDescription">ოთახში ითამაშებს 2 მოთამაშე.</p>
+      <div class="room-player-slots" id="roomPlayerSlots">
+        <span>♙</span>
+        <span>♙</span>
+      </div>
+    </div>
+
+    <button class="btn btn-gold wide-button" id="createRoomButton" type="button">
+      ＋ ოთახის შექმნა
+    </button>
+
+    <div class="notice" id="createNotice" role="status"></div>
+
+  </div>
+</section>
 
   <!-- JOIN ROOM -->
   <section class="tab-page" id="joinPage">
