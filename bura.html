@@ -7,13 +7,6 @@
 <title>CHITALA PROD — ბურა</title>
 
 <style>
-.mode-section{padding-bottom:0!important;margin-bottom:0!important}
-.main-tabs{margin-bottom:0!important}
-.tab-page{padding-top:0!important;margin-top:0!important}
-.carousel{margin-top:8px!important}
-.bottom-grid{margin-top:16px!important}
-@media(max-width:520px){.bottom-grid{margin-top:20px!important}}
-
 :root{
   --bg:#07100d;--green:#0b3022;--panel:#0c1c16;
   --gold:#f3c56b;--gold-light:#ffe5a1;--text:#f7f3e9;
@@ -28,9 +21,7 @@ body{
 }
 button,input{font:inherit}
 button{cursor:pointer}
-button:focus-visible,input:focus-visible,a:focus-visible{
-  outline:2px solid var(--gold-light);outline-offset:3px
-}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--gold-light);outline-offset:3px}
 .container{width:min(1120px,calc(100% - 32px));margin-inline:auto}
 [hidden]{display:none!important}
 
@@ -41,103 +32,59 @@ header{
 }
 .header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:12px;min-width:0;color:inherit;text-decoration:none;flex-shrink:0}
-.crown{
-  display:grid;place-items:center;width:46px;height:46px;border:1px solid #9c793a;
-  border-radius:12px;color:var(--gold);background:linear-gradient(145deg,#193d2b,#07140e);
-  font-size:31px;line-height:1;box-shadow:0 0 15px #e8bd6018
-}
+.crown{display:grid;place-items:center;width:46px;height:46px;border:1px solid #9c793a;border-radius:12px;color:var(--gold);background:linear-gradient(145deg,#193d2b,#07140e);font-size:31px;line-height:1}
 .brand-name{font-weight:900;font-size:20px;line-height:1.2;letter-spacing:1.2px;white-space:nowrap}
 .brand-name span{color:var(--gold)}
 .brand-divider{height:38px;width:1px;background:linear-gradient(transparent,#b58b3a,transparent);margin-left:8px}
 .header-actions{display:flex;align-items:center;justify-content:flex-end;gap:13px;margin:0}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:7px;
-  border:1px solid #80612e;border-radius:10px;padding:11px 15px;
-  color:var(--text);background:#10241a;font-weight:800;text-decoration:none;transition:.2s
-}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid #80612e;border-radius:10px;padding:11px 15px;color:var(--text);background:#10241a;font-weight:800;text-decoration:none;transition:.2s}
 .btn:hover{border-color:var(--gold-light);transform:translateY(-2px)}
 .btn:disabled{opacity:.6;cursor:wait;transform:none}
 .btn-gold{color:#17150e;background:linear-gradient(135deg,#ffe6a0,#d7a443);border-color:#ffdf8d;box-shadow:0 4px 18px #dba94425}
 .btn-red{background:linear-gradient(135deg,#a8323e,#641a25);border-color:#b04b52}
-.home-button{white-space:nowrap;transform:none}
-.home-button:hover{border-color:var(--gold-light);transform:translateY(-2px)}
-
-.profile-button{
-  width:48px;height:48px;flex-shrink:0;display:grid;place-items:center;overflow:hidden;padding:0;
-  border:2px solid var(--gold);border-radius:50%;color:var(--gold-light);
-  background:linear-gradient(145deg,#193d2b,#07140e);box-shadow:0 0 14px #e8bd6020;transition:.2s
-}
-.profile-button:hover{transform:scale(1.06);border-color:var(--gold-light)}
+.home-button{white-space:nowrap}
+.profile-button{width:48px;height:48px;flex-shrink:0;display:grid;place-items:center;overflow:hidden;padding:0;border:2px solid var(--gold);border-radius:50%;color:var(--gold-light);background:linear-gradient(145deg,#193d2b,#07140e)}
 .profile-button svg{width:25px;height:25px}
 .profile-button img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
 
 .hero{padding:42px 0 24px;text-align:center}
-.eyebrow{
-  display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid #8d6b32;
-  border-radius:30px;color:var(--gold-light);background:#d8a9440c;font-size:11px;
-  font-weight:900;letter-spacing:1.3px
-}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid #8d6b32;border-radius:30px;color:var(--gold-light);background:#d8a9440c;font-size:11px;font-weight:900;letter-spacing:1.3px}
 .status-dot{width:8px;height:8px;border-radius:50%;background:#5cf09a;box-shadow:0 0 10px #5cf09a}
 h1{margin:17px 0 10px;font-size:clamp(31px,5vw,49px);font-weight:900;line-height:1.2}
 h1 span{color:var(--gold)}
 .hero p{max-width:570px;margin:0 auto;color:var(--muted);font-size:14px;line-height:1.8}
 
-.mode-section{padding:8px 0 28px}
+.mode-section{padding:8px 0 0!important;margin-bottom:0!important}
 .section-title{margin:0 0 7px;text-align:center;font-size:24px}
-.main-tabs{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:16px auto 28px}
-.main-tab{
-  padding:12px 20px;border:1px solid var(--border);border-radius:10px;color:var(--text);
-  background:linear-gradient(145deg,#10291d,#07140f);font-weight:800;transition:.2s
-}
+.main-tabs{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:16px auto 0!important}
+.main-tab{padding:12px 20px;border:1px solid var(--border);border-radius:10px;color:var(--text);background:linear-gradient(145deg,#10291d,#07140f);font-weight:800;transition:.2s}
 .main-tab:hover,.main-tab.active{color:var(--gold-light);border-color:var(--gold-light);box-shadow:0 0 16px #e9bb5a20}
-.tab-page{display:none}
+.tab-page{display:none;padding-top:0!important;margin-top:0!important}
 .tab-page.active{display:block}
 
-.carousel{position:relative;max-width:900px;margin:auto}
+.carousel{position:relative;max-width:900px;margin:8px auto 0!important}
 .mode-track{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:19px}
-.mode-card{
-  min-width:0;position:relative;overflow:hidden;padding:24px 21px 22px;
-  border:1px solid var(--border);border-radius:18px;text-align:center;
-  background:radial-gradient(ellipse at 50% 30%,#16472f88,transparent 60%),linear-gradient(145deg,#10291d,#07140f 80%);
-  box-shadow:inset 0 0 0 4px #d9ac4c08,0 12px 30px #0005;transition:.2s
-}
+.mode-card{min-width:0;position:relative;overflow:hidden;padding:24px 21px 22px;border:1px solid var(--border);border-radius:18px;text-align:center;background:radial-gradient(ellipse at 50% 30%,#16472f88,transparent 60%),linear-gradient(145deg,#10291d,#07140f 80%);box-shadow:inset 0 0 0 4px #d9ac4c08,0 12px 30px #0005;transition:.2s}
 .mode-card::before{content:"";position:absolute;inset:7px;border:1px solid #b58b3a35;border-radius:12px;pointer-events:none}
-.mode-card:hover{transform:translateY(-3px);border-color:var(--gold-light);box-shadow:0 12px 35px #0007}
+.mode-card:hover{transform:translateY(-3px);border-color:var(--gold-light)}
 .mode-card.active{border-color:var(--gold-light);box-shadow:inset 0 0 0 2px #e9bb5a30,0 0 25px #e9bb5a15}
 .mode-art{position:relative;min-height:158px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
 .suit-watermark{position:absolute;font-size:110px;color:#e5bb5b13;user-select:none}
-.mode-cover{
-  position:relative;z-index:1;display:block;width:100%;max-width:420px;height:230px;
-  object-fit:cover;object-position:center;padding:0;border:2px solid #d8b568;
-  border-radius:17px;background:#07140f;box-shadow:0 8px 22px #0009,0 0 18px #e9bb5a35
-}
-.team-icons{position:absolute;bottom:0;display:flex;align-items:center;justify-content:center;gap:15px;width:100%}
-.team-icon{width:47px;height:47px;display:grid;place-items:center;border:2px solid var(--gold);border-radius:50%;color:var(--gold-light);background:#07150f;font-size:23px}
-.team-vs{color:var(--gold);font-weight:900}
+.mode-cover{position:relative;z-index:1;display:block;width:100%;max-width:420px;height:230px;border:2px solid #d8b568;border-radius:17px;background:#07140f;box-shadow:0 8px 22px #0009,0 0 18px #e9bb5a35}
 .mode-label{display:inline-block;margin-bottom:8px;padding:5px 9px;border:1px solid #d6ae5940;border-radius:5px;color:var(--gold-light);background:#e6b7530d;font-size:10px;font-weight:900;letter-spacing:1.3px}
-.mode-card h3{margin:0;color:var(--gold-light);font-size:clamp(27px,4vw,37px);font-weight:900;text-shadow:0 0 18px #f4c86c22}
-
+.mode-card h3{margin:0;color:var(--gold-light);font-size:clamp(27px,4vw,37px);font-weight:900}
 .player-slots{display:flex;justify-content:center;align-items:center;gap:22px;min-height:82px;margin:9px 0 17px}
-.player-slot{
-  position:relative;width:59px;height:59px;flex:0 0 59px;display:grid;place-items:center;
-  border:1px solid #c69b4d;border-radius:16px;color:var(--gold-light);
-  background:radial-gradient(circle at 35% 25%,#315b40,#10271b 70%);
-  box-shadow:inset 0 1px 4px #ffffff20,inset 0 -5px 12px #0005,0 4px 12px #0005,0 0 12px #e9bb5a12;
-  font-size:27px;transition:.2s
-}
+.player-slot{position:relative;width:59px;height:59px;flex:0 0 59px;display:grid;place-items:center;border:1px solid #c69b4d;border-radius:16px;color:var(--gold-light);background:radial-gradient(circle at 35% 25%,#315b40,#10271b 70%);font-size:27px}
 .player-slot::after{content:"";position:absolute;inset:4px;border:1px solid #e9bb5a35;border-radius:11px;pointer-events:none}
-.player-slot:hover{border-color:var(--gold-light);background:linear-gradient(145deg,#315b40,#10271b);box-shadow:0 0 18px #e9bb5a35;transform:translateY(-2px)}
 .player-slots.team-slots{gap:12px}
 .mode-btn{position:relative;z-index:1;width:100%;padding:14px 10px;border-radius:30px;font-size:14px}
-.carousel-arrow{position:absolute;z-index:3;top:38%;width:43px;height:49px;border:1px solid var(--gold);border-radius:12px;color:var(--gold-light);background:#07140ff2;font-size:25px;box-shadow:0 5px 15px #0006}
-.carousel-arrow:hover{background:#173a28}
-.carousel-arrow.left{left:-55px}
-.carousel-arrow.right{right:-55px}
+.carousel-arrow{position:absolute;z-index:3;top:38%;width:43px;height:49px;border:1px solid var(--gold);border-radius:12px;color:var(--gold-light);background:#07140ff2;font-size:25px}
+.carousel-arrow.left{left:-55px}.carousel-arrow.right{right:-55px}
 .carousel-dots{display:flex;justify-content:center;gap:9px;margin-top:20px}
 .carousel-dot{width:9px;height:9px;padding:0;border:1px solid #a0a99f;border-radius:50%;background:#51675b}
 .carousel-dot.active{background:var(--gold);border-color:var(--gold);box-shadow:0 0 12px #e8bd60a0}
 
-.bottom-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;margin:6px 0 44px}
+.bottom-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;margin:16px 0 44px}
 .panel{padding:19px;border:1px solid #8e6a32;border-radius:14px;background:linear-gradient(135deg,#0c2017,#08130e)}
 .panel h2{display:flex;align-items:center;gap:9px;margin:0 0 15px;font-size:19px}
 .panel h2 span{color:var(--gold)}
@@ -154,39 +101,26 @@ h1 span{color:var(--gold)}
 .account-buttons{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .account-buttons .btn{min-width:0}
 
-/* CREATE / JOIN PAGES */
-.other-page{
-  max-width:650px;margin:25px auto 45px;padding:30px 24px;text-align:center;
-  border:1px solid var(--border);border-radius:18px;
-  background:radial-gradient(ellipse at 50% 30%,#16472f88,transparent 60%),linear-gradient(145deg,#10291d,#07140f 80%);
-  box-shadow:inset 0 0 0 4px #d9ac4c08,0 12px 30px #0005
-}
-.other-icon{font-size:48px;margin-bottom:15px}
+.other-page{max-width:650px;margin:25px auto 45px;padding:30px 24px;text-align:center;border:1px solid var(--border);border-radius:18px;background:radial-gradient(ellipse at 50% 30%,#16472f88,transparent 60%),linear-gradient(145deg,#10291d,#07140f 80%);box-shadow:inset 0 0 0 4px #d9ac4c08,0 12px 30px #0005}
+.other-icon{font-size:48px;margin-bottom:15px;display:flex;justify-content:center;align-items:center}
+.other-icon svg{width:75px;height:60px}
 .other-page h2{color:var(--gold-light);font-size:27px;margin:0 0 10px}
 .other-page p{color:var(--muted);font-size:13px;line-height:1.8;margin:0 0 20px}
 .form-field{width:100%;padding:14px;margin-bottom:12px;border:1px solid #80612e;border-radius:9px;background:#07140f;color:var(--text);outline:none}
 .form-field:focus{border-color:var(--gold-light)}
 .wide-button{width:100%}
 
-/* ROOM MODE SELECTION */
 .room-mode-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px 0}
-.room-mode-option{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
-  min-width:0;padding:18px 10px;border:1px solid var(--border);border-radius:13px;
-  color:var(--text);background:linear-gradient(145deg,#10291d,#07140f);transition:.2s
-}
+.room-mode-option{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-width:0;padding:18px 10px;border:1px solid var(--border);border-radius:13px;color:var(--text);background:linear-gradient(145deg,#10291d,#07140f);transition:.2s}
 .room-mode-option:hover,.room-mode-option.active{border-color:var(--gold-light);box-shadow:0 0 18px #e9bb5a20;color:var(--gold-light)}
-.room-mode-icon{font-size:30px}
+.room-mode-icon{display:grid;place-items:center;height:42px}
 .room-mode-option strong{font-size:14px}
 .room-mode-option small{color:var(--muted);font-size:10px}
 .room-preview{padding:17px;margin-bottom:16px;border:1px solid #8e6a32;border-radius:12px;background:#07140f}
 .room-preview strong{color:var(--gold-light);font-size:16px}
 .room-preview p{margin:7px 0 14px;color:var(--muted);font-size:12px}
 .room-player-slots{display:flex;justify-content:center;gap:12px}
-.room-player-slots span{
-  width:43px;height:43px;display:grid;place-items:center;border:1px solid var(--gold);
-  border-radius:12px;background:#10281c;color:var(--gold-light);font-size:22px
-}
+.room-player-slots span{width:43px;height:43px;display:grid;place-items:center;border:1px solid var(--gold);border-radius:12px;background:#10281c;color:var(--gold-light);font-size:22px}
 
 .overlay{display:none;position:fixed;inset:0;z-index:20;align-items:center;justify-content:center;padding:16px;background:#000c;backdrop-filter:blur(7px);overflow-y:auto}
 .overlay.open{display:flex}
@@ -203,9 +137,8 @@ h1 span{color:var(--gold)}
 .auth-message.show{display:block}
 .modal-switch{margin-top:15px;text-align:center;color:var(--muted);font-size:12px}
 .modal-switch button{border:0;color:var(--gold-light);background:transparent;font-weight:900}
-
 .profile-photo-wrap{position:relative;width:94px;margin:0 auto 14px}
-.profile-modal-avatar{width:94px;height:94px;display:grid;place-items:center;overflow:hidden;margin:0 auto;border:2px solid var(--gold);border-radius:50%;color:var(--gold-light);background:linear-gradient(145deg,#19442d,#07140e);font-size:34px;box-shadow:0 0 22px #e8bd6020}
+.profile-modal-avatar{width:94px;height:94px;display:grid;place-items:center;overflow:hidden;margin:0 auto;border:2px solid var(--gold);border-radius:50%;color:var(--gold-light);background:linear-gradient(145deg,#19442d,#07140e);font-size:34px}
 .profile-modal-avatar img{display:block;width:100%;height:100%;object-fit:cover;border-radius:50%}
 .photo-edit{position:absolute;right:0;bottom:0;width:32px;height:32px;display:grid;place-items:center;border:2px solid #102319;border-radius:50%;background:var(--gold);color:#102319;font-size:16px}
 .profile-name{margin:0 0 6px;text-align:center;font-weight:900;font-size:19px;overflow-wrap:anywhere;color:var(--gold-light)}
@@ -226,55 +159,20 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
 .footer-brand{color:var(--gold-light);font-weight:900;letter-spacing:1px}
 .footer-brand a{color:inherit;text-decoration:none}
 
-@media(max-width:1000px){
-  .carousel-arrow.left{left:5px}.carousel-arrow.right{right:5px}
-  .carousel-arrow{top:35%}.mode-track{padding-inline:48px}
-}
-@media(max-width:700px){
-  .bottom-grid{grid-template-columns:1fr}
-  .rules-grid{grid-template-columns:1fr}
-  .rule{display:grid;grid-template-columns:35px 1fr;column-gap:8px}
-  .rule-icon{grid-row:span 2}.rule strong{margin:0 0 4px}.rule p{grid-column:2}
-}
+@media(max-width:1000px){.carousel-arrow.left{left:5px}.carousel-arrow.right{right:5px}.carousel-arrow{top:35%}.mode-track{padding-inline:48px}}
+@media(max-width:700px){.bottom-grid{grid-template-columns:1fr;margin-top:20px}.rules-grid{grid-template-columns:1fr}.rule{display:grid;grid-template-columns:35px 1fr;column-gap:8px}.rule-icon{grid-row:span 2}.rule strong{margin:0 0 4px}.rule p{grid-column:2}}
 @media(max-width:520px){
-  .container{width:calc(100% - 22px)}
-  header{padding:10px 0;border-radius:0 0 13px 13px}
-  .header-inner{gap:8px}
-  .crown{width:38px;height:38px;font-size:25px}
-  .brand{gap:7px}
-  .brand-name{font-size:14px;letter-spacing:.7px}
-  .brand-divider{height:31px;margin-left:3px}
-  .header-actions{gap:9px}
-  .home-button{padding:9px 10px;font-size:10px}
-  .profile-button{width:40px;height:40px}
-  .profile-button svg{width:21px;height:21px}
-  .hero{padding-top:33px}
-  h1{font-size:31px}
-  .hero p{font-size:12px}
-  .section-title{font-size:21px}
-  .main-tabs{gap:6px;margin:14px auto 22px}
-  .main-tab{padding:10px 11px;font-size:11px}
-  .mode-track{display:flex;padding:0 37px;overflow:hidden;touch-action:pan-y}
-  .mode-card{display:none;width:100%;flex:0 0 100%;padding:19px 15px}
-  .mode-card.active{display:block}
-  .mode-art{min-height:145px}
-  .mode-cover{width:100%;max-width:420px;height:210px;object-fit:cover;object-position:center;padding:0}
-  .mode-card h3{font-size:30px}
-  .player-slots{gap:18px}
-  .player-slot{width:54px;height:54px;flex-basis:54px}
-  .player-slots.team-slots{gap:10px}
-  .carousel-arrow{top:36%;width:34px;height:42px;font-size:21px}
-  .carousel-arrow.left{left:0}.carousel-arrow.right{right:0}
-  .panel{padding:15px}
-  .account-buttons{grid-template-columns:1fr}
-  .footer-inner{flex-direction:column}
-  .modal{padding:22px 17px}
-  .other-page{padding:23px 15px}
-  .other-page h2{font-size:23px}
-  .room-mode-options{gap:8px}
-  .room-mode-option{padding:14px 7px}
-  .room-mode-option strong{font-size:12px}
-  .room-mode-option small{font-size:9px}
+.container{width:calc(100% - 22px)}
+header{padding:10px 0;border-radius:0 0 13px 13px}
+.header-inner{gap:8px}.crown{width:38px;height:38px;font-size:25px}.brand{gap:7px}.brand-name{font-size:14px;letter-spacing:.7px}.brand-divider{height:31px;margin-left:3px}
+.header-actions{gap:9px}.home-button{padding:9px 10px;font-size:10px}.profile-button{width:40px;height:40px}.profile-button svg{width:21px;height:21px}
+.hero{padding-top:33px}h1{font-size:31px}.hero p{font-size:12px}
+.section-title{font-size:21px}.main-tabs{gap:6px;margin:14px auto 0}.main-tab{padding:10px 11px;font-size:11px}
+.mode-track{display:flex;padding:0 37px;overflow:hidden;touch-action:pan-y}.mode-card{display:none;width:100%;flex:0 0 100%;padding:19px 15px}.mode-card.active{display:block}
+.mode-art{min-height:145px}.mode-cover{width:100%;max-width:420px;height:210px}.mode-card h3{font-size:30px}
+.player-slots{gap:18px}.player-slot{width:54px;height:54px;flex-basis:54px}.player-slots.team-slots{gap:10px}
+.carousel-arrow{top:36%;width:34px;height:42px;font-size:21px}.carousel-arrow.left{left:0}.carousel-arrow.right{right:0}
+.panel{padding:15px}.account-buttons{grid-template-columns:1fr}.footer-inner{flex-direction:column}.modal{padding:22px 17px}.other-page{padding:23px 15px}.other-page h2{font-size:23px}.room-mode-options{gap:8px}.room-mode-option{padding:14px 7px}.room-mode-option strong{font-size:12px}.room-mode-option small{font-size:9px}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
 </style>
@@ -311,7 +209,6 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
     </nav>
   </section>
 
-  <!-- ENTERTAINMENT -->
   <section class="tab-page active" id="funPage">
     <div class="carousel" id="carousel">
       <button class="carousel-arrow left" id="prevMode" type="button" aria-label="წინა რეჟიმი">‹</button>
@@ -321,7 +218,22 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
         <article class="mode-card active" data-mode="classic">
           <div class="mode-art">
             <div class="suit-watermark">♠</div>
-            <img class="mode-cover" src="buracover.jpg" alt="კლასიკური ბურა">
+            <svg class="mode-cover" viewBox="0 0 420 230" role="img" aria-label="კლასიკური ბურა">
+              <defs>
+                <linearGradient id="feltClassic" x2="1" y2="1"><stop stop-color="#194b32"/><stop offset="1" stop-color="#06180f"/></linearGradient>
+                <linearGradient id="goldClassic" x2="1" y2="1"><stop stop-color="#fff0b5"/><stop offset=".5" stop-color="#d6a94f"/><stop offset="1" stop-color="#8d6327"/></linearGradient>
+              </defs>
+              <rect width="420" height="230" rx="15" fill="url(#feltClassic)"/>
+              <circle cx="210" cy="112" r="100" fill="none" stroke="#d6ad5b" opacity=".2" stroke-width="2"/>
+              <g transform="translate(145 20) rotate(-9 65 90)">
+                <rect width="130" height="180" rx="12" fill="#f8f0dc" stroke="url(#goldClassic)" stroke-width="5"/>
+                <text x="13" y="38" font-size="30" fill="#a51e32" font-weight="bold">A</text>
+                <text x="14" y="67" font-size="25" fill="#a51e32">♥</text>
+                <text x="65" y="125" text-anchor="middle" font-size="88" fill="#a51e32">♥</text>
+                <text x="115" y="164" text-anchor="end" font-size="30" fill="#a51e32" font-weight="bold">A</text>
+              </g>
+              <text x="210" y="216" text-anchor="middle" fill="#ffe5a1" font-size="13" font-weight="bold" letter-spacing="4">CLASSIC BURA</text>
+            </svg>
           </div>
           <span class="mode-label">კლასიკური რეჟიმი</span>
           <h3>ბურა</h3>
@@ -335,7 +247,21 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
         <article class="mode-card" data-mode="team">
           <div class="mode-art">
             <div class="suit-watermark">♣</div>
-            <img class="mode-cover" src="buracover.jpg" alt="ბურა 2v2">
+            <svg class="mode-cover" viewBox="0 0 420 230" role="img" aria-label="ბურა 2v2">
+              <defs>
+                <linearGradient id="feltTeam" x2="1" y2="1"><stop stop-color="#194b32"/><stop offset="1" stop-color="#06180f"/></linearGradient>
+              </defs>
+              <rect width="420" height="230" rx="15" fill="url(#feltTeam)"/>
+              <g stroke="#d6ad5b" stroke-width="3">
+                <rect x="83" y="35" width="90" height="135" rx="10" fill="#f8f0dc" transform="rotate(-12 128 102)"/>
+                <rect x="247" y="35" width="90" height="135" rx="10" fill="#f8f0dc" transform="rotate(12 292 102)"/>
+                <rect x="143" y="48" width="90" height="135" rx="10" fill="#fff8e9" transform="rotate(-5 188 115)"/>
+                <rect x="187" y="48" width="90" height="135" rx="10" fill="#fff8e9" transform="rotate(5 232 115)"/>
+              </g>
+              <text x="163" y="105" font-size="43" fill="#a51e32">♥</text>
+              <text x="255" y="105" font-size="43" fill="#151515">♠</text>
+              <text x="210" y="216" text-anchor="middle" fill="#ffe5a1" font-size="15" font-weight="bold" letter-spacing="4">BURA 2 VS 2</text>
+            </svg>
           </div>
           <span class="mode-label">გუნდური რეჟიმი</span>
           <h3>ბურა 2v2</h3>
@@ -360,31 +286,16 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
       <div class="panel">
         <h2><span>★</span> თამაშის წესები</h2>
         <div class="rules-grid">
-          <div class="rule">
-            <div class="rule-icon">🏆</div>
-            <strong>11 ქულამდე</strong>
-            <p>მატჩს იგებს მოთამაშე, რომელიც პირველი დააგროვებს 11 ქულას.</p>
-          </div>
-          <div class="rule">
-            <div class="rule-icon">♠</div>
-            <strong>ხელის კოეფიციენტი</strong>
-            <p>დავი ×2, სე ×3, ჩარი ×4, ფანჯი ×5, შაში ×6.</p>
-          </div>
-          <div class="rule">
-            <div class="rule-icon">🃏</div>
-            <strong>ბურა / მალიუტკა</strong>
-            <p>სპეციალური კომბინაციები თამაშის წესების მიხედვით გამოიყენება.</p>
-          </div>
+          <div class="rule"><div class="rule-icon">🏆</div><strong>11 ქულამდე</strong><p>მატჩს იგებს მოთამაშე, რომელიც პირველი დააგროვებს 11 ქულას.</p></div>
+          <div class="rule"><div class="rule-icon">♠</div><strong>ხელის კოეფიციენტი</strong><p>დავი ×2, სე ×3, ჩარი ×4, ფანჯი ×5, შაში ×6.</p></div>
+          <div class="rule"><div class="rule-icon">🃏</div><strong>ბურა / მალიუტკა</strong><p>სპეციალური კომბინაციები თამაშის წესების მიხედვით გამოიყენება.</p></div>
         </div>
       </div>
 
       <div class="panel account-panel">
         <div class="account-heading">
           <div class="account-avatar">♙</div>
-          <div>
-            <strong id="accountTitle">შედი ან დარეგისტრირდი</strong>
-            <p id="accountSubtitle">ანგარიშის შესაქმნელად გამოიყენე ელფოსტა.</p>
-          </div>
+          <div><strong id="accountTitle">შედი ან დარეგისტრირდი</strong><p id="accountSubtitle">ანგარიშის შესაქმნელად გამოიყენე ელფოსტა.</p></div>
         </div>
         <div class="account-buttons">
           <button class="btn" id="loginButton" type="button">♙ &nbsp; შესვლა</button>
@@ -395,21 +306,39 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
     </section>
   </section>
 
-  <!-- CREATE ROOM -->
   <section class="tab-page" id="createPage">
     <div class="other-page">
-      <div class="other-icon">🎮</div>
+      <div class="other-icon">
+        <svg viewBox="0 0 100 80" aria-hidden="true">
+          <rect x="8" y="8" width="52" height="65" rx="7" fill="#f8f0dc" stroke="#d6ad5b" stroke-width="3" transform="rotate(-12 34 40)"/>
+          <rect x="40" y="8" width="52" height="65" rx="7" fill="#fff8e9" stroke="#d6ad5b" stroke-width="3" transform="rotate(12 66 40)"/>
+          <text x="24" y="43" font-size="25" fill="#a51e32">♥</text>
+          <text x="60" y="47" font-size="27" fill="#151515">♠</text>
+        </svg>
+      </div>
       <h2>ოთახის შექმნა</h2>
       <p>აირჩიე თამაშის რეჟიმი და მოამზადე შენი მაგიდა მეგობრებისთვის.</p>
 
       <div class="room-mode-options">
         <button class="room-mode-option active" type="button" data-room-mode="classic">
-          <span class="room-mode-icon">🃏</span>
+          <span class="room-mode-icon">
+            <svg viewBox="0 0 50 50" width="42" height="42" aria-hidden="true">
+              <rect x="8" y="4" width="34" height="42" rx="5" fill="#f8f0dc" stroke="#d6ad5b" stroke-width="2"/>
+              <text x="25" y="34" text-anchor="middle" font-size="27" fill="#a51e32">♥</text>
+            </svg>
+          </span>
           <strong>კლასიკური ბურა</strong>
           <small>2 მოთამაშე • ერთი ერთზე</small>
         </button>
         <button class="room-mode-option" type="button" data-room-mode="team">
-          <span class="room-mode-icon">♟</span>
+          <span class="room-mode-icon">
+            <svg viewBox="0 0 60 50" width="48" height="42" aria-hidden="true">
+              <rect x="4" y="7" width="29" height="38" rx="4" fill="#f8f0dc" stroke="#d6ad5b" stroke-width="2" transform="rotate(-10 18 26)"/>
+              <rect x="27" y="7" width="29" height="38" rx="4" fill="#fff8e9" stroke="#d6ad5b" stroke-width="2" transform="rotate(10 42 26)"/>
+              <text x="17" y="32" text-anchor="middle" font-size="19" fill="#a51e32">♥</text>
+              <text x="43" y="32" text-anchor="middle" font-size="19" fill="#151515">♠</text>
+            </svg>
+          </span>
           <strong>ბურა 2v2</strong>
           <small>4 მოთამაშე • გუნდური თამაში</small>
         </button>
@@ -418,9 +347,7 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
       <div class="room-preview" id="roomPreview">
         <strong id="roomPreviewTitle">კლასიკური ბურა</strong>
         <p id="roomPreviewDescription">ოთახში ითამაშებს 2 მოთამაშე.</p>
-        <div class="room-player-slots" id="roomPlayerSlots">
-          <span>♙</span><span>♙</span>
-        </div>
+        <div class="room-player-slots" id="roomPlayerSlots"><span>♙</span><span>♙</span></div>
       </div>
 
       <button class="btn btn-gold wide-button" id="createRoomButton" type="button">＋ ოთახის შექმნა</button>
@@ -428,7 +355,6 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
     </div>
   </section>
 
-  <!-- JOIN ROOM -->
   <section class="tab-page" id="joinPage">
     <div class="other-page">
       <div class="other-icon">🔑</div>
@@ -448,7 +374,6 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
   </div>
 </footer>
 
-<!-- PROFILE MENU -->
 <div class="overlay" id="profileOverlay" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle">
   <div class="modal">
     <button class="close" id="closeProfile" type="button" aria-label="დახურვა">×</button>
@@ -457,7 +382,6 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
       <button class="photo-edit" id="changePhotoButton" type="button" aria-label="პროფილის ფოტოს შეცვლა" title="ფოტოს არჩევა">✎</button>
       <input id="profilePhotoInput" type="file" accept="image/jpeg,image/png,image/webp" hidden>
     </div>
-
     <h2 id="profileModalTitle" style="text-align:center">ჩემი პროფილი</h2>
     <p class="profile-name" id="profileName">სტუმარი</p>
     <p class="profile-email" id="profileEmail">ანგარიშში ჯერ არ შესულხარ.</p>
@@ -469,74 +393,42 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
 
     <div id="profileLoggedIn" hidden>
       <div class="profile-detail">
-        <div class="profile-detail-info">
-          <small>მომხმარებლის სახელი</small>
-          <strong id="profileNameDetail">მოთამაშე</strong>
-        </div>
+        <div class="profile-detail-info"><small>მომხმარებლის სახელი</small><strong id="profileNameDetail">მოთამაშე</strong></div>
         <button id="editNameButton" type="button">რედაქტირება</button>
       </div>
-
       <form class="profile-edit-form" id="profileForm" hidden>
-        <div class="field">
-          <label for="profileNameInput">ახალი მომხმარებლის სახელი</label>
-          <input id="profileNameInput" maxlength="24" autocomplete="nickname" required>
-        </div>
+        <div class="field"><label for="profileNameInput">ახალი მომხმარებლის სახელი</label><input id="profileNameInput" maxlength="24" autocomplete="nickname" required></div>
         <div style="display:flex;gap:8px">
           <button class="btn" id="cancelNameEdit" type="button">გაუქმება</button>
           <button class="btn btn-gold" id="saveProfile" type="submit">შენახვა</button>
         </div>
       </form>
-
       <div class="profile-detail">
-        <div class="profile-detail-info">
-          <small>ელფოსტა</small>
-          <strong id="profileEmailDetail" style="overflow-wrap:anywhere">••••••••</strong>
-        </div>
+        <div class="profile-detail-info"><small>ელფოსტა</small><strong id="profileEmailDetail" style="overflow-wrap:anywhere">••••••••</strong></div>
         <button id="toggleEmailButton" type="button" aria-pressed="false">ჩვენება</button>
       </div>
-
-      <div class="profile-menu-actions">
-        <button class="btn btn-red" id="profileLogoutButton" type="button">ანგარიშიდან გამოსვლა</button>
-      </div>
+      <div class="profile-menu-actions"><button class="btn btn-red" id="profileLogoutButton" type="button">ანგარიშიდან გამოსვლა</button></div>
     </div>
-
     <div class="auth-message" id="profileMessage" role="status" aria-live="polite"></div>
     <div class="profile-note">პროფილის ფოტო ინახება ამ ბრაუზერში. სხვა მოწყობილობაზე ავტომატურად არ გამოჩნდება.</div>
-    <div class="profile-menu-actions">
-      <a class="btn btn-gold" href="index.html">⌂ &nbsp; მთავარ მენიუში დაბრუნება</a>
-    </div>
+    <div class="profile-menu-actions"><a class="btn btn-gold" href="index.html">⌂ &nbsp; მთავარ მენიუში დაბრუნება</a></div>
   </div>
 </div>
 
-<!-- LOGIN / REGISTER -->
 <div class="overlay" id="authOverlay" role="dialog" aria-modal="true" aria-labelledby="authTitle">
   <div class="modal">
     <button class="close" id="closeAuth" type="button" aria-label="დახურვა">×</button>
     <h2 id="authTitle">შესვლა</h2>
     <p class="modal-intro" id="authIntro">შედი ანგარიშში და გააგრძელე თამაში.</p>
-
     <form id="authForm">
-      <div class="field" id="nameField" hidden>
-        <label for="displayName">მომხმარებლის სახელი</label>
-        <input id="displayName" type="text" maxlength="24" autocomplete="nickname" placeholder="შენი სახელი">
-      </div>
-      <div class="field">
-        <label for="email">ელფოსტა</label>
-        <input id="email" type="email" required autocomplete="email" placeholder="name@example.com">
-      </div>
-      <div class="field">
-        <label for="password">პაროლი</label>
-        <input id="password" type="password" minlength="6" required autocomplete="current-password" placeholder="მინიმუმ 6 სიმბოლო">
-      </div>
+      <div class="field" id="nameField" hidden><label for="displayName">მომხმარებლის სახელი</label><input id="displayName" type="text" maxlength="24" autocomplete="nickname" placeholder="შენი სახელი"></div>
+      <div class="field"><label for="email">ელფოსტა</label><input id="email" type="email" required autocomplete="email" placeholder="name@example.com"></div>
+      <div class="field"><label for="password">პაროლი</label><input id="password" type="password" minlength="6" required autocomplete="current-password" placeholder="მინიმუმ 6 სიმბოლო"></div>
       <button class="btn btn-gold auth-submit" id="submitAuth" type="submit">შესვლა</button>
     </form>
-
     <button id="forgotPassword" type="button" class="modal-switch" style="display:block;margin-inline:auto;border:0;background:transparent">პაროლი დაგავიწყდა?</button>
     <div class="auth-message" id="authMessage" role="status" aria-live="polite"></div>
-    <div class="modal-switch">
-      <span id="switchText">არ გაქვს ანგარიში?</span>
-      <button id="switchMode" type="button">რეგისტრაცია</button>
-    </div>
+    <div class="modal-switch"><span id="switchText">არ გაქვს ანგარიში?</span><button id="switchMode" type="button">რეგისტრაცია</button></div>
   </div>
 </div>
 
@@ -546,441 +438,300 @@ footer{padding:22px 0;border-top:1px solid #3c382a;color:#8e9a90;font-size:11px}
 <script>
 "use strict";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyChOYCwVd2AaZzLGx_tQsT2PqNlbNXqkis",
-  authDomain: "chitala-mods.firebaseapp.com",
-  projectId: "chitala-mods",
-  storageBucket: "chitala-mods.firebasestorage.app",
-  messagingSenderId: "415729264734",
-  appId: "1:415729264734:web:edba39f96e5cbdfd6beccf"
+const firebaseConfig={
+  apiKey:"AIzaSyChOYCwVd2AaZzLGx_tQsT2PqNlbNXqkis",
+  authDomain:"chitala-mods.firebaseapp.com",
+  projectId:"chitala-mods",
+  storageBucket:"chitala-mods.firebasestorage.app",
+  messagingSenderId:"415729264734",
+  appId:"1:415729264734:web:edba39f96e5cbdfd6beccf"
 };
 
-if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
+if(!firebase.apps.length)firebase.initializeApp(firebaseConfig);
+const auth=firebase.auth();
 auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(console.error);
 
 /* MAIN TABS */
-const mainTabs = [...document.querySelectorAll(".main-tab")];
-const tabPages = {
+const mainTabs=[...document.querySelectorAll(".main-tab")];
+const tabPages={
   fun:document.getElementById("funPage"),
   create:document.getElementById("createPage"),
   join:document.getElementById("joinPage")
 };
-
-function showMainTab(name) {
-  mainTabs.forEach(tab => {
-    const active = tab.dataset.tab === name;
+function showMainTab(name){
+  mainTabs.forEach(tab=>{
+    const active=tab.dataset.tab===name;
     tab.classList.toggle("active",active);
     tab.setAttribute("aria-selected",String(active));
   });
-  Object.entries(tabPages).forEach(([key,page]) => {
-    page.classList.toggle("active",key === name);
-  });
+  Object.entries(tabPages).forEach(([key,page])=>page.classList.toggle("active",key===name));
   window.scrollTo({top:0,behavior:"smooth"});
 }
-mainTabs.forEach(tab => tab.addEventListener("click",() => showMainTab(tab.dataset.tab)));
+mainTabs.forEach(tab=>tab.addEventListener("click",()=>showMainTab(tab.dataset.tab)));
 
 /* GAME MODE CAROUSEL */
-const modeCards = [...document.querySelectorAll(".mode-card")];
-const dots = [...document.querySelectorAll(".carousel-dot")];
-const notice = document.getElementById("modeNotice");
-let currentMode = 0;
-
-function selectMode(index) {
-  currentMode = (index + modeCards.length) % modeCards.length;
-  modeCards.forEach((card,i) => card.classList.toggle("active",i === currentMode));
-  dots.forEach((dot,i) => dot.classList.toggle("active",i === currentMode));
+const modeCards=[...document.querySelectorAll(".mode-card")];
+const dots=[...document.querySelectorAll(".carousel-dot")];
+const notice=document.getElementById("modeNotice");
+let currentMode=0;
+function selectMode(index){
+  currentMode=(index+modeCards.length)%modeCards.length;
+  modeCards.forEach((card,i)=>card.classList.toggle("active",i===currentMode));
+  dots.forEach((dot,i)=>dot.classList.toggle("active",i===currentMode));
   notice.classList.remove("show");
 }
-document.getElementById("prevMode").addEventListener("click",() => selectMode(currentMode - 1));
-document.getElementById("nextMode").addEventListener("click",() => selectMode(currentMode + 1));
-dots.forEach(dot => dot.addEventListener("click",() => selectMode(Number(dot.dataset.dot))));
+document.getElementById("prevMode").addEventListener("click",()=>selectMode(currentMode-1));
+document.getElementById("nextMode").addEventListener("click",()=>selectMode(currentMode+1));
+dots.forEach(dot=>dot.addEventListener("click",()=>selectMode(Number(dot.dataset.dot))));
 
 /* MOBILE SWIPE */
-const carousel = document.getElementById("carousel");
-let touchStartX = 0,touchStartY = 0;
-carousel.addEventListener("touchstart",event => {
-  touchStartX = event.changedTouches[0].clientX;
-  touchStartY = event.changedTouches[0].clientY;
+const carousel=document.getElementById("carousel");
+let touchStartX=0,touchStartY=0;
+carousel.addEventListener("touchstart",event=>{
+  touchStartX=event.changedTouches[0].clientX;
+  touchStartY=event.changedTouches[0].clientY;
 },{passive:true});
-carousel.addEventListener("touchend",event => {
-  const dx = event.changedTouches[0].clientX - touchStartX;
-  const dy = event.changedTouches[0].clientY - touchStartY;
-  if(Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.25) {
-    selectMode(currentMode + (dx < 0 ? 1 : -1));
-  }
+carousel.addEventListener("touchend",event=>{
+  const dx=event.changedTouches[0].clientX-touchStartX;
+  const dy=event.changedTouches[0].clientY-touchStartY;
+  if(Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)*1.25)selectMode(currentMode+(dx<0?1:-1));
 },{passive:true});
 
-function showNotice(text) {
-  notice.textContent = text;
+function showNotice(text){
+  notice.textContent=text;
   notice.classList.add("show");
 }
-document.querySelectorAll("[data-start]").forEach(button => {
-  button.addEventListener("click",() => {
-    showNotice(button.dataset.start === "classic"
-      ? "არჩეულია კლასიკური ბურა. ონლაინ ლობისა და თამაშის ეკრანი ცალკე თამაშის კოდთან უნდა იყოს დაკავშირებული."
-      : "არჩეულია ბურა 2v2. გუნდური ონლაინ თამაშისთვის საჭიროა ოთხმოთამაშიანი ოთახის ლოგიკა.");
+document.querySelectorAll("[data-start]").forEach(button=>{
+  button.addEventListener("click",()=>{
+    showNotice(button.dataset.start==="classic"
+      ?"არჩეულია კლასიკური ბურა. ონლაინ ლობისა და თამაშის ეკრანი ცალკე თამაშის კოდთან უნდა იყოს დაკავშირებული."
+      :"არჩეულია ბურა 2v2. გუნდური ონლაინ თამაშისთვის საჭიროა ოთხმოთამაშიანი ოთახის ლოგიკა.");
   });
 });
 
 /* CREATE ROOM — MODE SELECTION */
-let selectedRoomMode = "classic";
-const roomModeOptions = [...document.querySelectorAll(".room-mode-option")];
-
-function selectRoomMode(mode) {
-  selectedRoomMode = mode;
-  roomModeOptions.forEach(option => {
-    option.classList.toggle("active",option.dataset.roomMode === mode);
-  });
-
-  const teamMode = mode === "team";
-  document.getElementById("roomPreviewTitle").textContent = teamMode ? "ბურა 2v2" : "კლასიკური ბურა";
-  document.getElementById("roomPreviewDescription").textContent = teamMode
-    ? "ოთახში ითამაშებს 4 მოთამაშე — ორი გუნდი."
-    : "ოთახში ითამაშებს 2 მოთამაშე — ერთი ერთზე.";
-
-  const slots = document.getElementById("roomPlayerSlots");
+let selectedRoomMode="classic";
+const roomModeOptions=[...document.querySelectorAll(".room-mode-option")];
+function selectRoomMode(mode){
+  selectedRoomMode=mode;
+  roomModeOptions.forEach(option=>option.classList.toggle("active",option.dataset.roomMode===mode));
+  const teamMode=mode==="team";
+  document.getElementById("roomPreviewTitle").textContent=teamMode?"ბურა 2v2":"კლასიკური ბურა";
+  document.getElementById("roomPreviewDescription").textContent=teamMode
+    ?"ოთახში ითამაშებს 4 მოთამაშე — ორი გუნდი."
+    :"ოთახში ითამაშებს 2 მოთამაშე — ერთი ერთზე.";
+  const slots=document.getElementById("roomPlayerSlots");
   slots.replaceChildren();
-
-  const playerCount = teamMode ? 4 : 2;
-  for(let i=0;i<playerCount;i++) {
-    const slot = document.createElement("span");
-    slot.textContent = "♙";
+  for(let i=0;i<(teamMode?4:2);i++){
+    const slot=document.createElement("span");
+    slot.textContent="♙";
     slots.appendChild(slot);
   }
-
   document.getElementById("createNotice").classList.remove("show");
 }
+roomModeOptions.forEach(option=>option.addEventListener("click",()=>selectRoomMode(option.dataset.roomMode)));
 
-roomModeOptions.forEach(option => {
-  option.addEventListener("click",() => selectRoomMode(option.dataset.roomMode));
-});
-
-document.getElementById("createRoomButton").addEventListener("click",() => {
-  const box = document.getElementById("createNotice");
-  const modeName = selectedRoomMode === "team" ? "ბურა 2v2" : "კლასიკური ბურა";
-  const playerCount = selectedRoomMode === "team" ? 4 : 2;
-
-  box.textContent = modeName + " არჩეულია. ოთახში გათვალისწინებულია " +
-    playerCount +
-    " მოთამაშე. ონლაინ ოთახის რეალური შექმნისთვის საჭიროა Firebase Realtime Database-ის დაკავშირება.";
+document.getElementById("createRoomButton").addEventListener("click",()=>{
+  const box=document.getElementById("createNotice");
+  const modeName=selectedRoomMode==="team"?"ბურა 2v2":"კლასიკური ბურა";
+  const playerCount=selectedRoomMode==="team"?4:2;
+  box.textContent=modeName+" არჩეულია. ოთახში გათვალისწინებულია "+playerCount+" მოთამაშე. ონლაინ ოთახის რეალური შექმნისთვის საჭიროა Firebase Realtime Database-ის დაკავშირება.";
   box.classList.add("show");
 });
 selectRoomMode("classic");
 
 /* JOIN ROOM — UI ONLY */
-document.getElementById("joinRoomButton").addEventListener("click",() => {
-  const code = document.getElementById("roomCode").value.trim().toUpperCase();
-  const box = document.getElementById("joinNotice");
-  box.textContent = code
-    ? "ოთახის კოდის შემოწმება ჯერ არ არის დაკავშირებული ონლაინ ბაზასთან."
-    : "ჯერ შეიყვანე ოთახის კოდი.";
+document.getElementById("joinRoomButton").addEventListener("click",()=>{
+  const code=document.getElementById("roomCode").value.trim().toUpperCase();
+  const box=document.getElementById("joinNotice");
+  box.textContent=code?"ოთახის კოდის შემოწმება ჯერ არ არის დაკავშირებული ონლაინ ბაზასთან.":"ჯერ შეიყვანე ოთახის კოდი.";
   box.classList.add("show");
 });
-document.getElementById("roomCode").addEventListener("input",event => {
-  event.target.value = event.target.value.toUpperCase();
+document.getElementById("roomCode").addEventListener("input",event=>{
+  event.target.value=event.target.value.toUpperCase();
   document.getElementById("joinNotice").classList.remove("show");
 });
-
-document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("year").textContent=new Date().getFullYear();
 
 /* PROFILE AND AUTH */
-const authOverlay = document.getElementById("authOverlay");
-const profileOverlay = document.getElementById("profileOverlay");
-const authForm = document.getElementById("authForm");
-const authMessage = document.getElementById("authMessage");
-const profileMessage = document.getElementById("profileMessage");
-const nameField = document.getElementById("nameField");
-const displayNameInput = document.getElementById("displayName");
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
+const authOverlay=document.getElementById("authOverlay");
+const profileOverlay=document.getElementById("profileOverlay");
+const authForm=document.getElementById("authForm");
+const authMessage=document.getElementById("authMessage");
+const profileMessage=document.getElementById("profileMessage");
+const nameField=document.getElementById("nameField");
+const displayNameInput=document.getElementById("displayName");
+const emailInput=document.getElementById("email");
+const passwordInput=document.getElementById("password");
+let authMode="login",currentUser=null,emailIsVisible=false,authBusy=false;
 
-let authMode = "login";
-let currentUser = null;
-let emailIsVisible = false;
-let authBusy = false;
-
-function openOverlay(element) {
-  element.classList.add("open");
-  document.body.style.overflow = "hidden";
-}
-function closeOverlay(element) {
+function openOverlay(element){element.classList.add("open");document.body.style.overflow="hidden"}
+function closeOverlay(element){
   element.classList.remove("open");
-  if(!document.querySelector(".overlay.open")) document.body.style.overflow = "";
+  if(!document.querySelector(".overlay.open"))document.body.style.overflow="";
 }
-function showAuthMessage(text) {
-  authMessage.textContent = text;
-  authMessage.classList.add("show");
+function showAuthMessage(text){authMessage.textContent=text;authMessage.classList.add("show")}
+function clearAuthMessage(){authMessage.textContent="";authMessage.classList.remove("show")}
+function showProfileMessage(text){profileMessage.textContent=text;profileMessage.classList.add("show")}
+function clearProfileMessage(){profileMessage.textContent="";profileMessage.classList.remove("show")}
+function openAuth(next){
+  authMode=next;updateAuthMode();clearAuthMessage();
+  closeOverlay(profileOverlay);openOverlay(authOverlay);
 }
-function clearAuthMessage() {
-  authMessage.textContent = "";
-  authMessage.classList.remove("show");
+function closeAuth(){closeOverlay(authOverlay);clearAuthMessage()}
+function updateAuthMode(){
+  const registering=authMode==="register";
+  document.getElementById("authTitle").textContent=registering?"ანგარიშის შექმნა":"შესვლა";
+  document.getElementById("authIntro").textContent=registering?"შექმენი ანგარიში CHITALA PROD-ზე.":"შედი ანგარიშში და გააგრძელე თამაში.";
+  document.getElementById("submitAuth").textContent=registering?"რეგისტრაცია":"შესვლა";
+  document.getElementById("switchText").textContent=registering?"უკვე გაქვს ანგარიში?":"არ გაქვს ანგარიში?";
+  document.getElementById("switchMode").textContent=registering?"შესვლა":"რეგისტრაცია";
+  nameField.hidden=!registering;
+  displayNameInput.required=registering;
+  passwordInput.autocomplete=registering?"new-password":"current-password";
+  document.getElementById("forgotPassword").hidden=registering;
 }
-function showProfileMessage(text) {
-  profileMessage.textContent = text;
-  profileMessage.classList.add("show");
-}
-function clearProfileMessage() {
-  profileMessage.textContent = "";
-  profileMessage.classList.remove("show");
-}
-function openAuth(next) {
-  authMode = next;
-  updateAuthMode();
-  clearAuthMessage();
-  closeOverlay(profileOverlay);
-  openOverlay(authOverlay);
-}
-function closeAuth() {
-  closeOverlay(authOverlay);
-  clearAuthMessage();
-}
-function updateAuthMode() {
-  const registering = authMode === "register";
-  document.getElementById("authTitle").textContent = registering ? "ანგარიშის შექმნა" : "შესვლა";
-  document.getElementById("authIntro").textContent = registering
-    ? "შექმენი ანგარიში CHITALA PROD-ზე."
-    : "შედი ანგარიშში და გააგრძელე თამაში.";
-  document.getElementById("submitAuth").textContent = registering ? "რეგისტრაცია" : "შესვლა";
-  document.getElementById("switchText").textContent = registering ? "უკვე გაქვს ანგარიში?" : "არ გაქვს ანგარიში?";
-  document.getElementById("switchMode").textContent = registering ? "შესვლა" : "რეგისტრაცია";
-  nameField.hidden = !registering;
-  displayNameInput.required = registering;
-  passwordInput.autocomplete = registering ? "new-password" : "current-password";
-  document.getElementById("forgotPassword").hidden = registering;
-}
-function openProfileMenu() {
-  updateProfileMenu();
-  clearProfileMessage();
-  openOverlay(profileOverlay);
-}
-function photoKey(user) {
-  return "chitala_profile_photo_" + user.uid;
-}
-function getPhoto(user) {
-  try { return localStorage.getItem(photoKey(user)); }
-  catch { return null; }
-}
-function setAvatar(element,user,name) {
+function openProfileMenu(){updateProfileMenu();clearProfileMessage();openOverlay(profileOverlay)}
+function photoKey(user){return "chitala_profile_photo_"+user.uid}
+function getPhoto(user){try{return localStorage.getItem(photoKey(user))}catch{return null}}
+function setAvatar(element,user,name){
   element.replaceChildren();
-  const photo = user ? getPhoto(user) : null;
-  if(photo) {
-    const img = document.createElement("img");
-    img.src = photo;
-    img.alt = "პროფილის ფოტო";
-    img.onerror = () => {
-      element.replaceChildren();
-      element.textContent = name.trim().charAt(0).toLocaleUpperCase("ka") || "♙";
-    };
+  const photo=user?getPhoto(user):null;
+  if(photo){
+    const img=document.createElement("img");
+    img.src=photo;img.alt="პროფილის ფოტო";
+    img.onerror=()=>{element.replaceChildren();element.textContent=name.trim().charAt(0).toLocaleUpperCase("ka")||"♙"};
     element.appendChild(img);
-  } else {
-    element.textContent = name.trim().charAt(0).toLocaleUpperCase("ka") || "♙";
-  }
+  }else element.textContent=name.trim().charAt(0).toLocaleUpperCase("ka")||"♙";
 }
-function updateProfileMenu() {
-  const loggedIn = Boolean(currentUser);
-  const name = currentUser
-    ? (currentUser.displayName || currentUser.email?.split("@")[0] || "მოთამაშე")
-    : "სტუმარი";
-
-  document.getElementById("profileLoggedOut").hidden = loggedIn;
-  document.getElementById("profileLoggedIn").hidden = !loggedIn;
-  document.getElementById("profileName").textContent = name;
-  document.getElementById("profileEmail").textContent = loggedIn ? "შენი ანგარიშის ინფორმაცია" : "ანგარიშში ჯერ არ შესულხარ.";
-
+function updateProfileMenu(){
+  const loggedIn=Boolean(currentUser);
+  const name=currentUser?(currentUser.displayName||currentUser.email?.split("@")[0]||"მოთამაშე"):"სტუმარი";
+  document.getElementById("profileLoggedOut").hidden=loggedIn;
+  document.getElementById("profileLoggedIn").hidden=!loggedIn;
+  document.getElementById("profileName").textContent=name;
+  document.getElementById("profileEmail").textContent=loggedIn?"შენი ანგარიშის ინფორმაცია":"ანგარიშში ჯერ არ შესულხარ.";
   setAvatar(document.getElementById("profileAvatar"),currentUser,name);
   updateHeaderProfile();
-
-  document.getElementById("accountTitle").textContent = loggedIn ? name : "შედი ან დარეგისტრირდი";
-  document.getElementById("accountSubtitle").textContent = loggedIn
-    ? "შენი ანგარიში აქტიურია."
-    : "ანგარიშის შესაქმნელად გამოიყენე ელფოსტა.";
-
-  document.getElementById("loginButton").hidden = loggedIn;
-  document.getElementById("registerButton").hidden = loggedIn;
-  document.getElementById("logoutButton").hidden = !loggedIn;
-
-  document.getElementById("profileNameDetail").textContent = name;
-  document.getElementById("profileEmailDetail").textContent = emailIsVisible && loggedIn
-    ? currentUser.email
-    : "••••••••••••";
-
-  document.getElementById("toggleEmailButton").textContent = emailIsVisible ? "დამალვა" : "ჩვენება";
+  document.getElementById("accountTitle").textContent=loggedIn?name:"შედი ან დარეგისტრირდი";
+  document.getElementById("accountSubtitle").textContent=loggedIn?"შენი ანგარიში აქტიურია.":"ანგარიშის შესაქმნელად გამოიყენე ელფოსტა.";
+  document.getElementById("loginButton").hidden=loggedIn;
+  document.getElementById("registerButton").hidden=loggedIn;
+  document.getElementById("logoutButton").hidden=!loggedIn;
+  document.getElementById("profileNameDetail").textContent=name;
+  document.getElementById("profileEmailDetail").textContent=emailIsVisible&&loggedIn?currentUser.email:"••••••••••••";
+  document.getElementById("toggleEmailButton").textContent=emailIsVisible?"დამალვა":"ჩვენება";
   document.getElementById("toggleEmailButton").setAttribute("aria-pressed",String(emailIsVisible));
-
-  document.getElementById("profileForm").hidden = true;
-  document.getElementById("editNameButton").hidden = !loggedIn;
+  document.getElementById("profileForm").hidden=true;
+  document.getElementById("editNameButton").hidden=!loggedIn;
 }
-function updateHeaderProfile() {
-  const button = document.getElementById("headerProfile");
+function updateHeaderProfile(){
+  const button=document.getElementById("headerProfile");
   button.replaceChildren();
-
-  const name = currentUser
-    ? (currentUser.displayName || currentUser.email?.split("@")[0] || "მოთამაშე")
-    : "სტუმარი";
-  const photo = currentUser ? getPhoto(currentUser) : null;
-
-  if(photo) {
-    const img = document.createElement("img");
-    img.src = photo;
-    img.alt = "პროფილის ფოტო";
-    img.onerror = () => {
-      button.replaceChildren();
-      button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="#f3c56b"/><path d="M4 21v-2a8 8 0 0 1 16 0v2Z" fill="#f3c56b"/></svg>';
-    };
+  const name=currentUser?(currentUser.displayName||currentUser.email?.split("@")[0]||"მოთამაშე"):"სტუმარი";
+  const photo=currentUser?getPhoto(currentUser):null;
+  if(photo){
+    const img=document.createElement("img");img.src=photo;img.alt="პროფილის ფოტო";
+    img.onerror=()=>{button.innerHTML='<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="#f3c56b"/><path d="M4 21v-2a8 8 0 0 1 16 0v2Z" fill="#f3c56b"/></svg>'};
     button.appendChild(img);
-  } else {
-    button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="#f3c56b"/><path d="M4 21v-2a8 8 0 0 1 16 0v2Z" fill="#f3c56b"/></svg>';
+  }else{
+    button.innerHTML='<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="#f3c56b"/><path d="M4 21v-2a8 8 0 0 1 16 0v2Z" fill="#f3c56b"/></svg>';
   }
-  button.title = currentUser ? name : "შესვლა / პროფილი";
+  button.title=currentUser?name:"შესვლა / პროფილი";
 }
 
 document.getElementById("headerProfile").addEventListener("click",openProfileMenu);
-document.getElementById("loginButton").addEventListener("click",() => openAuth("login"));
-document.getElementById("registerButton").addEventListener("click",() => openAuth("register"));
-document.getElementById("profileLogin").addEventListener("click",() => openAuth("login"));
-document.getElementById("profileRegister").addEventListener("click",() => openAuth("register"));
-
-document.getElementById("switchMode").addEventListener("click",() => {
-  openAuth(authMode === "login" ? "register" : "login");
-});
+document.getElementById("loginButton").addEventListener("click",()=>openAuth("login"));
+document.getElementById("registerButton").addEventListener("click",()=>openAuth("register"));
+document.getElementById("profileLogin").addEventListener("click",()=>openAuth("login"));
+document.getElementById("profileRegister").addEventListener("click",()=>openAuth("register"));
+document.getElementById("switchMode").addEventListener("click",()=>openAuth(authMode==="login"?"register":"login"));
 document.getElementById("closeAuth").addEventListener("click",closeAuth);
-document.getElementById("closeProfile").addEventListener("click",() => closeOverlay(profileOverlay));
-
-authOverlay.addEventListener("click",event => {
-  if(event.target === authOverlay) closeAuth();
-});
-profileOverlay.addEventListener("click",event => {
-  if(event.target === profileOverlay) closeOverlay(profileOverlay);
-});
-document.addEventListener("keydown",event => {
-  if(event.key === "Escape") {
-    closeAuth();
-    closeOverlay(profileOverlay);
-  }
-});
+document.getElementById("closeProfile").addEventListener("click",()=>closeOverlay(profileOverlay));
+authOverlay.addEventListener("click",event=>{if(event.target===authOverlay)closeAuth()});
+profileOverlay.addEventListener("click",event=>{if(event.target===profileOverlay)closeOverlay(profileOverlay)});
+document.addEventListener("keydown",event=>{if(event.key==="Escape"){closeAuth();closeOverlay(profileOverlay)}});
 
 /* EDIT PROFILE NAME */
-document.getElementById("editNameButton").addEventListener("click",() => {
-  if(!currentUser) return;
+document.getElementById("editNameButton").addEventListener("click",()=>{
+  if(!currentUser)return;
   clearProfileMessage();
-  document.getElementById("profileNameInput").value =
-    currentUser.displayName || currentUser.email?.split("@")[0] || "";
-  document.getElementById("profileForm").hidden = false;
+  document.getElementById("profileNameInput").value=currentUser.displayName||currentUser.email?.split("@")[0]||"";
+  document.getElementById("profileForm").hidden=false;
   document.getElementById("profileNameInput").focus();
 });
-document.getElementById("cancelNameEdit").addEventListener("click",() => {
-  document.getElementById("profileForm").hidden = true;
-  clearProfileMessage();
+document.getElementById("cancelNameEdit").addEventListener("click",()=>{
+  document.getElementById("profileForm").hidden=true;clearProfileMessage();
 });
-document.getElementById("profileForm").addEventListener("submit",async event => {
-  event.preventDefault();
-  if(!currentUser) return;
-
-  const name = document.getElementById("profileNameInput").value.trim();
-  const button = document.getElementById("saveProfile");
-  if(!name || name.length > 24) {
-    showProfileMessage("სახელი შეიყვანე სწორად — მაქსიმუმ 24 სიმბოლო.");
-    return;
-  }
-
-  button.disabled = true;
-  button.textContent = "ინახება...";
-  try {
+document.getElementById("profileForm").addEventListener("submit",async event=>{
+  event.preventDefault();if(!currentUser)return;
+  const name=document.getElementById("profileNameInput").value.trim();
+  const button=document.getElementById("saveProfile");
+  if(!name||name.length>24){showProfileMessage("სახელი შეიყვანე სწორად — მაქსიმუმ 24 სიმბოლო.");return}
+  button.disabled=true;button.textContent="ინახება...";
+  try{
     await currentUser.updateProfile({displayName:name});
-    await currentUser.reload();
-    currentUser = auth.currentUser;
-    updateProfileMenu();
-    showProfileMessage("მომხმარებლის სახელი წარმატებით შეიცვალა.");
-  } catch(error) {
-    showProfileMessage("სახელის შეცვლა ვერ მოხერხდა. სცადე თავიდან.");
-  } finally {
-    button.disabled = false;
-    button.textContent = "შენახვა";
-  }
+    await currentUser.reload();currentUser=auth.currentUser;
+    updateProfileMenu();showProfileMessage("მომხმარებლის სახელი წარმატებით შეიცვალა.");
+  }catch(error){showProfileMessage("სახელის შეცვლა ვერ მოხერხდა. სცადე თავიდან.")}
+  finally{button.disabled=false;button.textContent="შენახვა"}
 });
 
 /* SHOW / HIDE EMAIL */
-document.getElementById("toggleEmailButton").addEventListener("click",() => {
-  if(!currentUser) return;
-  emailIsVisible = !emailIsVisible;
-  updateProfileMenu();
+document.getElementById("toggleEmailButton").addEventListener("click",()=>{
+  if(!currentUser)return;
+  emailIsVisible=!emailIsVisible;updateProfileMenu();
 });
 
 /* PROFILE PHOTO */
-document.getElementById("changePhotoButton").addEventListener("click",() => {
-  if(!currentUser) {
-    showProfileMessage("ჯერ შედი შენს ანგარიშში, რომ პროფილის ფოტო შეცვალო.");
-    return;
-  }
+document.getElementById("changePhotoButton").addEventListener("click",()=>{
+  if(!currentUser){showProfileMessage("ჯერ შედი შენს ანგარიშში, რომ პროფილის ფოტო შეცვალო.");return}
   document.getElementById("profilePhotoInput").click();
 });
-function compressImage(file) {
-  return new Promise((resolve,reject) => {
-    const reader = new FileReader();
-    const image = new Image();
-    reader.onload = () => {
-      image.onload = () => {
-        const side = Math.min(image.width,image.height);
-        const sx = (image.width - side) / 2;
-        const sy = (image.height - side) / 2;
-        const canvas = document.createElement("canvas");
-        canvas.width = 256;
-        canvas.height = 256;
-        const context = canvas.getContext("2d");
-        if(!context) {
-          reject(new Error("canvas-unavailable"));
-          return;
-        }
+function compressImage(file){
+  return new Promise((resolve,reject)=>{
+    const reader=new FileReader(),image=new Image();
+    reader.onload=()=>{
+      image.onload=()=>{
+        const side=Math.min(image.width,image.height);
+        const sx=(image.width-side)/2,sy=(image.height-side)/2;
+        const canvas=document.createElement("canvas");
+        canvas.width=256;canvas.height=256;
+        const context=canvas.getContext("2d");
+        if(!context){reject(new Error("canvas-unavailable"));return}
         context.drawImage(image,sx,sy,side,side,0,0,256,256);
-        canvas.toBlob(blob => {
-          if(!blob) {
-            reject(new Error("image-compression-failed"));
-            return;
-          }
-          const output = new FileReader();
-          output.onload = () => resolve(output.result);
-          output.onerror = () => reject(new Error("file-read-failed"));
+        canvas.toBlob(blob=>{
+          if(!blob){reject(new Error("image-compression-failed"));return}
+          const output=new FileReader();
+          output.onload=()=>resolve(output.result);
+          output.onerror=()=>reject(new Error("file-read-failed"));
           output.readAsDataURL(blob);
         },"image/jpeg",0.65);
       };
-      image.onerror = () => reject(new Error("image-load-failed"));
-      image.src = reader.result;
+      image.onerror=()=>reject(new Error("image-load-failed"));
+      image.src=reader.result;
     };
-    reader.onerror = () => reject(new Error("file-read-failed"));
+    reader.onerror=()=>reject(new Error("file-read-failed"));
     reader.readAsDataURL(file);
   });
 }
-document.getElementById("profilePhotoInput").addEventListener("change",async event => {
-  const file = event.target.files?.[0];
-  event.target.value = "";
-  if(!file || !currentUser) return;
-  if(!["image/jpeg","image/png","image/webp"].includes(file.type)) {
-    showProfileMessage("აირჩიე JPG, PNG ან WEBP ფოტო.");
-    return;
-  }
-  if(file.size > 10 * 1024 * 1024) {
-    showProfileMessage("ფოტო 10 MB-ზე ნაკლები უნდა იყოს.");
-    return;
-  }
-
-  const button = document.getElementById("changePhotoButton");
-  button.disabled = true;
-  try {
-    const photo = await compressImage(file);
+document.getElementById("profilePhotoInput").addEventListener("change",async event=>{
+  const file=event.target.files?.[0];event.target.value="";
+  if(!file||!currentUser)return;
+  if(!["image/jpeg","image/png","image/webp"].includes(file.type)){showProfileMessage("აირჩიე JPG, PNG ან WEBP ფოტო.");return}
+  if(file.size>10*1024*1024){showProfileMessage("ფოტო 10 MB-ზე ნაკლები უნდა იყოს.");return}
+  const button=document.getElementById("changePhotoButton");button.disabled=true;
+  try{
+    const photo=await compressImage(file);
     localStorage.setItem(photoKey(currentUser),photo);
-    updateProfileMenu();
-    showProfileMessage("პროფილის ფოტო შეიცვალა.");
-  } catch(error) {
-    showProfileMessage("ფოტოს შენახვა ვერ მოხერხდა. სცადე სხვა ან უფრო პატარა ფოტო.");
-  } finally {
-    button.disabled = false;
-  }
+    updateProfileMenu();showProfileMessage("პროფილის ფოტო შეიცვალა.");
+  }catch(error){showProfileMessage("ფოტოს შენახვა ვერ მოხერხდა. სცადე სხვა ან უფრო პატარა ფოტო.")}
+  finally{button.disabled=false}
 });
 
 /* AUTHENTICATION */
-function authErrorMessage(error) {
-  const messages = {
+function authErrorMessage(error){
+  const messages={
     "auth/email-already-in-use":"ეს ელფოსტა უკვე რეგისტრირებულია.",
     "auth/invalid-email":"ელფოსტის მისამართი არასწორია.",
     "auth/weak-password":"პაროლი მინიმუმ 6 სიმბოლოსგან უნდა შედგებოდეს.",
@@ -992,98 +743,60 @@ function authErrorMessage(error) {
     "auth/operation-not-allowed":"Firebase-ში Email/Password ავტორიზაცია ჩართული არ არის.",
     "auth/unauthorized-domain":"ეს დომენი Firebase-ის დაშვებულ დომენებში დაამატე."
   };
-  return messages[error.code] || "მოქმედება ვერ შესრულდა. გადაამოწმე ინტერნეტი და სცადე თავიდან.";
+  return messages[error.code]||"მოქმედება ვერ შესრულდა. გადაამოწმე ინტერნეტი და სცადე თავიდან.";
 }
-
-authForm.addEventListener("submit",async event => {
-  event.preventDefault();
-  if(authBusy || !authForm.reportValidity()) return;
-
-  const email = emailInput.value.trim();
-  const password = passwordInput.value;
-  const name = displayNameInput.value.trim();
-  const button = document.getElementById("submitAuth");
-
-  if(authMode === "register" && !name) {
-    showAuthMessage("შეიყვანე მომხმარებლის სახელი.");
-    return;
-  }
-
-  authBusy = true;
-  button.disabled = true;
-  button.textContent = "მოიცადე...";
-  clearAuthMessage();
-
-  try {
-    if(authMode === "register") {
-      const credential = await auth.createUserWithEmailAndPassword(email,password);
+authForm.addEventListener("submit",async event=>{
+  event.preventDefault();if(authBusy||!authForm.reportValidity())return;
+  const email=emailInput.value.trim(),password=passwordInput.value,name=displayNameInput.value.trim();
+  const button=document.getElementById("submitAuth");
+  if(authMode==="register"&&!name){showAuthMessage("შეიყვანე მომხმარებლის სახელი.");return}
+  authBusy=true;button.disabled=true;button.textContent="მოიცადე...";clearAuthMessage();
+  try{
+    if(authMode==="register"){
+      const credential=await auth.createUserWithEmailAndPassword(email,password);
       await credential.user.updateProfile({displayName:name});
-      await credential.user.reload();
-      currentUser = auth.currentUser;
-      updateProfileMenu();
+      await credential.user.reload();currentUser=auth.currentUser;updateProfileMenu();
       showAuthMessage("ანგარიში წარმატებით შეიქმნა!");
-      setTimeout(() => closeOverlay(authOverlay),800);
-    } else {
+      setTimeout(()=>closeOverlay(authOverlay),800);
+    }else{
       await auth.signInWithEmailAndPassword(email,password);
       showAuthMessage("წარმატებით შეხვედი ანგარიშში!");
-      setTimeout(() => closeOverlay(authOverlay),700);
+      setTimeout(()=>closeOverlay(authOverlay),700);
     }
-  } catch(error) {
-    showAuthMessage(authErrorMessage(error));
-  } finally {
-    authBusy = false;
-    button.disabled = false;
-    button.textContent = authMode === "register" ? "რეგისტრაცია" : "შესვლა";
+  }catch(error){showAuthMessage(authErrorMessage(error))}
+  finally{
+    authBusy=false;button.disabled=false;
+    button.textContent=authMode==="register"?"რეგისტრაცია":"შესვლა";
   }
 });
 
 /* PASSWORD RESET */
-document.getElementById("forgotPassword").addEventListener("click",async () => {
-  const email = emailInput.value.trim();
-  if(!email) {
-    showAuthMessage("ჯერ შეიყვანე ელფოსტა.");
-    emailInput.focus();
-    return;
-  }
-  if(!emailInput.checkValidity()) {
-    showAuthMessage("ელფოსტის მისამართი სწორად შეიყვანე.");
-    return;
-  }
-
-  const button = document.getElementById("forgotPassword");
-  button.disabled = true;
-  button.textContent = "იგზავნება...";
-  try {
+document.getElementById("forgotPassword").addEventListener("click",async()=>{
+  const email=emailInput.value.trim();
+  if(!email){showAuthMessage("ჯერ შეიყვანე ელფოსტა.");emailInput.focus();return}
+  if(!emailInput.checkValidity()){showAuthMessage("ელფოსტის მისამართი სწორად შეიყვანე.");return}
+  const button=document.getElementById("forgotPassword");
+  button.disabled=true;button.textContent="იგზავნება...";
+  try{
     await auth.sendPasswordResetEmail(email);
     showAuthMessage("თუ ამ ელფოსტაზე ანგარიში არსებობს, აღდგენის წერილი გამოგზავნილია. შეამოწმე Inbox და Spam.");
-  } catch(error) {
-    showAuthMessage(authErrorMessage(error));
-  } finally {
-    button.disabled = false;
-    button.textContent = "პაროლი დაგავიწყდა?";
-  }
+  }catch(error){showAuthMessage(authErrorMessage(error))}
+  finally{button.disabled=false;button.textContent="პაროლი დაგავიწყდა?"}
 });
 
 /* LOGOUT */
-async function logoutUser() {
-  try {
-    await auth.signOut();
-    currentUser = null;
-    emailIsVisible = false;
-    closeOverlay(profileOverlay);
-    updateProfileMenu();
-  } catch(error) {
-    showProfileMessage("ანგარიშიდან გამოსვლა ვერ მოხერხდა. სცადე თავიდან.");
-  }
+async function logoutUser(){
+  try{
+    await auth.signOut();currentUser=null;emailIsVisible=false;
+    closeOverlay(profileOverlay);updateProfileMenu();
+  }catch(error){showProfileMessage("ანგარიშიდან გამოსვლა ვერ მოხერხდა. სცადე თავიდან.")}
 }
 document.getElementById("logoutButton").addEventListener("click",logoutUser);
 document.getElementById("profileLogoutButton").addEventListener("click",logoutUser);
 
 /* CURRENT FIREBASE USER */
-auth.onAuthStateChanged(user => {
-  currentUser = user;
-  emailIsVisible = false;
-  updateProfileMenu();
+auth.onAuthStateChanged(user=>{
+  currentUser=user;emailIsVisible=false;updateProfileMenu();
 });
 
 /* INITIAL STATE */
