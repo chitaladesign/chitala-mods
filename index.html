@@ -79,7 +79,30 @@ footer{border-top:1px solid #25252c;padding:24px 0;color:#858591;font-size:11px}
 .profile-top-button{display:flex;align-items:center;gap:9px;padding:5px 12px 5px 5px;border:1px solid #35353e;border-radius:10px;background:#19191f;color:white;font-size:12px;font-weight:800}
 .profile-top-avatar{width:36px;height:36px;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:50%;background:#241219;border:1px solid var(--red);color:white;font-size:15px;font-weight:900;flex-shrink:0}
 .profile-top-avatar img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%}
-
+.facebook-login{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:0 0 16px;
+  padding:12px;
+  border:1px solid #334d78;
+  border-radius:9px;
+  background:#1877f2;
+  color:white;
+  font-size:12px;
+  font-weight:800;
+  transition:.2s;
+}
+.facebook-login:hover{
+  background:#1668d8;
+}
+.facebook-login svg{
+  width:19px;
+  height:19px;
+  flex-shrink:0;
+}
 /* ავტორიზაცია და პროფილი */
 .overlay{display:none;position:fixed;inset:0;z-index:50;background:#000c;backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:16px;overflow-y:auto}
 .overlay.open{display:flex}
@@ -314,7 +337,12 @@ h1{letter-spacing:-.5px}
       <button class="tab active" id="loginTab" type="button">შესვლა</button>
       <button class="tab" id="registerTab" type="button">რეგისტრაცია</button>
     </div>
-
+    <button class="facebook-login" id="facebookLogin" type="button">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path fill="currentColor" d="M24 12a12 12 0 1 0-13.875 11.85v-8.38H7.08V12h3.045V9.35c0-3.005 1.79-4.665 4.53-4.665 1.31 0 2.68.234 2.68.234v2.95h-1.51c-1.49 0-1.95.925-1.95 1.875V12h3.32l-.53 3.47h-2.79v8.38A12 12 0 0 0 24 12z"/>
+  </svg>
+  Facebook-ით გაგრძელება
+</button>
     <div class="divider">ელფოსტით</div>
 
     <form id="authForm">
@@ -430,7 +458,29 @@ if (!firebase.apps.length) {
 }
 
 const auth = firebase.auth();
+const facebookProvider = new firebase.auth.FacebookAuthProvider();
+facebookProvider.addScope("email");
 
+document.getElementById("facebookLogin").addEventListener("click", async () => {
+  if (authBusy) return;
+
+  const button = document.getElementById("facebookLogin");
+  authBusy = true;
+  button.disabled = true;
+  button.textContent = "მოიცადე...";
+  clearMessage();
+
+  try {
+    await auth.signInWithPopup(facebookProvider);
+    closeModal();
+  } catch (error) {
+    showMessage(readableError(error));
+  } finally {
+    authBusy = false;
+    button.disabled = false;
+    button.textContent = "Facebook-ით გაგრძელება";
+  }
+});
 auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(error => {
   console.error("სესიის შენარჩუნება ვერ მოხერხდა:", error);
 });
