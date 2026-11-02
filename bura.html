@@ -3,270 +3,156 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#07110e">
-<title>CHITALA PROD — ბურა 2v2</title>
-
+<meta name="theme-color" content="#09090c">
+<title>CHITALA PROD — ონლაინ ოთახები</title>
 <style>
-:root{
-  --bg:#07100d;--panel:#0c1c16;--green:#0b3022;
-  --gold:#f3c56b;--gold-light:#ffe5a1;
-  --text:#f7f3e9;--muted:#b7c2b9;
-  --border:#9c793a;--red:#9e2935;
-}
+:root{--bg:#09090c;--panel:#15151c;--border:#30303a;--red:#ed2337;--text:#f5f5f7;--muted:#a1a1ad;--green:#35d99a}
 *{box-sizing:border-box}
-body{
-  margin:0;min-height:100vh;color:var(--text);
-  background:radial-gradient(ellipse at 50% 0%,#19422d,transparent 48%),var(--bg);
-  font-family:Arial,"Noto Sans Georgian",sans-serif;
-}
-button,input,select{font:inherit}
-button{cursor:pointer}
-button:disabled{opacity:.5;cursor:not-allowed}
-.container{width:min(1000px,calc(100% - 24px));margin:auto}
-[hidden],.hidden{display:none!important}
-
-header{
-  padding:12px 0;border-bottom:1px solid var(--border);
-  background:linear-gradient(110deg,#06100c,#12241a,#06100c);
-}
-.header-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.brand{font-size:20px;font-weight:900;letter-spacing:1px}
-.brand span{color:var(--gold)}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  padding:11px 15px;border:1px solid #80612e;border-radius:9px;
-  color:var(--text);background:#10241a;font-weight:800;
-}
-.btn-gold{color:#17150e;background:linear-gradient(135deg,#ffe6a0,#d7a443);border-color:#ffdf8d}
-.btn-red{background:linear-gradient(135deg,#a8323e,#641a25);border-color:#b04b52}
-.btn:hover{border-color:var(--gold-light)}
-main{padding:25px 0 50px}
-.panel{
-  padding:20px;margin-bottom:16px;border:1px solid var(--border);
-  border-radius:14px;background:linear-gradient(135deg,#0c2017,#08130e);
-}
-h1{font-size:clamp(27px,5vw,42px);margin:0 0 10px;text-align:center}
-h1 span{color:var(--gold)}
-h2{font-size:21px;color:var(--gold-light);margin:0 0 12px}
-p{color:var(--muted);font-size:13px;line-height:1.7}
-.hero{text-align:center;padding:20px 0 28px}
-.hero p{max-width:550px;margin:0 auto}
-.tabs{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin:18px 0}
-.tab{
-  padding:12px 16px;border:1px solid var(--border);border-radius:9px;
-  color:var(--text);background:#10291d;font-weight:800
-}
-.tab.active{color:var(--gold-light);border-color:var(--gold-light)}
-.page{display:none}
-.page.active{display:block}
-.field{margin:10px 0}
-.field label{display:block;margin-bottom:6px;font-size:12px;font-weight:bold}
-input,select{
-  width:100%;padding:13px;border:1px solid #80612e;border-radius:8px;
-  color:white;background:#07140f;outline:none
-}
-input:focus,select:focus{border-color:var(--gold-light)}
+body{margin:0;background:radial-gradient(ellipse at top,#321018,transparent 50%),var(--bg);color:var(--text);font-family:Arial,sans-serif}
+button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}
+.container{width:min(950px,calc(100% - 24px));margin:auto}
+header{padding:16px;border-bottom:1px solid var(--border);background:#09090cf0;position:sticky;top:0;z-index:5}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:900;font-size:20px;letter-spacing:1px}.brand span{color:var(--red)}
+main{padding:25px 0 60px}
+.panel{background:linear-gradient(145deg,#191920,#111115);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:16px}
+h1{font-size:26px;margin:0 0 10px}h2{font-size:20px;margin:0 0 14px}
+p{color:var(--muted);line-height:1.6;font-size:13px}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.row>*{flex:1}
-.option-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
-.option{
-  padding:18px 10px;border:1px solid var(--border);border-radius:12px;
-  color:var(--text);background:#10291d;text-align:center
-}
-.option.active{border-color:var(--gold-light);box-shadow:0 0 16px #e9bb5a25}
-.option strong{display:block;color:var(--gold-light);margin-bottom:7px}
-.option small{color:var(--muted)}
-.notice{
-  display:none;margin-top:13px;padding:12px;border:1px solid var(--border);
-  border-radius:9px;color:var(--gold-light);background:#10251a;
-  font-size:12px;line-height:1.7;overflow-wrap:anywhere
-}
-.notice.show{display:block}
-.room-code{
-  font-size:27px;font-weight:900;letter-spacing:5px;color:var(--gold-light);
-  text-align:center;padding:12px;border:1px dashed var(--gold);
-  border-radius:10px;margin:12px 0
-}
-.seats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
-.seat{
-  min-height:105px;padding:12px;border:1px solid #98763b;border-radius:12px;
-  background:linear-gradient(145deg,#153725,#091810);text-align:center;
-}
-.seat.team-a{border-color:#e5bd68}
-.seat.team-b{border-color:#76b5a0}
-.seat strong{display:block;font-size:12px;margin-bottom:8px}
-.seat-name{font-size:14px;font-weight:bold;overflow-wrap:anywhere}
-.seat small{display:block;margin-top:6px;color:var(--muted);font-size:10px}
-.seat button{margin-top:8px;padding:7px 10px;font-size:11px}
-.team-labels{display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:center}
-.team-labels div{padding:8px;border-radius:8px;background:#07140f;color:var(--gold-light);font-weight:bold;font-size:12px}
-.room-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
-.room-actions button{flex:1}
-.status{color:var(--gold-light);font-size:12px;line-height:1.7;margin-top:12px;overflow-wrap:anywhere}
-footer{text-align:center;border-top:1px solid #3c382a;padding:20px;color:#89968d;font-size:11px}
-.overlay{
-  display:none;position:fixed;inset:0;z-index:20;background:#000c;
-  align-items:center;justify-content:center;padding:15px
-}
-.overlay.open{display:flex}
-.modal{
-  position:relative;width:min(420px,100%);max-height:90vh;overflow:auto;
-  padding:24px;border:1px solid var(--gold);border-radius:15px;
-  background:linear-gradient(145deg,#13291e,#07110c)
-}
-.close{float:right;border:1px solid var(--border);border-radius:7px;background:#102319;color:white;padding:5px 11px}
+input{min-width:0;flex:1;background:#0c0c11;color:white;border:1px solid #393943;border-radius:8px;padding:12px;outline:none}
+input:focus{border-color:var(--red)}
+.btn{border:1px solid transparent;border-radius:8px;padding:11px 15px;font-size:12px;font-weight:800}
+.primary{background:var(--red);color:white}.secondary{background:#202027;border-color:#393943;color:white}
+.hidden{display:none!important}
+.status{font-size:12px;color:#ffadb7;margin-top:12px;overflow-wrap:anywhere}
+.small{font-size:11px;color:var(--muted)}
+.mode-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.mode{padding:18px;background:#101016;border:1px solid #393943;border-radius:10px;color:white;text-align:left}
+.mode.selected{border-color:var(--red);background:#ed233711}
+.mode strong{display:block;font-size:17px;margin-bottom:7px}
+.mode span{font-size:12px;color:var(--muted)}
+.seats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
+.seat{padding:15px;border:1px solid #393943;background:#101016;border-radius:10px;min-height:100px}
+.seat strong{display:block;margin-bottom:7px}
+.seat .name{font-size:13px;overflow-wrap:anywhere}
+.empty{color:#858591;font-size:12px}
+.team{display:inline-block;padding:4px 8px;border-radius:5px;font-size:10px;font-weight:bold;margin-top:8px}
+.team-a{background:#183c5b;color:#91d4ff}
+.team-b{background:#54202b;color:#ffadb7}
+.seat-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.seat-actions button{font-size:10px;padding:7px 9px}
+.room-code{font-size:26px;font-weight:900;letter-spacing:5px;color:#ff6575}
+.notice{padding:11px;border:1px solid #493039;background:#ed233710;border-radius:8px;color:#ffadb7;font-size:12px;line-height:1.6;margin-top:12px}
+.success{color:#8ce8bd;border-color:#245b45;background:#123b2b44}
+footer{text-align:center;color:#777;padding:20px;font-size:11px}
 @media(max-width:520px){
-  .panel{padding:15px}
-  .brand{font-size:16px}
-  .btn{padding:10px 12px;font-size:12px}
-  .tab{padding:10px;font-size:11px}
-  .option-grid{gap:8px}
-  .seats{gap:8px}
-  .seat{padding:9px;min-height:100px}
+.panel{padding:14px}h1{font-size:22px}.mode-grid{grid-template-columns:1fr}
+.seats{gap:8px}.seat{padding:11px;min-height:95px}
+.row>*{max-width:100%}.room-code{font-size:22px}
 }
 </style>
 </head>
-
 <body>
 <header>
-  <div class="container header-inner">
-    <div class="brand">♛ CHITALA <span>PROD</span></div>
-    <button class="btn" id="accountButton">შესვლა</button>
+  <div class="container nav">
+    <div class="brand">CHITALA <span>PROD</span></div>
+    <div class="row">
+      <span id="userLabel" class="small">სტუმარი</span>
+      <button class="btn secondary hidden" id="signOut">გამოსვლა</button>
+    </div>
   </div>
 </header>
 
 <main class="container">
-  <section class="hero">
-    <h1>ბურა <span>2v2</span></h1>
-    <p>შექმენი ოთახი, მოიწვიე სამი მეგობარი და ითამაშეთ ორ გუნდად.</p>
+  <section class="panel" id="authPanel">
+    <h1>ონლაინ თამაშები</h1>
+    <p>შედი ანგარიშში ან შექმენი ახალი ანგარიში ოთახებში შესაერთებლად.</p>
+    <div class="row">
+      <input id="email" type="email" placeholder="ელფოსტა" autocomplete="email">
+      <input id="password" type="password" placeholder="პაროლი" autocomplete="current-password">
+    </div>
+    <div class="row" style="margin-top:10px">
+      <input id="nickname" placeholder="მოთამაშის სახელი (რეგისტრაციისას)">
+      <button class="btn primary" id="login">შესვლა</button>
+      <button class="btn secondary" id="register">რეგისტრაცია</button>
+    </div>
+    <div class="status" id="authMessage"></div>
   </section>
 
-  <nav class="tabs">
-    <button class="tab active" data-page="home">🏠 მთავარი</button>
-    <button class="tab" data-page="create">＋ ოთახის შექმნა</button>
-    <button class="tab" data-page="join">🔑 კოდით შესვლა</button>
-  </nav>
-
-  <section class="page active" id="homePage">
-    <div class="panel">
-      <h2>ონლაინ ბურა 2v2</h2>
-      <p>ოთახში ოთხი მოთამაშე მონაწილეობს. შეგიძლია გუნდები შემთხვევით გაანაწილო ან თითოეულმა მოთამაშემ თავად აირჩიოს ადგილი.</p>
-      <div class="option-grid">
-        <button class="option" id="homeCreate">
-          <strong>＋ ოთახის შექმნა</strong>
-          <small>შენ იქნები ოთახის მფლობელი</small>
-        </button>
-        <button class="option" id="homeJoin">
-          <strong>🔑 კოდით შესვლა</strong>
-          <small>შეუერთდი მეგობრის ოთახს</small>
-        </button>
-      </div>
+  <section class="panel hidden" id="lobby">
+    <h2>ოთახის შექმნა</h2>
+    <p>აირჩიე თამაშის რეჟიმი. ოთახი შეიქმნება მხოლოდ შენი ღილაკის დაჭერის შემდეგ.</p>
+    <div class="mode-grid">
+      <button class="mode selected" data-mode="classic">
+        <strong>♠ ბურა 1v1</strong>
+        <span>2 მოთამაშე · ერთი ერთზე</span>
+      </button>
+      <button class="mode" data-mode="team">
+        <strong>♣ ბურა 2v2</strong>
+        <span>4 მოთამაშე · ორი გუნდი</span>
+      </button>
     </div>
+    <div class="row" style="margin-top:14px">
+      <button class="btn primary" id="createRoom">ოთახის შექმნა</button>
+    </div>
+    <div class="status" id="createMessage"></div>
   </section>
 
-  <section class="page" id="createPage">
-    <div class="panel">
-      <h2>ოთახის შექმნა</h2>
-      <p>აირჩიე მოთამაშეების განაწილების მეთოდი.</p>
-
-      <div class="option-grid">
-        <button class="option active" data-assignment="random">
-          <strong>🎲 შემთხვევითი გუნდები</strong>
-          <small>ოთხი მოთამაშე შემთხვევით განაწილდება</small>
-        </button>
-        <button class="option" data-assignment="manual">
-          <strong>♟ ადგილების არჩევა</strong>
-          <small>მოთამაშეები თავად აირჩევენ ადგილებს</small>
-        </button>
-      </div>
-
-      <button class="btn btn-gold" id="createRoomButton" style="width:100%">＋ ოთახის შექმნა</button>
-      <div class="notice" id="createNotice"></div>
+  <section class="panel hidden" id="joinPanel">
+    <h2>ოთახში შეერთება</h2>
+    <p>მეგობრისგან მიღებული 6-ნიშნა კოდი შეიყვანე.</p>
+    <div class="row">
+      <input id="roomCodeInput" maxlength="6" placeholder="ოთახის კოდი">
+      <button class="btn secondary" id="joinRoom">შეერთება</button>
     </div>
+    <div class="status" id="joinMessage"></div>
   </section>
 
-  <section class="page" id="joinPage">
-    <div class="panel">
-      <h2>კოდით შესვლა</h2>
-      <p>შეიყვანე მეგობრის ოთახის ექვსნიშნა კოდი.</p>
-      <input id="roomCode" maxlength="6" placeholder="მაგალითად: A7K29P">
-      <button class="btn btn-gold" id="joinRoomButton" style="width:100%;margin-top:12px">ოთახში შესვლა</button>
-      <div class="notice" id="joinNotice"></div>
+  <section class="panel hidden" id="roomPanel">
+    <div class="row" style="justify-content:space-between">
+      <div>
+        <h2 id="roomTitle">ონლაინ ოთახი</h2>
+        <div class="small" id="roomModeLabel"></div>
+      </div>
+      <button class="btn secondary" id="leaveRoom">ოთახიდან გასვლა</button>
     </div>
+
+    <div style="margin-top:16px">
+      <div class="small">ოთახის კოდი — გაუზიარე მეგობარს</div>
+      <div class="row" style="margin-top:7px">
+        <span class="room-code" id="roomCodeLabel">------</span>
+        <button class="btn secondary" id="copyCode">კოდის კოპირება</button>
+      </div>
+    </div>
+
+    <div class="notice" id="roomStatus">მოთამაშეებს ველოდებით...</div>
+
+    <h2 style="margin-top:22px">მოთამაშეები</h2>
+    <div class="seats" id="seats"></div>
+
+    <div id="teamHelp" class="small hidden">
+      2v2 რეჟიმში ოთახის შემქმნელს შეუძლია მოთამაშეების A და B გუნდებში განაწილება.
+    </div>
+
+    <div class="row" style="margin-top:18px">
+      <button class="btn primary" id="startGame">თამაშის დაწყება</button>
+    </div>
+    <div class="status" id="startMessage"></div>
   </section>
 
-  <section class="page" id="roomPage">
-    <div class="panel">
-      <h2>ონლაინ ოთახი</h2>
-      <p>გაუზიარე კოდი მეგობრებს. ოთახში მაქსიმუმ ოთხი მოთამაშეა.</p>
-      <div class="room-code" id="roomCodeDisplay">------</div>
-      <button class="btn" id="copyCodeButton" style="width:100%">კოდის კოპირება</button>
-
-      <div class="team-labels" style="margin-top:18px">
-        <div>გუნდი A — ადგილები 1 და 2</div>
-        <div>გუნდი B — ადგილები 3 და 4</div>
-      </div>
-
-      <div class="seats" id="seats"></div>
-
-      <div class="field" id="seatPickerWrap">
-        <label for="seatPicker">აირჩიე თავისუფალი ადგილი</label>
-        <select id="seatPicker"></select>
-        <button class="btn btn-gold" id="takeSeatButton" style="width:100%;margin-top:9px">ადგილის დაკავება</button>
-      </div>
-
-      <div class="room-actions">
-        <button class="btn" id="randomizeButton">🎲 შემთხვევითი განაწილება</button>
-        <button class="btn" id="swapButton">ადგილების გაცვლა</button>
-      </div>
-
-      <div class="room-actions">
-        <button class="btn btn-gold" id="confirmButton">განაწილების დადასტურება</button>
-        <button class="btn btn-gold" id="startButton">თამაშის დაწყება</button>
-      </div>
-
-      <div class="status" id="roomStatus"></div>
-      <button class="btn btn-red" id="leaveRoomButton" style="width:100%;margin-top:15px">ოთახიდან გამოსვლა</button>
-    </div>
+  <section class="panel hidden" id="startedPanel">
+    <h2>თამაში დაიწყო!</h2>
+    <p>ოთახის მოთამაშეები მზად არიან. ამ ეტაპზე დასრულებულია ოთახის შექმნა, შეერთება, გუნდების არჩევა და დაწყების კონტროლი. კარტების სათამაშო დაფა შემდეგ ეტაპზე უნდა დაემატოს.</p>
   </section>
 </main>
 
 <footer>CHITALA PROD © 2026</footer>
-
-<!-- AUTH -->
-<div class="overlay" id="authOverlay">
-  <div class="modal">
-    <button class="close" id="closeAuth">×</button>
-    <h2 id="authTitle">შესვლა</h2>
-    <p id="authIntro">შედი ანგარიშში ონლაინ სათამაშოდ.</p>
-    <form id="authForm">
-      <div class="field" id="nameField" hidden>
-        <label>მომხმარებლის სახელი</label>
-        <input id="displayName" maxlength="24" placeholder="შენი სახელი">
-      </div>
-      <div class="field">
-        <label>ელფოსტა</label>
-        <input id="email" type="email" required autocomplete="email">
-      </div>
-      <div class="field">
-        <label>პაროლი</label>
-        <input id="password" type="password" minlength="6" required>
-      </div>
-      <button class="btn btn-gold" id="submitAuth" style="width:100%">შესვლა</button>
-    </form>
-    <button class="btn" id="switchAuth" style="width:100%;margin-top:10px">რეგისტრაცია</button>
-    <div class="notice" id="authNotice"></div>
-  </div>
-</div>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
 <script>
-"use strict";
-
-/* FIREBASE */
 const firebaseConfig = {
   apiKey: "AIzaSyChOYCwVd2AaZzLGx_tQsT2PqNlbNXqkis",
   authDomain: "chitala-mods.firebaseapp.com",
@@ -277,523 +163,353 @@ const firebaseConfig = {
   appId: "1:415729264734:web:edba39f96e5cbdfd6beccf"
 };
 
-if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-
+firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.database();
 
-auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(console.error);
-
 const $ = id => document.getElementById(id);
-
-let currentUser = null;
-let authMode = "login";
-let assignmentMode = "random";
+let me = null;
+let selectedMode = "classic";
 let roomId = null;
 let roomRef = null;
 let roomListener = null;
 let roomData = null;
-let selectedSeats = [];
 let busy = false;
 
-/* PAGE NAVIGATION */
-function showPage(name) {
-  document.querySelectorAll(".page").forEach(page => {
-    page.classList.toggle("active", page.id === name + "Page");
-  });
-  document.querySelectorAll(".tab").forEach(tab => {
-    tab.classList.toggle("active", tab.dataset.page === name);
-  });
+function say(id,text){$(id).textContent=text}
+function show(id,value){$(id).classList.toggle("hidden",!value)}
+function playerName(user){
+  return user.displayName || user.email?.split("@")[0] || "მოთამაშე";
 }
-document.querySelectorAll(".tab").forEach(tab => {
-  tab.addEventListener("click", () => showPage(tab.dataset.page));
-});
-$("homeCreate").onclick = () => showPage("create");
-$("homeJoin").onclick = () => showPage("join");
-
-/* NOTICES */
-function notice(id, text) {
-  const el = $(id);
-  el.textContent = text;
-  el.classList.add("show");
-}
-function clearNotice(id) {
-  $(id).textContent = "";
-  $(id).classList.remove("show");
+function errorText(error){
+  const messages={
+    "auth/invalid-email":"ელფოსტა არასწორია.",
+    "auth/invalid-credential":"ელფოსტა ან პაროლი არასწორია.",
+    "auth/email-already-in-use":"ეს ელფოსტა უკვე გამოყენებულია.",
+    "auth/weak-password":"პაროლი მინიმუმ 6 სიმბოლო უნდა იყოს.",
+    "auth/operation-not-allowed":"Firebase-ში Email/Password ავტორიზაცია ჩართე.",
+    "auth/unauthorized-domain":"ეს დომენი Firebase Authentication-ში დაამატე."
+  };
+  return messages[error.code] || error.message || "უცნობი შეცდომა";
 }
 
-/* AUTHENTICATION */
-function openAuth(mode = "login") {
-  authMode = mode;
-  updateAuthForm();
-  $("authOverlay").classList.add("open");
-}
-function closeAuth() {
-  $("authOverlay").classList.remove("open");
-}
-function updateAuthForm() {
-  const registering = authMode === "register";
-  $("authTitle").textContent = registering ? "ანგარიშის შექმნა" : "შესვლა";
-  $("authIntro").textContent = registering
-    ? "შექმენი CHITALA PROD-ის ანგარიში."
-    : "შედი ანგარიშში ონლაინ სათამაშოდ.";
-  $("nameField").hidden = !registering;
-  $("displayName").required = registering;
-  $("submitAuth").textContent = registering ? "რეგისტრაცია" : "შესვლა";
-  $("switchAuth").textContent = registering ? "უკვე გაქვს ანგარიში? შესვლა" : "არ გაქვს ანგარიში? რეგისტრაცია";
-  clearNotice("authNotice");
-}
-$("closeAuth").onclick = closeAuth;
-$("switchAuth").onclick = () => {
-  authMode = authMode === "login" ? "register" : "login";
-  updateAuthForm();
-};
-$("accountButton").onclick = () => {
-  if (currentUser) {
-    if (confirm("გსურს ანგარიშიდან გამოსვლა?")) auth.signOut();
-  } else openAuth("login");
+$("login").onclick=async()=>{
+  try{
+    await auth.signInWithEmailAndPassword($("email").value.trim(),$("password").value);
+    say("authMessage","შესვლა წარმატებულია.");
+  }catch(e){say("authMessage",errorText(e));}
 };
 
-$("authForm").addEventListener("submit", async event => {
-  event.preventDefault();
-  const email = $("email").value.trim();
-  const password = $("password").value;
-  const name = $("displayName").value.trim();
-  $("submitAuth").disabled = true;
+$("register").onclick=async()=>{
+  const name=$("nickname").value.trim();
+  if(!name){say("authMessage","შეიყვანე მოთამაშის სახელი.");return;}
+  try{
+    const result=await auth.createUserWithEmailAndPassword($("email").value.trim(),$("password").value);
+    await result.user.updateProfile({displayName:name});
+    say("authMessage","ანგარიში შეიქმნა.");
+  }catch(e){say("authMessage",errorText(e));}
+};
 
-  try {
-    if (authMode === "register") {
-      if (!name) throw new Error("შეიყვანე მომხმარებლის სახელი.");
-      const result = await auth.createUserWithEmailAndPassword(email, password);
-      await result.user.updateProfile({displayName:name});
-    } else {
-      await auth.signInWithEmailAndPassword(email, password);
-    }
-    closeAuth();
-  } catch (error) {
-    notice("authNotice", error.message || error.code || "ავტორიზაცია ვერ შესრულდა.");
-  } finally {
-    $("submitAuth").disabled = false;
-  }
+auth.onAuthStateChanged(user=>{
+  me=user;
+  say("userLabel",user?playerName(user):"სტუმარი");
+  show("authPanel",!user);
+  show("lobby",!!user);
+  show("joinPanel",!!user);
+  show("signOut",!!user);
+  if(!user) leaveRoom();
 });
 
-auth.onAuthStateChanged(user => {
-  currentUser = user;
-  $("accountButton").textContent = user
-    ? (user.displayName || "პროფილი") + " · გამოსვლა"
-    : "შესვლა";
+$("signOut").onclick=async()=>{
+  await leaveRoom();
+  await auth.signOut();
+};
 
-  if (!user && roomId) leaveRoom(false);
-});
-
-/* ROOM ASSIGNMENT CHOICE */
-document.querySelectorAll("[data-assignment]").forEach(button => {
-  button.onclick = () => {
-    assignmentMode = button.dataset.assignment;
-    document.querySelectorAll("[data-assignment]").forEach(item => {
-      item.classList.toggle("active", item === button);
+document.querySelectorAll(".mode").forEach(button=>{
+  button.onclick=()=>{
+    selectedMode=button.dataset.mode;
+    document.querySelectorAll(".mode").forEach(item=>{
+      item.classList.toggle("selected",item===button);
     });
   };
 });
 
-function makeCode() {
-  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-  let code = "";
-  for (let i = 0; i < 6; i++) {
-    code += chars[Math.floor(Math.random() * chars.length)];
-  }
+function makeCode(){
+  const chars="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  let code="";
+  for(let i=0;i<6;i++)code+=chars[Math.floor(Math.random()*chars.length)];
   return code;
 }
-function playerName(user) {
-  return user.displayName || user.email?.split("@")[0] || "მოთამაშე";
-}
-function playerIds(data) {
-  return Object.keys(data.players || {});
-}
-function occupiedSeats(data) {
-  return data.seats || [null,null,null,null];
+
+function orderedPlayers(data){
+  return Object.entries(data.players||{}).sort((a,b)=>a[1].joinedAt-b[1].joinedAt);
 }
 
-/* CREATE ROOM */
-$("createRoomButton").onclick = async () => {
-  if (!currentUser) {
-    openAuth("login");
-    return;
-  }
-  if (busy) return;
-  busy = true;
-  $("createRoomButton").disabled = true;
-  clearNotice("createNotice");
-
-  try {
-    let code = null;
-    for (let i = 0; i < 8; i++) {
-      const candidate = makeCode();
-      const snap = await db.ref("rooms/" + candidate).get();
-      if (!snap.exists()) {
-        code = candidate;
-        break;
-      }
+async function createRoom(){
+  if(!me||busy)return;
+  busy=true;
+  say("createMessage","ოთახი იქმნება...");
+  try{
+    const maxPlayers=selectedMode==="team"?4:2;
+    let code=null;
+    for(let i=0;i<8;i++){
+      const candidate=makeCode();
+      const snap=await db.ref("rooms/"+candidate).get();
+      if(!snap.exists()){code=candidate;break;}
     }
-    if (!code) throw new Error("ოთახის კოდის შექმნა ვერ მოხერხდა.");
+    if(!code)throw new Error("ოთახის კოდის შექმნა ვერ მოხერხდა.");
 
-    const initial = {
+    const data={
       code,
-      host: currentUser.uid,
-      mode: "team2v2",
-      assignment: assignmentMode,
-      status: "waiting",
-      confirmed: false,
-      createdAt: firebase.database.ServerValue.TIMESTAMP,
-      players: {
-        [currentUser.uid]: {
-          name: playerName(currentUser),
-          joinedAt: Date.now()
+      host:me.uid,
+      mode:selectedMode,
+      maxPlayers,
+      status:"waiting",
+      createdAt:firebase.database.ServerValue.TIMESTAMP,
+      players:{
+        [me.uid]:{
+          name:playerName(me),
+          team:selectedMode==="team"?"A":null,
+          joinedAt:Date.now()
         }
-      },
-      seats: [currentUser.uid, null, null, null]
+      }
     };
 
-    await db.ref("rooms/" + code).set(initial);
+    await db.ref("rooms/"+code).set(data);
     openRoom(code);
-  } catch (error) {
-    notice("createNotice", error.message || "ოთახის შექმნა ვერ მოხერხდა.");
-  } finally {
-    busy = false;
-    $("createRoomButton").disabled = false;
-  }
-};
+    say("createMessage","ოთახი შეიქმნა.");
+  }catch(e){say("createMessage",errorText(e));}
+  finally{busy=false;}
+}
+$("createRoom").onclick=createRoom;
 
-/* JOIN ROOM */
-$("roomCode").addEventListener("input", event => {
-  event.target.value = event.target.value.toUpperCase().replace(/[^A-Z0-9]/g,"");
-  clearNotice("joinNotice");
-});
-
-$("joinRoomButton").onclick = async () => {
-  if (!currentUser) {
-    openAuth("login");
+async function joinRoom(){
+  if(!me||busy)return;
+  const code=$("roomCodeInput").value.trim().toUpperCase();
+  if(!/^[A-HJ-NP-Z2-9]{6}$/.test(code)){
+    say("joinMessage","შეიყვანე სწორი 6-ნიშნა კოდი.");
     return;
   }
-
-  const code = $("roomCode").value.trim().toUpperCase();
-  if (!/^[A-Z0-9]{6}$/.test(code)) {
-    notice("joinNotice","შეიყვანე ექვსნიშნა ოთახის კოდი.");
-    return;
-  }
-
-  if (busy) return;
-  busy = true;
-  $("joinRoomButton").disabled = true;
-
-  try {
-    const ref = db.ref("rooms/" + code);
-    let errorMessage = "";
-
-    const result = await ref.transaction(data => {
-      if (!data || data.status !== "waiting") return;
-      data.players = data.players || {};
-      data.seats = data.seats || [null,null,null,null];
-
-      if (data.players[currentUser.uid]) return data;
-      if (Object.keys(data.players).length >= 4) return;
-
-      data.players[currentUser.uid] = {
-        name: playerName(currentUser),
-        joinedAt: Date.now()
+  busy=true;
+  say("joinMessage","ოთახში შეერთება...");
+  try{
+    const ref=db.ref("rooms/"+code);
+    const result=await ref.transaction(room=>{
+      if(!room)return;
+      room.players=room.players||{};
+      if(room.players[me.uid])return room;
+      if(room.status!=="waiting")return;
+      if(Object.keys(room.players).length>=room.maxPlayers)return;
+      room.players[me.uid]={
+        name:playerName(me),
+        team:room.mode==="team"?null:null,
+        joinedAt:Date.now()
       };
-
-      if (data.assignment === "random") {
-        const empty = data.seats.findIndex(seat => !seat);
-        if (empty < 0) return;
-        data.seats[empty] = currentUser.uid;
-      }
-      return data;
+      return room;
     });
 
-    if (!result.committed || !result.snapshot.exists()) {
-      throw new Error("ოთახი არ არსებობს, უკვე დაწყებულია ან შევსებულია.");
-    }
-
-    const data = result.snapshot.val();
-    if (!data.players || !data.players[currentUser.uid]) {
-      throw new Error("ოთახში შესვლა ვერ მოხერხდა.");
+    if(!result.committed){
+      say("joinMessage","ოთახი არ არსებობს, სავსეა ან თამაში უკვე დაწყებულია.");
+      return;
     }
     openRoom(code);
-  } catch (error) {
-    notice("joinNotice",error.message || "ოთახში შესვლა ვერ მოხერხდა.");
-  } finally {
-    busy = false;
-    $("joinRoomButton").disabled = false;
-  }
-};
+    say("joinMessage","ოთახში წარმატებით შეხვედი.");
+  }catch(e){say("joinMessage",errorText(e));}
+  finally{busy=false;}
+}
+$("joinRoom").onclick=joinRoom;
+$("roomCodeInput").addEventListener("keydown",e=>{
+  if(e.key==="Enter")joinRoom();
+});
 
-/* OPEN ROOM AND LISTEN */
-function openRoom(code) {
-  if (roomRef && roomListener) roomRef.off("value",roomListener);
-
-  roomId = code;
-  roomRef = db.ref("rooms/" + code);
-  showPage("room");
-
-  roomListener = snapshot => {
-    roomData = snapshot.val();
-    if (!roomData) {
-      notice("roomStatus","ოთახი აღარ არსებობს.");
-      leaveRoom();
+function openRoom(code){
+  if(roomRef&&roomListener)roomRef.off("value",roomListener);
+  roomId=code;
+  roomRef=db.ref("rooms/"+code);
+  roomListener=snapshot=>{
+    roomData=snapshot.val();
+    if(!roomData){
+      say("roomStatus","ოთახი აღარ არსებობს.");
+      leaveRoom(false);
       return;
     }
     renderRoom();
   };
-
-  roomRef.on("value",roomListener,error => {
-    notice("roomStatus","ბაზასთან კავშირი ვერ მოხერხდა: " + error.message);
+  roomRef.on("value",roomListener,error=>{
+    say("roomStatus","ოთახის ჩატვირთვის შეცდომა: "+error.message);
   });
+  show("roomPanel",true);
+  show("startedPanel",false);
 }
 
-/* RENDER ROOM */
-function renderRoom() {
-  const data = roomData;
-  const seats = occupiedSeats(data);
-  const ids = playerIds(data);
-  const isHost = currentUser && data.host === currentUser.uid;
-  const mySeat = seats.indexOf(currentUser?.uid);
-  const full = ids.length === 4 && seats.every(Boolean);
+function renderRoom(){
+  if(!roomData||!me)return;
+  const players=orderedPlayers(roomData);
+  const isHost=roomData.host===me.uid;
+  const teamMode=roomData.mode==="team";
+  const full=players.length===roomData.maxPlayers;
 
-  $("roomCodeDisplay").textContent = data.code;
+  say("roomTitle",teamMode?"ბურა 2v2":"ბურა 1v1");
+  say("roomModeLabel",players.length+" / "+roomData.maxPlayers+" მოთამაშე");
+  say("roomCodeLabel",roomData.code);
+  show("teamHelp",teamMode);
 
-  const seatBox = $("seats");
-  seatBox.replaceChildren();
+  if(roomData.status==="playing"){
+    show("startedPanel",true);
+    say("roomStatus","ოთახის შემქმნელმა თამაში დაიწყო.");
+  }else{
+    show("startedPanel",false);
+    say("roomStatus",full
+      ?"ოთახი სავსეა. თამაშის დაწყება შეუძლია მხოლოდ შემქმნელს."
+      :"მოთამაშეებს ველოდებით... ("+players.length+"/"+roomData.maxPlayers+")");
+  }
 
-  seats.forEach((uid,index) => {
-    const card = document.createElement("div");
-    card.className = "seat " + (index < 2 ? "team-a" : "team-b");
+  const seats=$("seats");
+  seats.replaceChildren();
 
-    const title = document.createElement("strong");
-    title.textContent = "ადგილი " + (index + 1);
+  for(let i=0;i<roomData.maxPlayers;i++){
+    const entry=players[i];
+    const seat=document.createElement("div");
+    seat.className="seat";
 
-    const name = document.createElement("div");
-    name.className = "seat-name";
-    name.textContent = uid ? (data.players?.[uid]?.name || "მოთამაშე") : "თავისუფალია";
+    const title=document.createElement("strong");
+    title.textContent="ადგილი "+(i+1);
+    seat.appendChild(title);
 
-    const team = document.createElement("small");
-    team.textContent = index < 2 ? "გუნდი A" : "გუნდი B";
+    if(!entry){
+      const empty=document.createElement("div");
+      empty.className="empty";
+      empty.textContent="ელოდება მოთამაშეს...";
+      seat.appendChild(empty);
+    }else{
+      const [uid,player]=entry;
+      const name=document.createElement("div");
+      name.className="name";
+      name.textContent=player.name+(uid===roomData.host?" (შემქმნელი)":"");
+      seat.appendChild(name);
 
-    card.append(title,name,team);
+      if(teamMode){
+        const badge=document.createElement("span");
+        badge.className="team "+(player.team==="A"?"team-a":player.team==="B"?"team-b":"");
+        badge.textContent=player.team==="A"?"გუნდი A":player.team==="B"?"გუნდი B":"გუნდი არჩეული არაა";
+        seat.appendChild(badge);
 
-    if (isHost && uid && data.status === "waiting") {
-      const swap = document.createElement("button");
-      swap.className = "btn";
-      swap.textContent = selectedSeats.includes(index) ? "მონიშნულია ✓" : "მონიშვნა";
-      swap.onclick = () => {
-        if (selectedSeats.includes(index)) {
-          selectedSeats = selectedSeats.filter(x => x !== index);
-        } else if (selectedSeats.length < 2) {
-          selectedSeats.push(index);
-        } else {
-          selectedSeats = [index];
+        if(isHost&&uid!==roomData.host&&roomData.status==="waiting"){
+          const actions=document.createElement("div");
+          actions.className="seat-actions";
+          ["A","B"].forEach(team=>{
+            const button=document.createElement("button");
+            button.className="btn secondary";
+            button.textContent="გუნდი "+team;
+            button.onclick=()=>assignTeam(uid,team);
+            actions.appendChild(button);
+          });
+          seat.appendChild(actions);
         }
-        renderRoom();
-      };
-      card.appendChild(swap);
+      }
     }
-
-    seatBox.appendChild(card);
-  });
-
-  const picker = $("seatPicker");
-  picker.replaceChildren();
-  seats.forEach((uid,index) => {
-    if (!uid || uid === currentUser.uid) {
-      const option = document.createElement("option");
-      option.value = String(index);
-      option.textContent = "ადგილი " + (index + 1) + (uid ? " (შენი)" : " (თავისუფალი)");
-      picker.appendChild(option);
-    }
-  });
-
-  $("seatPickerWrap").hidden =
-    data.assignment !== "manual" || data.status !== "waiting" || mySeat !== -1;
-
-  $("randomizeButton").hidden = !isHost || data.assignment !== "random" || !full || data.status !== "waiting";
-  $("swapButton").hidden = !isHost || data.assignment !== "manual" || data.status !== "waiting";
-  $("confirmButton").hidden = !isHost || data.assignment !== "manual" || data.status !== "waiting";
-  $("startButton").hidden = !isHost || data.status !== "ready";
-
-  if (data.status === "playing") {
-    $("roomStatus").textContent = "ოთახი მზადაა. შემდეგ ეტაპზე აქ დაემატება კარტის თამაში.";
-  } else if (data.status === "ready") {
-    $("roomStatus").textContent = "განაწილება დადასტურებულია. ოთახის მფლობელს შეუძლია თამაშის დაწყება.";
-  } else {
-    $("roomStatus").textContent =
-      "მოთამაშეები: " + ids.length + "/4" +
-      (isHost ? " · შენ ხარ ოთახის მფლობელი." : " · ელოდები ოთახის მფლობელს.");
+    seats.appendChild(seat);
   }
 
-  $("randomizeButton").disabled = !full;
-  $("confirmButton").disabled = !full;
-  $("startButton").disabled = !full;
+  const teamsReady=!teamMode||(
+    players.filter(([,p])=>p.team==="A").length===2&&
+    players.filter(([,p])=>p.team==="B").length===2
+  );
+
+  const canStart=isHost&&roomData.status==="waiting"&&full&&teamsReady;
+  $("startGame").disabled=!canStart||busy;
+
+  if(!isHost){
+    say("startMessage","თამაშის დაწყება შეუძლია მხოლოდ ოთახის შემქმნელს.");
+  }else if(!full){
+    say("startMessage","თამაშის დასაწყებად ყველა ადგილი უნდა შეივსოს.");
+  }else if(!teamsReady){
+    say("startMessage","თამაშის დაწყებამდე გუნდებში 2-2 მოთამაშე უნდა იყოს.");
+  }else{
+    say("startMessage","ყველაფერი მზადაა. შეგიძლია დაიწყო თამაში.");
+  }
 }
 
-/* CLAIM A SEAT */
-$("takeSeatButton").onclick = async () => {
-  if (!roomRef || !currentUser || busy) return;
-  const index = Number($("seatPicker").value);
-  if (!Number.isInteger(index) || index < 0 || index > 3) return;
-
-  await updateRoom(data => {
-    if (data.status !== "waiting" || data.assignment !== "manual") return false;
-    if (!data.players?.[currentUser.uid]) return false;
-
-    data.seats = data.seats || [null,null,null,null];
-    const oldIndex = data.seats.indexOf(currentUser.uid);
-    if (oldIndex !== -1) data.seats[oldIndex] = null;
-    if (data.seats[index]) return false;
-
-    data.seats[index] = currentUser.uid;
-    data.confirmed = false;
-    return true;
-  });
-};
-
-/* ROOM TRANSACTION HELPER */
-async function updateRoom(change) {
-  if (!roomRef || busy) return;
-  busy = true;
-  try {
-    const result = await roomRef.transaction(data => {
-      if (!data) return;
-      const copy = JSON.parse(JSON.stringify(data));
-      if (change(copy) === false) return;
-      return copy;
+async function assignTeam(uid,team){
+  if(!roomRef||!roomData||roomData.host!==me.uid||busy)return;
+  busy=true;
+  try{
+    await roomRef.transaction(room=>{
+      if(!room||room.host!==me.uid||room.status!=="waiting")return;
+      const player=room.players&&room.players[uid];
+      if(!player)return;
+      const count=Object.values(room.players).filter(p=>p.team===team&&p!==player).length;
+      if(count>=2)return;
+      player.team=team;
+      return room;
     });
-    if (!result.committed) notice("roomStatus","მოქმედება ვერ შესრულდა. გადაამოწმე ოთახის მდგომარეობა.");
-  } catch (error) {
-    notice("roomStatus",error.message || "ბაზასთან კავშირის შეცდომა.");
-  } finally {
-    busy = false;
-  }
+  }catch(e){say("startMessage",errorText(e));}
+  finally{busy=false;}
 }
 
-/* RANDOMIZE FOUR SEATS */
-$("randomizeButton").onclick = async () => {
-  if (!roomData || roomData.host !== currentUser?.uid) return;
-  await updateRoom(data => {
-    if (data.status !== "waiting" || data.assignment !== "random") return false;
-    const ids = playerIds(data);
-    if (ids.length !== 4) return false;
-
-    for (let i = ids.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [ids[i],ids[j]] = [ids[j],ids[i]];
-    }
-    data.seats = ids;
-    data.confirmed = true;
-    data.status = "ready";
-    return true;
-  });
-};
-
-/* HOST SWAPS TWO SELECTED PLAYERS */
-$("swapButton").onclick = async () => {
-  if (selectedSeats.length !== 2) {
-    notice("roomStatus","გაცვლისთვის მონიშნე ორი დაკავებული ადგილი.");
+$("startGame").onclick=async()=>{
+  if(!roomRef||!roomData||busy)return;
+  if(roomData.host!==me.uid){
+    say("startMessage","მხოლოდ ოთახის შემქმნელს შეუძლია დაწყება.");
     return;
   }
-  const [a,b] = selectedSeats;
-  selectedSeats = [];
-
-  await updateRoom(data => {
-    if (data.host !== currentUser?.uid || data.status !== "waiting") return false;
-    const seats = data.seats || [null,null,null,null];
-    if (!seats[a] || !seats[b]) return false;
-    [seats[a],seats[b]] = [seats[b],seats[a]];
-    data.seats = seats;
-    data.confirmed = false;
-    return true;
-  });
+  busy=true;
+  try{
+    const result=await roomRef.transaction(room=>{
+      if(!room||room.host!==me.uid||room.status!=="waiting")return;
+      const players=Object.values(room.players||{});
+      if(players.length!==room.maxPlayers)return;
+      if(room.mode==="team"){
+        if(players.filter(p=>p.team==="A").length!==2)return;
+        if(players.filter(p=>p.team==="B").length!==2)return;
+      }
+      room.status="playing";
+      room.startedAt=Date.now();
+      return room;
+    });
+    if(!result.committed)say("startMessage","დაწყება ვერ მოხერხდა. გადაამოწმე მოთამაშეები და გუნდები.");
+  }catch(e){say("startMessage",errorText(e));}
+  finally{busy=false;}
 };
 
-/* CONFIRM MANUAL SEATING */
-$("confirmButton").onclick = async () => {
-  await updateRoom(data => {
-    if (data.host !== currentUser?.uid ||
-        data.assignment !== "manual" ||
-        data.status !== "waiting") return false;
-
-    if (playerIds(data).length !== 4 || !data.seats?.every(Boolean)) return false;
-
-    data.confirmed = true;
-    data.status = "ready";
-    return true;
-  });
-};
-
-/* START */
-$("startButton").onclick = async () => {
-  await updateRoom(data => {
-    if (data.host !== currentUser?.uid || data.status !== "ready") return false;
-    if (!data.seats?.every(Boolean)) return false;
-    data.status = "playing";
-    data.startedAt = Date.now();
-    return true;
-  });
-};
-
-/* COPY CODE */
-$("copyCodeButton").onclick = async () => {
-  if (!roomId) return;
-  try {
+$("copyCode").onclick=async()=>{
+  if(!roomId)return;
+  try{
     await navigator.clipboard.writeText(roomId);
-    notice("roomStatus","ოთახის კოდი დაკოპირდა.");
-  } catch {
-    notice("roomStatus","კოდი ხელით დააკოპირე: " + roomId);
+    say("roomStatus","ოთახის კოდი დაკოპირდა: "+roomId);
+  }catch(e){
+    say("roomStatus","კოდი ხელით დააკოპირე: "+roomId);
   }
 };
 
-/* LEAVE ROOM */
-async function leaveRoom(removePlayer = true) {
-  if (roomRef && roomListener) roomRef.off("value",roomListener);
+async function leaveRoom(removePlayer=true){
+  const oldRef=roomRef;
+  const oldListener=roomListener;
+  const oldId=roomId;
+  if(oldRef&&oldListener)oldRef.off("value",oldListener);
 
-  const oldRef = roomRef;
-  const oldId = roomId;
+  roomRef=null;roomListener=null;roomData=null;roomId=null;
+  show("roomPanel",false);
+  show("startedPanel",false);
 
-  roomRef = null;
-  roomListener = null;
-  roomId = null;
-  roomData = null;
-  selectedSeats = [];
+  if(removePlayer&&oldId&&me){
+    try{
+      await db.ref("rooms/"+oldId).transaction(room=>{
+        if(!room)return;
+        if(room.players)delete room.players[me.uid];
+        const remaining=Object.keys(room.players||{});
+        if(remaining.length===0)return null;
 
-  if (removePlayer && oldRef && currentUser) {
-    try {
-      await oldRef.transaction(data => {
-        if (!data || !data.players?.[currentUser.uid]) return data;
-
-        if (data.host === currentUser.uid) {
-          data.status = "closed";
-          data.closedAt = Date.now();
-          return data;
+        if(room.host===me.uid){
+          const next=remaining[0];
+          room.host=next;
         }
-
-        delete data.players[currentUser.uid];
-        data.seats = (data.seats || [null,null,null,null]).map(uid =>
-          uid === currentUser.uid ? null : uid
-        );
-        data.status = "waiting";
-        data.confirmed = false;
-        return data;
+        return room;
       });
-    } catch (error) {
-      console.error(error);
-    }
+    }catch(e){console.error(e);}
   }
-
-  showPage("home");
 }
-$("leaveRoomButton").onclick = () => leaveRoom(true);
-
-/* INITIAL */
-showPage("home");
+$("leaveRoom").onclick=()=>leaveRoom(true);
 </script>
 </body>
 </html>
